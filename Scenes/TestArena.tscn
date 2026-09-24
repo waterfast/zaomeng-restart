@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://Scripts/TestArena.cs" id="arena"]
+[ext_resource type="PackedScene" path="res://Scenes/Maps/Forest.tscn" id="map"]
+[ext_resource type="PackedScene" path="res://Scenes/Actors/Player.tscn" id="player"]
+[ext_resource type="PackedScene" path="res://Scenes/Actors/Monster.tscn" id="monster"]
+
+[node name="TestArena" type="Node2D"]
+script = ExtResource("arena")
+
+[node name="Forest" parent="." instance=ExtResource("map")]
+
+[node name="Player" parent="." instance=ExtResource("player")]
+position = Vector2(380, 490)
+
+[node name="Monster" parent="." instance=ExtResource("monster")]
+position = Vector2(680, 490)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(480, 280)
+limit_left = 0
+limit_top = 0
+limit_right = 4800
+limit_bottom = 540
+position_smoothing_enabled = true
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="ColorRect" parent="HUD"]
+offset_left = 14.0
+offset_top = 14.0
+offset_right = 590.0
+offset_bottom = 125.0
+mouse_filter = 2
+color = Color(0.04, 0.07, 0.09, 0.85)
+
+[node name="Title" type="Label" parent="HUD/Panel"]
+offset_left = 14.0
+offset_top = 7.0
+theme_override_font_sizes/font_size = 20
+text = "造梦 · 战斗测试 / 第一关"
+
+[node name="Controls" type="Label" parent="HUD/Panel"]
+offset_left = 14.0
+offset_top = 37.0
+theme_override_font_sizes/font_size = 15
+text = "A/D 移动　空格/K 跳跃　J 普攻　R 重置　F2 木桩/AI"
+
+[node name="Status" type="Label" parent="HUD/Panel"]
+offset_left = 14.0
+offset_top = 62.0
+theme_override_font_sizes/font_size = 15
+text = ""

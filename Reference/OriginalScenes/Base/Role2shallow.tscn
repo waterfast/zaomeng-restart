@@ -1,0 +1,309 @@
+[gd_scene load_steps=11 format=3]
+
+[ext_resource type="PackedScene" uid="uid://o7he0834f0dx" path="res://Scene/Base/BaseHero.tscn" id="1"]
+[ext_resource type="Script" path="res://Script/Hero/Role2shallow.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://bg7r1iscaeq3q" path="res://Art/HeroPicture/Role2/Role2Shallow.png" id="3"]
+
+[sub_resource type="Animation" id="1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Action/RoleBody:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+script = null
+
+[sub_resource type="Animation" id="2"]
+resource_name = "jhsj"
+length = 2.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Action/RoleBody:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [16, 16]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Action/RoleBody:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-15, -5)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 2.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"SetInsky"
+}, {
+"args": [],
+"method": &"AddJHSJ2"
+}, {
+"args": [],
+"method": &"free"
+}]
+}
+script = null
+
+[sub_resource type="Animation" id="3"]
+resource_name = "new_animation"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Action/RoleBody:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-15, -5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Action/RoleBody:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("base_damagebox/HitBox/HitBox:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("base_damagebox/HurtBox/HurtBox:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+script = null
+
+[sub_resource type="Animation" id="4"]
+resource_name = "tjgl"
+length = 1.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Action/RoleBody:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.7, 0.8, 0.9, 1.1, 1.3, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [5, 5, 5, 5, 6, 7, 7, 7, 7, 7, 7, 7]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Action/RoleBody:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-15, -5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("base_damagebox/HitBox/HitBox:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("base_damagebox/HurtBox/HurtBox:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.4, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"SetInsky"
+}, {
+"args": [],
+"method": &"AddXBZ"
+}, {
+"args": [],
+"method": &"ResetInsky"
+}, {
+"args": [],
+"method": &"free"
+}]
+}
+script = null
+
+[sub_resource type="Animation" id="5"]
+resource_name = "xbz"
+length = 1.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Action/RoleBody:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [12, 12]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4, 1.7),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"AddTJGL"
+}, {
+"args": [],
+"method": &"ResetInsky"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.7),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"SetInsky"
+}, {
+"args": [],
+"method": &"free"
+}]
+}
+script = null
+
+[sub_resource type="AnimationLibrary" id="6"]
+_data = {
+"RESET": SubResource( "1" ),
+"jhsj": SubResource( "2" ),
+"run": SubResource( "3" ),
+"tjgl": SubResource( "4" ),
+"xbz": SubResource( "5" )
+}
+script = null
+
+[sub_resource type="CapsuleShape2D" id="7"]
+radius = 24.0
+height = 52.0
+script = null
+
+[node name="Role2Shallow" instance=ExtResource( "1" )]
+collision_layer = 0
+collision_mask = 33
+script = ExtResource( "2" )
+
+[node name="tx" parent="." index="1"]
+visible = false
+
+[node name="RoleBody" parent="Action" index="1"]
+position = Vector2(-3, 2)
+texture = ExtResource( "3" )
+offset = Vector2(-15, -5)
+hframes = 4
+vframes = 5
+frame = 1
+
+[node name="RolePlayer" parent="." index="4"]
+libraries = {
+"": SubResource( "6" )
+}
+
+[node name="HitBox" parent="base_damagebox" index="0"]
+collision_layer = 0
+
+[node name="HitBox" parent="base_damagebox/HitBox" index="0"]
+disabled = true
+
+[node name="HurtBox" parent="base_damagebox" index="1"]
+collision_mask = 0
+
+[node name="HurtBox" parent="base_damagebox/HurtBox" index="0"]
+disabled = true
+
+[node name="pz" parent="." index="6"]
+position = Vector2(0, 24)
+shape = SubResource( "7" )
+metadata/_edit_lock_ = true
+
+[node name="Death__" type="Timer" parent="." index="13"]
+wait_time = 6.0
+autostart = true
+
+[connection signal="timeout" from="Death__" to="." method="_on_death___timeout" flags=18]

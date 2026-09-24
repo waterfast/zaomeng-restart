@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://Script/Level/River.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://ed286ms7y4t1" path="res://Art/Level/level_2/220.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://ntnq00jb00b0" path="res://Art/Level/level_2/River.png" id="3"]
+
+[sub_resource type="Animation" id="1"]
+resource_name = "River"
+length = 9.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BG/River:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(317.5, -15), Vector2(-300, -15)]
+}
+script = null
+
+[sub_resource type="AnimationLibrary" id="2"]
+_data = {
+"River": SubResource( "1" )
+}
+script = null
+
+[node name="River" type="Node2D"]
+script = ExtResource( "1" )
+
+[node name="BG" type="Sprite2D" parent="."]
+position = Vector2(-287, 0)
+scale = Vector2(4, 1)
+texture = ExtResource( "2" )
+metadata/_edit_lock_ = true
+
+[node name="River" type="Sprite2D" parent="BG"]
+position = Vector2(317.5, -15)
+scale = Vector2(0.75, 1)
+texture = ExtResource( "3" )
+metadata/_edit_lock_ = true
+
+[node name="RiverPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource( "2" )
+}

@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Script/Hero/WS_Effect.gd" id="1"]
+
+[node name="WS_Effect" type="Node2D"]
+show_behind_parent = true
+script = ExtResource( "1" )
+live_time = 0.27
+alfa_factor = 0.8
+color = Color(1, 0.85098, 0.827451, 1)
+
+[node name="DeathTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout" flags=18]

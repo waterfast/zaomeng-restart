@@ -1,0 +1,1340 @@
+[gd_scene load_steps=79 format=3]
+
+[ext_resource type="Script" path="res://Script/Bullet/Chase_bullet.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://u7thpfa8a7mg" path="res://Art/Monster/Monster_33_34/Monster_33/Bullet.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://d06jfwu2tejb5" path="res://Art/Monster/Monster_37_38/Bullet.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://di2tm66ilhtoi" path="res://Art/Monster/Monster_49/ChaseBullet_1.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://de38xqn08l5ex" path="res://Art/Monster/Monster_49/ChaseBullet_2.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://bwvaypv7h4tec" path="res://Art/Monster/Monster_53/Bullet.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://i366mgap77n3" path="res://Art/Monster/Monster_57/Bullet.png" id="7"]
+
+[sub_resource type="CircleShape2D" id="1"]
+script = null
+
+[sub_resource type="AtlasTexture" id="2"]
+atlas = ExtResource( "2" )
+region = Rect2(0, 0, 181, 185)
+script = null
+
+[sub_resource type="AtlasTexture" id="3"]
+atlas = ExtResource( "2" )
+region = Rect2(181, 0, 181, 185)
+script = null
+
+[sub_resource type="AtlasTexture" id="4"]
+atlas = ExtResource( "2" )
+region = Rect2(362, 0, 181, 185)
+script = null
+
+[sub_resource type="AtlasTexture" id="5"]
+atlas = ExtResource( "3" )
+region = Rect2(0, 0, 62, 47)
+script = null
+
+[sub_resource type="AtlasTexture" id="6"]
+atlas = ExtResource( "3" )
+region = Rect2(62, 0, 62, 47)
+script = null
+
+[sub_resource type="AtlasTexture" id="7"]
+atlas = ExtResource( "4" )
+region = Rect2(0, 0, 54, 54)
+script = null
+
+[sub_resource type="AtlasTexture" id="8"]
+atlas = ExtResource( "4" )
+region = Rect2(54, 0, 54, 54)
+script = null
+
+[sub_resource type="AtlasTexture" id="9"]
+atlas = ExtResource( "4" )
+region = Rect2(108, 0, 54, 54)
+script = null
+
+[sub_resource type="AtlasTexture" id="10"]
+atlas = ExtResource( "5" )
+region = Rect2(0, 0, 54, 54)
+script = null
+
+[sub_resource type="AtlasTexture" id="11"]
+atlas = ExtResource( "5" )
+region = Rect2(54, 0, 54, 54)
+script = null
+
+[sub_resource type="AtlasTexture" id="12"]
+atlas = ExtResource( "5" )
+region = Rect2(108, 0, 54, 54)
+script = null
+
+[sub_resource type="AtlasTexture" id="13"]
+atlas = ExtResource( "6" )
+region = Rect2(0, 0, 31, 31)
+script = null
+
+[sub_resource type="AtlasTexture" id="14"]
+atlas = ExtResource( "7" )
+region = Rect2(0, 0, 142, 142)
+script = null
+
+[sub_resource type="AtlasTexture" id="15"]
+atlas = ExtResource( "7" )
+region = Rect2(142, 0, 142, 142)
+script = null
+
+[sub_resource type="AtlasTexture" id="16"]
+atlas = ExtResource( "7" )
+region = Rect2(284, 0, 142, 142)
+script = null
+
+[sub_resource type="AtlasTexture" id="17"]
+atlas = ExtResource( "7" )
+region = Rect2(426, 0, 142, 142)
+script = null
+
+[sub_resource type="AtlasTexture" id="18"]
+atlas = ExtResource( "7" )
+region = Rect2(568, 0, 142, 142)
+script = null
+
+[sub_resource type="AtlasTexture" id="19"]
+atlas = ExtResource( "7" )
+region = Rect2(710, 0, 142, 142)
+script = null
+
+[sub_resource type="AtlasTexture" id="20"]
+atlas = ExtResource( "7" )
+region = Rect2(852, 0, 142, 142)
+script = null
+
+[sub_resource type="AtlasTexture" id="21"]
+atlas = ExtResource( "7" )
+region = Rect2(994, 0, 142, 142)
+script = null
+
+[sub_resource type="AtlasTexture" id="22"]
+atlas = ExtResource( "7" )
+region = Rect2(1136, 0, 142, 142)
+script = null
+
+[sub_resource type="AtlasTexture" id="23"]
+atlas = ExtResource( "7" )
+region = Rect2(0, 0, 142, 142)
+script = null
+
+[sub_resource type="AtlasTexture" id="24"]
+atlas = ExtResource( "7" )
+region = Rect2(142, 0, 142, 142)
+script = null
+
+[sub_resource type="AtlasTexture" id="25"]
+atlas = ExtResource( "7" )
+region = Rect2(284, 0, 142, 142)
+script = null
+
+[sub_resource type="AtlasTexture" id="26"]
+atlas = ExtResource( "7" )
+region = Rect2(426, 0, 142, 142)
+script = null
+
+[sub_resource type="AtlasTexture" id="27"]
+atlas = ExtResource( "7" )
+region = Rect2(568, 0, 142, 142)
+script = null
+
+[sub_resource type="AtlasTexture" id="28"]
+atlas = ExtResource( "7" )
+region = Rect2(710, 0, 142, 142)
+script = null
+
+[sub_resource type="AtlasTexture" id="29"]
+atlas = ExtResource( "7" )
+region = Rect2(852, 0, 142, 142)
+script = null
+
+[sub_resource type="AtlasTexture" id="30"]
+atlas = ExtResource( "7" )
+region = Rect2(994, 0, 142, 142)
+script = null
+
+[sub_resource type="AtlasTexture" id="31"]
+atlas = ExtResource( "7" )
+region = Rect2(1136, 0, 142, 142)
+script = null
+
+[sub_resource type="AtlasTexture" id="32"]
+atlas = ExtResource( "7" )
+region = Rect2(0, 0, 142, 142)
+script = null
+
+[sub_resource type="AtlasTexture" id="33"]
+atlas = ExtResource( "7" )
+region = Rect2(142, 0, 142, 142)
+script = null
+
+[sub_resource type="AtlasTexture" id="34"]
+atlas = ExtResource( "7" )
+region = Rect2(284, 0, 142, 142)
+script = null
+
+[sub_resource type="AtlasTexture" id="35"]
+atlas = ExtResource( "7" )
+region = Rect2(426, 0, 142, 142)
+script = null
+
+[sub_resource type="AtlasTexture" id="36"]
+atlas = ExtResource( "7" )
+region = Rect2(568, 0, 142, 142)
+script = null
+
+[sub_resource type="AtlasTexture" id="37"]
+atlas = ExtResource( "7" )
+region = Rect2(710, 0, 142, 142)
+script = null
+
+[sub_resource type="AtlasTexture" id="38"]
+atlas = ExtResource( "7" )
+region = Rect2(852, 0, 142, 142)
+script = null
+
+[sub_resource type="AtlasTexture" id="39"]
+atlas = ExtResource( "7" )
+region = Rect2(994, 0, 142, 142)
+script = null
+
+[sub_resource type="AtlasTexture" id="40"]
+atlas = ExtResource( "7" )
+region = Rect2(1136, 0, 142, 142)
+script = null
+
+[sub_resource type="AtlasTexture" id="41"]
+atlas = ExtResource( "7" )
+region = Rect2(0, 0, 142, 142)
+script = null
+
+[sub_resource type="AtlasTexture" id="42"]
+atlas = ExtResource( "7" )
+region = Rect2(142, 0, 142, 142)
+script = null
+
+[sub_resource type="AtlasTexture" id="43"]
+atlas = ExtResource( "7" )
+region = Rect2(284, 0, 142, 142)
+script = null
+
+[sub_resource type="AtlasTexture" id="44"]
+atlas = ExtResource( "7" )
+region = Rect2(426, 0, 142, 142)
+script = null
+
+[sub_resource type="AtlasTexture" id="45"]
+atlas = ExtResource( "7" )
+region = Rect2(568, 0, 142, 142)
+script = null
+
+[sub_resource type="AtlasTexture" id="46"]
+atlas = ExtResource( "7" )
+region = Rect2(710, 0, 142, 142)
+script = null
+
+[sub_resource type="AtlasTexture" id="47"]
+atlas = ExtResource( "7" )
+region = Rect2(852, 0, 142, 142)
+script = null
+
+[sub_resource type="AtlasTexture" id="48"]
+atlas = ExtResource( "7" )
+region = Rect2(994, 0, 142, 142)
+script = null
+
+[sub_resource type="AtlasTexture" id="49"]
+atlas = ExtResource( "7" )
+region = Rect2(1136, 0, 142, 142)
+script = null
+
+[sub_resource type="SpriteFrames" id="50"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"Empty",
+"speed": 25.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource( "2" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "2" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "3" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "3" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "4" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "4" )
+}],
+"loop": true,
+"name": &"Monster33Bullet",
+"speed": 25.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource( "5" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "5" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "6" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "6" )
+}],
+"loop": true,
+"name": &"Monster37Bullet",
+"speed": 25.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource( "7" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "8" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "9" )
+}],
+"loop": true,
+"name": &"Monster49Bullet_1",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource( "10" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "11" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "12" )
+}],
+"loop": true,
+"name": &"Monster49Bullet_2",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource( "13" )
+}],
+"loop": false,
+"name": &"Monster53Bullet",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource( "14" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "15" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "16" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "17" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "18" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "19" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "20" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "21" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "22" )
+}],
+"loop": false,
+"name": &"Monster57Bullet",
+"speed": 25.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource( "23" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "24" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "25" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "26" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "27" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "28" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "29" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "30" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "31" )
+}],
+"loop": false,
+"name": &"Monster57Bullet2",
+"speed": 25.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource( "32" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "33" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "34" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "35" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "36" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "37" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "38" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "39" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "40" )
+}],
+"loop": true,
+"name": &"Monster57Bullet3",
+"speed": 25.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource( "41" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "42" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "43" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "44" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "45" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "46" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "47" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "48" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "49" )
+}],
+"loop": true,
+"name": &"Monster57Bullet4",
+"speed": 25.0
+}]
+script = null
+
+[sub_resource type="Animation" id="51"]
+length = 0.04
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Chaseani:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Chaseani:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Empty"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Middle/HitBox/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Middle/HitBox/CollisionShape2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Middle/HitBox/CollisionShape2D:shape")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource( "1" )]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Chaseani:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+script = null
+
+[sub_resource type="CircleShape2D" id="52"]
+radius = 48.6621
+script = null
+
+[sub_resource type="Animation" id="53"]
+length = 0.24
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Chaseani:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.08, 0.12, 0.16, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Chaseani:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Monster33Bullet"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Middle/HitBox/CollisionShape2D:shape")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource( "52" )]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Middle/HitBox/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Middle/HitBox/CollisionShape2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 5)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Chaseani:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.737255, 0, 1, 1)]
+}
+script = null
+
+[sub_resource type="CircleShape2D" id="54"]
+radius = 17.4642
+script = null
+
+[sub_resource type="Animation" id="55"]
+length = 0.16
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Chaseani:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.08, 0.12),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Chaseani:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Monster37Bullet"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Chaseani:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Middle/HitBox/CollisionShape2D:shape")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource( "54" )]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Middle/HitBox/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Middle/HitBox/CollisionShape2D:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-2, 1)]
+}
+script = null
+
+[sub_resource type="CircleShape2D" id="56"]
+radius = 15.0333
+script = null
+
+[sub_resource type="Animation" id="57"]
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Chaseani:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Chaseani:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Monster49Bullet_1"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Chaseani:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Middle/HitBox/CollisionShape2D:shape")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource( "56" )]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Middle/HitBox/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Middle/HitBox/CollisionShape2D:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+script = null
+
+[sub_resource type="CircleShape2D" id="58"]
+radius = 14.1421
+script = null
+
+[sub_resource type="Animation" id="59"]
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Chaseani:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Chaseani:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Monster49Bullet_2"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Chaseani:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0.411765, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Middle/HitBox/CollisionShape2D:shape")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource( "58" )]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Middle/HitBox/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Middle/HitBox/CollisionShape2D:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+script = null
+
+[sub_resource type="CircleShape2D" id="60"]
+radius = 14.1421
+script = null
+
+[sub_resource type="Animation" id="61"]
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Chaseani:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Chaseani:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Monster53Bullet"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Chaseani:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Middle/HitBox/CollisionShape2D:shape")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource( "60" )]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Middle/HitBox/CollisionShape2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Middle/HitBox/CollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+script = null
+
+[sub_resource type="CircleShape2D" id="62"]
+radius = 33.0151
+script = null
+
+[sub_resource type="Animation" id="63"]
+length = 0.36
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Chaseani:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28, 0.32),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Chaseani:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Monster57Bullet"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Chaseani:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.541176, 0, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Middle/HitBox/CollisionShape2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Middle/HitBox/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Middle/HitBox/CollisionShape2D:shape")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource( "62" )]
+}
+script = null
+
+[sub_resource type="CircleShape2D" id="64"]
+radius = 35.0143
+script = null
+
+[sub_resource type="Animation" id="65"]
+length = 0.36
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Chaseani:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28, 0.32),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Chaseani:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Monster57Bullet2"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Chaseani:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Middle/HitBox/CollisionShape2D:shape")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource( "64" )]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Middle/HitBox/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Middle/HitBox/CollisionShape2D:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+script = null
+
+[sub_resource type="CircleShape2D" id="66"]
+radius = 34.3657
+script = null
+
+[sub_resource type="Animation" id="67"]
+length = 0.36
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Chaseani:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28, 0.32),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Chaseani:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Monster57Bullet3"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Chaseani:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 1, 0, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Middle/HitBox/CollisionShape2D:shape")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource( "66" )]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Middle/HitBox/CollisionShape2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Middle/HitBox/CollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+script = null
+
+[sub_resource type="CircleShape2D" id="68"]
+radius = 34.3657
+script = null
+
+[sub_resource type="Animation" id="69"]
+length = 0.36
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Chaseani:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28, 0.32),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Chaseani:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Monster57Bullet4"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Chaseani:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.176471, 0, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Middle/HitBox/CollisionShape2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Middle/HitBox/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Middle/HitBox/CollisionShape2D:shape")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource( "68" )]
+}
+script = null
+
+[sub_resource type="Animation" id="70"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Middle/HitBox/CollisionShape2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Middle/HitBox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+script = null
+
+[sub_resource type="AnimationLibrary" id="71"]
+_data = {
+"Empty": SubResource( "51" ),
+"Monster33Bullet": SubResource( "53" ),
+"Monster37Bullet": SubResource( "55" ),
+"Monster49Bullet_1": SubResource( "57" ),
+"Monster49Bullet_2": SubResource( "59" ),
+"Monster53Bullet": SubResource( "61" ),
+"Monster57Bullet": SubResource( "63" ),
+"Monster57Bullet2": SubResource( "65" ),
+"Monster57Bullet3": SubResource( "67" ),
+"Monster57Bullet4": SubResource( "69" ),
+"RESET": SubResource( "70" )
+}
+script = null
+
+[node name="ChaseBullet" type="Node2D"]
+script = ExtResource( "1" )
+
+[node name="Middle" type="Node2D" parent="."]
+
+[node name="HitBox" type="Area2D" parent="Middle"]
+collision_layer = 4
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Middle/HitBox"]
+shape = SubResource( "1" )
+
+[node name="Chaseani" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource( "50" )
+animation = &"Empty"
+
+[node name="ChasePlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource( "71" )
+}
+
+[node name="que" type="Timer" parent="."]
+
+[connection signal="area_entered" from="Middle/HitBox" to="." method="_on_hit_box_area_entered" flags=18]
+[connection signal="timeout" from="que" to="." method="_on_que_timeout" flags=18]

@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="PackedScene" uid="uid://bp5dr3h8j1x2w" path="res://Scene/Base/BaseThroughLevel.tscn" id="1"]
+[ext_resource type="Script" path="res://Script/Level/Level_tzhy.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://drj4lvvqc3ntd" path="res://Art/Level/Game3Level/Level_Hide/tzhylevel.png" id="3"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(1992, 832)
+script = null
+
+[sub_resource type="RectangleShape2D" id="2"]
+size = Vector2(1193, 1663)
+script = null
+
+[node name="Level_tzhy" instance=ExtResource( "1" )]
+script = ExtResource( "2" )
+
+[node name="floor" type="CollisionShape2D" parent="wall" index="2"]
+position = Vector2(645, 826)
+shape = SubResource( "1" )
+metadata/_edit_lock_ = true
+
+[node name="stop1" type="CollisionShape2D" parent="wall" index="3"]
+position = Vector2(1532.5, 41.5)
+shape = SubResource( "2" )
+metadata/_edit_lock_ = true
+
+[node name="Tzhylevel" type="Sprite2D" parent="BackGround/floor_2" index="0"]
+position = Vector2(458, 293)
+texture = ExtResource( "3" )
+
+[node name="exit" parent="." index="10"]
+position = Vector2(733, 347)
+metadata/_edit_lock_ = true

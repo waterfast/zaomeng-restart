@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Script/Base/BaseBuff.gd" id="1"]
+
+[node name="BaseBuff" type="Node"]
+script = ExtResource( "1" )
+
+[node name="BuffLastTime" type="Timer" parent="."]
+
+[node name="BuffValueReduceTime" type="Timer" parent="."]
+
+[node name="SpecialEffectAddTime" type="Timer" parent="."]
+
+[node name="OneSecond" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="BuffLastTime" to="." method="_on_buff_last_time_timeout" flags=18]
+[connection signal="timeout" from="BuffValueReduceTime" to="." method="_on_buff_value_reduce_time_timeout" flags=18]
+[connection signal="timeout" from="SpecialEffectAddTime" to="." method="_on_special_effect_add_time_timeout" flags=18]
+[connection signal="timeout" from="OneSecond" to="." method="_on_one_second_timeout" flags=18]

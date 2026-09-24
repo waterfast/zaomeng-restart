@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="PackedScene" uid="uid://bp5dr3h8j1x2w" path="res://Scene/Base/BaseThroughLevel.tscn" id="1"]
+[ext_resource type="Script" path="res://Script/Level/Level_hddy.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://5omnpyixqide" path="res://Art/Level/Level_11/cjwlevel.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://cc5y6owgbq4y" path="res://Art/Level/Level_11/cjwFloor.png" id="4"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(1899, 78)
+script = null
+
+[sub_resource type="RectangleShape2D" id="2"]
+size = Vector2(6, 1085)
+script = null
+
+[node name="Level_hddy" instance=ExtResource( "1" )]
+script = ExtResource( "2" )
+metadata/_edit_vertical_guides_ = [1110.0]
+
+[node name="floor" type="CollisionShape2D" parent="wall" index="2"]
+position = Vector2(935.5, 440)
+shape = SubResource( "1" )
+metadata/_edit_lock_ = true
+
+[node name="stop1" type="CollisionShape2D" parent="wall" index="3"]
+position = Vector2(1001, -66.5)
+shape = SubResource( "2" )
+metadata/_edit_lock_ = true
+
+[node name="stop2" type="CollisionShape2D" parent="wall" index="4"]
+position = Vector2(1843, -65)
+shape = SubResource( "2" )
+metadata/_edit_lock_ = true
+
+[node name="End" parent="BackGround" index="0"]
+motion_scale = Vector2(1, 0)
+
+[node name="Cjwlevel" type="Sprite2D" parent="BackGround/End" index="0"]
+position = Vector2(940, 259)
+texture = ExtResource( "3" )
+metadata/_edit_lock_ = true
+
+[node name="CjwFloor" type="Sprite2D" parent="BackGround/floor_2" index="0"]
+position = Vector2(939.25, 543)
+scale = Vector2(1.00558, 1)
+texture = ExtResource( "4" )
+metadata/_edit_lock_ = true
+
+[node name="exit" parent="." index="6"]
+position = Vector2(1717, 324)
+metadata/_edit_lock_ = true

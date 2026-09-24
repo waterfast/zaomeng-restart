@@ -1,0 +1,72 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="PackedScene" uid="uid://bp5dr3h8j1x2w" path="res://Scene/Base/BaseThroughLevel.tscn" id="1"]
+[ext_resource type="Script" path="res://Script/Level/Level_dsg_3.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://dqh404bv6wmd5" path="res://Art/Level/Game3Level/Level_5/dxec.png" id="3"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(6250.5, 1033.25)
+script = null
+
+[sub_resource type="RectangleShape2D" id="2"]
+size = Vector2(1060.25, 976)
+script = null
+
+[sub_resource type="RectangleShape2D" id="3"]
+size = Vector2(1186.75, 976)
+script = null
+
+[sub_resource type="RectangleShape2D" id="4"]
+size = Vector2(9.5, 976)
+script = null
+
+[sub_resource type="RectangleShape2D" id="5"]
+size = Vector2(1791.75, 2105)
+script = null
+
+[sub_resource type="RectangleShape2D" id="6"]
+size = Vector2(699.75, 1420)
+script = null
+
+[node name="Level_dsg_3" instance=ExtResource( "1" )]
+script = ExtResource( "2" )
+
+[node name="floor" type="CollisionShape2D" parent="wall" index="2"]
+position = Vector2(3122.75, 911.375)
+shape = SubResource( "1" )
+metadata/_edit_lock_ = true
+
+[node name="stop1" type="CollisionShape2D" parent="wall" index="3"]
+position = Vector2(1647.88, -11)
+shape = SubResource( "2" )
+metadata/_edit_lock_ = true
+
+[node name="stop2" type="CollisionShape2D" parent="wall" index="4"]
+position = Vector2(2859.63, -16)
+shape = SubResource( "3" )
+metadata/_edit_lock_ = true
+
+[node name="stop3" type="CollisionShape2D" parent="wall" index="5"]
+position = Vector2(3509.25, -15)
+shape = SubResource( "4" )
+metadata/_edit_lock_ = true
+
+[node name="stop4" type="CollisionShape2D" parent="wall" index="6"]
+position = Vector2(5524.13, 543.5)
+shape = SubResource( "5" )
+metadata/_edit_lock_ = true
+
+[node name="stop5" type="CollisionShape2D" parent="wall" index="7"]
+position = Vector2(3167.13, -211)
+shape = SubResource( "6" )
+disabled = true
+metadata/_edit_lock_ = true
+
+[node name="Dxec" type="Sprite2D" parent="BackGround/floor_2" index="0"]
+position = Vector2(2351, 295)
+texture = ExtResource( "3" )
+metadata/_edit_lock_ = true
+
+[node name="exit" parent="." index="10"]
+position = Vector2(4288, 325)
+metadata/_edit_lock_ = true

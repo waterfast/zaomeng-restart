@@ -1,0 +1,135 @@
+[gd_scene load_steps=15 format=3]
+
+[ext_resource type="PackedScene" path="res://Scenes/Maps/Slope.tscn" id="3"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Level/Level_1/19_1.png" id="4"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Level/Level_1/48.png" id="5"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Level/Level_1/183.png" id="6"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(1536, 1803)
+
+[sub_resource type="RectangleShape2D" id="2"]
+size = Vector2(5318, 1564)
+
+[sub_resource type="CapsuleShape2D" id="3"]
+radius = 12.0209
+height = 131.522
+
+[sub_resource type="RectangleShape2D" id="4"]
+size = Vector2(204.5, 22)
+
+[sub_resource type="CapsuleShape2D" id="5"]
+radius = 13.4349
+height = 131.522
+
+[sub_resource type="RectangleShape2D" id="6"]
+size = Vector2(1143, 1296.5)
+
+[sub_resource type="RectangleShape2D" id="7"]
+size = Vector2(946.5, 1296.5)
+
+[sub_resource type="RectangleShape2D" id="8"]
+size = Vector2(81, 1296.5)
+
+[sub_resource type="RectangleShape2D" id="9"]
+size = Vector2(1105.25, 1296.5)
+
+[node name="Forest" type="Node2D"]
+
+[node name="wall" type="StaticBody2D" parent="."]
+position = Vector2(0, 112)
+collision_layer = 1
+collision_mask = 0
+[node name="wall_left" type="CollisionShape2D" parent="wall"]
+position = Vector2(-766, -419.5)
+shape = SubResource( "1" )
+
+[node name="floor2" type="CollisionShape2D" parent="wall"]
+position = Vector2(2656, 1174)
+shape = SubResource( "2" )
+metadata/_edit_lock_ = true
+
+[node name="斜坡" parent="wall" instance=ExtResource( "3" )]
+position = Vector2(1178, 331)
+
+[node name="斜坡4" parent="wall" instance=ExtResource( "3" )]
+position = Vector2(1656, 337)
+
+[node name="斜坡5" parent="wall" instance=ExtResource( "3" )]
+position = Vector2(4604, 337)
+
+[node name="斜坡2" type="StaticBody2D" parent="wall"]
+position = Vector2(485, 4)
+collision_mask = 0
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall/斜坡2"]
+position = Vector2(1036, 371)
+rotation = 0.785398
+shape = SubResource( "3" )
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="wall/斜坡2"]
+position = Vector2(1171.75, 333)
+shape = SubResource( "4" )
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="wall/斜坡2"]
+position = Vector2(1307, 372)
+rotation = -0.785398
+shape = SubResource( "5" )
+metadata/_edit_lock_ = true
+
+[node name="斜坡3" type="StaticBody2D" parent="wall"]
+position = Vector2(3434, 4)
+collision_mask = 0
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall/斜坡3"]
+position = Vector2(1036, 371)
+rotation = 0.785398
+shape = SubResource( "3" )
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="wall/斜坡3"]
+position = Vector2(1171.75, 333)
+shape = SubResource( "4" )
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="wall/斜坡3"]
+position = Vector2(1307, 372)
+rotation = -0.785398
+shape = SubResource( "5" )
+metadata/_edit_lock_ = true
+
+
+[node name="RightBoundary" type="CollisionShape2D" parent="wall"]
+position = Vector2(5568, -419.5)
+shape = SubResource("1")
+
+[node name="BackGround" type="ParallaxBackground" parent="."]
+
+[node name="End" type="ParallaxLayer" parent="BackGround"]
+motion_scale = Vector2(0, 0)
+[node name="end2" type="Sprite2D" parent="BackGround/End"]
+position = Vector2(718, 244)
+texture = ExtResource( "4" )
+metadata/_edit_lock_ = true
+
+[node name="front" type="ParallaxLayer" parent="BackGround"]
+position = Vector2(2014, 36)
+metadata/_edit_lock_ = true
+
+[node name="front" type="Sprite2D" parent="BackGround/front"]
+position = Vector2(438, 338)
+texture = ExtResource( "5" )
+metadata/_edit_lock_ = true
+
+[node name="floor3" type="ParallaxLayer" parent="BackGround"]
+metadata/_edit_lock_ = true
+
+[node name="floor2" type="Sprite2D" parent="BackGround/floor3"]
+position = Vector2(2403, 506)
+texture = ExtResource( "6" )
+metadata/_edit_lock_ = true
+

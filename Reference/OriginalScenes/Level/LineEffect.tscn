@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Script/Level/LineEffect.gd" id="1"]
+
+[node name="LineEffect" type="Line2D"]
+position = Vector2(-63, -87)
+points = PackedVector2Array(874, 225, 64, 86)
+width = 3.0
+default_color = Color(1, 0, 0, 1)
+antialiased = true
+script = ExtResource( "1" )

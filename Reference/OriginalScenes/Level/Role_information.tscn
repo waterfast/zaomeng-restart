@@ -1,0 +1,1502 @@
+[gd_scene load_steps=155 format=3]
+
+[ext_resource type="Script" path="res://Script/Level/Role_information.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://2y0cxmsrq5k4" path="res://Art/Level/Gogo/1.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://v0n5joitm2vb" path="res://Art/Level/Gogo/2.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://n3do80ga0gdc" path="res://Art/Level/Gogo/3.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://ce2kym5aaluay" path="res://Art/Level/Gogo/4.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://07qce5x6l7sx" path="res://Art/Level/Gogo/5.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://c4td72j0vxks1" path="res://Art/Level/Gogo/6.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://bh4fl2dk55byt" path="res://Art/Level/Gogo/7.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://dm2qwqmu0uv2d" path="res://Art/Level/Gogo/8.png" id="9"]
+[ext_resource type="Texture2D" uid="uid://dlu3qefh8uvwp" path="res://Art/Level/Gogo/9.png" id="10"]
+[ext_resource type="Texture2D" uid="uid://bsguq4nfnfw7e" path="res://Art/Level/Gogo/10.png" id="11"]
+[ext_resource type="Texture2D" uid="uid://bgc60q23srjon" path="res://Art/Level/Gogo/11.png" id="12"]
+[ext_resource type="Texture2D" uid="uid://kctejkaiadyu" path="res://Art/Level/Gogo/12.png" id="13"]
+[ext_resource type="Texture2D" uid="uid://csysddbobyds1" path="res://Art/Level/Gogo/13.png" id="14"]
+[ext_resource type="Texture2D" uid="uid://bufsk5ndrnme6" path="res://Art/Level/Gogo/14.png" id="15"]
+[ext_resource type="Texture2D" uid="uid://c2eg44i7nhs1i" path="res://Art/Level/Gogo/15.png" id="16"]
+[ext_resource type="Texture2D" uid="uid://cruxbo0xvkiu6" path="res://Art/Level/Gogo/16.png" id="17"]
+[ext_resource type="Texture2D" uid="uid://bwpwcynavs50t" path="res://Art/Level/Gogo/17.png" id="18"]
+[ext_resource type="Texture2D" uid="uid://b7yo1ovckxogq" path="res://Art/Level/Gogo/18.png" id="19"]
+[ext_resource type="Texture2D" uid="uid://cirg4r2x036eb" path="res://Art/Level/Gogo/19.png" id="20"]
+[ext_resource type="Texture2D" uid="uid://uu201gjscrlm" path="res://Art/Level/Gogo/20.png" id="21"]
+[ext_resource type="Texture2D" uid="uid://brxu2immff0ca" path="res://Art/Level/Gogo/21.png" id="22"]
+[ext_resource type="Texture2D" uid="uid://cgp1iojblh71m" path="res://Art/Level/Gogo/22.png" id="23"]
+[ext_resource type="Texture2D" uid="uid://b5ndmb7fqs5y4" path="res://Art/Level/Gogo/23.png" id="24"]
+[ext_resource type="Texture2D" uid="uid://cgdg8oi2ydu7y" path="res://Art/Level/Gogo/24.png" id="25"]
+[ext_resource type="Texture2D" uid="uid://c5x2moai8d5fu" path="res://Art/Level/Gogo/25.png" id="26"]
+[ext_resource type="Texture2D" uid="uid://kvmtu32fwclo" path="res://Art/Level/Gogo/26.png" id="27"]
+[ext_resource type="Texture2D" uid="uid://cndftd6u2u0ch" path="res://Art/Level/Gogo/27.png" id="28"]
+[ext_resource type="Texture2D" uid="uid://mg0sjarbr2m1" path="res://Art/Level/Gogo/28.png" id="29"]
+[ext_resource type="Texture2D" uid="uid://c1xgayv25fs4x" path="res://Art/Level/Gogo/29.png" id="30"]
+[ext_resource type="Texture2D" uid="uid://csxjyqs6womwk" path="res://Art/Level/Gogo/30.png" id="31"]
+[ext_resource type="Texture2D" uid="uid://iydtmrrylfjb" path="res://Art/Level/Gogo/31.png" id="32"]
+[ext_resource type="Texture2D" uid="uid://wrp2ug8b7bfy" path="res://Art/Level/Gogo/32.png" id="33"]
+[ext_resource type="Texture2D" uid="uid://dfmlmq30frtqa" path="res://Art/Level/Gogo/33.png" id="34"]
+[ext_resource type="Texture2D" uid="uid://ci15b7l2ossv5" path="res://Art/Level/Gogo/34.png" id="35"]
+[ext_resource type="Texture2D" uid="uid://dx8wvlqnv2er7" path="res://Art/Level/Gogo/35.png" id="36"]
+[ext_resource type="Texture2D" uid="uid://xjobmpps31pv" path="res://Art/Level/Gogo/36.png" id="37"]
+[ext_resource type="Texture2D" uid="uid://dtplfu2wbnyn7" path="res://Art/Level/Gogo/37.png" id="38"]
+[ext_resource type="Texture2D" uid="uid://druc4j38k3ybo" path="res://Art/Level/Gogo/38.png" id="39"]
+[ext_resource type="Texture2D" uid="uid://p2xvdh0m1a8t" path="res://Art/Level/Gogo/39.png" id="40"]
+[ext_resource type="Texture2D" uid="uid://d0b17v0jfpcjq" path="res://Art/Level/Gogo/40.png" id="41"]
+[ext_resource type="Texture2D" uid="uid://c5hclp2cy0jfa" path="res://Art/Level/Gogo/41.png" id="42"]
+[ext_resource type="Texture2D" uid="uid://bdtckjvvqfpmf" path="res://Art/Level/Gogo/42.png" id="43"]
+[ext_resource type="Texture2D" uid="uid://dr8uogtgxfteg" path="res://Art/Level/Gogo/43.png" id="44"]
+[ext_resource type="Texture2D" uid="uid://ctl0wvw7m12rw" path="res://Art/Level/Gogo/44.png" id="45"]
+[ext_resource type="Texture2D" uid="uid://dtwn7ms2lysun" path="res://Art/Level/Gogo/45.png" id="46"]
+[ext_resource type="Texture2D" uid="uid://d31qqif5xmjxe" path="res://Art/Level/Gogo/46.png" id="47"]
+[ext_resource type="Texture2D" uid="uid://b4ajmxp76axck" path="res://Art/Level/Gogo/47.png" id="48"]
+[ext_resource type="Texture2D" uid="uid://bqrxi7ftx366v" path="res://Art/Level/Gogo/48.png" id="49"]
+[ext_resource type="Texture2D" uid="uid://ca0mjsh7wx48m" path="res://Art/Level/Gogo/49.png" id="50"]
+[ext_resource type="Texture2D" uid="uid://c34x3xxi8dmew" path="res://Art/Level/Gogo/50.png" id="51"]
+[ext_resource type="Texture2D" uid="uid://bs8n34nmnca8r" path="res://Art/Level/Gogo/51.png" id="52"]
+[ext_resource type="Texture2D" uid="uid://c42y0bj7mwihn" path="res://Art/Level/Gogo/52.png" id="53"]
+[ext_resource type="Texture2D" uid="uid://bbqp0o22585g8" path="res://Art/Level/Gogo/53.png" id="54"]
+[ext_resource type="Texture2D" uid="uid://c5on5a4ag8b15" path="res://Art/Level/Gogo/54.png" id="55"]
+[ext_resource type="Texture2D" uid="uid://c81cn47l2boxg" path="res://Art/Level/Gogo/55.png" id="56"]
+[ext_resource type="Texture2D" uid="uid://4qq8l1ttdl8d" path="res://Art/Level/Gogo/56.png" id="57"]
+[ext_resource type="Texture2D" uid="uid://dhpxw21geatt2" path="res://Art/Level/Gogo/57.png" id="58"]
+[ext_resource type="Texture2D" uid="uid://7tsfasigb4nj" path="res://Art/Level/Gogo/58.png" id="59"]
+[ext_resource type="Texture2D" uid="uid://6xf1eqjcc1mf" path="res://Art/Level/Gogo/59.png" id="60"]
+[ext_resource type="Texture2D" uid="uid://bwuaxs7n8a4jw" path="res://Art/Level/Gogo/60.png" id="61"]
+[ext_resource type="Texture2D" uid="uid://2b4q1by6ecl6" path="res://Art/Level/Gogo/61.png" id="62"]
+[ext_resource type="Texture2D" uid="uid://11lprnc12gnl" path="res://Art/Level/Gogo/62.png" id="63"]
+[ext_resource type="Texture2D" uid="uid://dgl5hondln4kf" path="res://Art/Level/Gogo/63.png" id="64"]
+[ext_resource type="Texture2D" uid="uid://67cn4q8e4bef" path="res://Art/Level/Gogo/64.png" id="65"]
+[ext_resource type="Texture2D" uid="uid://db16g4ua3b7qb" path="res://Art/Level/Gogo/65.png" id="66"]
+[ext_resource type="Texture2D" uid="uid://ceuooc2n5vf72" path="res://Art/Level/Gogo/66.png" id="67"]
+[ext_resource type="Texture2D" uid="uid://ckykij4dwa3ug" path="res://Art/Level/Gogo/67.png" id="68"]
+[ext_resource type="Script" path="res://Script/backpack.gd" id="69"]
+[ext_resource type="Texture2D" uid="uid://ulkef1qy02i4" path="res://Art/HeroPicture/RoleProperiesBox/712.png" id="70"]
+[ext_resource type="Texture2D" uid="uid://cq3ast6oeyx31" path="res://Art/HeroPicture/RoleProperiesBox/718.png" id="71"]
+[ext_resource type="Texture2D" uid="uid://csqoh3uwsnipp" path="res://Art/HeroPicture/RoleProperiesBox/720.png" id="72"]
+[ext_resource type="Texture2D" uid="uid://cuo4qrncgdavd" path="res://Art/HeroPicture/RoleProperiesBox/724.png" id="73"]
+[ext_resource type="Texture2D" uid="uid://b6m7p87pwmcrh" path="res://Art/HeroPicture/WSGrey.png" id="74"]
+[ext_resource type="Texture2D" uid="uid://bo6s6dvqvrl0q" path="res://Art/HeroPicture/WSBar.png" id="75"]
+[ext_resource type="PackedScene" uid="uid://wbaoploncatb" path="res://Scene/OtherScene/SkillIcon.tscn" id="76"]
+[ext_resource type="FontFile" uid="uid://ond0o3n8a00i" path="res://Font/华康宋体W3.ttc" id="77"]
+[ext_resource type="PackedScene" uid="uid://cfnh8vsbhpo71" path="res://Scene/MagicWeapon/MagicWeaponSkillCd.tscn" id="78"]
+[ext_resource type="Texture2D" uid="uid://cucv5aleg0tpv" path="res://Art/HeroPicture/RoleProperiesBox/757.png" id="79"]
+[ext_resource type="Texture2D" uid="uid://c4e2jpf86xwj0" path="res://Art/HeroPicture/RoleProperiesBox/759.png" id="80"]
+[ext_resource type="Texture2D" uid="uid://8wt0olgqglei" path="res://Art/HeroPicture/RoleProperiesBox/756.png" id="81"]
+[ext_resource type="Texture2D" uid="uid://c7md7e5fmfjkn" path="res://Art/HeroPicture/RoleProperiesBox/751.png" id="82"]
+[ext_resource type="Texture2D" uid="uid://3uduipm0sfkk" path="res://Art/HeroPicture/RoleProperiesBox/753.png" id="83"]
+[ext_resource type="Texture2D" uid="uid://bxdd3h7l7jyad" path="res://Art/HeroPicture/RoleProperiesBox/750.png" id="84"]
+[ext_resource type="Texture2D" uid="uid://d1grtgw262s3x" path="res://Art/HeroPicture/RoleProperiesBox/763.png" id="85"]
+[ext_resource type="Texture2D" uid="uid://b43phry2vf8d2" path="res://Art/HeroPicture/RoleProperiesBox/765.png" id="86"]
+[ext_resource type="Texture2D" uid="uid://er27b0h2ai4e" path="res://Art/HeroPicture/RoleProperiesBox/762.png" id="87"]
+[ext_resource type="Texture2D" uid="uid://bcvutcj7mp7y3" path="res://Art/HeroPicture/RoleProperiesBox/769.png" id="88"]
+[ext_resource type="Texture2D" uid="uid://dgv44s1llkjr8" path="res://Art/HeroPicture/RoleProperiesBox/771.png" id="89"]
+[ext_resource type="Texture2D" uid="uid://c2q5sdfkdr8p2" path="res://Art/HeroPicture/RoleProperiesBox/768.png" id="90"]
+[ext_resource type="Texture2D" uid="uid://oxli046sdt6a" path="res://Art/HeroPicture/RoleProperiesBox/775.png" id="91"]
+[ext_resource type="Texture2D" uid="uid://dqvbtayufpm0j" path="res://Art/HeroPicture/RoleProperiesBox/777.png" id="92"]
+[ext_resource type="Texture2D" uid="uid://dj8i25ejhy83f" path="res://Art/HeroPicture/RoleProperiesBox/774.png" id="93"]
+[ext_resource type="Texture2D" uid="uid://dlh3lokliwi46" path="res://Art/HeroPicture/RoleProperiesBox/408.png" id="94"]
+[ext_resource type="Texture2D" uid="uid://oxravxb5lw2s" path="res://Art/HeroPicture/RoleProperiesBox/345.png" id="95"]
+[ext_resource type="Texture2D" uid="uid://brt2fqd0govpx" path="res://Art/HeroPicture/RoleProperiesBox/742.png" id="96"]
+[ext_resource type="FontFile" uid="uid://mq0cfa3t1vbr" path="res://Font/8_FZCuYuan-M03S.ttf" id="97"]
+[ext_resource type="FontFile" uid="uid://bicgw4numqquw" path="res://Font/HYZhuZiMeiXinTiW.ttf" id="98"]
+[ext_resource type="FontFile" uid="uid://2rjpff4w8bmb" path="res://Font/华康海报体W12 &amp; 华康海报体W12(P).ttc" id="99"]
+[ext_resource type="Texture2D" uid="uid://dauwh87x7fyo3" path="res://Art/HeroPicture/RoleProperiesBox/739.png" id="100"]
+[ext_resource type="Script" path="res://Script/Level/Buff_box.gd" id="101"]
+[ext_resource type="PackedScene" uid="uid://dn22m14lo87w5" path="res://Scene/OtherScene/BuffIcon.tscn" id="102"]
+[ext_resource type="Texture2D" uid="uid://85h8r6j10qhq" path="res://Art/AddEffect/Buff_icon/Bleed.png" id="103"]
+[ext_resource type="Texture2D" uid="uid://ceft70lnj6p73" path="res://Art/AddEffect/Buff_icon/BloodFix.png" id="104"]
+[ext_resource type="Texture2D" uid="uid://bs35kuy1g4ik3" path="res://Art/AddEffect/Buff_icon/Boundground.png" id="105"]
+[ext_resource type="Texture2D" uid="uid://bofar7inrkk7i" path="res://Art/AddEffect/Buff_icon/DeadLink.png" id="106"]
+[ext_resource type="Texture2D" uid="uid://kmcytcdm2iur" path="res://Art/AddEffect/Buff_icon/DefeReduce.png" id="107"]
+[ext_resource type="Texture2D" uid="uid://bqtcrx03wyeom" path="res://Art/AddEffect/Buff_icon/EyeFix.png" id="108"]
+[ext_resource type="Texture2D" uid="uid://bpfkn7h4fy28t" path="res://Art/AddEffect/Buff_icon/Fire.png" id="109"]
+[ext_resource type="Texture2D" uid="uid://x6t5mevqwvyb" path="res://Art/AddEffect/Buff_icon/Ice.png" id="110"]
+[ext_resource type="Texture2D" uid="uid://ckpp58otthvkn" path="res://Art/AddEffect/Buff_icon/Immobilize.png" id="111"]
+[ext_resource type="Texture2D" uid="uid://cujt17o2i7ubd" path="res://Art/AddEffect/Buff_icon/nlls.png" id="112"]
+[ext_resource type="Texture2D" uid="uid://ccou8ejfgwgc8" path="res://Art/AddEffect/Buff_icon/poision.png" id="113"]
+[ext_resource type="Texture2D" uid="uid://cesqiym7mqp8s" path="res://Art/AddEffect/Buff_icon/silent.png" id="114"]
+[ext_resource type="Texture2D" uid="uid://df8xa8v5fsr7f" path="res://Art/AddEffect/Buff_icon/speed_down.png" id="115"]
+[ext_resource type="Texture2D" uid="uid://bbjyutt1tfhnb" path="res://Art/AddEffect/Buff_icon/stun.png" id="116"]
+[ext_resource type="Texture2D" uid="uid://cpc7w2f5xctxm" path="res://Art/AddEffect/Buff_icon/Scary.png" id="117"]
+[ext_resource type="Texture2D" uid="uid://b2wybjp7l3fce" path="res://Art/AddEffect/Buff_icon/SuperArmor.png" id="118"]
+[ext_resource type="Texture2D" uid="uid://dgmubkcv5kpcm" path="res://Art/AddEffect/Buff_icon/Indestructible.png" id="119"]
+[ext_resource type="Texture2D" uid="uid://ci1euvw7npo78" path="res://Art/AddEffect/Buff_icon/DoubleFallPro.png" id="120"]
+[ext_resource type="Texture2D" uid="uid://bg2evufhq8xp1" path="res://Art/AddEffect/Buff_icon/Voodoo.png" id="121"]
+[ext_resource type="Texture2D" uid="uid://bnp7pns8tra3f" path="res://Art/AddEffect/Buff_icon/PoisionBody.png" id="122"]
+[ext_resource type="Texture2D" uid="uid://bohd4ucrskfb5" path="res://Art/AddEffect/Buff_icon/slzbuff.png" id="123"]
+[ext_resource type="Texture2D" uid="uid://lrgqa2x4up6h" path="res://Art/AddEffect/Buff_icon/lpzbuff.png" id="124"]
+[ext_resource type="Texture2D" uid="uid://car8bo7a7exv7" path="res://Art/AddEffect/Buff_icon/tszbuff.png" id="125"]
+[ext_resource type="Texture2D" uid="uid://cob2o8eqcn7lb" path="res://Art/AddEffect/Buff_icon/lljybuff.png" id="126"]
+[ext_resource type="Texture2D" uid="uid://bjudf3ggrwu32" path="res://Art/AddEffect/Buff_icon/NoDeBuff.png" id="127"]
+[ext_resource type="Texture2D" uid="uid://c0hkjk8lj7m8b" path="res://Art/AddEffect/Buff_icon/flls.png" id="128"]
+[ext_resource type="Texture2D" uid="uid://ccjuvx6b051u0" path="res://Art/HeroPicture/Protect_1.png" id="129"]
+[ext_resource type="Texture2D" uid="uid://bsdjvgcpf7c87" path="res://Art/HeroPicture/Protect_2.png" id="130"]
+[ext_resource type="Texture2D" uid="uid://d1u3mka385hqt" path="res://Art/HeroPicture/RoleProperiesBox/748.png" id="131"]
+
+[sub_resource type="SpriteFrames" id="1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource( "2" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "3" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "4" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "5" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "6" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "7" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "8" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "9" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "10" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "11" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "12" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "13" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "14" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "15" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "16" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "17" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "18" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "19" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "20" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "21" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "22" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "23" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "24" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "25" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "26" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "27" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "28" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "29" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "30" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "31" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "32" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "33" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "34" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "35" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "36" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "37" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "38" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "39" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "40" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "41" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "42" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "43" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "44" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "45" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "46" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "47" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "48" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "49" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "50" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "51" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "52" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "53" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "54" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "55" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "56" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "57" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "58" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "59" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "60" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "61" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "62" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "63" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "64" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "65" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "66" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "67" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "68" )
+}],
+"loop": true,
+"name": &"go",
+"speed": 25.0
+}]
+script = null
+
+[sub_resource type="AtlasTexture" id="2"]
+atlas = ExtResource( "75" )
+region = Rect2(0, 0, 89, 89)
+script = null
+
+[sub_resource type="AtlasTexture" id="3"]
+atlas = ExtResource( "75" )
+region = Rect2(801, 0, 89, 89)
+script = null
+
+[sub_resource type="AtlasTexture" id="4"]
+atlas = ExtResource( "75" )
+region = Rect2(712, 0, 89, 89)
+script = null
+
+[sub_resource type="AtlasTexture" id="5"]
+atlas = ExtResource( "75" )
+region = Rect2(623, 0, 89, 89)
+script = null
+
+[sub_resource type="AtlasTexture" id="6"]
+atlas = ExtResource( "75" )
+region = Rect2(534, 0, 89, 89)
+script = null
+
+[sub_resource type="AtlasTexture" id="7"]
+atlas = ExtResource( "75" )
+region = Rect2(445, 0, 89, 89)
+script = null
+
+[sub_resource type="AtlasTexture" id="8"]
+atlas = ExtResource( "75" )
+region = Rect2(356, 0, 89, 89)
+script = null
+
+[sub_resource type="AtlasTexture" id="9"]
+atlas = ExtResource( "75" )
+region = Rect2(267, 0, 89, 89)
+script = null
+
+[sub_resource type="AtlasTexture" id="10"]
+atlas = ExtResource( "75" )
+region = Rect2(178, 0, 89, 89)
+script = null
+
+[sub_resource type="AtlasTexture" id="11"]
+atlas = ExtResource( "75" )
+region = Rect2(89, 0, 89, 89)
+script = null
+
+[sub_resource type="AtlasTexture" id="12"]
+atlas = ExtResource( "75" )
+region = Rect2(89, 0, 89, 89)
+script = null
+
+[sub_resource type="AtlasTexture" id="13"]
+atlas = ExtResource( "75" )
+region = Rect2(178, 0, 89, 89)
+script = null
+
+[sub_resource type="AtlasTexture" id="14"]
+atlas = ExtResource( "75" )
+region = Rect2(267, 0, 89, 89)
+script = null
+
+[sub_resource type="AtlasTexture" id="15"]
+atlas = ExtResource( "75" )
+region = Rect2(356, 0, 89, 89)
+script = null
+
+[sub_resource type="AtlasTexture" id="16"]
+atlas = ExtResource( "75" )
+region = Rect2(445, 0, 89, 89)
+script = null
+
+[sub_resource type="AtlasTexture" id="17"]
+atlas = ExtResource( "75" )
+region = Rect2(534, 0, 89, 89)
+script = null
+
+[sub_resource type="AtlasTexture" id="18"]
+atlas = ExtResource( "75" )
+region = Rect2(623, 0, 89, 89)
+script = null
+
+[sub_resource type="AtlasTexture" id="19"]
+atlas = ExtResource( "75" )
+region = Rect2(712, 0, 89, 89)
+script = null
+
+[sub_resource type="AtlasTexture" id="20"]
+atlas = ExtResource( "75" )
+region = Rect2(801, 0, 89, 89)
+script = null
+
+[sub_resource type="AtlasTexture" id="21"]
+atlas = ExtResource( "75" )
+region = Rect2(0, 0, 89, 89)
+script = null
+
+[sub_resource type="SpriteFrames" id="22"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource( "2" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "3" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "4" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "5" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "6" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "7" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "8" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "9" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "10" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "11" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "12" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "13" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "14" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "15" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "16" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "17" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "18" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "19" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "20" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "21" )
+}],
+"loop": true,
+"name": &"max_ws",
+"speed": 25.0
+}]
+script = null
+
+[sub_resource type="GDScript" id="23"]
+script/source = "extends Node2D
+#这里是制作debuff的
+#添加defbuff需要：名，伤害类型，伤害，持续时间
+#	\"addeffect\":{
+#	\"name\": \"poision\",
+#	\"attackKind\": \"real\",
+#	\"value\": 100,
+#	\"time\": 6
+#}
+#名字，伤害，伤害类型，持续时间，减速量
+#做的时候： 加图标，Roleinformation加变量，加判断，global加变量
+class_name AddMyEffect
+var Ini_Speed = 0
+var EffectInfo = []
+var Ice#冰冻动画控制
+var is_ice#冰冻控制
+var is_poision#中毒控制
+var Poision#中毒对象特效
+var poision_value#中毒伤害
+var poision_attkind#中毒伤害类型
+var count: int = 0
+var is_Fire#灼烧控制
+var Fire#灼烧对象特效
+var Fire_value#灼烧伤害
+var Fire_attkind#灼烧伤害类型
+var is_MFire#灼烧控制
+var MFire#灼烧对象特效
+var MFire_count: int = 0#灼烧伤害
+var Fire_count: int = 0
+var is_speed_down
+var is_stun
+var Stun
+var is_Bleed
+var Bleed_count: int = 0
+var Bleed_value
+var Bleed_attkind
+var is_EyeFix
+var EyeFix
+var is_DeadLink
+var DeadLink
+var DeadLink_count: int
+var Base_
+var Buffis_stun: bool
+var stun_count: int = 0
+var nlls
+var is_nlls: bool
+var is_checknlls = false
+var nlls_count: int = 0
+var nlls_value: int = 1
+var nlls_interv: float = 1.0
+func _physics_process(_delta: float) -> void:	
+	Base_ = get_parent()
+	get_effect()
+func get_effect():
+
+	if EffectInfo.size() != 0:
+		for i in EffectInfo:
+			match i[\"name\"]:
+				\"ice\":
+					show_ice(i[\"time\"])
+				\"poision\":
+					show_poision(i[\"time\"])
+					poision_value = i[\"value\"]
+					poision_attkind = i[\"attackKind\"]
+				\"Fire\":
+					show_Fire(i[\"time\"])
+					Fire_value = i[\"value\"]
+					Fire_attkind = i[\"attackKind\"]
+				\"MFire\":
+					show_MFire(i[\"time\"])
+				\"speed_down\":
+					show_speed_down(i[\"time\"],i[\"slow_value\"])
+				\"stun\":
+					show_stun(i[\"time\"])
+				\"Bleed\":
+					show_Bleed(i[\"time\"])
+					Bleed_value = i[\"value\"]
+					Bleed_attkind = i[\"attackKind\"]
+				\"EyeFix\":
+					show_EyeFix(i[\"time\"])
+				\"DeadLink\":
+					show_DeadLink(i[\"time\"])
+				\"nlls\":
+					show_nlls(i[\"time\"],i[\"value\"],i[\"interv\"])
+	if is_poision:
+		posion_reduce_hp()
+	if is_Fire:
+		Fire_reduce_hp()
+	if is_MFire:
+		MFire_reduce_hp()
+	if is_Bleed:
+		Bleed_reduce_hp()
+	if is_DeadLink:
+		DeadLink_()
+	if is_nlls:
+		if nlls_count % 62 == 0:
+			Global.add_SpecialEffect(get_parent(),Vector2(self.position.x + 40,self.position.y + 35),\"nlls\",Vector2(1,1),false,1)
+		nlls_count += 1
+		if not is_checknlls:	
+			have_nlls()
+	if Buffis_stun:
+		if stun_count % 60 == 0:
+			Global.add_SpecialEffect(get_parent(),Vector2(self.position.x,self.position.y - 30),\"Stun\",Vector2(0.7,0.7),false,0.8)
+	stun_count += 1
+	if not Base_ is BaseMonster:
+		if Global.is_ice == false:
+			if Ice != null:
+				Ice.queue_free()
+		if not is_ice:
+			if Ice != null:
+				Ice.queue_free()
+	else:
+		if Base_.is_ice == false:
+			if Ice != null:
+				Ice.queue_free()
+	if Global.is_EyeFix == false:
+		if EyeFix != null:
+			EyeFix.queue_free()
+	if not Global.is_DeadLink:
+		if DeadLink != null:
+			DeadLink.queue_free()
+	EffectInfo.clear()
+	
+func show_nlls(last_time,value,interv):
+	nlls_value = value
+	nlls_interv = interv
+	is_nlls = true
+	await get_tree().create_timer(last_time,false).timeout
+	hide_nlls()
+func hide_nlls():
+	nlls_value = 0
+	nlls_count = 0
+	nlls_interv = 0
+	is_nlls = false
+	if is_nlls == false:
+		if nlls != null:
+			nlls.queue_free()
+func have_nlls():
+	is_checknlls = true
+	var taregt_ = get_parent() as BaseObject
+	var old_position
+	var new_position
+	if taregt_ is BaseHero:
+		old_position = taregt_.position.x
+		await get_tree().create_timer(nlls_interv,false).timeout
+		new_position = taregt_.position.x
+		var get_value_hp = int(abs(new_position - old_position) * nlls_value)
+		var get_value_mp = int(abs(new_position - old_position) * nlls_value * 0.3)
+		taregt_.effect_reducehp(get_value_hp,\"real\")
+		RoleProp.roleprop.Mp -= get_value_mp
+		is_checknlls = false
+	elif taregt_ is BaseMonster:
+		old_position = taregt_.position.x
+		await get_tree().create_timer(1,false).timeout
+		new_position = taregt_.position.x
+		var get_value_hp = abs(new_position - old_position) * nlls_value
+		taregt_.reduce_hp(get_value_hp)
+	is_checknlls = false		
+func show_DeadLink(last_time):
+	if DeadLink == null:
+		DeadLink = Global.add_SpecialEffect(get_parent(),Vector2(self.position.x,self.position.y),\"DeadLink_2\",Vector2(1,1),false,1)
+	await get_tree().create_timer(1.8,false).timeout
+	is_DeadLink = true
+	Global.is_DeadLink = true
+	await get_tree().create_timer(last_time,false).timeout
+	hide_DeadLink()
+func hide_DeadLink():
+	is_DeadLink = false
+	Global.is_DeadLink = false
+	if Global.is_DeadLink == false:
+		if DeadLink != null:
+			DeadLink.queue_free()
+func DeadLink_():
+	if is_DeadLink:
+		DeadLink_count += 1
+		if DeadLink_count % 15 == 0:
+			var tar = get_parent()
+			if tar is BaseHero:
+				Global.add_SpecialEffect(get_parent(),Vector2(self.position.x,self.position.y),\"DeadLink_2\",Vector2(1,1),false,1)
+	
+func show_ice(last_time):
+	#print(Base_)
+	if Base_ is BaseMonster:
+		Base_.is_ice = true
+	elif Base_ is BaseHero:
+		is_ice = true
+		Global.is_ice = true
+	if Ice == null:
+		if Base_ is BaseMonster:
+			Ice = Global.add_Bullet(\"bd\",get_parent(),false,1,Vector2(self.position.x,self.position.y),\"\",\"\")
+		elif Base_ is BaseHero:
+			Ice = Global.add_Bullet(\"bd\",get_parent(),false,1,Vector2(self.position.x,self.position.y + 20),\"\",\"\")
+	await get_tree().create_timer(last_time,false).timeout
+	hide_ice()
+func hide_ice():
+	if Base_ is BaseMonster:
+		Base_.is_ice = false
+		if Base_.is_ice == false:
+			if Ice != null:
+				Ice.queue_free()
+	elif Base_ is BaseHero:
+		is_ice = false
+		Global.is_ice = false
+		if Global.is_ice == false:
+			if Ice != null:
+				Ice.queue_free()
+func show_stun(last_time):
+	Buffis_stun = true
+	if Base_ is BaseMonster:
+		Base_.is_stun = true
+	elif Base_ is BaseHero:
+		is_stun = true
+		Global.is_stun = true
+		Global.add_SpecialEffect(get_parent(),Vector2(self.position.x,self.position.y - 30),\"Stun\",Vector2(0.7,0.7),false,0.8)
+	await get_tree().create_timer(last_time,false).timeout
+	hide_stun()
+func hide_stun():
+	Buffis_stun = false
+	if Base_ is BaseMonster:
+		Base_.is_stun = false
+	elif Base_ is BaseHero:
+		is_stun = false
+		Global.is_stun = false
+	if Stun != null:
+		Stun.queue_free()
+func show_poision(last_time):
+	is_poision = true
+	Global.is_poision = true
+	Global.add_Bullet(\"poision\",get_parent(),false,1,Vector2(self.position.x,self.position.y - 40),\"\",\"\")
+	Poision = Global.add_Bullet(\"posion_fire\",get_parent(),false,1,Vector2(self.position.x + 10,self.position.y-40),\"\",\"\")
+	await get_tree().create_timer(last_time,false).timeout
+	hide_poision()
+func hide_poision():
+	count = 0
+	is_poision = false
+	Global.is_poision = false
+	count = 0
+	poision_value = 0
+	poision_attkind = \"\"
+func posion_reduce_hp():
+	if is_poision:
+		count += 1
+		if count % 60 == 0:
+			var tar = get_parent()
+			if tar is BaseHero:
+				Global.add_Bullet(\"posion_fire\",get_parent(),false,1,Vector2(self.position.x + 10,self.position.y-40),\"\",\"\")
+				tar.effect_reducehp(poision_value,poision_attkind)
+func show_Fire(last_time):
+	Fire_count = 0
+	is_Fire = true
+	if Base_ is BaseMonster:
+		pass
+	elif Base_ is BaseHero:
+		Global.is_Fire = true
+	Global.add_SpecialEffect(get_parent(),Vector2(self.position.x + 10,self.position.y - 5),\"Fire\",Vector2(1,1),false,0.7)
+	await get_tree().create_timer(last_time,false).timeout
+	hide_Fire()
+	
+func hide_Fire():
+	is_Fire = false
+	if Base_ is BaseMonster:
+		pass
+	elif Base_ is BaseHero:
+		Global.is_Fire = false
+	Fire_count = 0
+	Fire_value = 0
+	Fire_attkind = \"\"
+func Fire_reduce_hp():
+	if is_Fire:
+		Fire_count += 1
+		if Fire_count % 60 == 0:
+			var tar = get_parent()
+			if tar is BaseHero:
+				Global.add_SpecialEffect(get_parent(),Vector2(self.position.x + 10,self.position.y - 5),\"Fire\",Vector2(1,1),false,0.7)
+				tar.effect_reducehp(Fire_value,Fire_attkind)
+			elif tar is BaseMonster:
+				Global.add_SpecialEffect(get_parent(),Vector2(self.position.x + 10,self.position.y - 5),\"Fire\",Vector2(1,1),false,0.7)
+				tar.reduce_hp(Fire_value)
+func show_MFire(last_time):
+	MFire_count = 0
+	is_MFire = true
+	Global.is_Mpo = true
+	Global.add_SpecialEffect(get_parent(),Vector2(self.position.x + 10,self.position.y - 20),\"mp_fire\",Vector2(1,1),false,0.7)
+	MFire_reduce_hp()
+	await get_tree().create_timer(last_time,false).timeout
+	hide_MFire()
+	
+func hide_MFire():
+	is_MFire = false
+	Global.is_Mpo = false
+	MFire_count = 0
+func MFire_reduce_hp():
+	
+	var get_tar = get_parent()
+	var aa = get_tar.get_need_mp(get_tar.get_action)
+	if aa > 0:
+		if MFire_count % 5 == 0:
+			get_tar.effect_reducehp(aa * 2,\"real\")
+	aa = 0
+	if is_MFire:
+		MFire_count += 1
+		await get_tree().create_timer(0.2).timeout
+		if MFire_count % 60 == 0:
+			if get_tar is BaseHero:
+				Global.add_SpecialEffect(get_parent(),Vector2(self.position.x + 10,self.position.y - 20),\"mp_fire\",Vector2(1,1),false,0.7)
+				get_tar.get_need_mp(get_tar.get_action)
+	if not is_MFire:
+		MFire_count = 0
+func show_speed_down(last_time,bl):
+	var get_tar = get_parent()
+	if Base_ is BaseMonster:
+		Ini_Speed = get_tar.speed
+	is_speed_down = true
+
+	if get_tar is BaseHero:
+		Global.is_speed_down = true
+		get_tar.walk_speed = int(get_tar.walk_speed * (1 - bl))
+	elif Base_ is BaseMonster:
+		get_tar.speed = int(get_tar.speed * (1 - bl))
+	await get_tree().create_timer(last_time,false).timeout
+	hide_speed_down()
+	
+func hide_speed_down():
+	is_speed_down = false
+	var get_tar = get_parent()
+	if get_tar is BaseHero:
+		Global.is_speed_down = false
+		get_tar.walk_speed = 240
+	elif Base_ is BaseMonster:
+		get_tar.speed = Ini_Speed
+		Ini_Speed = 0
+func show_Bleed(last_time):
+	Bleed_count = 0
+	is_Bleed = true
+	Global.is_Bleed = true
+	Global.add_SpecialEffect(get_parent(),Vector2(self.position.x,self.position.y + 40),\"BloodReduce\",Vector2(0.5,0.5),false,1)
+	await get_tree().create_timer(last_time,false).timeout
+	hide_Bleed()
+	
+func hide_Bleed():
+	is_Bleed = false
+	Global.is_Bleed = false
+	Bleed_count = 0
+	Bleed_value = 0
+	Bleed_attkind = \"\"
+func Bleed_reduce_hp():
+	if is_Bleed:
+		Bleed_count += 1
+		if Bleed_count % 30 == 0:
+			var tar = get_parent()
+			if tar is BaseHero:
+				Global.add_SpecialEffect(get_parent(),Vector2(self.position.x,self.position.y + 40),\"BloodReduce\",Vector2(0.5,0.5),false,1)
+				tar.effect_reducehp(Bleed_value,Bleed_attkind)
+
+func show_EyeFix(last_time):
+	is_EyeFix = true
+	Global.is_EyeFix = true
+	if EyeFix == null:
+		EyeFix = Global.add_SpecialEffect(get_parent(),Vector2(self.position.x,self.position.y + 35),\"EyeFix\",Vector2(1,1),false,1)
+	await get_tree().create_timer(last_time,false).timeout
+	hide_EyeFix()
+func hide_EyeFix():
+	is_EyeFix = false
+	Global.is_EyeFix = false
+	if Global.is_EyeFix == false:
+		if EyeFix != null:
+			EyeFix.queue_free()
+func removeAllDeBuff():
+	hide_Bleed()
+	hide_DeadLink()
+	hide_EyeFix()
+	hide_ice()
+	hide_Fire()
+	hide_MFire()
+	hide_poision()
+	hide_speed_down()
+	hide_stun()
+"
+
+[node name="role_information" type="Node2D"]
+script = ExtResource( "1" )
+metadata/_edit_horizontal_guides_ = [109.0]
+
+[node name="roleLayer" type="CanvasLayer" parent="."]
+
+[node name="Gogo" type="AnimatedSprite2D" parent="roleLayer"]
+position = Vector2(870, 259)
+scale = Vector2(0.6, 0.6)
+sprite_frames = SubResource( "1" )
+animation = &"go"
+autoplay = "go"
+
+[node name="backpack" type="Node2D" parent="roleLayer"]
+process_mode = 3
+z_index = 1
+script = ExtResource( "69" )
+
+[node name="role_menu" type="Sprite2D" parent="roleLayer"]
+position = Vector2(90, 531)
+texture = ExtResource( "70" )
+metadata/_edit_lock_ = true
+
+[node name="ws_wk" type="Sprite2D" parent="roleLayer/role_menu"]
+position = Vector2(113, 25)
+texture = ExtResource( "71" )
+metadata/_edit_lock_ = true
+
+[node name="ws_effect" type="TextureProgressBar" parent="roleLayer/role_menu/ws_wk"]
+offset_left = -125.0
+offset_top = -16.0
+offset_right = 96.0
+offset_bottom = 12.0
+scale = Vector2(1.17, 1.03)
+max_value = 1.0
+step = 0.0
+fill_mode = 1
+texture_under = ExtResource( "72" )
+texture_progress = ExtResource( "73" )
+texture_progress_offset = Vector2(-1, 9)
+metadata/_edit_lock_ = true
+
+[node name="grey" type="Sprite2D" parent="roleLayer/role_menu"]
+position = Vector2(-24, -4)
+texture = ExtResource( "74" )
+metadata/_edit_lock_ = true
+
+[node name="max_ws" type="AnimatedSprite2D" parent="roleLayer/role_menu"]
+visible = false
+position = Vector2(-27, -5)
+sprite_frames = SubResource( "22" )
+animation = &"max_ws"
+autoplay = "max_ws"
+frame_progress = 0.905125
+metadata/_edit_lock_ = true
+
+[node name="SkillBox" type="HBoxContainer" parent="roleLayer/role_menu"]
+offset_left = 7.0
+offset_top = -25.0
+offset_right = 227.0
+offset_bottom = 20.0
+theme_override_constants/separation = -3
+metadata/_edit_lock_ = true
+
+[node name="Y" parent="roleLayer/role_menu/SkillBox" instance=ExtResource( "76" )]
+layout_mode = 2
+stretch_mode = 2
+
+[node name="Y" type="Label" parent="roleLayer/role_menu/SkillBox/Y"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 39.0
+offset_bottom = 41.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 11
+theme_override_fonts/font = ExtResource( "77" )
+theme_override_font_sizes/font_size = 18
+text = "Y"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="U" parent="roleLayer/role_menu/SkillBox" instance=ExtResource( "76" )]
+layout_mode = 2
+stretch_mode = 2
+
+[node name="Y" type="Label" parent="roleLayer/role_menu/SkillBox/U"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 39.0
+offset_bottom = 41.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 11
+theme_override_fonts/font = ExtResource( "77" )
+theme_override_font_sizes/font_size = 18
+text = "U"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="I" parent="roleLayer/role_menu/SkillBox" instance=ExtResource( "76" )]
+layout_mode = 2
+stretch_mode = 2
+
+[node name="Y" type="Label" parent="roleLayer/role_menu/SkillBox/I"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 39.0
+offset_bottom = 41.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 11
+theme_override_fonts/font = ExtResource( "77" )
+theme_override_font_sizes/font_size = 18
+text = "I"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="O" parent="roleLayer/role_menu/SkillBox" instance=ExtResource( "76" )]
+layout_mode = 2
+stretch_mode = 2
+
+[node name="Y" type="Label" parent="roleLayer/role_menu/SkillBox/O"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 39.0
+offset_bottom = 41.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 11
+theme_override_fonts/font = ExtResource( "77" )
+theme_override_font_sizes/font_size = 18
+text = "O"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="L" parent="roleLayer/role_menu/SkillBox" instance=ExtResource( "76" )]
+layout_mode = 2
+stretch_mode = 2
+
+[node name="Y" type="Label" parent="roleLayer/role_menu/SkillBox/L"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 39.0
+offset_bottom = 41.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 11
+theme_override_fonts/font = ExtResource( "77" )
+theme_override_font_sizes/font_size = 18
+text = "L"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="MagicWeaponSkillCD" parent="roleLayer/role_menu/SkillBox" instance=ExtResource( "78" )]
+layout_mode = 2
+
+[node name="H" type="Label" parent="roleLayer/role_menu/SkillBox/MagicWeaponSkillCD"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 39.0
+offset_bottom = 41.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 11
+theme_override_fonts/font = ExtResource( "77" )
+theme_override_font_sizes/font_size = 18
+text = "H"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="SkillBox2" type="HBoxContainer" parent="roleLayer/role_menu"]
+offset_left = 15.0
+offset_top = -68.0
+offset_right = 227.0
+offset_bottom = -22.0
+theme_override_constants/separation = -3
+metadata/_edit_lock_ = true
+
+[node name="ZhenFa" parent="roleLayer/role_menu/SkillBox2" instance=ExtResource( "78" )]
+layout_mode = 2
+
+[node name="F" type="Label" parent="roleLayer/role_menu/SkillBox2/ZhenFa"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 39.0
+offset_bottom = 41.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 11
+theme_override_fonts/font = ExtResource( "77" )
+theme_override_font_sizes/font_size = 18
+text = "F"
+horizontal_alignment = 2
+vertical_alignment = 2
+metadata/_edit_lock_ = true
+
+[node name="backpack" type="TextureButton" parent="roleLayer/role_menu"]
+process_mode = 1
+offset_left = -87.0
+offset_top = -2.0
+offset_right = -40.0
+offset_bottom = 38.0
+focus_mode = 0
+texture_normal = ExtResource( "79" )
+texture_pressed = ExtResource( "79" )
+texture_hover = ExtResource( "80" )
+texture_disabled = ExtResource( "79" )
+metadata/_edit_lock_ = true
+
+[node name="backpack_text" type="Sprite2D" parent="roleLayer/role_menu/backpack"]
+position = Vector2(21, 37)
+texture = ExtResource( "81" )
+metadata/_edit_lock_ = true
+
+[node name="set" type="TextureButton" parent="roleLayer/role_menu"]
+process_mode = 1
+offset_left = -55.0
+offset_top = 20.0
+offset_right = -8.0
+offset_bottom = 60.0
+focus_mode = 0
+texture_normal = ExtResource( "82" )
+texture_pressed = ExtResource( "82" )
+texture_hover = ExtResource( "83" )
+texture_disabled = ExtResource( "82" )
+metadata/_edit_lock_ = true
+
+[node name="set_text" type="Sprite2D" parent="roleLayer/role_menu/set"]
+position = Vector2(24, 34)
+texture = ExtResource( "84" )
+metadata/_edit_lock_ = true
+
+[node name="skill" type="TextureButton" parent="roleLayer/role_menu"]
+process_mode = 1
+offset_left = -93.0
+offset_top = -39.0
+offset_right = -46.0
+offset_bottom = 1.0
+focus_mode = 0
+texture_normal = ExtResource( "85" )
+texture_pressed = ExtResource( "85" )
+texture_hover = ExtResource( "86" )
+texture_disabled = ExtResource( "85" )
+metadata/_edit_lock_ = true
+
+[node name="sill_text" type="Sprite2D" parent="roleLayer/role_menu/skill"]
+position = Vector2(22, 31)
+texture = ExtResource( "87" )
+metadata/_edit_lock_ = true
+
+[node name="magic_weapon" type="TextureButton" parent="roleLayer/role_menu"]
+process_mode = 1
+offset_left = -65.0
+offset_top = -67.0
+offset_right = -18.0
+offset_bottom = -27.0
+focus_mode = 0
+texture_normal = ExtResource( "88" )
+texture_pressed = ExtResource( "88" )
+texture_hover = ExtResource( "89" )
+texture_disabled = ExtResource( "88" )
+metadata/_edit_lock_ = true
+
+[node name="mw_text" type="Sprite2D" parent="roleLayer/role_menu/magic_weapon"]
+position = Vector2(19, 28)
+texture = ExtResource( "90" )
+metadata/_edit_lock_ = true
+
+[node name="pet" type="TextureButton" parent="roleLayer/role_menu"]
+process_mode = 1
+offset_left = -27.0
+offset_top = -71.0
+offset_right = 20.0
+offset_bottom = -31.0
+focus_mode = 0
+texture_normal = ExtResource( "91" )
+texture_pressed = ExtResource( "91" )
+texture_hover = ExtResource( "92" )
+texture_disabled = ExtResource( "91" )
+metadata/_edit_lock_ = true
+
+[node name="pet_text" type="Sprite2D" parent="roleLayer/role_menu/pet"]
+position = Vector2(22, 33)
+texture = ExtResource( "93" )
+metadata/_edit_lock_ = true
+
+[node name="role_hp_mp_exp" type="Sprite2D" parent="roleLayer"]
+position = Vector2(116, 44)
+texture = ExtResource( "94" )
+metadata/_edit_lock_ = true
+
+[node name="hp_bar" type="TextureProgressBar" parent="roleLayer/role_hp_mp_exp"]
+offset_left = -33.0
+offset_top = -30.0
+offset_right = 122.0
+offset_bottom = -18.0
+max_value = 1.0
+step = 0.0
+nine_patch_stretch = true
+texture_progress = ExtResource( "95" )
+texture_progress_offset = Vector2(-3, 0)
+metadata/_edit_lock_ = true
+
+[node name="hp_bar2" type="TextureProgressBar" parent="roleLayer/role_hp_mp_exp/hp_bar"]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 155.0
+offset_bottom = 12.0
+max_value = 1.0
+step = 0.0
+nine_patch_stretch = true
+texture_progress = ExtResource( "96" )
+texture_progress_offset = Vector2(-3, 0)
+metadata/_edit_lock_ = true
+
+[node name="hp_text" type="Label" parent="roleLayer/role_hp_mp_exp/hp_bar"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = -2.0
+offset_right = 149.0
+offset_bottom = 17.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_outline_size = -6
+theme_override_fonts/font = ExtResource( "97" )
+theme_override_font_sizes/font_size = 14
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="nature_recovery_hp" type="Label" parent="roleLayer/role_hp_mp_exp/hp_bar"]
+layout_mode = 0
+offset_left = 113.0
+offset_top = -1.0
+offset_right = 150.0
+offset_bottom = 16.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource( "98" )
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="role_level" type="Label" parent="roleLayer/role_hp_mp_exp"]
+offset_left = -108.0
+offset_top = 16.0
+offset_right = -83.0
+offset_bottom = 36.0
+theme_override_fonts/font = ExtResource( "99" )
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="mp_bar" type="TextureProgressBar" parent="roleLayer/role_hp_mp_exp"]
+offset_left = -28.0
+offset_top = -11.0
+offset_right = 117.0
+offset_bottom = 2.0
+max_value = 1.0
+step = 0.0
+nine_patch_stretch = true
+texture_progress = ExtResource( "100" )
+texture_progress_offset = Vector2(-2, 0)
+metadata/_edit_lock_ = true
+
+[node name="mp_text" type="Label" parent="roleLayer/role_hp_mp_exp/mp_bar"]
+layout_mode = 0
+offset_top = -2.0
+offset_right = 143.0
+offset_bottom = 17.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource( "97" )
+theme_override_font_sizes/font_size = 14
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="nature_recovery_mp" type="Label" parent="roleLayer/role_hp_mp_exp/mp_bar"]
+layout_mode = 0
+offset_left = 111.0
+offset_top = -1.0
+offset_right = 142.0
+offset_bottom = 15.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 0
+theme_override_fonts/font = ExtResource( "98" )
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="exp_bar" type="TextureProgressBar" parent="roleLayer/role_hp_mp_exp"]
+offset_left = -32.0
+offset_top = 8.0
+offset_right = 119.0
+offset_bottom = 23.0
+max_value = 1.0
+step = 0.0
+nine_patch_stretch = true
+texture_progress = ExtResource( "96" )
+texture_progress_offset = Vector2(-3, 0)
+metadata/_edit_lock_ = true
+
+[node name="exp_text" type="Label" parent="roleLayer/role_hp_mp_exp/exp_bar"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = -2.0
+offset_right = 148.0
+offset_bottom = 17.0
+theme_override_fonts/font = ExtResource( "97" )
+theme_override_font_sizes/font_size = 14
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Buff_box" type="HBoxContainer" parent="roleLayer/role_hp_mp_exp"]
+offset_left = -68.0
+offset_top = 30.0
+offset_right = -33.0
+offset_bottom = 65.0
+script = ExtResource( "101" )
+metadata/_edit_lock_ = true
+
+[node name="Bleed" parent="roleLayer/role_hp_mp_exp/Buff_box" instance=ExtResource( "102" )]
+visible = false
+layout_mode = 2
+texture = ExtResource( "103" )
+
+[node name="BloodFix" parent="roleLayer/role_hp_mp_exp/Buff_box" instance=ExtResource( "102" )]
+visible = false
+layout_mode = 2
+texture = ExtResource( "104" )
+
+[node name="Boundground" parent="roleLayer/role_hp_mp_exp/Buff_box" instance=ExtResource( "102" )]
+visible = false
+layout_mode = 2
+texture = ExtResource( "105" )
+
+[node name="DeadLink" parent="roleLayer/role_hp_mp_exp/Buff_box" instance=ExtResource( "102" )]
+visible = false
+layout_mode = 2
+texture = ExtResource( "106" )
+
+[node name="DefeReduce" parent="roleLayer/role_hp_mp_exp/Buff_box" instance=ExtResource( "102" )]
+visible = false
+layout_mode = 2
+texture = ExtResource( "107" )
+
+[node name="EyeFix" parent="roleLayer/role_hp_mp_exp/Buff_box" instance=ExtResource( "102" )]
+visible = false
+layout_mode = 2
+texture = ExtResource( "108" )
+
+[node name="Fire" parent="roleLayer/role_hp_mp_exp/Buff_box" instance=ExtResource( "102" )]
+visible = false
+layout_mode = 2
+texture = ExtResource( "109" )
+
+[node name="Ice" parent="roleLayer/role_hp_mp_exp/Buff_box" instance=ExtResource( "102" )]
+visible = false
+layout_mode = 2
+texture = ExtResource( "110" )
+
+[node name="Immobilize" parent="roleLayer/role_hp_mp_exp/Buff_box" instance=ExtResource( "102" )]
+visible = false
+layout_mode = 2
+texture = ExtResource( "111" )
+
+[node name="nlls" parent="roleLayer/role_hp_mp_exp/Buff_box" instance=ExtResource( "102" )]
+visible = false
+layout_mode = 2
+texture = ExtResource( "112" )
+
+[node name="poision" parent="roleLayer/role_hp_mp_exp/Buff_box" instance=ExtResource( "102" )]
+visible = false
+layout_mode = 2
+texture = ExtResource( "113" )
+
+[node name="silent" parent="roleLayer/role_hp_mp_exp/Buff_box" instance=ExtResource( "102" )]
+visible = false
+layout_mode = 2
+texture = ExtResource( "114" )
+
+[node name="speed_down" parent="roleLayer/role_hp_mp_exp/Buff_box" instance=ExtResource( "102" )]
+visible = false
+layout_mode = 2
+texture = ExtResource( "115" )
+
+[node name="stun" parent="roleLayer/role_hp_mp_exp/Buff_box" instance=ExtResource( "102" )]
+visible = false
+layout_mode = 2
+texture = ExtResource( "116" )
+
+[node name="Scary" parent="roleLayer/role_hp_mp_exp/Buff_box" instance=ExtResource( "102" )]
+visible = false
+layout_mode = 2
+texture = ExtResource( "117" )
+
+[node name="SuperArmor" parent="roleLayer/role_hp_mp_exp/Buff_box" instance=ExtResource( "102" )]
+visible = false
+layout_mode = 2
+texture = ExtResource( "118" )
+
+[node name="Indestructible" parent="roleLayer/role_hp_mp_exp/Buff_box" instance=ExtResource( "102" )]
+visible = false
+layout_mode = 2
+texture = ExtResource( "119" )
+
+[node name="DoubleFallPro" parent="roleLayer/role_hp_mp_exp/Buff_box" instance=ExtResource( "102" )]
+visible = false
+layout_mode = 2
+texture = ExtResource( "120" )
+
+[node name="Voodoo" parent="roleLayer/role_hp_mp_exp/Buff_box" instance=ExtResource( "102" )]
+visible = false
+layout_mode = 2
+texture = ExtResource( "121" )
+
+[node name="PoisionBody" parent="roleLayer/role_hp_mp_exp/Buff_box" instance=ExtResource( "102" )]
+visible = false
+layout_mode = 2
+texture = ExtResource( "122" )
+
+[node name="slzbuff" parent="roleLayer/role_hp_mp_exp/Buff_box" instance=ExtResource( "102" )]
+visible = false
+layout_mode = 2
+texture = ExtResource( "123" )
+
+[node name="lpzbuff" parent="roleLayer/role_hp_mp_exp/Buff_box" instance=ExtResource( "102" )]
+visible = false
+layout_mode = 2
+texture = ExtResource( "124" )
+
+[node name="tszbuff" parent="roleLayer/role_hp_mp_exp/Buff_box" instance=ExtResource( "102" )]
+visible = false
+layout_mode = 2
+texture = ExtResource( "125" )
+
+[node name="lljybuff" parent="roleLayer/role_hp_mp_exp/Buff_box" instance=ExtResource( "102" )]
+visible = false
+layout_mode = 2
+texture = ExtResource( "126" )
+
+[node name="NoDeBuff" parent="roleLayer/role_hp_mp_exp/Buff_box" instance=ExtResource( "102" )]
+visible = false
+layout_mode = 2
+texture = ExtResource( "127" )
+
+[node name="flls" parent="roleLayer/role_hp_mp_exp/Buff_box" instance=ExtResource( "102" )]
+visible = false
+layout_mode = 2
+texture = ExtResource( "128" )
+
+[node name="RoleProtect" type="TextureProgressBar" parent="roleLayer/role_hp_mp_exp"]
+offset_left = -71.0
+offset_top = 73.0
+offset_right = 253.0
+offset_bottom = 85.0
+scale = Vector2(0.6, 1)
+max_value = 1.0
+step = 0.0
+texture_under = ExtResource( "129" )
+texture_progress = ExtResource( "130" )
+texture_progress_offset = Vector2(2, 3)
+metadata/_edit_lock_ = true
+
+[node name="h_m_e_t" type="Sprite2D" parent="roleLayer"]
+texture_filter = 1
+position = Vector2(97, 40)
+texture = ExtResource( "131" )
+metadata/_edit_lock_ = true
+
+[node name="role_head" type="Sprite2D" parent="roleLayer"]
+position = Vector2(53, 36)
+metadata/_edit_lock_ = true
+
+[node name="AddMyEffect" type="Node2D" parent="roleLayer"]
+script = SubResource( "23" )
+
+[connection signal="pressed" from="roleLayer/role_menu/backpack" to="roleLayer/backpack" method="_on_backpack_pressed" flags=18]
+[connection signal="pressed" from="roleLayer/role_menu/set" to="roleLayer/backpack" method="_on_set_pressed" flags=18]
+[connection signal="pressed" from="roleLayer/role_menu/skill" to="roleLayer/backpack" method="_on_skill_pressed" flags=18]
+[connection signal="pressed" from="roleLayer/role_menu/magic_weapon" to="roleLayer/backpack" method="_on_magic_weapon_pressed" flags=18]
+[connection signal="pressed" from="roleLayer/role_menu/pet" to="roleLayer/backpack" method="_on_pet_pressed" flags=18]

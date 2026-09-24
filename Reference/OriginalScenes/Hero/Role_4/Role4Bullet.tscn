@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://Script/Hero/Role4Bullet.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://df1o42sx6hq21" path="res://Art/HeroPicture/Role4/SpecialEffet_9.png" id="2"]
+
+[sub_resource type="CircleShape2D" id="1"]
+radius = 19.0263
+script = null
+
+[node name="Role4Bullet" type="Node2D"]
+script = ExtResource( "1" )
+
+[node name="SpecialEffet9" type="Sprite2D" parent="."]
+texture = ExtResource( "2" )
+metadata/_edit_lock_ = true
+
+[node name="Check" type="Area2D" parent="."]
+position = Vector2(-1, -1)
+collision_layer = 0
+collision_mask = 4
+
+[node name="Check" type="CollisionShape2D" parent="Check"]
+shape = SubResource( "1" )
+
+[node name="QueueTimer" type="Timer" parent="."]
+wait_time = 4.0
+autostart = true
+
+[connection signal="body_entered" from="Check" to="." method="_on_check_body_entered" flags=18]
+[connection signal="timeout" from="QueueTimer" to="." method="_on_queue_timer_timeout" flags=18]

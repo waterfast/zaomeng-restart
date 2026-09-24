@@ -1,0 +1,73 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="PackedScene" uid="uid://bp5dr3h8j1x2w" path="res://Scene/Base/BaseThroughLevel.tscn" id="1"]
+[ext_resource type="Script" path="res://Script/Level/Level_10.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://88v6do3rmv60" path="res://Art/Level/Level_10/250.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://d2kcuhy27dr2r" path="res://Art/Level/Level_10/125.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://dh772teh18mk5" path="res://Art/Level/Level_10/230.png" id="5"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(3433, 553)
+script = null
+
+[sub_resource type="RectangleShape2D" id="2"]
+size = Vector2(17, 1786)
+script = null
+
+[sub_resource type="RectangleShape2D" id="3"]
+size = Vector2(1596.5, 1786)
+script = null
+
+[sub_resource type="RectangleShape2D" id="4"]
+size = Vector2(781.5, 1420)
+script = null
+
+[node name="Level_10" instance=ExtResource( "1" )]
+script = ExtResource( "2" )
+metadata/_edit_vertical_guides_ = [365.0, 1870.0]
+
+[node name="floor" type="CollisionShape2D" parent="wall" index="1"]
+position = Vector2(1062.5, 669.5)
+shape = SubResource( "1" )
+metadata/_edit_lock_ = true
+
+[node name="stop1" type="CollisionShape2D" parent="wall" index="2"]
+position = Vector2(1007.5, -406)
+shape = SubResource( "2" )
+metadata/_edit_lock_ = true
+
+[node name="stop2" type="CollisionShape2D" parent="wall" index="3"]
+position = Vector2(2669.75, -408)
+shape = SubResource( "3" )
+metadata/_edit_lock_ = true
+
+[node name="stop5" type="CollisionShape2D" parent="wall" index="5"]
+position = Vector2(627, -221)
+shape = SubResource( "4" )
+disabled = true
+metadata/_edit_lock_ = true
+
+[node name="create_control" parent="." index="7"]
+wait_time = 0.5
+
+[node name="250" type="Sprite2D" parent="BackGround/End" index="0"]
+position = Vector2(716, 248)
+texture = ExtResource( "3" )
+
+[node name="front" type="ParallaxLayer" parent="BackGround" index="1"]
+
+[node name="125" type="Sprite2D" parent="BackGround/front" index="0"]
+position = Vector2(1013.25, 305.75)
+scale = Vector2(1.07682, 1.03807)
+texture = ExtResource( "4" )
+metadata/_edit_lock_ = true
+
+[node name="230" type="Sprite2D" parent="BackGround/floor_2" index="1"]
+position = Vector2(1142.25, 547)
+scale = Vector2(1.21007, 1)
+texture = ExtResource( "5" )
+metadata/_edit_lock_ = true
+
+[node name="exit" parent="." index="10"]
+position = Vector2(1726, 316)
+metadata/_edit_lock_ = true

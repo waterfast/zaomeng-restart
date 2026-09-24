@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="PackedScene" uid="uid://bp5dr3h8j1x2w" path="res://Scene/Base/BaseThroughLevel.tscn" id="1"]
+[ext_resource type="Script" path="res://Script/Level/Level_Eighteenth_Hell.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://b4x0t2jhombb1" path="res://Art/Level/Level_11/EighteenHall.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://cns54o8lgl1gt" path="res://Art/Level/Level_11/EighteenHallFloor.png" id="4"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(3748, 2122.5)
+script = null
+
+[sub_resource type="RectangleShape2D" id="2"]
+size = Vector2(8208, 822)
+script = null
+
+[sub_resource type="RectangleShape2D" id="3"]
+size = Vector2(3550, 2512)
+script = null
+
+[sub_resource type="RectangleShape2D" id="4"]
+size = Vector2(9361, 1791.13)
+script = null
+
+[node name="Level_EighteenthHell" instance=ExtResource( "1" )]
+script = ExtResource( "2" )
+
+[node name="wall_left" parent="wall" index="0"]
+position = Vector2(-1922, -578.75)
+shape = SubResource( "1" )
+
+[node name="Floor" type="CollisionShape2D" parent="wall" index="1"]
+position = Vector2(446, 813)
+shape = SubResource( "2" )
+metadata/_edit_lock_ = true
+
+[node name="stop1" type="CollisionShape2D" parent="wall" index="2"]
+position = Vector2(2790, -774)
+shape = SubResource( "3" )
+metadata/_edit_lock_ = true
+
+[node name="thb" parent="wall" index="3"]
+position = Vector2(4628, -2433.44)
+shape = SubResource( "4" )
+
+[node name="EighteenHall" type="Sprite2D" parent="BackGround/End" index="0"]
+position = Vector2(469, 296)
+texture = ExtResource( "3" )
+metadata/_edit_lock_ = true
+
+[node name="EighteenHallFloor" type="Sprite2D" parent="BackGround/floor_2" index="1"]
+position = Vector2(471, 544)
+texture = ExtResource( "4" )
+metadata/_edit_lock_ = true
+
+[node name="exit" parent="." index="10"]
+position = Vector2(805, 317)
+metadata/_edit_lock_ = true

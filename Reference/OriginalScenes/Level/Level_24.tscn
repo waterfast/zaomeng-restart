@@ -1,0 +1,87 @@
+[gd_scene load_steps=12 format=3]
+
+[ext_resource type="PackedScene" uid="uid://bp5dr3h8j1x2w" path="res://Scene/Base/BaseThroughLevel.tscn" id="1"]
+[ext_resource type="Script" path="res://Script/Level/Level_24.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://dmsnji1k0y0b0" path="res://Art/Level/Game3Level/Level_1_3/FristBG.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://brmcgwuhuob7o" path="res://Art/Level/Game3Level/Level_1_3/BG7.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://bb5xu3c5u64rx" path="res://Art/Level/Game3Level/Level_1_3/Floor5.png" id="5"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(5659, 1079)
+script = null
+
+[sub_resource type="RectangleShape2D" id="2"]
+size = Vector2(1056, 975)
+script = null
+
+[sub_resource type="RectangleShape2D" id="3"]
+size = Vector2(1057.5, 975)
+script = null
+
+[sub_resource type="RectangleShape2D" id="4"]
+size = Vector2(89, 975)
+script = null
+
+[sub_resource type="RectangleShape2D" id="5"]
+size = Vector2(1262.5, 975)
+script = null
+
+[sub_resource type="RectangleShape2D" id="6"]
+size = Vector2(781.5, 1420)
+script = null
+
+[node name="Level_24" instance=ExtResource( "1" )]
+script = ExtResource( "2" )
+metadata/_edit_vertical_guides_ = [4600.0]
+
+[node name="floor" type="CollisionShape2D" parent="wall" index="2"]
+position = Vector2(2826.5, 933.5)
+shape = SubResource( "1" )
+metadata/_edit_lock_ = true
+
+[node name="stop1" type="CollisionShape2D" parent="wall" index="3"]
+position = Vector2(1629, -5.5)
+shape = SubResource( "2" )
+metadata/_edit_lock_ = true
+
+[node name="stop2" type="CollisionShape2D" parent="wall" index="4"]
+position = Vector2(2778.25, -7)
+shape = SubResource( "3" )
+metadata/_edit_lock_ = true
+
+[node name="stop3" type="CollisionShape2D" parent="wall" index="5"]
+position = Vector2(3547, -2)
+shape = SubResource( "4" )
+metadata/_edit_lock_ = true
+
+[node name="stop4" type="CollisionShape2D" parent="wall" index="6"]
+position = Vector2(5233.75, -6)
+shape = SubResource( "5" )
+metadata/_edit_lock_ = true
+
+[node name="stop5" type="CollisionShape2D" parent="wall" index="7"]
+position = Vector2(3208, -211)
+shape = SubResource( "6" )
+disabled = true
+metadata/_edit_lock_ = true
+
+[node name="FristBg" type="Sprite2D" parent="BackGround/End" index="0"]
+position = Vector2(720, 345)
+texture = ExtResource( "3" )
+metadata/_edit_lock_ = true
+
+[node name="front" type="ParallaxLayer" parent="BackGround" index="1"]
+
+[node name="Bg7" type="Sprite2D" parent="BackGround/front" index="0"]
+position = Vector2(2355, 323)
+texture = ExtResource( "4" )
+metadata/_edit_lock_ = true
+
+[node name="Floor5" type="Sprite2D" parent="BackGround/floor_2" index="0"]
+position = Vector2(2828, 543)
+texture = ExtResource( "5" )
+metadata/_edit_lock_ = true
+
+[node name="exit" parent="." index="10"]
+position = Vector2(4215, 321)
+metadata/_edit_lock_ = true

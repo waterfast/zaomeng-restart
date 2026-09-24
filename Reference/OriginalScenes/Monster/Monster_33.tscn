@@ -1,0 +1,208 @@
+[gd_scene load_steps=12 format=3]
+
+[ext_resource type="PackedScene" uid="uid://cgaeu2ag4857g" path="res://Scene/Base/BaseMonster.tscn" id="1"]
+[ext_resource type="Script" path="res://Script/Monster/Monster_33.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://dni7j41u66hll" path="res://Art/Monster/Monster_33_34/256.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://dmers5vo3sutf" path="res://Art/Monster/Monster_33_34/1.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://b3i4epl7icdml" path="res://Art/Monster/Monster_33_34/klw_2.png" id="5"]
+
+[sub_resource type="Animation" id="1"]
+length = 1.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BG:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.1, 1.1001, 1.1002, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"fall_items"
+}, {
+"args": [],
+"method": &"fall_medicine"
+}, {
+"args": [],
+"method": &"fall_stone_"
+}, {
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("mr_ani:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BaseDamageBox/HurtBox/HurtBox:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BaseDamageBox/HitBox/HitBox:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Hide:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+script = null
+
+[sub_resource type="Animation" id="2"]
+resource_name = "empty"
+script = null
+
+[sub_resource type="AnimationLibrary" id="3"]
+_data = {
+"death": SubResource( "1" ),
+"empty": SubResource( "2" )
+}
+script = null
+
+[sub_resource type="CircleShape2D" id="4"]
+script = null
+
+[sub_resource type="CircleShape2D" id="5"]
+radius = 66.9104
+script = null
+
+[sub_resource type="RectangleShape2D" id="6"]
+size = Vector2(659, 42)
+script = null
+
+[node name="Monster_33" instance=ExtResource( "1" )]
+script = ExtResource( "2" )
+
+[node name="Hide" type="Node2D" parent="." index="2"]
+visible = false
+
+[node name="bgg_1" type="Sprite2D" parent="Hide" index="0"]
+position = Vector2(-226, 97)
+texture = ExtResource( "3" )
+metadata/_edit_lock_ = true
+
+[node name="bgg_2" type="Sprite2D" parent="Hide" index="1"]
+position = Vector2(-79.5, 129)
+scale = Vector2(0.801205, 0.710844)
+texture = ExtResource( "3" )
+metadata/_edit_lock_ = true
+
+[node name="bgg_3" type="Sprite2D" parent="Hide" index="2"]
+position = Vector2(19, -21)
+texture = ExtResource( "3" )
+metadata/_edit_lock_ = true
+
+[node name="bgg_4" type="Sprite2D" parent="Hide" index="3"]
+position = Vector2(96, 107)
+texture = ExtResource( "3" )
+metadata/_edit_lock_ = true
+
+[node name="bgg_5" type="Sprite2D" parent="Hide" index="4"]
+position = Vector2(319.5, 130)
+scale = Vector2(0.981928, 0.771084)
+texture = ExtResource( "3" )
+metadata/_edit_lock_ = true
+
+[node name="mr_player" parent="." index="3"]
+libraries = {
+"": SubResource( "3" )
+}
+
+[node name="qgw" type="Sprite2D" parent="." index="4"]
+visible = false
+position = Vector2(338, 142)
+scale = Vector2(0.77, 0.77)
+texture = ExtResource( "4" )
+
+[node name="BG" type="Sprite2D" parent="." index="5"]
+scale = Vector2(1.7, 1.7)
+texture = ExtResource( "5" )
+metadata/_edit_lock_ = true
+
+[node name="HitBox" parent="BaseDamageBox" index="0"]
+collision_mask = 128
+
+[node name="HitBox" parent="BaseDamageBox/HitBox" index="0"]
+position = Vector2(-3, 0)
+shape = SubResource( "4" )
+disabled = true
+
+[node name="HurtBox" parent="BaseDamageBox" index="1"]
+collision_layer = 3072
+
+[node name="HurtBox" parent="BaseDamageBox/HurtBox" index="0"]
+position = Vector2(-240, 87)
+shape = SubResource( "5" )
+disabled = true
+metadata/_edit_lock_ = true
+
+[node name="pz" parent="." index="7"]
+position = Vector2(-28.5, 185)
+shape = SubResource( "6" )
+metadata/_edit_lock_ = true
+
+[node name="add_eyes" type="Timer" parent="." index="13"]
+process_callback = 0
+autostart = true
+
+[node name="change_loc" type="Timer" parent="." index="14"]
+wait_time = 5.0
+
+[node name="Call_zd" type="Timer" parent="." index="15"]
+wait_time = 16.0
+autostart = true
+
+[node name="left" type="Timer" parent="." index="16"]
+
+[node name="right" type="Timer" parent="." index="17"]
+
+[connection signal="timeout" from="add_eyes" to="." method="_on_add_eyes_timeout" flags=18]
+[connection signal="timeout" from="change_loc" to="." method="_on_change_loc_timeout" flags=18]
+[connection signal="timeout" from="Call_zd" to="." method="_on_call_zd_timeout" flags=18]
+[connection signal="timeout" from="left" to="." method="_on_left_timeout" flags=18]
+[connection signal="timeout" from="right" to="." method="_on_right_timeout" flags=18]

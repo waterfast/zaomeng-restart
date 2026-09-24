@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://Script/Level/trap_2_dwtw.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://ctihf3q3y8dah" path="res://Art/Level/Game3Level/Level_2_3/xj.png" id="2"]
+[ext_resource type="PackedScene" uid="uid://dj06nadutupyy" path="res://Scene/Level/dwtw_trap.tscn" id="3"]
+
+[node name="Trap2dwtw" type="Node2D"]
+script = ExtResource( "1" )
+
+[node name="Xj" type="Sprite2D" parent="."]
+texture = ExtResource( "2" )
+metadata/_edit_lock_ = true
+
+[node name="dwtwTrap" parent="." instance=ExtResource( "3" )]
+z_index = -1
+position = Vector2(-22, 20)
+rotation = 0.479966
+metadata/_edit_lock_ = true
+
+[node name="dwtwTrap2" parent="." instance=ExtResource( "3" )]
+z_index = -1
+position = Vector2(2, 25)
+metadata/_edit_lock_ = true
+
+[node name="dwtwTrap3" parent="." instance=ExtResource( "3" )]
+z_index = -1
+position = Vector2(27, 20)
+rotation = -0.479966
+metadata/_edit_lock_ = true

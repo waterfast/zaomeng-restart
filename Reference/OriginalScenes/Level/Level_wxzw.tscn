@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="PackedScene" uid="uid://bp5dr3h8j1x2w" path="res://Scene/Base/BaseThroughLevel.tscn" id="1"]
+[ext_resource type="Script" path="res://Script/Level/Level_wxzw.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://3h3ca2iubv6d" path="res://Art/Level/Game3Level/Level_Hide/sky.jpg" id="3"]
+[ext_resource type="Texture2D" uid="uid://8ll0ra77ncum" path="res://Art/Level/Game3Level/Level_Hide/bg05.png" id="4"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(2668, 141)
+script = null
+
+[sub_resource type="RectangleShape2D" id="2"]
+size = Vector2(1229.5, 1181)
+script = null
+
+[node name="Level_wxzw" instance=ExtResource( "1" )]
+script = ExtResource( "2" )
+
+[node name="floor" type="CollisionShape2D" parent="wall" index="2"]
+position = Vector2(547, 408.5)
+shape = SubResource( "1" )
+metadata/_edit_lock_ = true
+
+[node name="stop1" type="CollisionShape2D" parent="wall" index="3"]
+position = Vector2(1516.25, -115.5)
+shape = SubResource( "2" )
+metadata/_edit_lock_ = true
+
+[node name="Sky" type="Sprite2D" parent="BackGround/End" index="0"]
+position = Vector2(159.75, 294.5)
+scale = Vector2(0.744391, 0.752564)
+texture = ExtResource( "3" )
+metadata/_edit_lock_ = true
+
+[node name="Bg05" type="Sprite2D" parent="BackGround/floor_2" index="0"]
+position = Vector2(469, 295)
+scale = Vector2(0.785, 0.75641)
+texture = ExtResource( "4" )
+metadata/_edit_lock_ = true
+
+[node name="exit" parent="." index="10"]
+position = Vector2(488, 258)
+metadata/_edit_lock_ = true

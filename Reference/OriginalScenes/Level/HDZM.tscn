@@ -1,0 +1,95 @@
+[gd_scene load_steps=14 format=3]
+
+[ext_resource type="Script" path="res://Script/Level/HDZM.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://cs0ihmswjhvq8" path="res://Art/Game_3/OtherMapButton/hdzm_.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://bqhuk6g8f1cdf" path="res://Art/Game_3/OtherMapButton/ttzs.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://bng7il3qv14pu" path="res://Art/Game_3/OtherMapButton/tz_1.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://c2bh3amj2wuhj" path="res://Art/Game_3/OtherMapButton/tz_2.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://c43yr2a8pmamv" path="res://Art/Game_3/OtherMapButton/jjtj_.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://d3xr2ncdegkgc" path="res://Art/Game_3/OtherMapButton/cs_1.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://cp53a8ccvcidc" path="res://Art/Game_3/OtherMapButton/cs_2.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://jat0cibpn18b" path="res://Art/Game_3/OtherMapButton/hdgq.png" id="9"]
+[ext_resource type="Texture2D" uid="uid://b5eiyi3l0p3l7" path="res://Art/Game_3/OtherMapButton/cyy_1.png" id="10"]
+[ext_resource type="Texture2D" uid="uid://b2sf6gceydsii" path="res://Art/Game_3/OtherMapButton/cyy_2.png" id="11"]
+[ext_resource type="Texture2D" uid="uid://cyj0u440761su" path="res://Art/Game_3/OtherMapButton/close_1.png" id="12"]
+[ext_resource type="Texture2D" uid="uid://ygfvpmsis70q" path="res://Art/Game_3/OtherMapButton/close_2.png" id="13"]
+
+[node name="HDZM" type="Node2D"]
+script = ExtResource( "1" )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -292.0
+offset_top = -222.0
+offset_right = 1312.0
+offset_bottom = 769.0
+color = Color(0, 0, 0, 0.278431)
+metadata/_edit_lock_ = true
+
+[node name="Hdzm" type="Sprite2D" parent="."]
+position = Vector2(493, 260)
+texture = ExtResource( "2" )
+metadata/_edit_lock_ = true
+
+[node name="Ttzs" type="Sprite2D" parent="Hdzm"]
+position = Vector2(-205, 15)
+texture = ExtResource( "3" )
+metadata/_edit_lock_ = true
+
+[node name="ttzstz" type="TextureButton" parent="Hdzm/Ttzs"]
+offset_left = -87.0
+offset_top = -24.0
+offset_right = 81.0
+offset_bottom = 43.0
+texture_normal = ExtResource( "4" )
+texture_pressed = ExtResource( "4" )
+texture_hover = ExtResource( "5" )
+texture_disabled = ExtResource( "4" )
+metadata/_edit_lock_ = true
+
+[node name="csm" type="Sprite2D" parent="Hdzm"]
+position = Vector2(-15, 15)
+texture = ExtResource( "6" )
+metadata/_edit_lock_ = true
+
+[node name="csm" type="TextureButton" parent="Hdzm/csm"]
+offset_left = -87.0
+offset_top = -24.0
+offset_right = 81.0
+offset_bottom = 43.0
+texture_normal = ExtResource( "7" )
+texture_pressed = ExtResource( "7" )
+texture_hover = ExtResource( "8" )
+texture_disabled = ExtResource( "7" )
+metadata/_edit_lock_ = true
+
+[node name="Hdgq" type="Sprite2D" parent="Hdzm"]
+position = Vector2(175, 15)
+texture = ExtResource( "9" )
+metadata/_edit_lock_ = true
+
+[node name="hdgq" type="TextureButton" parent="Hdzm/Hdgq"]
+offset_left = -85.0
+offset_top = -24.0
+offset_right = 84.0
+offset_bottom = 44.0
+texture_normal = ExtResource( "10" )
+texture_pressed = ExtResource( "10" )
+texture_hover = ExtResource( "11" )
+texture_disabled = ExtResource( "10" )
+metadata/_edit_lock_ = true
+
+[node name="close" type="TextureButton" parent="Hdzm"]
+offset_left = 280.0
+offset_top = -230.0
+offset_right = 325.0
+offset_bottom = -186.0
+texture_normal = ExtResource( "12" )
+texture_pressed = ExtResource( "12" )
+texture_hover = ExtResource( "13" )
+texture_disabled = ExtResource( "12" )
+metadata/_edit_lock_ = true
+
+[connection signal="pressed" from="Hdzm/Ttzs/ttzstz" to="." method="_on_ttzstz_pressed" flags=18]
+[connection signal="pressed" from="Hdzm/csm/csm" to="." method="_on_csm_pressed" flags=18]
+[connection signal="pressed" from="Hdzm/Hdgq/hdgq" to="." method="_on_hdgq_pressed" flags=18]
+[connection signal="pressed" from="Hdzm/close" to="." method="_on_close_pressed" flags=18]

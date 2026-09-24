@@ -1,0 +1,66 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="PackedScene" uid="uid://bp5dr3h8j1x2w" path="res://Scene/Base/BaseThroughLevel.tscn" id="1"]
+[ext_resource type="Script" path="res://Script/Level/Level_llbt.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://73on7cxea6jo" path="res://Art/Level/Game3Level/Level_4/llbtbg.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://r8s275sx8c67" path="res://Art/Level/Game3Level/Level_4/llbtfloor.png" id="4"]
+[ext_resource type="FontFile" uid="uid://2rjpff4w8bmb" path="res://Font/华康海报体W12 &amp; 华康海报体W12(P).ttc" id="5"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(1656, 81.5)
+script = null
+
+[sub_resource type="RectangleShape2D" id="2"]
+size = Vector2(3072, 1204)
+script = null
+
+[node name="Level_llbt" instance=ExtResource( "1" )]
+script = ExtResource( "2" )
+metadata/_edit_horizontal_guides_ = [304.0]
+
+[node name="floor" type="CollisionShape2D" parent="wall" index="2"]
+position = Vector2(826, 435.25)
+shape = SubResource( "1" )
+metadata/_edit_lock_ = true
+
+[node name="stop1" type="CollisionShape2D" parent="wall" index="3"]
+position = Vector2(3035, -124)
+shape = SubResource( "2" )
+metadata/_edit_lock_ = true
+
+[node name="front" type="ParallaxLayer" parent="BackGround" index="1"]
+
+[node name="Llbtbg" type="Sprite2D" parent="BackGround/front" index="0"]
+position = Vector2(825, 293)
+texture = ExtResource( "3" )
+
+[node name="Llbtfloor" type="Sprite2D" parent="BackGround/floor_2" index="0"]
+position = Vector2(827, 542)
+texture = ExtResource( "4" )
+
+[node name="exit" parent="." index="10"]
+position = Vector2(1064, 326)
+metadata/_edit_lock_ = true
+
+[node name="LevelText" type="Label" parent="." index="14"]
+offset_left = 332.0
+offset_top = -60.0
+offset_right = 635.0
+offset_bottom = -31.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource( "5" )
+theme_override_font_sizes/font_size = 25
+text = "24"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="bbg" type="ColorRect" parent="." index="15"]
+offset_left = -247.0
+offset_top = -222.0
+offset_right = 1902.0
+offset_bottom = 574.0
+color = Color(0, 0, 0, 0.376471)
+metadata/_edit_lock_ = true

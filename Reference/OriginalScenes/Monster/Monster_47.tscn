@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="PackedScene" uid="uid://cgaeu2ag4857g" path="res://Scene/Base/BaseMonster.tscn" id="1"]
+[ext_resource type="Script" path="res://Script/Monster/Monster_47.gd" id="2"]
+
+[sub_resource type="CircleShape2D" id="1"]
+script = null
+
+[sub_resource type="CircleShape2D" id="2"]
+script = null
+
+[sub_resource type="RectangleShape2D" id="3"]
+script = null
+
+[node name="Monster_47" instance=ExtResource( "1" )]
+script = ExtResource( "2" )
+
+[node name="HitBox" parent="BaseDamageBox" index="0"]
+collision_mask = 128
+
+[node name="HitBox" parent="BaseDamageBox/HitBox" index="0"]
+shape = SubResource( "1" )
+
+[node name="HurtBox" parent="BaseDamageBox/HurtBox" index="0"]
+shape = SubResource( "2" )
+disabled = true
+
+[node name="pz" parent="." index="4"]
+shape = SubResource( "3" )
+metadata/_edit_lock_ = true

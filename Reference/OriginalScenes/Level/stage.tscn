@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Texture2D" uid="uid://cx7vuujco1y22" path="res://Art/Level/level_2/218.png" id="1"]
+[ext_resource type="Script" path="res://Script/Level/stage.gd" id="2"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(164, 32)
+script = null
+
+[node name="stage" type="Sprite2D"]
+position = Vector2(490, 69)
+texture = ExtResource( "1" )
+script = ExtResource( "2" )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 32
+collision_mask = 32
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-1, 0)
+shape = SubResource( "1" )
+one_way_collision = true
+metadata/_edit_lock_ = true

@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="PackedScene" uid="uid://bp5dr3h8j1x2w" path="res://Scene/Base/BaseThroughLevel.tscn" id="1"]
+[ext_resource type="Script" path="res://Script/Level/Level_hdgqzld.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://d2lllfojhpcc2" path="res://Art/Level/Level_11/1_floorBg4.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://brtgap2hpeaaw" path="res://Art/Level/Level_11/zld.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://b4bedlahjatv8" path="res://Art/Level/Level_11/zldfloor.png" id="5"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(2158.5, 1720)
+script = null
+
+[sub_resource type="RectangleShape2D" id="2"]
+size = Vector2(3390, 1468)
+script = null
+
+[node name="Level_HDGQZLD" instance=ExtResource( "1" )]
+script = ExtResource( "2" )
+
+[node name="wall_left" parent="wall" index="0"]
+position = Vector2(-951, -419)
+
+[node name="stop1" type="CollisionShape2D" parent="wall" index="2"]
+position = Vector2(2014.75, 57)
+shape = SubResource( "1" )
+metadata/_edit_lock_ = true
+
+[node name="floor" type="CollisionShape2D" parent="wall" index="3"]
+position = Vector2(460, 1081)
+shape = SubResource( "2" )
+metadata/_edit_lock_ = true
+
+[node name="1FloorBg4" type="Sprite2D" parent="BackGround/End" index="0"]
+position = Vector2(218, 342)
+texture = ExtResource( "3" )
+metadata/_edit_lock_ = true
+
+[node name="Zld" type="Sprite2D" parent="BackGround/floor_2" index="0"]
+position = Vector2(-1, 305)
+texture = ExtResource( "4" )
+metadata/_edit_lock_ = true
+
+[node name="Zldfloor" type="Sprite2D" parent="BackGround/floor_2" index="1"]
+position = Vector2(-90, 543)
+texture = ExtResource( "5" )
+metadata/_edit_lock_ = true
+
+[node name="exit" parent="." index="10"]
+position = Vector2(765, 276)
+metadata/_edit_lock_ = true

@@ -1,0 +1,108 @@
+[gd_scene load_steps=12 format=3]
+
+[ext_resource type="PackedScene" uid="uid://bp5dr3h8j1x2w" path="res://Scene/Base/BaseThroughLevel.tscn" id="1"]
+[ext_resource type="Script" path="res://Script/Level/Level_25.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://jccqn7qvkcki" path="res://Scene/Base/BaseStage.tscn" id="3"]
+[ext_resource type="Texture2D" uid="uid://dhjppfkc6vlqa" path="res://Art/Level/Game3Level/Level_2_3/zztw.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://i74s0nufyx11" path="res://Art/Level/Game3Level/Level_2_3/floorzztw.png" id="5"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(888, 1208)
+script = null
+
+[sub_resource type="RectangleShape2D" id="2"]
+size = Vector2(1066, 1208)
+script = null
+
+[sub_resource type="RectangleShape2D" id="3"]
+size = Vector2(8, 1208)
+script = null
+
+[sub_resource type="RectangleShape2D" id="4"]
+size = Vector2(997, 1602)
+script = null
+
+[sub_resource type="RectangleShape2D" id="5"]
+size = Vector2(5320.5, 568)
+script = null
+
+[sub_resource type="RectangleShape2D" id="6"]
+size = Vector2(781.5, 1420)
+script = null
+
+[node name="Level_25" instance=ExtResource( "1" )]
+script = ExtResource( "2" )
+metadata/_edit_vertical_guides_ = [4603.0, 2250.0, 2104.0]
+
+[node name="stop1" type="CollisionShape2D" parent="wall" index="2"]
+position = Vector2(1542, -123)
+shape = SubResource( "1" )
+metadata/_edit_lock_ = true
+
+[node name="stop2" type="CollisionShape2D" parent="wall" index="3"]
+position = Vector2(2784, -130)
+shape = SubResource( "2" )
+metadata/_edit_lock_ = true
+
+[node name="stop3" type="CollisionShape2D" parent="wall" index="4"]
+position = Vector2(3581, -126)
+shape = SubResource( "3" )
+metadata/_edit_lock_ = true
+
+[node name="stop4" type="CollisionShape2D" parent="wall" index="5"]
+position = Vector2(5178.5, 75)
+shape = SubResource( "4" )
+metadata/_edit_lock_ = true
+
+[node name="floor" type="CollisionShape2D" parent="wall" index="6"]
+position = Vector2(2656.75, 686)
+shape = SubResource( "5" )
+metadata/_edit_lock_ = true
+
+[node name="stop5" type="CollisionShape2D" parent="wall" index="7"]
+position = Vector2(3208, -211)
+shape = SubResource( "6" )
+disabled = true
+metadata/_edit_lock_ = true
+
+[node name="Stage" type="Node2D" parent="." index="5"]
+z_index = -1
+
+[node name="BaseStage" parent="Stage" index="0" instance=ExtResource( "3" )]
+position = Vector2(209, 143)
+metadata/_edit_lock_ = true
+
+[node name="BaseStage2" parent="Stage" index="1" instance=ExtResource( "3" )]
+position = Vector2(655, 228)
+metadata/_edit_lock_ = true
+
+[node name="BaseStage3" parent="Stage" index="2" instance=ExtResource( "3" )]
+position = Vector2(2566, 166)
+
+[node name="BaseStage4" parent="Stage" index="3" instance=ExtResource( "3" )]
+position = Vector2(2988, 215)
+
+[node name="BaseStage5" parent="Stage" index="4" instance=ExtResource( "3" )]
+position = Vector2(3405, 100)
+
+[node name="Trap" type="Node2D" parent="." index="6"]
+position = Vector2(236, -225)
+
+[node name="front" type="ParallaxLayer" parent="BackGround" index="1"]
+
+[node name="Zztw" type="Sprite2D" parent="BackGround/front" index="0"]
+position = Vector2(2351, 298)
+texture = ExtResource( "4" )
+metadata/_edit_lock_ = true
+
+[node name="floor_2" parent="BackGround" index="2"]
+metadata/_edit_lock_ = true
+
+[node name="Floorzztw" type="Sprite2D" parent="BackGround/floor_2" index="0"]
+position = Vector2(2350, 545)
+texture = ExtResource( "5" )
+metadata/_edit_lock_ = true
+
+[node name="exit" parent="." index="12"]
+position = Vector2(4456, 330)
+metadata/_edit_lock_ = true

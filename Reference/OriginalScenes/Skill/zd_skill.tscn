@@ -1,0 +1,1248 @@
+[gd_scene load_steps=85 format=3]
+
+[ext_resource type="Script" path="res://Script/Skill/zd_skill.gd" id="1"]
+[ext_resource type="FontFile" uid="uid://0bcwbxanna5n" path="res://Font/Aa文徵明琴赋小楷_mianfeiziti.com.ttf" id="2"]
+[ext_resource type="Texture2D" uid="uid://boiq6h8kn7ilr" path="res://Art/Skill/uplevel.png" id="3"]
+[ext_resource type="FontFile" uid="uid://db4gwqvqgggtj" path="res://Font/Aa梦里掏花对月饮_mianfeiziti.com.ttf" id="4"]
+
+[sub_resource type="StyleBoxEmpty" id="1"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="2"]
+script = null
+
+[sub_resource type="StyleBoxTexture" id="3"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="4"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="5"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="6"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="7"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="8"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="9"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="10"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="11"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="12"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="13"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="14"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="15"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="16"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="17"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="18"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="19"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="20"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="21"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="22"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="23"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="24"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="25"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="26"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="27"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="28"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="29"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="30"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="31"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="32"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="33"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="34"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="35"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="36"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="37"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="38"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="39"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="40"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="41"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="42"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="43"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="44"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="45"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="46"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="47"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="48"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="49"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="50"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="51"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="52"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="53"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="54"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="55"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="56"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="57"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="58"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="59"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="60"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="61"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="62"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="63"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="64"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="65"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="66"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="67"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="68"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="69"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="70"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="71"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="72"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="73"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="74"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="75"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="76"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="77"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="78"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="79"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="80"]
+script = null
+
+[node name="zd_skill" type="MarginContainer"]
+process_mode = 3
+offset_left = 42.0
+offset_top = 52.0
+offset_right = 810.0
+offset_bottom = 422.0
+script = ExtResource( "1" )
+metadata/_edit_lock_ = true
+metadata/_edit_horizontal_guides_ = [311.0, 237.0, 163.0, 87.0]
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer"]
+custom_minimum_size = Vector2(760, 800)
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="Sk_na" type="Node2D" parent="ScrollContainer/HBoxContainer"]
+
+[node name="skill_name" type="Label" parent="ScrollContainer/HBoxContainer/Sk_na"]
+offset_right = 100.0
+offset_bottom = 36.0
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource( "2" )
+theme_override_font_sizes/font_size = 25
+text = "技能名称"
+metadata/_edit_lock_ = true
+
+[node name="skill_1" type="Label" parent="ScrollContainer/HBoxContainer/Sk_na"]
+offset_top = 65.0
+offset_right = 100.0
+offset_bottom = 95.0
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource( "2" )
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="skill_2" type="Label" parent="ScrollContainer/HBoxContainer/Sk_na"]
+offset_top = 135.0
+offset_right = 100.0
+offset_bottom = 165.0
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource( "2" )
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="skill_3" type="Label" parent="ScrollContainer/HBoxContainer/Sk_na"]
+offset_top = 210.0
+offset_right = 100.0
+offset_bottom = 240.0
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource( "2" )
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="skill_4" type="Label" parent="ScrollContainer/HBoxContainer/Sk_na"]
+offset_top = 285.0
+offset_right = 100.0
+offset_bottom = 315.0
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource( "2" )
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="skill_5" type="Label" parent="ScrollContainer/HBoxContainer/Sk_na"]
+offset_top = 360.0
+offset_right = 100.0
+offset_bottom = 390.0
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource( "2" )
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="skill_6" type="Label" parent="ScrollContainer/HBoxContainer/Sk_na"]
+offset_top = 432.0
+offset_right = 100.0
+offset_bottom = 462.0
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource( "2" )
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="skill_7" type="Label" parent="ScrollContainer/HBoxContainer/Sk_na"]
+offset_top = 507.0
+offset_right = 100.0
+offset_bottom = 537.0
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource( "2" )
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="skill_8" type="Label" parent="ScrollContainer/HBoxContainer/Sk_na"]
+offset_top = 581.0
+offset_right = 100.0
+offset_bottom = 611.0
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource( "2" )
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="skill_9" type="Label" parent="ScrollContainer/HBoxContainer/Sk_na"]
+offset_top = 652.0
+offset_right = 100.0
+offset_bottom = 682.0
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource( "2" )
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="skill_10" type="Label" parent="ScrollContainer/HBoxContainer/Sk_na"]
+offset_top = 726.0
+offset_right = 100.0
+offset_bottom = 756.0
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource( "2" )
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="sk_pi" type="Node2D" parent="ScrollContainer/HBoxContainer"]
+position = Vector2(136, 0)
+
+[node name="Skill_picture" type="Label" parent="ScrollContainer/HBoxContainer/sk_pi"]
+offset_left = -11.0
+offset_top = -1.0
+offset_right = 89.0
+offset_bottom = 35.0
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource( "2" )
+theme_override_font_sizes/font_size = 25
+text = "技能图标"
+metadata/_edit_lock_ = true
+
+[node name="ski_1" type="Button" parent="ScrollContainer/HBoxContainer/sk_pi"]
+offset_top = 44.0
+offset_right = 66.0
+offset_bottom = 110.0
+theme_override_styles/normal = SubResource( "1" )
+theme_override_styles/hover = SubResource( "2" )
+theme_override_styles/pressed = SubResource( "3" )
+theme_override_styles/disabled = SubResource( "4" )
+theme_override_styles/focus = SubResource( "5" )
+metadata/_edit_lock_ = true
+
+[node name="skill_1" type="Label" parent="ScrollContainer/HBoxContainer/sk_pi/ski_1"]
+layout_mode = 0
+offset_top = 32.0
+offset_right = 64.0
+offset_bottom = 70.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 25
+horizontal_alignment = 2
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="ski_2" type="Button" parent="ScrollContainer/HBoxContainer/sk_pi"]
+offset_top = 118.0
+offset_right = 66.0
+offset_bottom = 184.0
+theme_override_styles/normal = SubResource( "6" )
+theme_override_styles/hover = SubResource( "7" )
+theme_override_styles/pressed = SubResource( "8" )
+theme_override_styles/disabled = SubResource( "9" )
+theme_override_styles/focus = SubResource( "10" )
+metadata/_edit_lock_ = true
+
+[node name="skill_1" type="Label" parent="ScrollContainer/HBoxContainer/sk_pi/ski_2"]
+layout_mode = 0
+offset_top = 32.0
+offset_right = 64.0
+offset_bottom = 70.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 25
+horizontal_alignment = 2
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="ski_3" type="Button" parent="ScrollContainer/HBoxContainer/sk_pi"]
+offset_top = 192.0
+offset_right = 66.0
+offset_bottom = 258.0
+theme_override_styles/normal = SubResource( "11" )
+theme_override_styles/hover = SubResource( "12" )
+theme_override_styles/pressed = SubResource( "13" )
+theme_override_styles/disabled = SubResource( "14" )
+theme_override_styles/focus = SubResource( "15" )
+metadata/_edit_lock_ = true
+
+[node name="skill_1" type="Label" parent="ScrollContainer/HBoxContainer/sk_pi/ski_3"]
+layout_mode = 0
+offset_top = 32.0
+offset_right = 64.0
+offset_bottom = 70.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 25
+horizontal_alignment = 2
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="ski_4" type="Button" parent="ScrollContainer/HBoxContainer/sk_pi"]
+offset_top = 266.0
+offset_right = 66.0
+offset_bottom = 332.0
+theme_override_styles/normal = SubResource( "16" )
+theme_override_styles/hover = SubResource( "17" )
+theme_override_styles/pressed = SubResource( "18" )
+theme_override_styles/disabled = SubResource( "19" )
+theme_override_styles/focus = SubResource( "20" )
+metadata/_edit_lock_ = true
+
+[node name="skill_1" type="Label" parent="ScrollContainer/HBoxContainer/sk_pi/ski_4"]
+layout_mode = 0
+offset_top = 32.0
+offset_right = 64.0
+offset_bottom = 70.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 25
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ski_5" type="Button" parent="ScrollContainer/HBoxContainer/sk_pi"]
+offset_top = 340.0
+offset_right = 66.0
+offset_bottom = 405.0
+theme_override_styles/normal = SubResource( "21" )
+theme_override_styles/hover = SubResource( "22" )
+theme_override_styles/pressed = SubResource( "23" )
+theme_override_styles/disabled = SubResource( "24" )
+theme_override_styles/focus = SubResource( "25" )
+metadata/_edit_lock_ = true
+
+[node name="skill_1" type="Label" parent="ScrollContainer/HBoxContainer/sk_pi/ski_5"]
+layout_mode = 0
+offset_top = 32.0
+offset_right = 64.0
+offset_bottom = 70.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 25
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ski_6" type="Button" parent="ScrollContainer/HBoxContainer/sk_pi"]
+offset_top = 414.0
+offset_right = 66.0
+offset_bottom = 480.0
+theme_override_styles/normal = SubResource( "26" )
+theme_override_styles/hover = SubResource( "27" )
+theme_override_styles/pressed = SubResource( "28" )
+theme_override_styles/disabled = SubResource( "29" )
+theme_override_styles/focus = SubResource( "30" )
+metadata/_edit_lock_ = true
+
+[node name="skill_1" type="Label" parent="ScrollContainer/HBoxContainer/sk_pi/ski_6"]
+layout_mode = 0
+offset_top = 32.0
+offset_right = 64.0
+offset_bottom = 70.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 25
+horizontal_alignment = 2
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="ski_7" type="Button" parent="ScrollContainer/HBoxContainer/sk_pi"]
+offset_top = 488.0
+offset_right = 66.0
+offset_bottom = 554.0
+theme_override_styles/normal = SubResource( "31" )
+theme_override_styles/hover = SubResource( "32" )
+theme_override_styles/pressed = SubResource( "33" )
+theme_override_styles/disabled = SubResource( "34" )
+theme_override_styles/focus = SubResource( "35" )
+metadata/_edit_lock_ = true
+
+[node name="skill_1" type="Label" parent="ScrollContainer/HBoxContainer/sk_pi/ski_7"]
+layout_mode = 0
+offset_top = 32.0
+offset_right = 64.0
+offset_bottom = 70.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 25
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ski_8" type="Button" parent="ScrollContainer/HBoxContainer/sk_pi"]
+offset_top = 562.0
+offset_right = 66.0
+offset_bottom = 628.0
+theme_override_styles/normal = SubResource( "36" )
+theme_override_styles/hover = SubResource( "37" )
+theme_override_styles/pressed = SubResource( "38" )
+theme_override_styles/disabled = SubResource( "39" )
+theme_override_styles/focus = SubResource( "40" )
+metadata/_edit_lock_ = true
+
+[node name="skill_1" type="Label" parent="ScrollContainer/HBoxContainer/sk_pi/ski_8"]
+layout_mode = 0
+offset_top = 32.0
+offset_right = 64.0
+offset_bottom = 70.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 25
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ski_9" type="Button" parent="ScrollContainer/HBoxContainer/sk_pi"]
+offset_top = 636.0
+offset_right = 66.0
+offset_bottom = 702.0
+theme_override_styles/normal = SubResource( "41" )
+theme_override_styles/hover = SubResource( "42" )
+theme_override_styles/pressed = SubResource( "43" )
+theme_override_styles/disabled = SubResource( "44" )
+theme_override_styles/focus = SubResource( "45" )
+metadata/_edit_lock_ = true
+
+[node name="skill_1" type="Label" parent="ScrollContainer/HBoxContainer/sk_pi/ski_9"]
+layout_mode = 0
+offset_top = 32.0
+offset_right = 64.0
+offset_bottom = 70.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 25
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ski_10" type="Button" parent="ScrollContainer/HBoxContainer/sk_pi"]
+offset_top = 710.0
+offset_right = 66.0
+offset_bottom = 776.0
+theme_override_styles/normal = SubResource( "46" )
+theme_override_styles/hover = SubResource( "47" )
+theme_override_styles/pressed = SubResource( "48" )
+theme_override_styles/disabled = SubResource( "49" )
+theme_override_styles/focus = SubResource( "50" )
+metadata/_edit_lock_ = true
+
+[node name="skill_1" type="Label" parent="ScrollContainer/HBoxContainer/sk_pi/ski_10"]
+layout_mode = 0
+offset_top = 32.0
+offset_right = 64.0
+offset_bottom = 70.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 25
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="sk_lv" type="Node2D" parent="ScrollContainer/HBoxContainer"]
+position = Vector2(-14, 0)
+
+[node name="skill_uplevel" type="Label" parent="ScrollContainer/HBoxContainer/sk_lv"]
+offset_left = 258.0
+offset_right = 358.0
+offset_bottom = 36.0
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource( "2" )
+theme_override_font_sizes/font_size = 25
+text = "技能升级"
+metadata/_edit_lock_ = true
+
+[node name="Skill_1" type="Button" parent="ScrollContainer/HBoxContainer/sk_lv"]
+offset_left = 290.0
+offset_top = 65.0
+offset_right = 333.0
+offset_bottom = 88.0
+theme_override_styles/normal = SubResource( "51" )
+theme_override_styles/hover = SubResource( "52" )
+theme_override_styles/pressed = SubResource( "53" )
+theme_override_styles/disabled = SubResource( "54" )
+theme_override_styles/focus = SubResource( "55" )
+icon = ExtResource( "3" )
+icon_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Need" type="Label" parent="ScrollContainer/HBoxContainer/sk_lv/Skill_1"]
+layout_mode = 0
+offset_left = -20.0
+offset_top = 20.0
+offset_right = 72.0
+offset_bottom = 46.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource( "4" )
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Skill_2" type="Button" parent="ScrollContainer/HBoxContainer/sk_lv"]
+offset_left = 290.0
+offset_top = 140.0
+offset_right = 333.0
+offset_bottom = 163.0
+theme_override_styles/normal = SubResource( "56" )
+theme_override_styles/hover = SubResource( "57" )
+theme_override_styles/pressed = SubResource( "58" )
+theme_override_styles/disabled = SubResource( "59" )
+theme_override_styles/focus = SubResource( "60" )
+icon = ExtResource( "3" )
+icon_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Need" type="Label" parent="ScrollContainer/HBoxContainer/sk_lv/Skill_2"]
+layout_mode = 0
+offset_left = -17.0
+offset_top = 20.0
+offset_right = 75.0
+offset_bottom = 46.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource( "4" )
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Skill_3" type="Button" parent="ScrollContainer/HBoxContainer/sk_lv"]
+offset_left = 290.0
+offset_top = 218.0
+offset_right = 333.0
+offset_bottom = 241.0
+theme_override_styles/normal = SubResource( "61" )
+theme_override_styles/hover = SubResource( "62" )
+theme_override_styles/pressed = SubResource( "63" )
+theme_override_styles/disabled = SubResource( "64" )
+theme_override_styles/focus = SubResource( "65" )
+icon = ExtResource( "3" )
+icon_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Need" type="Label" parent="ScrollContainer/HBoxContainer/sk_lv/Skill_3"]
+layout_mode = 0
+offset_left = -15.0
+offset_top = 19.0
+offset_right = 77.0
+offset_bottom = 45.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource( "4" )
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Skill_4" type="Button" parent="ScrollContainer/HBoxContainer/sk_lv"]
+offset_left = 290.0
+offset_top = 290.0
+offset_right = 333.0
+offset_bottom = 313.0
+theme_override_styles/normal = SubResource( "66" )
+theme_override_styles/hover = SubResource( "67" )
+theme_override_styles/pressed = SubResource( "68" )
+theme_override_styles/disabled = SubResource( "69" )
+theme_override_styles/focus = SubResource( "70" )
+icon = ExtResource( "3" )
+icon_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Need" type="Label" parent="ScrollContainer/HBoxContainer/sk_lv/Skill_4"]
+layout_mode = 0
+offset_left = -13.0
+offset_top = 18.0
+offset_right = 79.0
+offset_bottom = 44.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource( "4" )
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Skill_5" type="Button" parent="ScrollContainer/HBoxContainer/sk_lv"]
+offset_left = 290.0
+offset_top = 365.0
+offset_right = 333.0
+offset_bottom = 388.0
+theme_override_styles/normal = SubResource( "71" )
+theme_override_styles/hover = SubResource( "72" )
+theme_override_styles/pressed = SubResource( "73" )
+theme_override_styles/disabled = SubResource( "74" )
+theme_override_styles/focus = SubResource( "75" )
+icon = ExtResource( "3" )
+icon_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Need" type="Label" parent="ScrollContainer/HBoxContainer/sk_lv/Skill_5"]
+layout_mode = 0
+offset_left = -12.0
+offset_top = 18.0
+offset_right = 80.0
+offset_bottom = 44.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource( "4" )
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Skill_6" type="Button" parent="ScrollContainer/HBoxContainer/sk_lv"]
+offset_left = 290.0
+offset_top = 435.0
+offset_right = 333.0
+offset_bottom = 458.0
+theme_override_styles/normal = SubResource( "76" )
+theme_override_styles/hover = SubResource( "77" )
+theme_override_styles/pressed = SubResource( "78" )
+theme_override_styles/disabled = SubResource( "79" )
+theme_override_styles/focus = SubResource( "80" )
+icon = ExtResource( "3" )
+metadata/_edit_lock_ = true
+
+[node name="Need" type="Label" parent="ScrollContainer/HBoxContainer/sk_lv/Skill_6"]
+layout_mode = 0
+offset_left = -12.0
+offset_top = 18.0
+offset_right = 80.0
+offset_bottom = 44.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource( "4" )
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Skill_7" type="Button" parent="ScrollContainer/HBoxContainer/sk_lv"]
+offset_left = 290.0
+offset_top = 517.0
+offset_right = 333.0
+offset_bottom = 540.0
+theme_override_styles/normal = SubResource( "76" )
+theme_override_styles/hover = SubResource( "77" )
+theme_override_styles/pressed = SubResource( "78" )
+theme_override_styles/disabled = SubResource( "79" )
+theme_override_styles/focus = SubResource( "80" )
+icon = ExtResource( "3" )
+metadata/_edit_lock_ = true
+
+[node name="Need" type="Label" parent="ScrollContainer/HBoxContainer/sk_lv/Skill_7"]
+layout_mode = 0
+offset_left = -12.0
+offset_top = 18.0
+offset_right = 80.0
+offset_bottom = 44.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource( "4" )
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Skill_8" type="Button" parent="ScrollContainer/HBoxContainer/sk_lv"]
+offset_left = 290.0
+offset_top = 591.0
+offset_right = 333.0
+offset_bottom = 614.0
+theme_override_styles/normal = SubResource( "76" )
+theme_override_styles/hover = SubResource( "77" )
+theme_override_styles/pressed = SubResource( "78" )
+theme_override_styles/disabled = SubResource( "79" )
+theme_override_styles/focus = SubResource( "80" )
+icon = ExtResource( "3" )
+metadata/_edit_lock_ = true
+
+[node name="Need" type="Label" parent="ScrollContainer/HBoxContainer/sk_lv/Skill_8"]
+layout_mode = 0
+offset_left = -12.0
+offset_top = 18.0
+offset_right = 80.0
+offset_bottom = 44.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource( "4" )
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Skill_9" type="Button" parent="ScrollContainer/HBoxContainer/sk_lv"]
+offset_left = 290.0
+offset_top = 661.0
+offset_right = 333.0
+offset_bottom = 684.0
+theme_override_styles/normal = SubResource( "76" )
+theme_override_styles/hover = SubResource( "77" )
+theme_override_styles/pressed = SubResource( "78" )
+theme_override_styles/disabled = SubResource( "79" )
+theme_override_styles/focus = SubResource( "80" )
+icon = ExtResource( "3" )
+metadata/_edit_lock_ = true
+
+[node name="Need" type="Label" parent="ScrollContainer/HBoxContainer/sk_lv/Skill_9"]
+layout_mode = 0
+offset_left = -12.0
+offset_top = 18.0
+offset_right = 80.0
+offset_bottom = 44.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource( "4" )
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Skill_10" type="Button" parent="ScrollContainer/HBoxContainer/sk_lv"]
+offset_left = 290.0
+offset_top = 732.0
+offset_right = 333.0
+offset_bottom = 755.0
+theme_override_styles/normal = SubResource( "76" )
+theme_override_styles/hover = SubResource( "77" )
+theme_override_styles/pressed = SubResource( "78" )
+theme_override_styles/disabled = SubResource( "79" )
+theme_override_styles/focus = SubResource( "80" )
+icon = ExtResource( "3" )
+metadata/_edit_lock_ = true
+
+[node name="Need" type="Label" parent="ScrollContainer/HBoxContainer/sk_lv/Skill_10"]
+layout_mode = 0
+offset_left = -12.0
+offset_top = 18.0
+offset_right = 80.0
+offset_bottom = 44.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource( "4" )
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="sk_le" type="Node2D" parent="ScrollContainer/HBoxContainer"]
+position = Vector2(-8, 2)
+
+[node name="skill_level" type="Label" parent="ScrollContainer/HBoxContainer/sk_le"]
+offset_left = 389.0
+offset_top = -4.0
+offset_right = 489.0
+offset_bottom = 32.0
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource( "2" )
+theme_override_font_sizes/font_size = 25
+text = "技能等级"
+metadata/_edit_lock_ = true
+
+[node name="sk_1" type="Label" parent="ScrollContainer/HBoxContainer/sk_le"]
+offset_left = 385.0
+offset_top = 55.0
+offset_right = 485.0
+offset_bottom = 93.0
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource( "2" )
+theme_override_font_sizes/font_size = 25
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="sk_2" type="Label" parent="ScrollContainer/HBoxContainer/sk_le"]
+offset_left = 385.0
+offset_top = 130.0
+offset_right = 485.0
+offset_bottom = 168.0
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource( "2" )
+theme_override_font_sizes/font_size = 25
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="sk_3" type="Label" parent="ScrollContainer/HBoxContainer/sk_le"]
+offset_left = 385.0
+offset_top = 205.0
+offset_right = 485.0
+offset_bottom = 243.0
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource( "2" )
+theme_override_font_sizes/font_size = 25
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="sk_4" type="Label" parent="ScrollContainer/HBoxContainer/sk_le"]
+offset_left = 385.0
+offset_top = 280.0
+offset_right = 485.0
+offset_bottom = 318.0
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource( "2" )
+theme_override_font_sizes/font_size = 25
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="sk_5" type="Label" parent="ScrollContainer/HBoxContainer/sk_le"]
+offset_left = 385.0
+offset_top = 355.0
+offset_right = 485.0
+offset_bottom = 393.0
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource( "2" )
+theme_override_font_sizes/font_size = 25
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="sk_6" type="Label" parent="ScrollContainer/HBoxContainer/sk_le"]
+offset_left = 385.0
+offset_top = 430.0
+offset_right = 485.0
+offset_bottom = 468.0
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource( "2" )
+theme_override_font_sizes/font_size = 25
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="sk_7" type="Label" parent="ScrollContainer/HBoxContainer/sk_le"]
+offset_left = 385.0
+offset_top = 505.0
+offset_right = 485.0
+offset_bottom = 543.0
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource( "2" )
+theme_override_font_sizes/font_size = 25
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="sk_8" type="Label" parent="ScrollContainer/HBoxContainer/sk_le"]
+offset_left = 385.0
+offset_top = 580.0
+offset_right = 485.0
+offset_bottom = 618.0
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource( "2" )
+theme_override_font_sizes/font_size = 25
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="sk_9" type="Label" parent="ScrollContainer/HBoxContainer/sk_le"]
+offset_left = 385.0
+offset_top = 655.0
+offset_right = 485.0
+offset_bottom = 693.0
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource( "2" )
+theme_override_font_sizes/font_size = 25
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="sk_10" type="Label" parent="ScrollContainer/HBoxContainer/sk_le"]
+offset_left = 385.0
+offset_top = 730.0
+offset_right = 485.0
+offset_bottom = 768.0
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource( "2" )
+theme_override_font_sizes/font_size = 25
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="sk_ms" type="Node2D" parent="ScrollContainer/HBoxContainer"]
+
+[node name="skill_ms" type="Label" parent="ScrollContainer/HBoxContainer/sk_ms"]
+offset_left = 486.0
+offset_top = -4.0
+offset_right = 759.0
+offset_bottom = 32.0
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource( "2" )
+theme_override_font_sizes/font_size = 25
+text = "技能描述"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="s_1" type="Label" parent="ScrollContainer/HBoxContainer/sk_ms"]
+offset_left = 499.0
+offset_top = 32.0
+offset_right = 756.0
+offset_bottom = 123.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource( "2" )
+theme_override_font_sizes/font_size = 15
+vertical_alignment = 1
+autowrap_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="s_2" type="Label" parent="ScrollContainer/HBoxContainer/sk_ms"]
+offset_left = 499.0
+offset_top = 103.0
+offset_right = 756.0
+offset_bottom = 194.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource( "2" )
+theme_override_font_sizes/font_size = 15
+vertical_alignment = 1
+autowrap_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="s_3" type="Label" parent="ScrollContainer/HBoxContainer/sk_ms"]
+offset_left = 499.0
+offset_top = 179.0
+offset_right = 756.0
+offset_bottom = 271.0
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource( "2" )
+theme_override_font_sizes/font_size = 15
+vertical_alignment = 1
+autowrap_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="s_4" type="Label" parent="ScrollContainer/HBoxContainer/sk_ms"]
+offset_left = 499.0
+offset_top = 280.0
+offset_right = 756.0
+offset_bottom = 326.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource( "2" )
+theme_override_font_sizes/font_size = 15
+vertical_alignment = 1
+autowrap_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="s_5" type="Label" parent="ScrollContainer/HBoxContainer/sk_ms"]
+offset_left = 499.0
+offset_top = 348.0
+offset_right = 756.0
+offset_bottom = 394.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource( "2" )
+theme_override_font_sizes/font_size = 15
+vertical_alignment = 1
+autowrap_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="s_6" type="Label" parent="ScrollContainer/HBoxContainer/sk_ms"]
+offset_left = 499.0
+offset_top = 399.0
+offset_right = 756.0
+offset_bottom = 490.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource( "2" )
+theme_override_font_sizes/font_size = 15
+vertical_alignment = 1
+autowrap_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="s_7" type="Label" parent="ScrollContainer/HBoxContainer/sk_ms"]
+offset_left = 499.0
+offset_top = 470.0
+offset_right = 756.0
+offset_bottom = 561.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource( "2" )
+theme_override_font_sizes/font_size = 15
+vertical_alignment = 1
+autowrap_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="s_8" type="Label" parent="ScrollContainer/HBoxContainer/sk_ms"]
+offset_left = 499.0
+offset_top = 546.0
+offset_right = 756.0
+offset_bottom = 638.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource( "2" )
+theme_override_font_sizes/font_size = 15
+vertical_alignment = 1
+autowrap_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="s_9" type="Label" parent="ScrollContainer/HBoxContainer/sk_ms"]
+offset_left = 499.0
+offset_top = 647.0
+offset_right = 756.0
+offset_bottom = 693.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource( "2" )
+theme_override_font_sizes/font_size = 15
+vertical_alignment = 1
+autowrap_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="s_10" type="Label" parent="ScrollContainer/HBoxContainer/sk_ms"]
+offset_left = 499.0
+offset_top = 715.0
+offset_right = 756.0
+offset_bottom = 784.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource( "2" )
+theme_override_font_sizes/font_size = 15
+vertical_alignment = 1
+autowrap_mode = 1
+metadata/_edit_lock_ = true
+
+[connection signal="mouse_entered" from="ScrollContainer/HBoxContainer/sk_pi/ski_1" to="." method="_on_ski_1_mouse_entered" flags=18]
+[connection signal="mouse_exited" from="ScrollContainer/HBoxContainer/sk_pi/ski_1" to="." method="_on_ski_1_mouse_exited" flags=18]
+[connection signal="pressed" from="ScrollContainer/HBoxContainer/sk_pi/ski_1" to="." method="_on_ski_1_pressed" flags=18]
+[connection signal="mouse_entered" from="ScrollContainer/HBoxContainer/sk_pi/ski_2" to="." method="_on_ski_2_mouse_entered" flags=18]
+[connection signal="mouse_exited" from="ScrollContainer/HBoxContainer/sk_pi/ski_2" to="." method="_on_ski_2_mouse_exited" flags=18]
+[connection signal="pressed" from="ScrollContainer/HBoxContainer/sk_pi/ski_2" to="." method="_on_ski_2_pressed" flags=18]
+[connection signal="mouse_entered" from="ScrollContainer/HBoxContainer/sk_pi/ski_3" to="." method="_on_ski_3_mouse_entered" flags=18]
+[connection signal="mouse_exited" from="ScrollContainer/HBoxContainer/sk_pi/ski_3" to="." method="_on_ski_3_mouse_exited" flags=18]
+[connection signal="pressed" from="ScrollContainer/HBoxContainer/sk_pi/ski_3" to="." method="_on_ski_3_pressed" flags=18]
+[connection signal="mouse_entered" from="ScrollContainer/HBoxContainer/sk_pi/ski_4" to="." method="_on_ski_4_mouse_entered" flags=18]
+[connection signal="mouse_exited" from="ScrollContainer/HBoxContainer/sk_pi/ski_4" to="." method="_on_ski_4_mouse_exited" flags=18]
+[connection signal="pressed" from="ScrollContainer/HBoxContainer/sk_pi/ski_4" to="." method="_on_ski_4_pressed" flags=18]
+[connection signal="mouse_entered" from="ScrollContainer/HBoxContainer/sk_pi/ski_5" to="." method="_on_ski_5_mouse_entered" flags=18]
+[connection signal="mouse_exited" from="ScrollContainer/HBoxContainer/sk_pi/ski_5" to="." method="_on_ski_5_mouse_exited" flags=18]
+[connection signal="pressed" from="ScrollContainer/HBoxContainer/sk_pi/ski_5" to="." method="_on_ski_5_pressed" flags=18]
+[connection signal="mouse_entered" from="ScrollContainer/HBoxContainer/sk_pi/ski_6" to="." method="_on_ski_6_mouse_entered" flags=18]
+[connection signal="mouse_exited" from="ScrollContainer/HBoxContainer/sk_pi/ski_6" to="." method="_on_ski_6_mouse_exited" flags=18]
+[connection signal="pressed" from="ScrollContainer/HBoxContainer/sk_pi/ski_6" to="." method="_on_ski_6_pressed" flags=18]
+[connection signal="mouse_entered" from="ScrollContainer/HBoxContainer/sk_pi/ski_7" to="." method="_on_ski_7_mouse_entered" flags=18]
+[connection signal="mouse_exited" from="ScrollContainer/HBoxContainer/sk_pi/ski_7" to="." method="_on_ski_7_mouse_exited" flags=18]
+[connection signal="pressed" from="ScrollContainer/HBoxContainer/sk_pi/ski_7" to="." method="_on_ski_7_pressed" flags=18]
+[connection signal="mouse_entered" from="ScrollContainer/HBoxContainer/sk_pi/ski_8" to="." method="_on_ski_8_mouse_entered" flags=18]
+[connection signal="mouse_exited" from="ScrollContainer/HBoxContainer/sk_pi/ski_8" to="." method="_on_ski_8_mouse_exited" flags=18]
+[connection signal="pressed" from="ScrollContainer/HBoxContainer/sk_pi/ski_8" to="." method="_on_ski_8_pressed" flags=18]
+[connection signal="mouse_entered" from="ScrollContainer/HBoxContainer/sk_pi/ski_9" to="." method="_on_ski_9_mouse_entered" flags=18]
+[connection signal="mouse_exited" from="ScrollContainer/HBoxContainer/sk_pi/ski_9" to="." method="_on_ski_9_mouse_exited" flags=18]
+[connection signal="pressed" from="ScrollContainer/HBoxContainer/sk_pi/ski_9" to="." method="_on_ski_9_pressed" flags=18]
+[connection signal="pressed" from="ScrollContainer/HBoxContainer/sk_pi/ski_10" to="." method="_on_ski_10_pressed" flags=18]
+[connection signal="pressed" from="ScrollContainer/HBoxContainer/sk_lv/Skill_1" to="." method="_on_skill_1_pressed" flags=18]
+[connection signal="pressed" from="ScrollContainer/HBoxContainer/sk_lv/Skill_2" to="." method="_on_skill_2_pressed" flags=18]
+[connection signal="pressed" from="ScrollContainer/HBoxContainer/sk_lv/Skill_3" to="." method="_on_skill_3_pressed" flags=18]
+[connection signal="pressed" from="ScrollContainer/HBoxContainer/sk_lv/Skill_4" to="." method="_on_skill_4_pressed" flags=18]
+[connection signal="pressed" from="ScrollContainer/HBoxContainer/sk_lv/Skill_5" to="." method="_on_skill_5_pressed" flags=18]
+[connection signal="pressed" from="ScrollContainer/HBoxContainer/sk_lv/Skill_6" to="." method="_on_skill_6_pressed" flags=18]
+[connection signal="pressed" from="ScrollContainer/HBoxContainer/sk_lv/Skill_7" to="." method="_on_skill_7_pressed" flags=18]
+[connection signal="pressed" from="ScrollContainer/HBoxContainer/sk_lv/Skill_8" to="." method="_on_skill_8_pressed" flags=18]
+[connection signal="pressed" from="ScrollContainer/HBoxContainer/sk_lv/Skill_9" to="." method="_on_skill_9_pressed" flags=18]
+[connection signal="pressed" from="ScrollContainer/HBoxContainer/sk_lv/Skill_10" to="." method="_on_skill_10_pressed" flags=18]

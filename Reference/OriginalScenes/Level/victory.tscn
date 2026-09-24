@@ -1,0 +1,415 @@
+[gd_scene load_steps=17 format=3]
+
+[ext_resource type="Script" path="res://Script/Level/victory.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://b1iyk4m7ycqle" path="res://Art/Level/Settlement/623.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://c0aujcg23u0a7" path="res://Art/Level/Settlement/630.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://dxmox1j66r44e" path="res://Art/Level/Settlement/632.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://cvxyu20yu5w8d" path="res://Art/Level/Settlement/457.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://c306kqoq6dm7h" path="res://Art/Level/Settlement/459.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://chgx82gl3wpto" path="res://Art/Level/Settlement/637.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://d0nmtp5og8lir" path="res://Art/Level/Settlement/436.png" id="8"]
+[ext_resource type="FontFile" uid="uid://bicgw4numqquw" path="res://Font/HYZhuZiMeiXinTiW.ttf" id="9"]
+
+[sub_resource type="Animation" id="1"]
+resource_name = "Show"
+length = 1.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameUseTime:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1400, 178), Vector2(1400, 178), Vector2(560, 178)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameUseTime2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1400, 224), Vector2(1400, 224), Vector2(560, 224)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GameUseTime3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1400, 271), Vector2(1400, 271), Vector2(560, 271)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PlayerLastHp:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1400, 318), Vector2(1400, 318), Vector2(560, 318)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MostLj:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1400, 364), Vector2(1400, 364), Vector2(560, 364)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MoreInformaition:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("MoreInformaition:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("MyGradesTitle:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2.6, 2.6), Vector2(1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("MyGradesTitle:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("victory:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2.6, 2.6), Vector2(1, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("victory:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("return_map:modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(1, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("return_map:disabled")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Rechallenge:disabled")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Rechallenge:modulate")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(1, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/15/type = "method"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath(".")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(1.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"ADDpj"
+}]
+}
+script = null
+
+[sub_resource type="AnimationLibrary" id="2"]
+_data = {
+"Show": SubResource( "1" )
+}
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="3"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="4"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="5"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="6"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="7"]
+script = null
+
+[node name="victory" type="Node2D"]
+process_mode = 3
+position = Vector2(-1, 4)
+script = ExtResource( "1" )
+metadata/_edit_lock_ = true
+
+[node name="bg" type="Sprite2D" parent="."]
+position = Vector2(469, 291)
+texture = ExtResource( "2" )
+metadata/_edit_lock_ = true
+
+[node name="return_map" type="TextureButton" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = 309.0
+offset_top = 386.0
+offset_right = 469.0
+offset_bottom = 445.0
+disabled = true
+texture_normal = ExtResource( "3" )
+texture_pressed = ExtResource( "4" )
+texture_hover = ExtResource( "4" )
+metadata/_edit_lock_ = true
+
+[node name="Rechallenge" type="TextureButton" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = 159.0
+offset_top = 387.0
+offset_right = 320.0
+offset_bottom = 447.0
+disabled = true
+texture_normal = ExtResource( "5" )
+texture_pressed = ExtResource( "5" )
+texture_hover = ExtResource( "6" )
+texture_disabled = ExtResource( "5" )
+metadata/_edit_lock_ = true
+
+[node name="victory" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(272, 269)
+scale = Vector2(2.6, 2.6)
+texture = ExtResource( "7" )
+metadata/_edit_lock_ = true
+
+[node name="MyGradesTitle" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(707, 132)
+scale = Vector2(2.6, 2.6)
+texture = ExtResource( "8" )
+metadata/_edit_lock_ = true
+
+[node name="GameUseTime" type="ColorRect" parent="."]
+offset_left = 1400.0
+offset_top = 178.0
+offset_right = 1742.0
+offset_bottom = 218.0
+color = Color(0, 0.454902, 0, 0.509804)
+metadata/_edit_lock_ = true
+
+[node name="BeginTime" type="Label" parent="GameUseTime"]
+layout_mode = 0
+offset_right = 137.0
+offset_bottom = 39.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource( "9" )
+theme_override_font_sizes/font_size = 18
+text = "开始时间："
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="GameUseTime2" type="ColorRect" parent="."]
+offset_left = 1400.0
+offset_top = 224.0
+offset_right = 1743.0
+offset_bottom = 264.0
+color = Color(1, 0, 0, 0.509804)
+metadata/_edit_lock_ = true
+
+[node name="EndTime" type="Label" parent="GameUseTime2"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 138.0
+offset_bottom = 40.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource( "9" )
+theme_override_font_sizes/font_size = 18
+text = "结束时间："
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="GameUseTime3" type="ColorRect" parent="."]
+offset_left = 1400.0
+offset_top = 271.0
+offset_right = 1742.0
+offset_bottom = 311.0
+color = Color(1, 0.454902, 0, 0.509804)
+metadata/_edit_lock_ = true
+
+[node name="UseTIME" type="Label" parent="GameUseTime3"]
+layout_mode = 0
+offset_right = 137.0
+offset_bottom = 39.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource( "9" )
+theme_override_font_sizes/font_size = 18
+text = "过关用时："
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="PlayerLastHp" type="ColorRect" parent="."]
+offset_left = 1400.0
+offset_top = 318.0
+offset_right = 1742.0
+offset_bottom = 358.0
+color = Color(0, 0.172549, 1, 0.509804)
+metadata/_edit_lock_ = true
+
+[node name="Hp_text" type="Label" parent="PlayerLastHp"]
+layout_mode = 0
+offset_right = 137.0
+offset_bottom = 39.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource( "9" )
+theme_override_font_sizes/font_size = 18
+text = "剩余状态："
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="MostLj" type="ColorRect" parent="."]
+offset_left = 1400.0
+offset_top = 364.0
+offset_right = 1742.0
+offset_bottom = 404.0
+color = Color(1, 0.172549, 1, 0.509804)
+metadata/_edit_lock_ = true
+
+[node name="MostLj_text" type="Label" parent="MostLj"]
+layout_mode = 0
+offset_right = 137.0
+offset_bottom = 39.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource( "9" )
+theme_override_font_sizes/font_size = 18
+text = "最高连击："
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="GradesSHow" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource( "2" )
+}
+
+[node name="MoreInformaition" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = 561.0
+offset_top = 415.0
+offset_right = 901.0
+offset_bottom = 454.0
+theme_override_colors/font_color = Color(0.933333, 0.505882, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.933333, 0.505882, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.933333, 0.505882, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource( "9" )
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource( "3" )
+theme_override_styles/hover = SubResource( "4" )
+theme_override_styles/pressed = SubResource( "5" )
+theme_override_styles/disabled = SubResource( "6" )
+theme_override_styles/focus = SubResource( "7" )
+disabled = true
+text = "更多信息"
+metadata/_edit_lock_ = true
+
+[connection signal="pressed" from="return_map" to="." method="_on_return_map_pressed" flags=18]
+[connection signal="pressed" from="Rechallenge" to="." method="_on_rechallenge_pressed" flags=18]
+[connection signal="pressed" from="MoreInformaition" to="." method="_on_more_informaition_pressed" flags=18]

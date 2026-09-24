@@ -1,0 +1,67 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="PackedScene" uid="uid://bp5dr3h8j1x2w" path="res://Scene/Base/BaseThroughLevel.tscn" id="1"]
+[ext_resource type="Script" path="res://Script/Level/Level_dtwd.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://10itpfvp78t8" path="res://Art/Level/Game3Level/Level_Hide/dtwdbg.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://4xqig54k7gxb" path="res://Art/Level/Game3Level/Level_Hide/dtwdfloor.png" id="4"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(9263, 103)
+script = null
+
+[sub_resource type="RectangleShape2D" id="2"]
+size = Vector2(3530, 1058)
+script = null
+
+[sub_resource type="RectangleShape2D" id="3"]
+size = Vector2(90, 1275.5)
+script = null
+
+[sub_resource type="RectangleShape2D" id="4"]
+size = Vector2(1232, 2416.75)
+script = null
+
+[sub_resource type="RectangleShape2D" id="5"]
+size = Vector2(781.5, 1420)
+script = null
+
+[node name="Level_dtwd" instance=ExtResource( "1" )]
+script = ExtResource( "2" )
+
+[node name="thb" parent="wall" index="1"]
+position = Vector2(4626.5, -747.5)
+shape = SubResource( "1" )
+
+[node name="floor" type="CollisionShape2D" parent="wall" index="2"]
+position = Vector2(1764, 925)
+shape = SubResource( "2" )
+metadata/_edit_lock_ = true
+
+[node name="stop1" type="CollisionShape2D" parent="wall" index="3"]
+position = Vector2(1038, -158.25)
+shape = SubResource( "3" )
+metadata/_edit_lock_ = true
+
+[node name="stop2" type="CollisionShape2D" parent="wall" index="4"]
+position = Vector2(2461, 410.625)
+shape = SubResource( "4" )
+metadata/_edit_lock_ = true
+
+[node name="stop5" type="CollisionShape2D" parent="wall" index="5"]
+position = Vector2(692, -258)
+shape = SubResource( "5" )
+disabled = true
+
+[node name="Dtwdbg" type="Sprite2D" parent="BackGround/floor_2" index="0"]
+position = Vector2(941, 1)
+texture = ExtResource( "3" )
+metadata/_edit_lock_ = true
+
+[node name="Dtwdfloor" type="Sprite2D" parent="BackGround/floor_2" index="1"]
+position = Vector2(948, 545)
+texture = ExtResource( "4" )
+metadata/_edit_lock_ = true
+
+[node name="exit" parent="." index="10"]
+position = Vector2(1482, 328)
+metadata/_edit_lock_ = true
