@@ -1,625 +1,896 @@
-[gd_scene load_steps=182 format=3]
+[gd_scene format=3 uid="uid://cbtmnmvr3j2wr"]
 
-[ext_resource type="Texture2D" path="res://Assets/Art/HeroPicture/Role1AllEquipment/Role_1_Body_Empty.png" id="9"]
-[ext_resource type="Texture2D" path="res://Assets/Art/HeroPicture/Role1AllEquipment/Role_1_Eq_Empty.png" id="10"]
-[ext_resource type="Texture2D" path="res://Assets/Art/HeroPicture/Role1SpecialEffect/HYJJround.png" id="11"]
-[ext_resource type="Texture2D" path="res://Assets/Art/HeroPicture/RoleDeath.png" id="12"]
-[ext_resource type="Texture2D" path="res://Assets/Art/HeroPicture/Role1SpecialEffect/Role1Hit1.png" id="13"]
-[ext_resource type="Texture2D" path="res://Assets/Art/HeroPicture/Role1SpecialEffect/Role1Hit2.png" id="14"]
-[ext_resource type="Texture2D" path="res://Assets/Art/HeroPicture/Role1SpecialEffect/Role1Hit3.png" id="15"]
-[ext_resource type="Texture2D" path="res://Assets/Art/HeroPicture/Role1SpecialEffect/Role1Hit4.png" id="16"]
-[ext_resource type="Texture2D" path="res://Assets/Art/HeroPicture/Role1SpecialEffect/Role1HYJJEye.png" id="17"]
-[ext_resource type="Texture2D" path="res://Assets/Art/HeroPicture/Role1SpecialEffect/Role1hytj.png" id="18"]
-[ext_resource type="Texture2D" path="res://Assets/Art/HeroPicture/Role1SpecialEffect/JDY_1.png" id="19"]
-[ext_resource type="Texture2D" path="res://Assets/Art/HeroPicture/Role1SpecialEffect/JDY_2.png" id="20"]
-[ext_resource type="Texture2D" path="res://Assets/Art/HeroPicture/Role1SpecialEffect/Role1LYFB.png" id="21"]
-[ext_resource type="Texture2D" path="res://Assets/Art/HeroPicture/Role1SpecialEffect/Role1lys.png" id="22"]
-[ext_resource type="Texture2D" path="res://Assets/Art/HeroPicture/Role1SpecialEffect/Role1SLZ.png" id="23"]
-[ext_resource type="Texture2D" path="res://Assets/Art/HeroPicture/Role1SpecialEffect/Role1ZZ_1.png" id="24"]
-[ext_resource type="Texture2D" path="res://Assets/Art/HeroPicture/Role1SpecialEffect/Role1zz.png" id="25"]
+[ext_resource type="Script" uid="uid://bkmtytacgctxd" path="res://Scripts/Combat/AttackStep.cs" id="2_ghfw7"]
+[ext_resource type="Script" uid="uid://d4daj54a2ec00" path="res://Scripts/Combat/SkillDefinition.cs" id="3_6johy"]
+[ext_resource type="Script" uid="uid://c76o6v4o8ovjr" path="res://Scripts/Combat/HitDefinition.cs" id="3_8d0aw"]
+[ext_resource type="Script" path="res://Scripts/Combat/ActionMotion.cs" id="motion"]
+[ext_resource type="Texture2D" uid="uid://dwk38ggu3wlb5" path="res://Assets/Art/HeroPicture/Role1AllEquipment/Role_1_Body_Empty.png" id="9"]
+[ext_resource type="Texture2D" uid="uid://be1t8pqvj3pcy" path="res://Assets/Art/HeroPicture/Role1AllEquipment/Role_1_Eq_Empty.png" id="10"]
+[ext_resource type="Texture2D" uid="uid://bh35qhtpw26s4" path="res://Assets/Art/HeroPicture/Role1SpecialEffect/HYJJround.png" id="11"]
+[ext_resource type="Texture2D" uid="uid://hu16hww3bcj1" path="res://Assets/Art/HeroPicture/RoleDeath.png" id="12"]
+[ext_resource type="Texture2D" uid="uid://d0svwrpraegj0" path="res://Assets/Art/HeroPicture/Role1SpecialEffect/Role1Hit1.png" id="13"]
+[ext_resource type="Texture2D" uid="uid://estyhheftsbx" path="res://Assets/Art/HeroPicture/Role1SpecialEffect/Role1Hit2.png" id="14"]
+[ext_resource type="Texture2D" uid="uid://bjw5v4qbq0re0" path="res://Assets/Art/HeroPicture/Role1SpecialEffect/Role1Hit3.png" id="15"]
+[ext_resource type="Texture2D" uid="uid://1kis7ykg7p1e" path="res://Assets/Art/HeroPicture/Role1SpecialEffect/Role1Hit4.png" id="16"]
+[ext_resource type="Texture2D" uid="uid://cy64xerjvj6qr" path="res://Assets/Art/HeroPicture/Role1SpecialEffect/Role1HYJJEye.png" id="17"]
+[ext_resource type="Texture2D" uid="uid://ct5tnks4vhhur" path="res://Assets/Art/HeroPicture/Role1SpecialEffect/Role1hytj.png" id="18"]
+[ext_resource type="Texture2D" uid="uid://j0crupatmh1e" path="res://Assets/Art/HeroPicture/Role1SpecialEffect/JDY_1.png" id="19"]
+[ext_resource type="Texture2D" uid="uid://dwf6bip4s3qer" path="res://Assets/Art/HeroPicture/Role1SpecialEffect/JDY_2.png" id="20"]
+[ext_resource type="Texture2D" uid="uid://ch8bkd26amro0" path="res://Assets/Art/HeroPicture/Role1SpecialEffect/Role1LYFB.png" id="21"]
+[ext_resource type="Texture2D" uid="uid://5552ttf02gbw" path="res://Assets/Art/HeroPicture/Role1SpecialEffect/Role1lys.png" id="22"]
+[ext_resource type="Texture2D" uid="uid://bam7e1ln5s3j8" path="res://Assets/Art/HeroPicture/Role1SpecialEffect/Role1SLZ.png" id="23"]
+[ext_resource type="Texture2D" uid="uid://debj0k0qitjyv" path="res://Assets/Art/HeroPicture/Role1SpecialEffect/Role1ZZ_1.png" id="24"]
+[ext_resource type="Texture2D" uid="uid://wtn1k61tquhi" path="res://Assets/Art/HeroPicture/Role1SpecialEffect/Role1zz.png" id="25"]
+[ext_resource type="Script" uid="uid://dggdqdsybl6be" path="res://Scripts/Actors/Player.cs" id="actor"]
+[ext_resource type="Script" uid="uid://dk4pw4it2tps" path="res://Scripts/Combat/HitBox.cs" id="hitbox"]
+[ext_resource type="Script" uid="uid://ccahdwf0cyxog" path="res://Scripts/Combat/HurtBox.cs" id="hurtbox"]
 
-[ext_resource type="Script" path="res://Scripts/Actors/Player.cs" id="actor"]
-[ext_resource type="Script" path="res://Scripts/Combat/HitBox.cs" id="hitbox"]
-[ext_resource type="Script" path="res://Scripts/Combat/HurtBox.cs" id="hurtbox"]
-[ext_resource type="Resource" path="res://Content/PlayerHit.tres" id="hit"]
+[sub_resource type="Resource" id="motion_jdy"]
+script = ExtResource("motion")
+Mode = 2
+Speed = 1000.0
+
+[sub_resource type="Resource" id="motion_lyfb_air"]
+script = ExtResource("motion")
+Mode = 1
+
+[sub_resource type="Resource" id="motion_lys"]
+script = ExtResource("motion")
+Mode = 2
+Speed = 1000.0
+
+[sub_resource type="Resource" id="motion_qsez"]
+script = ExtResource("motion")
+Mode = 2
+Speed = 1000.0
+
+[sub_resource type="Resource" id="motion_slz"]
+script = ExtResource("motion")
+Mode = 1
+
+[sub_resource type="Resource" id="motion_hit1"]
+script = ExtResource("motion")
+Mode = 1
+
+[sub_resource type="Resource" id="Resource_vicpa"]
+script = ExtResource("3_8d0aw")
+metadata/_custom_type_script = "uid://c76o6v4o8ovjr"
+
+[sub_resource type="Resource" id="Resource_eh7e4"]
+script = ExtResource("3_6johy")
+Animation = &"jdy"
+Motion = SubResource("motion_jdy")
+Hit = SubResource("Resource_vicpa")
+metadata/_custom_type_script = "uid://d4daj54a2ec00"
+
+[sub_resource type="Resource" id="Resource_eq85b"]
+script = ExtResource("3_8d0aw")
+metadata/_custom_type_script = "uid://c76o6v4o8ovjr"
+
+[sub_resource type="Resource" id="Resource_wkalc"]
+script = ExtResource("3_6johy")
+Animation = &"lyfb"
+AirMotion = SubResource("motion_lyfb_air")
+Hit = SubResource("Resource_eq85b")
+metadata/_custom_type_script = "uid://d4daj54a2ec00"
+
+[sub_resource type="Resource" id="Resource_12j5v"]
+script = ExtResource("3_8d0aw")
+metadata/_custom_type_script = "uid://c76o6v4o8ovjr"
+
+[sub_resource type="Resource" id="Resource_2pxvu"]
+script = ExtResource("3_6johy")
+Animation = &"lys"
+Motion = SubResource("motion_lys")
+Hit = SubResource("Resource_12j5v")
+metadata/_custom_type_script = "uid://d4daj54a2ec00"
+
+[sub_resource type="Resource" id="Resource_ydhup"]
+script = ExtResource("3_8d0aw")
+metadata/_custom_type_script = "uid://c76o6v4o8ovjr"
+
+[sub_resource type="Resource" id="Resource_2ra4n"]
+script = ExtResource("3_6johy")
+Animation = &"qsez"
+Motion = SubResource("motion_qsez")
+Hit = SubResource("Resource_ydhup")
+metadata/_custom_type_script = "uid://d4daj54a2ec00"
+
+[sub_resource type="Resource" id="Resource_c0wnk"]
+script = ExtResource("3_8d0aw")
+metadata/_custom_type_script = "uid://c76o6v4o8ovjr"
+
+[sub_resource type="Resource" id="Resource_odtg0"]
+script = ExtResource("3_6johy")
+Animation = &"slz"
+Motion = SubResource("motion_slz")
+Hit = SubResource("Resource_c0wnk")
+metadata/_custom_type_script = "uid://d4daj54a2ec00"
+
+[sub_resource type="Resource" id="Resource_6johy"]
+script = ExtResource("3_8d0aw")
+metadata/_custom_type_script = "uid://c76o6v4o8ovjr"
+
+[sub_resource type="Resource" id="Resource_qxnw4"]
+script = ExtResource("2_ghfw7")
+Motion = SubResource("motion_hit1")
+Hit = SubResource("Resource_6johy")
+metadata/_custom_type_script = "uid://bkmtytacgctxd"
+
+[sub_resource type="Resource" id="Resource_f5146"]
+script = ExtResource("3_8d0aw")
+metadata/_custom_type_script = "uid://c76o6v4o8ovjr"
+
+[sub_resource type="Resource" id="Resource_8wjvg"]
+script = ExtResource("2_ghfw7")
+Animation = &"hit2"
+Hit = SubResource("Resource_f5146")
+metadata/_custom_type_script = "uid://bkmtytacgctxd"
+
+[sub_resource type="Resource" id="Resource_q8oot"]
+script = ExtResource("3_8d0aw")
+metadata/_custom_type_script = "uid://c76o6v4o8ovjr"
+
+[sub_resource type="Resource" id="Resource_4g61u"]
+script = ExtResource("2_ghfw7")
+Animation = &"hit3"
+Hit = SubResource("Resource_q8oot")
+metadata/_custom_type_script = "uid://bkmtytacgctxd"
+
+[sub_resource type="Resource" id="Resource_rs7pg"]
+script = ExtResource("3_8d0aw")
+metadata/_custom_type_script = "uid://c76o6v4o8ovjr"
+
+[sub_resource type="Resource" id="Resource_hd74q"]
+script = ExtResource("2_ghfw7")
+Animation = &"hit4"
+Hit = SubResource("Resource_rs7pg")
+metadata/_custom_type_script = "uid://bkmtytacgctxd"
+
+[sub_resource type="CapsuleShape2D" id="body_shape"]
+radius = 20.0
+height = 90.0
+
+[sub_resource type="AtlasTexture" id="107"]
+atlas = ExtResource("11")
+region = Rect2(0, 0, 240, 100)
+
+[sub_resource type="AtlasTexture" id="108"]
+atlas = ExtResource("11")
+region = Rect2(240, 0, 240, 100)
+
+[sub_resource type="AtlasTexture" id="109"]
+atlas = ExtResource("11")
+region = Rect2(480, 0, 240, 100)
+
+[sub_resource type="AtlasTexture" id="110"]
+atlas = ExtResource("11")
+region = Rect2(720, 0, 240, 100)
+
+[sub_resource type="AtlasTexture" id="111"]
+atlas = ExtResource("11")
+region = Rect2(960, 0, 240, 100)
+
+[sub_resource type="AtlasTexture" id="112"]
+atlas = ExtResource("11")
+region = Rect2(0, 100, 240, 100)
+
+[sub_resource type="AtlasTexture" id="113"]
+atlas = ExtResource("11")
+region = Rect2(240, 100, 240, 100)
+
+[sub_resource type="AtlasTexture" id="114"]
+atlas = ExtResource("11")
+region = Rect2(480, 100, 240, 100)
+
+[sub_resource type="AtlasTexture" id="115"]
+atlas = ExtResource("11")
+region = Rect2(720, 100, 240, 100)
+
+[sub_resource type="AtlasTexture" id="116"]
+atlas = ExtResource("11")
+region = Rect2(960, 100, 240, 100)
+
+[sub_resource type="AtlasTexture" id="117"]
+atlas = ExtResource("11")
+region = Rect2(0, 200, 240, 100)
+
+[sub_resource type="AtlasTexture" id="118"]
+atlas = ExtResource("11")
+region = Rect2(240, 200, 240, 100)
+
+[sub_resource type="AtlasTexture" id="119"]
+atlas = ExtResource("11")
+region = Rect2(480, 200, 240, 100)
+
+[sub_resource type="AtlasTexture" id="120"]
+atlas = ExtResource("11")
+region = Rect2(720, 200, 240, 100)
+
+[sub_resource type="AtlasTexture" id="121"]
+atlas = ExtResource("11")
+region = Rect2(960, 200, 240, 100)
+
+[sub_resource type="AtlasTexture" id="122"]
+atlas = ExtResource("11")
+region = Rect2(0, 300, 240, 100)
+
+[sub_resource type="AtlasTexture" id="123"]
+atlas = ExtResource("11")
+region = Rect2(240, 300, 240, 100)
+
+[sub_resource type="AtlasTexture" id="124"]
+atlas = ExtResource("11")
+region = Rect2(480, 300, 240, 100)
+
+[sub_resource type="SpriteFrames" id="125"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": 1,
+"name": &"empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("107")
+}, {
+"duration": 1.0,
+"texture": SubResource("108")
+}, {
+"duration": 1.0,
+"texture": SubResource("109")
+}, {
+"duration": 1.0,
+"texture": SubResource("110")
+}, {
+"duration": 1.0,
+"texture": SubResource("111")
+}, {
+"duration": 1.0,
+"texture": SubResource("112")
+}, {
+"duration": 1.0,
+"texture": SubResource("113")
+}, {
+"duration": 1.0,
+"texture": SubResource("114")
+}, {
+"duration": 1.0,
+"texture": SubResource("115")
+}, {
+"duration": 1.0,
+"texture": SubResource("116")
+}, {
+"duration": 1.0,
+"texture": SubResource("117")
+}, {
+"duration": 1.0,
+"texture": SubResource("118")
+}, {
+"duration": 1.0,
+"texture": SubResource("119")
+}, {
+"duration": 1.0,
+"texture": SubResource("120")
+}, {
+"duration": 1.0,
+"texture": SubResource("121")
+}, {
+"duration": 1.0,
+"texture": SubResource("122")
+}, {
+"duration": 1.0,
+"texture": SubResource("123")
+}, {
+"duration": 1.0,
+"texture": SubResource("124")
+}],
+"loop": 0,
+"name": &"hyjj",
+"speed": 5.0
+}]
+
 [sub_resource type="AtlasTexture" id="126"]
-atlas = ExtResource( "12" )
+atlas = ExtResource("12")
 region = Rect2(0, 0, 229, 366)
 
 [sub_resource type="AtlasTexture" id="127"]
-atlas = ExtResource( "12" )
+atlas = ExtResource("12")
 region = Rect2(229, 0, 229, 366)
 
 [sub_resource type="AtlasTexture" id="128"]
-atlas = ExtResource( "12" )
+atlas = ExtResource("12")
 region = Rect2(458, 0, 229, 366)
 
 [sub_resource type="AtlasTexture" id="129"]
-atlas = ExtResource( "12" )
+atlas = ExtResource("12")
 region = Rect2(687, 0, 229, 366)
 
 [sub_resource type="AtlasTexture" id="130"]
-atlas = ExtResource( "12" )
+atlas = ExtResource("12")
 region = Rect2(916, 0, 229, 366)
 
 [sub_resource type="AtlasTexture" id="131"]
-atlas = ExtResource( "12" )
+atlas = ExtResource("12")
 region = Rect2(1145, 0, 229, 366)
 
 [sub_resource type="AtlasTexture" id="132"]
-atlas = ExtResource( "12" )
+atlas = ExtResource("12")
 region = Rect2(1374, 0, 229, 366)
 
 [sub_resource type="AtlasTexture" id="133"]
-atlas = ExtResource( "12" )
+atlas = ExtResource("12")
 region = Rect2(1603, 0, 229, 366)
 
 [sub_resource type="AtlasTexture" id="134"]
-atlas = ExtResource( "12" )
+atlas = ExtResource("12")
 region = Rect2(0, 366, 229, 366)
 
 [sub_resource type="AtlasTexture" id="135"]
-atlas = ExtResource( "12" )
+atlas = ExtResource("12")
 region = Rect2(229, 366, 229, 366)
 
 [sub_resource type="AtlasTexture" id="136"]
-atlas = ExtResource( "12" )
+atlas = ExtResource("12")
 region = Rect2(458, 366, 229, 366)
 
 [sub_resource type="AtlasTexture" id="137"]
-atlas = ExtResource( "12" )
+atlas = ExtResource("12")
 region = Rect2(687, 366, 229, 366)
 
 [sub_resource type="AtlasTexture" id="138"]
-atlas = ExtResource( "12" )
+atlas = ExtResource("12")
 region = Rect2(916, 366, 229, 366)
 
 [sub_resource type="AtlasTexture" id="139"]
-atlas = ExtResource( "12" )
+atlas = ExtResource("12")
 region = Rect2(1145, 366, 229, 366)
 
 [sub_resource type="AtlasTexture" id="140"]
-atlas = ExtResource( "12" )
+atlas = ExtResource("12")
 region = Rect2(1374, 366, 229, 366)
 
 [sub_resource type="AtlasTexture" id="141"]
-atlas = ExtResource( "12" )
+atlas = ExtResource("12")
 region = Rect2(1603, 366, 229, 366)
 
 [sub_resource type="AtlasTexture" id="142"]
-atlas = ExtResource( "12" )
+atlas = ExtResource("12")
 region = Rect2(0, 732, 229, 366)
 
 [sub_resource type="AtlasTexture" id="143"]
-atlas = ExtResource( "12" )
+atlas = ExtResource("12")
 region = Rect2(229, 732, 229, 366)
 
 [sub_resource type="AtlasTexture" id="144"]
-atlas = ExtResource( "12" )
+atlas = ExtResource("12")
 region = Rect2(458, 732, 229, 366)
 
 [sub_resource type="AtlasTexture" id="145"]
-atlas = ExtResource( "12" )
+atlas = ExtResource("12")
 region = Rect2(687, 732, 229, 366)
 
 [sub_resource type="AtlasTexture" id="146"]
-atlas = ExtResource( "12" )
+atlas = ExtResource("12")
 region = Rect2(916, 732, 229, 366)
 
 [sub_resource type="AtlasTexture" id="147"]
-atlas = ExtResource( "12" )
+atlas = ExtResource("12")
 region = Rect2(1145, 732, 229, 366)
 
 [sub_resource type="AtlasTexture" id="148"]
-atlas = ExtResource( "12" )
+atlas = ExtResource("12")
 region = Rect2(1374, 732, 229, 366)
 
 [sub_resource type="AtlasTexture" id="149"]
-atlas = ExtResource( "12" )
+atlas = ExtResource("12")
 region = Rect2(1603, 732, 229, 366)
 
 [sub_resource type="AtlasTexture" id="150"]
-atlas = ExtResource( "12" )
+atlas = ExtResource("12")
 region = Rect2(0, 1098, 229, 366)
 
 [sub_resource type="AtlasTexture" id="151"]
-atlas = ExtResource( "12" )
+atlas = ExtResource("12")
 region = Rect2(229, 1098, 229, 366)
 
 [sub_resource type="AtlasTexture" id="152"]
-atlas = ExtResource( "12" )
+atlas = ExtResource("12")
 region = Rect2(458, 1098, 229, 366)
 
 [sub_resource type="AtlasTexture" id="153"]
-atlas = ExtResource( "12" )
+atlas = ExtResource("12")
 region = Rect2(687, 1098, 229, 366)
 
 [sub_resource type="AtlasTexture" id="154"]
-atlas = ExtResource( "12" )
+atlas = ExtResource("12")
 region = Rect2(916, 1098, 229, 366)
 
 [sub_resource type="AtlasTexture" id="155"]
-atlas = ExtResource( "12" )
+atlas = ExtResource("12")
 region = Rect2(1145, 1098, 229, 366)
 
 [sub_resource type="AtlasTexture" id="156"]
-atlas = ExtResource( "12" )
+atlas = ExtResource("12")
 region = Rect2(1374, 1098, 229, 366)
 
 [sub_resource type="AtlasTexture" id="157"]
-atlas = ExtResource( "12" )
+atlas = ExtResource("12")
 region = Rect2(1603, 1098, 229, 366)
 
 [sub_resource type="AtlasTexture" id="158"]
-atlas = ExtResource( "12" )
+atlas = ExtResource("12")
 region = Rect2(0, 1464, 229, 366)
 
 [sub_resource type="AtlasTexture" id="159"]
-atlas = ExtResource( "12" )
+atlas = ExtResource("12")
 region = Rect2(229, 1464, 229, 366)
 
 [sub_resource type="AtlasTexture" id="160"]
-atlas = ExtResource( "12" )
+atlas = ExtResource("12")
 region = Rect2(458, 1464, 229, 366)
 
 [sub_resource type="AtlasTexture" id="161"]
-atlas = ExtResource( "12" )
+atlas = ExtResource("12")
 region = Rect2(687, 1464, 229, 366)
 
 [sub_resource type="AtlasTexture" id="162"]
-atlas = ExtResource( "12" )
+atlas = ExtResource("12")
 region = Rect2(916, 1464, 229, 366)
 
 [sub_resource type="AtlasTexture" id="163"]
-atlas = ExtResource( "12" )
+atlas = ExtResource("12")
 region = Rect2(1145, 1464, 229, 366)
 
 [sub_resource type="AtlasTexture" id="164"]
-atlas = ExtResource( "12" )
+atlas = ExtResource("12")
 region = Rect2(1374, 1464, 229, 366)
 
 [sub_resource type="AtlasTexture" id="165"]
-atlas = ExtResource( "12" )
+atlas = ExtResource("12")
 region = Rect2(1603, 1464, 229, 366)
 
 [sub_resource type="AtlasTexture" id="166"]
-atlas = ExtResource( "13" )
+atlas = ExtResource("13")
 region = Rect2(0, 0, 210, 206)
 
 [sub_resource type="AtlasTexture" id="167"]
-atlas = ExtResource( "13" )
+atlas = ExtResource("13")
 region = Rect2(210, 0, 210, 206)
 
 [sub_resource type="AtlasTexture" id="168"]
-atlas = ExtResource( "13" )
+atlas = ExtResource("13")
 region = Rect2(420, 0, 210, 206)
 
 [sub_resource type="AtlasTexture" id="169"]
-atlas = ExtResource( "13" )
+atlas = ExtResource("13")
 region = Rect2(630, 0, 210, 206)
 
 [sub_resource type="AtlasTexture" id="170"]
-atlas = ExtResource( "13" )
+atlas = ExtResource("13")
 region = Rect2(840, 0, 210, 206)
 
 [sub_resource type="AtlasTexture" id="171"]
-atlas = ExtResource( "14" )
+atlas = ExtResource("14")
 region = Rect2(0, 0, 159, 54)
 
 [sub_resource type="AtlasTexture" id="172"]
-atlas = ExtResource( "14" )
+atlas = ExtResource("14")
 region = Rect2(159, 0, 159, 54)
 
 [sub_resource type="AtlasTexture" id="173"]
-atlas = ExtResource( "15" )
+atlas = ExtResource("15")
 region = Rect2(0, 0, 326, 66)
 
 [sub_resource type="AtlasTexture" id="174"]
-atlas = ExtResource( "15" )
+atlas = ExtResource("15")
 region = Rect2(326, 0, 326, 66)
 
 [sub_resource type="AtlasTexture" id="175"]
-atlas = ExtResource( "15" )
+atlas = ExtResource("15")
 region = Rect2(652, 0, 326, 66)
 
 [sub_resource type="AtlasTexture" id="176"]
-atlas = ExtResource( "15" )
+atlas = ExtResource("15")
 region = Rect2(978, 0, 326, 66)
 
 [sub_resource type="AtlasTexture" id="177"]
-atlas = ExtResource( "16" )
+atlas = ExtResource("16")
 region = Rect2(0, 0, 315, 82)
 
 [sub_resource type="AtlasTexture" id="178"]
-atlas = ExtResource( "16" )
+atlas = ExtResource("16")
 region = Rect2(315, 0, 315, 82)
 
 [sub_resource type="AtlasTexture" id="179"]
-atlas = ExtResource( "17" )
+atlas = ExtResource("17")
 region = Rect2(0, 0, 47, 48)
 
 [sub_resource type="AtlasTexture" id="180"]
-atlas = ExtResource( "17" )
+atlas = ExtResource("17")
 region = Rect2(47, 0, 47, 48)
 
 [sub_resource type="AtlasTexture" id="181"]
-atlas = ExtResource( "17" )
+atlas = ExtResource("17")
 region = Rect2(94, 0, 47, 48)
 
 [sub_resource type="AtlasTexture" id="182"]
-atlas = ExtResource( "17" )
+atlas = ExtResource("17")
 region = Rect2(141, 0, 47, 48)
 
 [sub_resource type="AtlasTexture" id="183"]
-atlas = ExtResource( "17" )
+atlas = ExtResource("17")
 region = Rect2(188, 0, 47, 48)
 
 [sub_resource type="AtlasTexture" id="184"]
-atlas = ExtResource( "17" )
+atlas = ExtResource("17")
 region = Rect2(235, 0, 47, 48)
 
 [sub_resource type="AtlasTexture" id="185"]
-atlas = ExtResource( "17" )
+atlas = ExtResource("17")
 region = Rect2(282, 0, 47, 48)
 
 [sub_resource type="AtlasTexture" id="186"]
-atlas = ExtResource( "17" )
+atlas = ExtResource("17")
 region = Rect2(329, 0, 47, 48)
 
 [sub_resource type="AtlasTexture" id="187"]
-atlas = ExtResource( "17" )
+atlas = ExtResource("17")
 region = Rect2(376, 0, 47, 48)
 
 [sub_resource type="AtlasTexture" id="188"]
-atlas = ExtResource( "17" )
+atlas = ExtResource("17")
 region = Rect2(423, 0, 47, 48)
 
 [sub_resource type="AtlasTexture" id="189"]
-atlas = ExtResource( "17" )
+atlas = ExtResource("17")
 region = Rect2(470, 0, 47, 48)
 
 [sub_resource type="AtlasTexture" id="190"]
-atlas = ExtResource( "17" )
+atlas = ExtResource("17")
 region = Rect2(517, 0, 47, 48)
 
 [sub_resource type="AtlasTexture" id="191"]
-atlas = ExtResource( "17" )
+atlas = ExtResource("17")
 region = Rect2(564, 0, 47, 48)
 
 [sub_resource type="AtlasTexture" id="192"]
-atlas = ExtResource( "17" )
+atlas = ExtResource("17")
 region = Rect2(611, 0, 47, 48)
 
 [sub_resource type="AtlasTexture" id="193"]
-atlas = ExtResource( "11" )
+atlas = ExtResource("11")
 region = Rect2(0, 0, 240, 100)
 
 [sub_resource type="AtlasTexture" id="194"]
-atlas = ExtResource( "11" )
+atlas = ExtResource("11")
 region = Rect2(240, 0, 240, 100)
 
 [sub_resource type="AtlasTexture" id="195"]
-atlas = ExtResource( "11" )
+atlas = ExtResource("11")
 region = Rect2(480, 0, 240, 100)
 
 [sub_resource type="AtlasTexture" id="196"]
-atlas = ExtResource( "11" )
+atlas = ExtResource("11")
 region = Rect2(720, 0, 240, 100)
 
 [sub_resource type="AtlasTexture" id="197"]
-atlas = ExtResource( "11" )
+atlas = ExtResource("11")
 region = Rect2(960, 0, 240, 100)
 
 [sub_resource type="AtlasTexture" id="198"]
-atlas = ExtResource( "11" )
+atlas = ExtResource("11")
 region = Rect2(0, 100, 240, 100)
 
 [sub_resource type="AtlasTexture" id="199"]
-atlas = ExtResource( "11" )
+atlas = ExtResource("11")
 region = Rect2(240, 100, 240, 100)
 
 [sub_resource type="AtlasTexture" id="200"]
-atlas = ExtResource( "11" )
+atlas = ExtResource("11")
 region = Rect2(480, 100, 240, 100)
 
 [sub_resource type="AtlasTexture" id="201"]
-atlas = ExtResource( "11" )
+atlas = ExtResource("11")
 region = Rect2(720, 100, 240, 100)
 
 [sub_resource type="AtlasTexture" id="202"]
-atlas = ExtResource( "11" )
+atlas = ExtResource("11")
 region = Rect2(960, 100, 240, 100)
 
 [sub_resource type="AtlasTexture" id="203"]
-atlas = ExtResource( "11" )
+atlas = ExtResource("11")
 region = Rect2(0, 200, 240, 100)
 
 [sub_resource type="AtlasTexture" id="204"]
-atlas = ExtResource( "11" )
+atlas = ExtResource("11")
 region = Rect2(240, 200, 240, 100)
 
 [sub_resource type="AtlasTexture" id="205"]
-atlas = ExtResource( "11" )
+atlas = ExtResource("11")
 region = Rect2(480, 200, 240, 100)
 
 [sub_resource type="AtlasTexture" id="206"]
-atlas = ExtResource( "11" )
+atlas = ExtResource("11")
 region = Rect2(720, 200, 240, 100)
 
 [sub_resource type="AtlasTexture" id="207"]
-atlas = ExtResource( "11" )
+atlas = ExtResource("11")
 region = Rect2(960, 200, 240, 100)
 
 [sub_resource type="AtlasTexture" id="208"]
-atlas = ExtResource( "11" )
+atlas = ExtResource("11")
 region = Rect2(0, 300, 240, 100)
 
 [sub_resource type="AtlasTexture" id="209"]
-atlas = ExtResource( "11" )
+atlas = ExtResource("11")
 region = Rect2(240, 300, 240, 100)
 
 [sub_resource type="AtlasTexture" id="210"]
-atlas = ExtResource( "11" )
+atlas = ExtResource("11")
 region = Rect2(480, 300, 240, 100)
 
 [sub_resource type="AtlasTexture" id="211"]
-atlas = ExtResource( "11" )
+atlas = ExtResource("11")
 region = Rect2(720, 300, 240, 100)
 
 [sub_resource type="AtlasTexture" id="212"]
-atlas = ExtResource( "11" )
+atlas = ExtResource("11")
 region = Rect2(960, 300, 240, 100)
 
 [sub_resource type="AtlasTexture" id="213"]
-atlas = ExtResource( "18" )
+atlas = ExtResource("18")
 region = Rect2(0, 0, 310, 110)
 
 [sub_resource type="AtlasTexture" id="214"]
-atlas = ExtResource( "18" )
+atlas = ExtResource("18")
 region = Rect2(930, 0, 310, 110)
 
 [sub_resource type="AtlasTexture" id="215"]
-atlas = ExtResource( "18" )
+atlas = ExtResource("18")
 region = Rect2(1240, 0, 310, 110)
 
 [sub_resource type="AtlasTexture" id="216"]
-atlas = ExtResource( "18" )
+atlas = ExtResource("18")
 region = Rect2(310, 0, 310, 110)
 
 [sub_resource type="AtlasTexture" id="217"]
-atlas = ExtResource( "18" )
+atlas = ExtResource("18")
 region = Rect2(620, 0, 310, 110)
 
 [sub_resource type="AtlasTexture" id="218"]
-atlas = ExtResource( "19" )
+atlas = ExtResource("19")
 region = Rect2(0, 0, 257, 203)
 
 [sub_resource type="AtlasTexture" id="219"]
-atlas = ExtResource( "19" )
+atlas = ExtResource("19")
 region = Rect2(0, 203, 257, 203)
 
 [sub_resource type="AtlasTexture" id="220"]
-atlas = ExtResource( "19" )
+atlas = ExtResource("19")
 region = Rect2(257, 203, 257, 203)
 
 [sub_resource type="AtlasTexture" id="221"]
-atlas = ExtResource( "19" )
+atlas = ExtResource("19")
 region = Rect2(514, 203, 257, 203)
 
 [sub_resource type="AtlasTexture" id="222"]
-atlas = ExtResource( "19" )
+atlas = ExtResource("19")
 region = Rect2(257, 0, 257, 203)
 
 [sub_resource type="AtlasTexture" id="223"]
-atlas = ExtResource( "19" )
+atlas = ExtResource("19")
 region = Rect2(514, 0, 257, 203)
 
 [sub_resource type="AtlasTexture" id="224"]
-atlas = ExtResource( "19" )
+atlas = ExtResource("19")
 region = Rect2(771, 0, 257, 203)
 
 [sub_resource type="AtlasTexture" id="225"]
-atlas = ExtResource( "19" )
+atlas = ExtResource("19")
 region = Rect2(1028, 0, 257, 203)
 
 [sub_resource type="AtlasTexture" id="226"]
-atlas = ExtResource( "19" )
+atlas = ExtResource("19")
 region = Rect2(1285, 0, 257, 203)
 
 [sub_resource type="AtlasTexture" id="227"]
-atlas = ExtResource( "19" )
+atlas = ExtResource("19")
 region = Rect2(1542, 0, 257, 203)
 
 [sub_resource type="AtlasTexture" id="228"]
-atlas = ExtResource( "20" )
+atlas = ExtResource("20")
 region = Rect2(0, 0, 230, 244)
 
 [sub_resource type="AtlasTexture" id="229"]
-atlas = ExtResource( "20" )
+atlas = ExtResource("20")
 region = Rect2(1610, 0, 230, 244)
 
 [sub_resource type="AtlasTexture" id="230"]
-atlas = ExtResource( "20" )
+atlas = ExtResource("20")
 region = Rect2(0, 244, 230, 244)
 
 [sub_resource type="AtlasTexture" id="231"]
-atlas = ExtResource( "20" )
+atlas = ExtResource("20")
 region = Rect2(230, 244, 230, 244)
 
 [sub_resource type="AtlasTexture" id="232"]
-atlas = ExtResource( "20" )
+atlas = ExtResource("20")
 region = Rect2(230, 0, 230, 244)
 
 [sub_resource type="AtlasTexture" id="233"]
-atlas = ExtResource( "20" )
+atlas = ExtResource("20")
 region = Rect2(460, 0, 230, 244)
 
 [sub_resource type="AtlasTexture" id="234"]
-atlas = ExtResource( "20" )
+atlas = ExtResource("20")
 region = Rect2(690, 0, 230, 244)
 
 [sub_resource type="AtlasTexture" id="235"]
-atlas = ExtResource( "20" )
+atlas = ExtResource("20")
 region = Rect2(920, 0, 230, 244)
 
 [sub_resource type="AtlasTexture" id="236"]
-atlas = ExtResource( "20" )
+atlas = ExtResource("20")
 region = Rect2(1150, 0, 230, 244)
 
 [sub_resource type="AtlasTexture" id="237"]
-atlas = ExtResource( "20" )
+atlas = ExtResource("20")
 region = Rect2(1380, 0, 230, 244)
 
 [sub_resource type="AtlasTexture" id="238"]
-atlas = ExtResource( "21" )
+atlas = ExtResource("21")
 region = Rect2(0, 0, 389, 179)
 
 [sub_resource type="AtlasTexture" id="239"]
-atlas = ExtResource( "21" )
+atlas = ExtResource("21")
 region = Rect2(778, 0, 389, 179)
 
 [sub_resource type="AtlasTexture" id="240"]
-atlas = ExtResource( "21" )
+atlas = ExtResource("21")
 region = Rect2(1167, 0, 389, 179)
 
 [sub_resource type="AtlasTexture" id="241"]
-atlas = ExtResource( "21" )
+atlas = ExtResource("21")
 region = Rect2(1556, 0, 389, 179)
 
 [sub_resource type="AtlasTexture" id="242"]
-atlas = ExtResource( "21" )
+atlas = ExtResource("21")
 region = Rect2(0, 179, 389, 179)
 
 [sub_resource type="AtlasTexture" id="243"]
-atlas = ExtResource( "21" )
+atlas = ExtResource("21")
 region = Rect2(389, 179, 389, 179)
 
 [sub_resource type="AtlasTexture" id="244"]
-atlas = ExtResource( "21" )
+atlas = ExtResource("21")
 region = Rect2(778, 179, 389, 179)
 
 [sub_resource type="AtlasTexture" id="245"]
-atlas = ExtResource( "21" )
+atlas = ExtResource("21")
 region = Rect2(1167, 179, 389, 179)
 
 [sub_resource type="AtlasTexture" id="246"]
-atlas = ExtResource( "21" )
+atlas = ExtResource("21")
 region = Rect2(1556, 179, 389, 179)
 
 [sub_resource type="AtlasTexture" id="247"]
-atlas = ExtResource( "21" )
+atlas = ExtResource("21")
 region = Rect2(389, 0, 389, 179)
 
 [sub_resource type="AtlasTexture" id="248"]
-atlas = ExtResource( "22" )
+atlas = ExtResource("22")
 region = Rect2(0, 0, 295, 166)
 
 [sub_resource type="AtlasTexture" id="249"]
-atlas = ExtResource( "22" )
+atlas = ExtResource("22")
 region = Rect2(885, 0, 295, 166)
 
 [sub_resource type="AtlasTexture" id="250"]
-atlas = ExtResource( "22" )
+atlas = ExtResource("22")
 region = Rect2(1180, 0, 295, 166)
 
 [sub_resource type="AtlasTexture" id="251"]
-atlas = ExtResource( "22" )
+atlas = ExtResource("22")
 region = Rect2(295, 0, 295, 166)
 
 [sub_resource type="AtlasTexture" id="252"]
-atlas = ExtResource( "22" )
+atlas = ExtResource("22")
 region = Rect2(590, 0, 295, 166)
 
 [sub_resource type="AtlasTexture" id="253"]
-atlas = ExtResource( "23" )
+atlas = ExtResource("23")
 region = Rect2(0, 0, 163, 214)
 
 [sub_resource type="AtlasTexture" id="254"]
-atlas = ExtResource( "23" )
+atlas = ExtResource("23")
 region = Rect2(163, 0, 163, 214)
 
 [sub_resource type="AtlasTexture" id="255"]
-atlas = ExtResource( "23" )
+atlas = ExtResource("23")
 region = Rect2(326, 0, 163, 214)
 
 [sub_resource type="AtlasTexture" id="256"]
-atlas = ExtResource( "23" )
+atlas = ExtResource("23")
 region = Rect2(489, 0, 163, 214)
 
 [sub_resource type="AtlasTexture" id="257"]
-atlas = ExtResource( "23" )
+atlas = ExtResource("23")
 region = Rect2(652, 0, 163, 214)
 
 [sub_resource type="AtlasTexture" id="258"]
-atlas = ExtResource( "23" )
+atlas = ExtResource("23")
 region = Rect2(815, 0, 163, 214)
 
 [sub_resource type="AtlasTexture" id="259"]
-atlas = ExtResource( "24" )
+atlas = ExtResource("24")
 region = Rect2(0, 0, 300, 300)
 
 [sub_resource type="AtlasTexture" id="260"]
-atlas = ExtResource( "24" )
+atlas = ExtResource("24")
 region = Rect2(300, 0, 300, 300)
 
 [sub_resource type="AtlasTexture" id="261"]
-atlas = ExtResource( "24" )
+atlas = ExtResource("24")
 region = Rect2(600, 0, 300, 300)
 
 [sub_resource type="AtlasTexture" id="262"]
-atlas = ExtResource( "24" )
+atlas = ExtResource("24")
 region = Rect2(900, 0, 300, 300)
 
 [sub_resource type="AtlasTexture" id="263"]
-atlas = ExtResource( "24" )
+atlas = ExtResource("24")
 region = Rect2(1200, 0, 300, 300)
 
 [sub_resource type="AtlasTexture" id="264"]
-atlas = ExtResource( "24" )
+atlas = ExtResource("24")
 region = Rect2(0, 300, 300, 300)
 
 [sub_resource type="AtlasTexture" id="265"]
-atlas = ExtResource( "24" )
+atlas = ExtResource("24")
 region = Rect2(300, 300, 300, 300)
 
 [sub_resource type="AtlasTexture" id="266"]
-atlas = ExtResource( "24" )
+atlas = ExtResource("24")
 region = Rect2(600, 300, 300, 300)
 
 [sub_resource type="AtlasTexture" id="267"]
-atlas = ExtResource( "24" )
+atlas = ExtResource("24")
 region = Rect2(900, 300, 300, 300)
 
 [sub_resource type="AtlasTexture" id="268"]
-atlas = ExtResource( "24" )
+atlas = ExtResource("24")
 region = Rect2(1200, 300, 300, 300)
 
 [sub_resource type="AtlasTexture" id="269"]
-atlas = ExtResource( "24" )
+atlas = ExtResource("24")
 region = Rect2(0, 600, 300, 300)
 
 [sub_resource type="AtlasTexture" id="270"]
-atlas = ExtResource( "24" )
+atlas = ExtResource("24")
 region = Rect2(300, 600, 300, 300)
 
 [sub_resource type="AtlasTexture" id="271"]
-atlas = ExtResource( "24" )
+atlas = ExtResource("24")
 region = Rect2(600, 600, 300, 300)
 
 [sub_resource type="AtlasTexture" id="272"]
-atlas = ExtResource( "24" )
+atlas = ExtResource("24")
 region = Rect2(900, 600, 300, 300)
 
 [sub_resource type="AtlasTexture" id="273"]
-atlas = ExtResource( "24" )
+atlas = ExtResource("24")
 region = Rect2(1200, 600, 300, 300)
 
 [sub_resource type="AtlasTexture" id="274"]
-atlas = ExtResource( "25" )
+atlas = ExtResource("25")
 region = Rect2(0, 0, 215, 145)
 
 [sub_resource type="AtlasTexture" id="275"]
-atlas = ExtResource( "25" )
+atlas = ExtResource("25")
 region = Rect2(215, 0, 215, 145)
 
 [sub_resource type="SpriteFrames" id="276"]
@@ -629,540 +900,540 @@ animations = [{
 "texture": null
 }, {
 "duration": 1.0,
-"texture": SubResource( "126" )
+"texture": SubResource("126")
 }, {
 "duration": 1.0,
-"texture": SubResource( "127" )
+"texture": SubResource("127")
 }, {
 "duration": 1.0,
-"texture": SubResource( "128" )
+"texture": SubResource("128")
 }, {
 "duration": 1.0,
-"texture": SubResource( "129" )
+"texture": SubResource("129")
 }, {
 "duration": 1.0,
-"texture": SubResource( "130" )
+"texture": SubResource("130")
 }, {
 "duration": 1.0,
-"texture": SubResource( "131" )
+"texture": SubResource("131")
 }, {
 "duration": 1.0,
-"texture": SubResource( "132" )
+"texture": SubResource("132")
 }, {
 "duration": 1.0,
-"texture": SubResource( "133" )
+"texture": SubResource("133")
 }, {
 "duration": 1.0,
-"texture": SubResource( "134" )
+"texture": SubResource("134")
 }, {
 "duration": 1.0,
-"texture": SubResource( "135" )
+"texture": SubResource("135")
 }, {
 "duration": 1.0,
-"texture": SubResource( "136" )
+"texture": SubResource("136")
 }, {
 "duration": 1.0,
-"texture": SubResource( "137" )
+"texture": SubResource("137")
 }, {
 "duration": 1.0,
-"texture": SubResource( "138" )
+"texture": SubResource("138")
 }, {
 "duration": 1.0,
-"texture": SubResource( "139" )
+"texture": SubResource("139")
 }, {
 "duration": 1.0,
-"texture": SubResource( "140" )
+"texture": SubResource("140")
 }, {
 "duration": 1.0,
-"texture": SubResource( "141" )
+"texture": SubResource("141")
 }, {
 "duration": 1.0,
-"texture": SubResource( "142" )
+"texture": SubResource("142")
 }, {
 "duration": 1.0,
-"texture": SubResource( "143" )
+"texture": SubResource("143")
 }, {
 "duration": 1.0,
-"texture": SubResource( "144" )
+"texture": SubResource("144")
 }, {
 "duration": 1.0,
-"texture": SubResource( "145" )
+"texture": SubResource("145")
 }, {
 "duration": 1.0,
-"texture": SubResource( "146" )
+"texture": SubResource("146")
 }, {
 "duration": 1.0,
-"texture": SubResource( "147" )
+"texture": SubResource("147")
 }, {
 "duration": 1.0,
-"texture": SubResource( "148" )
+"texture": SubResource("148")
 }, {
 "duration": 1.0,
-"texture": SubResource( "149" )
+"texture": SubResource("149")
 }, {
 "duration": 1.0,
-"texture": SubResource( "150" )
+"texture": SubResource("150")
 }, {
 "duration": 1.0,
-"texture": SubResource( "151" )
+"texture": SubResource("151")
 }, {
 "duration": 1.0,
-"texture": SubResource( "152" )
+"texture": SubResource("152")
 }, {
 "duration": 1.0,
-"texture": SubResource( "153" )
+"texture": SubResource("153")
 }, {
 "duration": 1.0,
-"texture": SubResource( "154" )
+"texture": SubResource("154")
 }, {
 "duration": 1.0,
-"texture": SubResource( "155" )
+"texture": SubResource("155")
 }, {
 "duration": 1.0,
-"texture": SubResource( "156" )
+"texture": SubResource("156")
 }, {
 "duration": 1.0,
-"texture": SubResource( "157" )
+"texture": SubResource("157")
 }, {
 "duration": 1.0,
-"texture": SubResource( "158" )
+"texture": SubResource("158")
 }, {
 "duration": 1.0,
-"texture": SubResource( "159" )
+"texture": SubResource("159")
 }, {
 "duration": 1.0,
-"texture": SubResource( "160" )
+"texture": SubResource("160")
 }, {
 "duration": 1.0,
-"texture": SubResource( "161" )
+"texture": SubResource("161")
 }, {
 "duration": 1.0,
-"texture": SubResource( "162" )
+"texture": SubResource("162")
 }, {
 "duration": 1.0,
-"texture": SubResource( "163" )
+"texture": SubResource("163")
 }, {
 "duration": 1.0,
-"texture": SubResource( "164" )
+"texture": SubResource("164")
 }, {
 "duration": 1.0,
-"texture": SubResource( "165" )
+"texture": SubResource("165")
 }, {
 "duration": 1.0,
-"texture": SubResource( "165" )
+"texture": SubResource("165")
 }, {
 "duration": 1.0,
-"texture": SubResource( "165" )
+"texture": SubResource("165")
 }, {
 "duration": 1.0,
-"texture": SubResource( "165" )
+"texture": SubResource("165")
 }, {
 "duration": 1.0,
-"texture": SubResource( "165" )
+"texture": SubResource("165")
 }, {
 "duration": 1.0,
-"texture": SubResource( "165" )
+"texture": SubResource("165")
 }, {
 "duration": 1.0,
-"texture": SubResource( "165" )
+"texture": SubResource("165")
 }, {
 "duration": 1.0,
-"texture": SubResource( "165" )
+"texture": SubResource("165")
 }, {
 "duration": 1.0,
-"texture": SubResource( "165" )
+"texture": SubResource("165")
 }, {
 "duration": 1.0,
-"texture": SubResource( "165" )
+"texture": SubResource("165")
 }, {
 "duration": 1.0,
-"texture": SubResource( "165" )
+"texture": SubResource("165")
 }, {
 "duration": 1.0,
-"texture": SubResource( "165" )
+"texture": SubResource("165")
 }],
-"loop": false,
+"loop": 0,
 "name": &"death",
 "speed": 25.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource( "166" )
+"texture": SubResource("166")
 }, {
 "duration": 1.0,
-"texture": SubResource( "167" )
+"texture": SubResource("167")
 }, {
 "duration": 1.0,
-"texture": SubResource( "168" )
+"texture": SubResource("168")
 }, {
 "duration": 1.0,
-"texture": SubResource( "169" )
+"texture": SubResource("169")
 }, {
 "duration": 1.0,
-"texture": SubResource( "170" )
+"texture": SubResource("170")
 }, {
 "duration": 1.0,
 "texture": null
 }],
-"loop": false,
+"loop": 0,
 "name": &"hit1",
 "speed": 25.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource( "171" )
+"texture": SubResource("171")
 }, {
 "duration": 1.0,
-"texture": SubResource( "171" )
+"texture": SubResource("171")
 }, {
 "duration": 1.0,
-"texture": SubResource( "171" )
+"texture": SubResource("171")
 }, {
 "duration": 1.0,
-"texture": SubResource( "172" )
+"texture": SubResource("172")
 }, {
 "duration": 1.0,
-"texture": SubResource( "172" )
+"texture": SubResource("172")
 }, {
 "duration": 1.0,
-"texture": SubResource( "172" )
+"texture": SubResource("172")
 }, {
 "duration": 1.0,
 "texture": null
 }],
-"loop": false,
+"loop": 0,
 "name": &"hit2",
 "speed": 25.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource( "173" )
+"texture": SubResource("173")
 }, {
 "duration": 1.0,
-"texture": SubResource( "174" )
+"texture": SubResource("174")
 }, {
 "duration": 1.0,
-"texture": SubResource( "175" )
+"texture": SubResource("175")
 }, {
 "duration": 1.0,
-"texture": SubResource( "176" )
+"texture": SubResource("176")
 }, {
 "duration": 1.0,
-"texture": SubResource( "173" )
+"texture": SubResource("173")
 }, {
 "duration": 1.0,
 "texture": null
 }],
-"loop": false,
+"loop": 0,
 "name": &"hit3",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource( "177" )
+"texture": SubResource("177")
 }, {
 "duration": 1.0,
-"texture": SubResource( "178" )
+"texture": SubResource("178")
 }, {
 "duration": 1.0,
 "texture": null
 }],
-"loop": false,
+"loop": 0,
 "name": &"hit4",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource( "179" )
+"texture": SubResource("179")
 }, {
 "duration": 1.0,
-"texture": SubResource( "180" )
+"texture": SubResource("180")
 }, {
 "duration": 1.0,
-"texture": SubResource( "181" )
+"texture": SubResource("181")
 }, {
 "duration": 1.0,
-"texture": SubResource( "182" )
+"texture": SubResource("182")
 }, {
 "duration": 1.0,
-"texture": SubResource( "183" )
+"texture": SubResource("183")
 }, {
 "duration": 1.0,
-"texture": SubResource( "184" )
+"texture": SubResource("184")
 }, {
 "duration": 1.0,
-"texture": SubResource( "185" )
+"texture": SubResource("185")
 }, {
 "duration": 1.0,
-"texture": SubResource( "186" )
+"texture": SubResource("186")
 }, {
 "duration": 1.0,
-"texture": SubResource( "187" )
+"texture": SubResource("187")
 }, {
 "duration": 1.0,
-"texture": SubResource( "188" )
+"texture": SubResource("188")
 }, {
 "duration": 1.0,
-"texture": SubResource( "189" )
+"texture": SubResource("189")
 }, {
 "duration": 1.0,
-"texture": SubResource( "190" )
+"texture": SubResource("190")
 }, {
 "duration": 1.0,
-"texture": SubResource( "191" )
+"texture": SubResource("191")
 }, {
 "duration": 1.0,
-"texture": SubResource( "192" )
+"texture": SubResource("192")
 }, {
 "duration": 1.0,
 "texture": null
 }],
-"loop": false,
+"loop": 0,
 "name": &"hyjj_1",
 "speed": 25.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource( "193" )
+"texture": SubResource("193")
 }, {
 "duration": 1.0,
-"texture": SubResource( "194" )
+"texture": SubResource("194")
 }, {
 "duration": 1.0,
-"texture": SubResource( "195" )
+"texture": SubResource("195")
 }, {
 "duration": 1.0,
-"texture": SubResource( "196" )
+"texture": SubResource("196")
 }, {
 "duration": 1.0,
-"texture": SubResource( "197" )
+"texture": SubResource("197")
 }, {
 "duration": 1.0,
-"texture": SubResource( "198" )
+"texture": SubResource("198")
 }, {
 "duration": 1.0,
-"texture": SubResource( "199" )
+"texture": SubResource("199")
 }, {
 "duration": 1.0,
-"texture": SubResource( "200" )
+"texture": SubResource("200")
 }, {
 "duration": 1.0,
-"texture": SubResource( "201" )
+"texture": SubResource("201")
 }, {
 "duration": 1.0,
-"texture": SubResource( "202" )
+"texture": SubResource("202")
 }, {
 "duration": 1.0,
-"texture": SubResource( "203" )
+"texture": SubResource("203")
 }, {
 "duration": 1.0,
-"texture": SubResource( "204" )
+"texture": SubResource("204")
 }, {
 "duration": 1.0,
-"texture": SubResource( "205" )
+"texture": SubResource("205")
 }, {
 "duration": 1.0,
-"texture": SubResource( "206" )
+"texture": SubResource("206")
 }, {
 "duration": 1.0,
-"texture": SubResource( "207" )
+"texture": SubResource("207")
 }, {
 "duration": 1.0,
-"texture": SubResource( "208" )
+"texture": SubResource("208")
 }, {
 "duration": 1.0,
-"texture": SubResource( "209" )
+"texture": SubResource("209")
 }, {
 "duration": 1.0,
-"texture": SubResource( "210" )
+"texture": SubResource("210")
 }, {
 "duration": 1.0,
-"texture": SubResource( "211" )
+"texture": SubResource("211")
 }, {
 "duration": 1.0,
-"texture": SubResource( "212" )
+"texture": SubResource("212")
 }],
-"loop": false,
+"loop": 0,
 "name": &"hyjj_2",
 "speed": 25.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource( "213" )
+"texture": SubResource("213")
 }, {
 "duration": 1.0,
-"texture": SubResource( "214" )
+"texture": SubResource("214")
 }, {
 "duration": 1.0,
-"texture": SubResource( "215" )
+"texture": SubResource("215")
 }, {
 "duration": 1.0,
-"texture": SubResource( "216" )
+"texture": SubResource("216")
 }, {
 "duration": 1.0,
-"texture": SubResource( "217" )
+"texture": SubResource("217")
 }, {
 "duration": 1.0,
 "texture": null
 }],
-"loop": false,
+"loop": 0,
 "name": &"hytj",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource( "218" )
+"texture": SubResource("218")
 }, {
 "duration": 1.0,
-"texture": SubResource( "219" )
+"texture": SubResource("219")
 }, {
 "duration": 1.0,
-"texture": SubResource( "220" )
+"texture": SubResource("220")
 }, {
 "duration": 1.0,
-"texture": SubResource( "221" )
+"texture": SubResource("221")
 }, {
 "duration": 1.0,
-"texture": SubResource( "222" )
+"texture": SubResource("222")
 }, {
 "duration": 1.0,
-"texture": SubResource( "223" )
+"texture": SubResource("223")
 }, {
 "duration": 1.0,
-"texture": SubResource( "224" )
+"texture": SubResource("224")
 }, {
 "duration": 1.0,
-"texture": SubResource( "225" )
+"texture": SubResource("225")
 }, {
 "duration": 1.0,
-"texture": SubResource( "226" )
+"texture": SubResource("226")
 }, {
 "duration": 1.0,
-"texture": SubResource( "227" )
+"texture": SubResource("227")
 }],
-"loop": false,
+"loop": 0,
 "name": &"jdy_1",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource( "228" )
+"texture": SubResource("228")
 }, {
 "duration": 1.0,
-"texture": SubResource( "229" )
+"texture": SubResource("229")
 }, {
 "duration": 1.0,
-"texture": SubResource( "230" )
+"texture": SubResource("230")
 }, {
 "duration": 1.0,
-"texture": SubResource( "231" )
+"texture": SubResource("231")
 }, {
 "duration": 1.0,
-"texture": SubResource( "232" )
+"texture": SubResource("232")
 }, {
 "duration": 1.0,
-"texture": SubResource( "233" )
+"texture": SubResource("233")
 }, {
 "duration": 1.0,
-"texture": SubResource( "234" )
+"texture": SubResource("234")
 }, {
 "duration": 1.0,
-"texture": SubResource( "235" )
+"texture": SubResource("235")
 }, {
 "duration": 1.0,
-"texture": SubResource( "236" )
+"texture": SubResource("236")
 }, {
 "duration": 1.0,
-"texture": SubResource( "237" )
+"texture": SubResource("237")
 }],
-"loop": false,
+"loop": 0,
 "name": &"jdy_2",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource( "238" )
+"texture": SubResource("238")
 }, {
 "duration": 1.0,
-"texture": SubResource( "239" )
+"texture": SubResource("239")
 }, {
 "duration": 1.0,
-"texture": SubResource( "240" )
+"texture": SubResource("240")
 }, {
 "duration": 1.0,
-"texture": SubResource( "241" )
+"texture": SubResource("241")
 }, {
 "duration": 1.0,
-"texture": SubResource( "242" )
+"texture": SubResource("242")
 }, {
 "duration": 1.0,
-"texture": SubResource( "243" )
+"texture": SubResource("243")
 }, {
 "duration": 1.0,
-"texture": SubResource( "244" )
+"texture": SubResource("244")
 }, {
 "duration": 1.0,
-"texture": SubResource( "245" )
+"texture": SubResource("245")
 }, {
 "duration": 1.0,
-"texture": SubResource( "246" )
+"texture": SubResource("246")
 }, {
 "duration": 1.0,
-"texture": SubResource( "247" )
+"texture": SubResource("247")
 }, {
 "duration": 1.0,
 "texture": null
 }],
-"loop": false,
+"loop": 0,
 "name": &"lyfb",
 "speed": 24.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource( "248" )
+"texture": SubResource("248")
 }, {
 "duration": 1.0,
-"texture": SubResource( "249" )
+"texture": SubResource("249")
 }, {
 "duration": 1.0,
-"texture": SubResource( "250" )
+"texture": SubResource("250")
 }, {
 "duration": 1.0,
-"texture": SubResource( "251" )
+"texture": SubResource("251")
 }, {
 "duration": 1.0,
-"texture": SubResource( "252" )
+"texture": SubResource("252")
 }, {
 "duration": 1.0,
 "texture": null
 }],
-"loop": false,
+"loop": 0,
 "name": &"lys",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource( "253" )
+"texture": SubResource("253")
 }, {
 "duration": 1.0,
-"texture": SubResource( "254" )
+"texture": SubResource("254")
 }, {
 "duration": 1.0,
-"texture": SubResource( "255" )
+"texture": SubResource("255")
 }, {
 "duration": 1.0,
-"texture": SubResource( "256" )
+"texture": SubResource("256")
 }, {
 "duration": 1.0,
-"texture": SubResource( "257" )
+"texture": SubResource("257")
 }, {
 "duration": 1.0,
-"texture": SubResource( "258" )
+"texture": SubResource("258")
 }, {
 "duration": 1.0,
 "texture": null
 }],
-"loop": false,
+"loop": 0,
 "name": &"slz",
 "speed": 5.0
 }, {
@@ -1176,71 +1447,71 @@ animations = [{
 "duration": 1.0,
 "texture": null
 }],
-"loop": false,
+"loop": 0,
 "name": &"wait",
 "speed": 25.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource( "259" )
+"texture": SubResource("259")
 }, {
 "duration": 1.0,
-"texture": SubResource( "260" )
+"texture": SubResource("260")
 }, {
 "duration": 1.0,
-"texture": SubResource( "261" )
+"texture": SubResource("261")
 }, {
 "duration": 1.0,
-"texture": SubResource( "262" )
+"texture": SubResource("262")
 }, {
 "duration": 1.0,
-"texture": SubResource( "263" )
+"texture": SubResource("263")
 }, {
 "duration": 1.0,
-"texture": SubResource( "264" )
+"texture": SubResource("264")
 }, {
 "duration": 1.0,
-"texture": SubResource( "265" )
+"texture": SubResource("265")
 }, {
 "duration": 1.0,
-"texture": SubResource( "266" )
+"texture": SubResource("266")
 }, {
 "duration": 1.0,
-"texture": SubResource( "267" )
+"texture": SubResource("267")
 }, {
 "duration": 1.0,
-"texture": SubResource( "268" )
+"texture": SubResource("268")
 }, {
 "duration": 1.0,
-"texture": SubResource( "269" )
+"texture": SubResource("269")
 }, {
 "duration": 1.0,
-"texture": SubResource( "270" )
+"texture": SubResource("270")
 }, {
 "duration": 1.0,
-"texture": SubResource( "271" )
+"texture": SubResource("271")
 }, {
 "duration": 1.0,
-"texture": SubResource( "272" )
+"texture": SubResource("272")
 }, {
 "duration": 1.0,
-"texture": SubResource( "273" )
+"texture": SubResource("273")
 }],
-"loop": false,
+"loop": 0,
 "name": &"zz",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource( "274" )
+"texture": SubResource("274")
 }, {
 "duration": 1.0,
-"texture": SubResource( "275" )
+"texture": SubResource("275")
 }, {
 "duration": 1.0,
 "texture": null
 }],
-"loop": true,
+"loop": 1,
 "name": &"zz_2",
 "speed": 5.0
 }]
@@ -1249,600 +1520,120 @@ animations = [{
 radius = 76.0
 height = 186.0
 
-[sub_resource type="Animation" id="anim_wait"]
-resource_name = "wait"
-length = 0.70000000
-loop_mode = 1
+[sub_resource type="Animation" id="anim_RESET"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Facing/Visual/RoleBody:frame")
+tracks/0/path = NodePath("Facing/Visual/RoleEquipment:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.00000000, 0.13333333, 0.26666667, 0.40000000, 0.53333333, 0.66666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Facing/Visual/RoleEquipment:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.00000000, 0.13333333, 0.26666667, 0.40000000, 0.53333333, 0.66666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Facing/HitBox:Active")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.00000000),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Facing/Visual/SpecialEffect:animation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.00000000),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"wait"]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Facing/Visual/SpecialEffect:frame")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0.00000000),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Facing/Visual/RoleBody:offset")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0.00000000),
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Facing/Visual/RoleBody:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
+"update": 1,
+"values": [0]
 }
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Facing/Visual/RoleEquipment:offset")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0.00000000),
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Facing/HitBox/Shape:shape")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
+"update": 1,
+"values": [SubResource("277")]
 }
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Facing/Visual/SpecialEffect:scale")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0.00000000),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/8/type = "value"
-tracks/8/path = NodePath("Facing/HitBox:Active")
-tracks/8/interp = 1
-tracks/8/keys = {
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Facing/HitBox:Active")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
 }
-tracks/9/type = "value"
-tracks/9/path = NodePath("Facing/Visual/SpecialEffect:visible")
-tracks/9/interp = 1
-tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-[sub_resource type="Animation" id="anim_run"]
-resource_name = "run"
-length = 0.29166667
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Facing/Visual/RoleBody:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.00000000, 0.08333333, 0.16666667, 0.25000000),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [18, 19, 20, 21]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Facing/Visual/RoleEquipment:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.00000000, 0.08333333, 0.16666667, 0.25000000),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [18, 19, 20, 21]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Facing/HitBox:Active")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.00000000),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Facing/Visual/SpecialEffect:animation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.00000000),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"wait"]
-}
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Facing/Visual/SpecialEffect:frame")
+tracks/4/path = NodePath("Facing/HitBox/Shape:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.00000000),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
+"update": 0,
+"values": [Vector2(0, 36.25)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Facing/Visual/RoleBody:offset")
+tracks/5/path = NodePath("Facing/Visual/SpecialEffect:animation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.00000000),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
+"update": 1,
+"values": [&"wait"]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Facing/Visual/RoleEquipment:offset")
+tracks/6/path = NodePath("Facing/Visual/SpecialEffect2:frame")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0.00000000),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
+"update": 1,
+"values": [0]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Facing/Visual/SpecialEffect:offset")
+tracks/7/path = NodePath("Facing/Visual/SpecialEffect2:animation")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0.00000000),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
+"update": 1,
+"values": [&"empty"]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Facing/Visual/SpecialEffect:scale")
+tracks/8/path = NodePath("Facing/Visual/SpecialEffect:visible")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0.00000000),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/9/type = "value"
-tracks/9/path = NodePath("Facing/HitBox:Active")
-tracks/9/interp = 1
-tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
 }
-tracks/10/type = "value"
-tracks/10/path = NodePath("Facing/Visual/SpecialEffect:visible")
-tracks/10/interp = 1
-tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-[sub_resource type="Animation" id="anim_jump1"]
-resource_name = "jump1"
-length = 0.45833333
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Facing/Visual/RoleBody:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.00000000, 0.08333333, 0.16666667, 0.25000000, 0.33333333, 0.41666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [24, 24, 24, 24, 24, 24]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Facing/Visual/RoleEquipment:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.00000000, 0.08333333, 0.16666667, 0.25000000, 0.33333333, 0.41666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [24, 24, 24, 24, 24, 24]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Facing/HitBox:Active")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.00000000),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Facing/Visual/SpecialEffect:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.00000000),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Facing/Visual/SpecialEffect:animation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0.00000000),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"wait"]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Facing/Visual/RoleBody:offset")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0.00000000),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Facing/Visual/RoleEquipment:offset")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0.00000000),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/7/type = "value"
-tracks/7/path = NodePath("Facing/HitBox:Active")
-tracks/7/interp = 1
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/8/type = "value"
-tracks/8/path = NodePath("Facing/Visual/SpecialEffect:visible")
-tracks/8/interp = 1
-tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-[sub_resource type="Animation" id="anim_hit1"]
-resource_name = "hit1"
-length = 0.35000000
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Facing/Visual/RoleBody:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.00000000, 0.03333333, 0.06666667, 0.10000000, 0.13333333, 0.16666667, 0.20000000, 0.23333333, 0.26666667, 0.30000000, 0.33333333),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [42, 43, 44, 45, 46, 46, 46, 46, 46, 46, 46]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Facing/Visual/RoleEquipment:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.00000000, 0.03333333, 0.06666667, 0.10000000, 0.13333333, 0.16666667, 0.20000000, 0.23333333, 0.26666667, 0.30000000, 0.33333333),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [42, 43, 44, 45, 46, 46, 46, 46, 46, 46, 46]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Facing/HitBox:Active")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.00000000, 0.03333333, 0.16666667),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [false, true, false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Facing/Visual/SpecialEffect:animation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.00000000),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"hit1"]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Facing/Visual/SpecialEffect:frame")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0.00000000, 0.03333333, 0.06666667, 0.10000000, 0.13333333, 0.16666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Facing/Visual/SpecialEffect:offset")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0.00000000, 0.16666667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [Vector2(-15, -10), Vector2(0, 0)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Facing/HitBox/Shape:shape")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0.00000000),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [SubResource( "277" )]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Facing/HitBox/Shape:position")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0.00000000),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-45, -17)]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Facing/Visual/RoleBody:offset")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0.00000000),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("Facing/Visual/RoleEquipment:offset")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0.00000000),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/10/type = "value"
-tracks/10/path = NodePath("Facing/Visual/SpecialEffect:visible")
-tracks/10/interp = 1
-tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-[sub_resource type="Animation" id="anim_hurt"]
-resource_name = "hurt"
-length = 0.22500000
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Facing/Visual/RoleBody:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.00000000, 0.05000000, 0.10000000, 0.15000000, 0.20000000),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [74, 74, 74, 74, 74]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Facing/Visual/RoleEquipment:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.00000000, 0.05000000, 0.10000000, 0.15000000, 0.20000000),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [74, 74, 74, 74, 74]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Facing/HitBox:Active")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.00000000),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Facing/Visual/SpecialEffect:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.00000000),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Facing/Visual/SpecialEffect:animation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0.00000000),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"wait"]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Facing/Visual/RoleBody:offset")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0.00000000),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Facing/Visual/RoleEquipment:offset")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0.00000000),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/7/type = "value"
-tracks/7/path = NodePath("Facing/HitBox:Active")
-tracks/7/interp = 1
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/8/type = "value"
-tracks/8/path = NodePath("Facing/Visual/SpecialEffect:visible")
-tracks/8/interp = 1
-tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
+
 [sub_resource type="Animation" id="anim_death"]
 resource_name = "death"
-length = 1.10000000
+length = 1.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1850,7 +1641,7 @@ tracks/0/path = NodePath("Facing/Visual/RoleBody:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.00000000, 1.06666667),
+"times": PackedFloat32Array(0, 1.0666667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [8, 8]
@@ -1862,7 +1653,7 @@ tracks/1/path = NodePath("Facing/Visual/RoleEquipment:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.00000000, 1.06666667),
+"times": PackedFloat32Array(0, 1.0666667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [8, 8]
@@ -1874,7 +1665,7 @@ tracks/2/path = NodePath("Facing/HitBox:Active")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.00000000),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
@@ -1886,14 +1677,17 @@ tracks/3/path = NodePath("Facing/Visual/SpecialEffect:offset")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.00000000),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, -90)]
 }
 tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
 tracks/4/path = NodePath("Facing/HitBox:Active")
 tracks/4/interp = 1
+tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
@@ -1901,90 +1695,2762 @@ tracks/4/keys = {
 "values": [false]
 }
 tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
 tracks/5/path = NodePath("Facing/Visual/SpecialEffect:visible")
 tracks/5/interp = 1
+tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
 }
+
+[sub_resource type="Animation" id="anim_drop"]
+resource_name = "drop"
+length = 0.45
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Facing/Visual/RoleBody:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [25, 25, 25, 25, 25]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Facing/Visual/RoleEquipment:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [25, 25, 25, 25, 25]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Facing/HitBox:Active")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Facing/Visual/SpecialEffect:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Facing/Visual/SpecialEffect:animation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"wait"]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Facing/Visual/RoleBody:offset")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Facing/Visual/RoleEquipment:offset")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Facing/Visual/SpecialEffect:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="anim_hit1"]
+resource_name = "hit1"
+length = 0.35
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Facing/Visual/RoleBody:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.03333333, 0.06666667, 0.1, 0.13333333, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [42, 43, 44, 45, 46, 46, 46, 46, 46, 46, 46]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Facing/Visual/RoleEquipment:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.03333333, 0.06666667, 0.1, 0.13333333, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [42, 43, 44, 45, 46, 46, 46, 46, 46, 46, 46]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Facing/HitBox:Active")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.03333333, 0.16666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Facing/Visual/SpecialEffect:animation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"hit1"]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Facing/Visual/SpecialEffect:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.03333333, 0.06666667, 0.1, 0.13333333, 0.16666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Facing/Visual/SpecialEffect:offset")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.16666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(-15, -10), Vector2(0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Facing/HitBox/Shape:shape")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("277")]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Facing/HitBox/Shape:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-45, -17)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Facing/Visual/RoleBody:offset")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Facing/Visual/RoleEquipment:offset")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Facing/Visual/SpecialEffect:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="RectangleShape2D" id="282"]
+size = Vector2(133.5, 43)
+
+[sub_resource type="Animation" id="anim_hit2"]
+resource_name = "hit2"
+length = 0.31666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Facing/Visual/RoleBody:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.03333333, 0.06666667, 0.1, 0.13333333, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [36, 37, 38, 39, 40, 40, 40, 40, 40, 40]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Facing/Visual/RoleEquipment:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.03333333, 0.06666667, 0.1, 0.13333333, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [36, 37, 38, 39, 40, 40, 40, 40, 40, 40]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Facing/HitBox:Active")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.23333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Facing/Visual/SpecialEffect:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.06666667, 0.1, 0.13333333, 0.16666667, 0.2, 0.23333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [2, 2, 2, 4, 4, 6]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Facing/Visual/SpecialEffect:animation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"hit2"]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Facing/Visual/SpecialEffect:offset")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.23333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(-40, 40), Vector2(0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Facing/HitBox/Shape:shape")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("282")]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Facing/HitBox/Shape:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-42.25, 41.5)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Facing/Visual/RoleBody:offset")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Facing/Visual/RoleEquipment:offset")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Facing/Visual/SpecialEffect:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="RectangleShape2D" id="284"]
+size = Vector2(323, 57)
+
+[sub_resource type="Animation" id="anim_hit3"]
+resource_name = "hit3"
+length = 0.31666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Facing/Visual/RoleBody:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.03333333, 0.06666667, 0.1, 0.13333333, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [48, 49, 50, 51, 52, 52, 52, 52, 52, 52]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Facing/Visual/RoleEquipment:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.03333333, 0.06666667, 0.1, 0.13333333, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [48, 49, 50, 51, 52, 52, 52, 52, 52, 52]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Facing/HitBox:Active")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.03333333, 0.16666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Facing/Visual/SpecialEffect:animation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"hit3"]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Facing/Visual/SpecialEffect:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.03333333, 0.06666667, 0.1, 0.13333333, 0.16666667, 0.23333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 5, 5]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Facing/Visual/SpecialEffect:offset")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.16666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(-10, 40), Vector2(0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Facing/HitBox/Shape:shape")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("284")]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Facing/HitBox/Shape:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 31.5)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Facing/Visual/RoleBody:offset")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Facing/Visual/RoleEquipment:offset")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Facing/Visual/SpecialEffect:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="RectangleShape2D" id="286"]
+size = Vector2(273, 74)
+
+[sub_resource type="Animation" id="anim_hit4"]
+resource_name = "hit4"
+length = 0.31666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Facing/Visual/RoleBody:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.03333333, 0.06666667, 0.1, 0.13333333, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [54, 55, 56, 57, 58, 59, 59, 59, 59, 59]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Facing/Visual/RoleEquipment:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.03333333, 0.06666667, 0.1, 0.13333333, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [54, 55, 56, 57, 58, 59, 59, 59, 59, 59]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Facing/HitBox:Active")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Facing/Visual/SpecialEffect:animation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"hit4"]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Facing/Visual/SpecialEffect:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.1, 0.13333333, 0.16666667, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [2, 0, 0, 1, 1, 2]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Facing/Visual/SpecialEffect:offset")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(-45, 40), Vector2(0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Facing/HitBox/Shape:shape")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("286")]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Facing/HitBox/Shape:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-38.5, 38)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Facing/Visual/RoleBody:offset")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Facing/Visual/RoleEquipment:offset")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Facing/Visual/SpecialEffect:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="anim_hmz__"]
+resource_name = "hmz__"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Facing/Visual/RoleBody:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [35, 35]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Facing/Visual/RoleEquipment:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [27, 27]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Facing/Visual/SpecialEffect:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"wait"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Facing/HitBox:Active")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Facing/Visual/SpecialEffect:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="anim_hurt"]
+resource_name = "hurt"
+length = 0.225
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Facing/Visual/RoleBody:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [74, 74, 74, 74, 74]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Facing/Visual/RoleEquipment:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [74, 74, 74, 74, 74]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Facing/HitBox:Active")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Facing/Visual/SpecialEffect:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Facing/Visual/SpecialEffect:animation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"wait"]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Facing/Visual/RoleBody:offset")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Facing/Visual/RoleEquipment:offset")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Facing/HitBox:Active")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Facing/Visual/SpecialEffect:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="anim_hyjj"]
+resource_name = "hyjj"
+length = 0.775
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Facing/Visual/RoleBody:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [72, 72]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Facing/Visual/RoleEquipment:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [72, 72]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Facing/Visual/SpecialEffect:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"hyjj_1"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Facing/Visual/SpecialEffect:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Facing/Visual/SpecialEffect:offset")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(-20, 4), Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Facing/Visual/SpecialEffect2:animation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"hyjj", &"empty"]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Facing/Visual/SpecialEffect2:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 17]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Facing/Visual/SpecialEffect2:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(0.5, 1), Vector2(1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Facing/Visual/SpecialEffect2:offset")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(20, 40), Vector2(0, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Facing/Visual/SpecialEffect:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Facing/Visual/RoleBody:offset")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Facing/Visual/RoleEquipment:offset")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Facing/HitBox:Active")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Facing/Visual/SpecialEffect:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="RectangleShape2D" id="291"]
+size = Vector2(228, 79)
+
+[sub_resource type="Animation" id="anim_hytj"]
+resource_name = "hytj"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Facing/Visual/RoleBody:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [39, 39, 39, 39, 39, 39, 39, 39, 39, 39]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Facing/Visual/RoleEquipment:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [39, 39, 39, 39, 39, 39, 39, 39, 39, 39]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Facing/HitBox:Active")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, true, false, true, true, false, true, true, false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Facing/Visual/SpecialEffect:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Facing/Visual/SpecialEffect:animation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"hytj"]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Facing/Visual/SpecialEffect:offset")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(0, 40), Vector2(0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Facing/HitBox/Shape:shape")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("291")]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Facing/HitBox/Shape:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-30, 39.5)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Facing/Visual/RoleBody:offset")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Facing/Visual/RoleEquipment:offset")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Facing/Visual/SpecialEffect:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="RectangleShape2D" id="293"]
+size = Vector2(142, 87)
+
+[sub_resource type="Animation" id="anim_jdy"]
+resource_name = "jdy"
+length = 0.55
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Facing/Visual/RoleBody:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [28, 28]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Facing/Visual/RoleEquipment:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [28, 28]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Facing/Visual/SpecialEffect:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"jdy_1"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Facing/Visual/SpecialEffect:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Facing/Visual/SpecialEffect:offset")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(50, 95), Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Facing/HitBox:Active")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true, false, true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Facing/HitBox/Shape:shape")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("293")]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Facing/HitBox/Shape:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(38, 51.5)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Facing/Visual/RoleBody:offset")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Facing/Visual/RoleEquipment:offset")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Facing/Visual/SpecialEffect:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Facing/Visual/SpecialEffect:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="RectangleShape2D" id="295"]
+size = Vector2(72, 142)
+
+[sub_resource type="Animation" id="anim_jdy_1"]
+resource_name = "jdy_1"
+length = 0.55
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Facing/Visual/RoleBody:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [29, 29]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Facing/Visual/RoleEquipment:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [29, 29]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Facing/Visual/SpecialEffect:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"jdy_2"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Facing/Visual/SpecialEffect:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Facing/Visual/SpecialEffect:offset")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(-20, 65), Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Facing/HitBox:Active")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true, false, true, false, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Facing/HitBox/Shape:shape")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("295")]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Facing/HitBox/Shape:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-2, 59)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Facing/Visual/RoleEquipment:offset")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Facing/Visual/RoleBody:offset")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Facing/Visual/SpecialEffect:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Facing/Visual/SpecialEffect:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="anim_jump1"]
+resource_name = "jump1"
+length = 0.45833333
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Facing/Visual/RoleBody:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.08333333, 0.16666667, 0.25, 0.33333334, 0.41666666),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [24, 24, 24, 24, 24, 24]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Facing/Visual/RoleEquipment:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.08333333, 0.16666667, 0.25, 0.33333334, 0.41666666),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [24, 24, 24, 24, 24, 24]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Facing/HitBox:Active")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Facing/Visual/SpecialEffect:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Facing/Visual/SpecialEffect:animation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"wait"]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Facing/Visual/RoleBody:offset")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Facing/Visual/RoleEquipment:offset")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Facing/HitBox:Active")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Facing/Visual/SpecialEffect:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="anim_jump2"]
+resource_name = "jump2"
+length = 0.225
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Facing/Visual/RoleBody:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [30, 31, 32, 33, 34]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Facing/Visual/RoleEquipment:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [30, 31, 32, 33, 34]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Facing/HitBox:Active")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Facing/Visual/SpecialEffect:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Facing/Visual/SpecialEffect:animation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"wait"]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Facing/Visual/RoleBody:offset")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Facing/Visual/RoleEquipment:offset")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Facing/Visual/SpecialEffect:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="RectangleShape2D" id="299"]
+size = Vector2(323.5, 140.25)
+
+[sub_resource type="Animation" id="anim_lyfb"]
+resource_name = "lyfb"
+length = 0.35
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Facing/Visual/RoleEquipment:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.03333333, 0.06666667, 0.1, 0.13333333, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [66, 66, 67, 67, 68, 68, 68, 69, 69, 66]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Facing/Visual/RoleBody:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.03333333, 0.06666667, 0.1, 0.13333333, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [66, 66, 67, 67, 68, 68, 68, 69, 69, 66]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Facing/HitBox:Active")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.03333333, 0.06666667, 0.1, 0.13333333, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, true, false, true, true, false, true, true, false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Facing/Visual/SpecialEffect:offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(15, 30)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Facing/HitBox/Shape:shape")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("299")]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Facing/HitBox/Shape:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(6.75, 19.125)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Facing/Visual/RoleBody:offset")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Facing/Visual/RoleEquipment:offset")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Facing/Visual/SpecialEffect:animation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"lyfb"]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Facing/Visual/SpecialEffect:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.35),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Facing/Visual/SpecialEffect:frame")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.03333333, 0.06666667, 0.1, 0.13333333, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
+[sub_resource type="RectangleShape2D" id="301"]
+size = Vector2(213.5, 92)
+
+[sub_resource type="Animation" id="anim_lys"]
+resource_name = "lys"
+length = 0.33333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Facing/Visual/RoleBody:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.03333333, 0.06666667, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [35, 35, 35, 35]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Facing/Visual/RoleEquipment:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.03333333, 0.06666667, 0.1, 0.13333333, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [26, 26, 26, 26, 26, 26, 26, 26, 26, 26]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Facing/HitBox:Active")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Facing/Visual/SpecialEffect:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.03333333, 0.06666667, 0.1, 0.13333333, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 1, 2, 2, 3, 3, 4, 4, 5]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Facing/Visual/SpecialEffect:animation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"lys"]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Facing/Visual/SpecialEffect:offset")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.33333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(0, 30), Vector2(0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Facing/HitBox/Shape:shape")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("301")]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Facing/HitBox/Shape:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(7.75, 17)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Facing/Visual/RoleBody:offset")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Facing/Visual/RoleEquipment:offset")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Facing/Visual/SpecialEffect:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Facing/Visual/SpecialEffect2:animation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"empty"]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Facing/Visual/SpecialEffect:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="RectangleShape2D" id="303"]
+size = Vector2(58, 98)
+
+[sub_resource type="Animation" id="anim_qsez"]
+resource_name = "qsez"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Facing/Visual/RoleBody:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.36666667, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [26, 26, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Facing/Visual/RoleBody:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Facing/Visual/RoleEquipment:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.36666667, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [26, 26, 0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Facing/Visual/RoleEquipment:offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Facing/HitBox:Active")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.33333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Facing/HitBox/Shape:shape")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("303")]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Facing/HitBox/Shape:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-10, 20)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Facing/Visual/SpecialEffect:animation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"wait"]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Facing/Visual/SpecialEffect2:animation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"empty"]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Facing/Visual/SpecialEffect:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="anim_run"]
+resource_name = "run"
+length = 0.29166667
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Facing/Visual/RoleBody:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.08333333, 0.16666667, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [18, 19, 20, 21]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Facing/Visual/RoleEquipment:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.08333333, 0.16666667, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [18, 19, 20, 21]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Facing/HitBox:Active")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Facing/Visual/SpecialEffect:animation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"wait"]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Facing/Visual/SpecialEffect:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Facing/Visual/RoleBody:offset")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Facing/Visual/RoleEquipment:offset")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Facing/Visual/SpecialEffect:offset")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Facing/Visual/SpecialEffect:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Facing/HitBox:Active")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Facing/Visual/SpecialEffect:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="CapsuleShape2D" id="306"]
+radius = 61.0
+height = 180.0
+
+[sub_resource type="Animation" id="anim_slz"]
+resource_name = "slz"
+length = 0.34210526
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Facing/Visual/RoleBody:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05263158, 0.10526316, 0.15789475, 0.21052632, 0.2631579, 0.31578946),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [61, 60, 62, 63, 63, 63, 63]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Facing/Visual/RoleEquipment:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05263158, 0.10526316, 0.15789475, 0.21052632, 0.2631579, 0.31578946),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [60, 61, 62, 63, 63, 63, 63]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Facing/HitBox:Active")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05263158, 0.2631579),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Facing/Visual/SpecialEffect:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.05263158, 0.10526316, 0.15789475, 0.21052632, 0.2631579, 0.31578946),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Facing/Visual/SpecialEffect:animation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"slz"]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Facing/Visual/SpecialEffect:offset")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.31578946),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(-25, -20), Vector2(0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Facing/HitBox/Shape:shape")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("306")]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Facing/HitBox/Shape:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-27, -15)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Facing/Visual/SpecialEffect:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Facing/Visual/RoleBody:offset")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Facing/Visual/RoleEquipment:offset")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Facing/Visual/SpecialEffect:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="anim_wait"]
+resource_name = "wait"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Facing/Visual/RoleBody:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333333, 0.26666668, 0.4, 0.5333333, 0.6666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Facing/Visual/RoleEquipment:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.13333333, 0.26666668, 0.4, 0.5333333, 0.6666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Facing/HitBox:Active")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Facing/Visual/SpecialEffect:animation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"wait"]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Facing/Visual/SpecialEffect:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Facing/Visual/RoleBody:offset")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Facing/Visual/RoleEquipment:offset")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Facing/Visual/SpecialEffect:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Facing/HitBox:Active")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Facing/Visual/SpecialEffect:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="RectangleShape2D" id="309"]
+size = Vector2(156, 132)
+
+[sub_resource type="Animation" id="anim_zz"]
+resource_name = "zz"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Facing/Visual/RoleBody:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5333333, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [78, 80, 80]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Facing/Visual/RoleEquipment:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5333333, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [78, 80, 80]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Facing/Visual/SpecialEffect:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"zz", &"zz_2"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Facing/Visual/SpecialEffect:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.03333333, 0.06666667, 0.1, 0.13333333, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5333333, 0.56666666, 0.6, 0.6666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 0, 0, 1, 2]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Facing/Visual/SpecialEffect:offset")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.46666667, 0.5333333, 0.6666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(10, -180), Vector2(0, 0), Vector2(-50, 20), Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Facing/Visual/SpecialEffect:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.46666667, 0.5333333, 0.6666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(0.4, 0.4), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Facing/HitBox/Shape:shape")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.46666667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("309")]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Facing/HitBox:Active")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.46666667, 0.6666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Facing/HitBox/Shape:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.46666667),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-68, 6)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Facing/Visual/RoleBody:offset")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(-9, -12)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Facing/Visual/RoleEquipment:offset")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(-9, -12)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Facing/Visual/SpecialEffect:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="AnimationLibrary" id="library"]
 _data = {
-"wait": SubResource("anim_wait"),
-"run": SubResource("anim_run"),
-"jump1": SubResource("anim_jump1"),
-"hit1": SubResource("anim_hit1"),
-"hurt": SubResource("anim_hurt"),
-"death": SubResource("anim_death")
+&"RESET": SubResource("anim_RESET"),
+&"death": SubResource("anim_death"),
+&"drop": SubResource("anim_drop"),
+&"hit1": SubResource("anim_hit1"),
+&"hit2": SubResource("anim_hit2"),
+&"hit3": SubResource("anim_hit3"),
+&"hit4": SubResource("anim_hit4"),
+&"hmz__": SubResource("anim_hmz__"),
+&"hurt": SubResource("anim_hurt"),
+&"hyjj": SubResource("anim_hyjj"),
+&"hytj": SubResource("anim_hytj"),
+&"jdy": SubResource("anim_jdy"),
+&"jdy_1": SubResource("anim_jdy_1"),
+&"jump1": SubResource("anim_jump1"),
+&"jump2": SubResource("anim_jump2"),
+&"lyfb": SubResource("anim_lyfb"),
+&"lys": SubResource("anim_lys"),
+&"qsez": SubResource("anim_qsez"),
+&"run": SubResource("anim_run"),
+&"slz": SubResource("anim_slz"),
+&"wait": SubResource("anim_wait"),
+&"zz": SubResource("anim_zz")
 }
-[sub_resource type="CapsuleShape2D" id="body_shape"]
-radius = 20.0
-height = 90.0
-[node name="Player" type="CharacterBody2D"]
-collision_layer = 2
-collision_mask = 1
-script = ExtResource("actor")
-Team = 0
-MaxHealth = 120.0
-MoveSpeed = 220.0
-NormalAttack = ExtResource("hit")
-MoveAnimation = &"run"
-AirAnimation = &"jump1"
 
-[node name="BodyShape" type="CollisionShape2D" parent="."]
-position = Vector2(0, -45.0)
+[node name="Player" type="CharacterBody2D" unique_id=464675697]
+collision_layer = 2
+script = ExtResource("actor")
+EquippedSkill1 = SubResource("Resource_eh7e4")
+EquippedSkill2 = SubResource("Resource_wkalc")
+EquippedSkill3 = SubResource("Resource_2pxvu")
+EquippedSkill4 = SubResource("Resource_2ra4n")
+EquippedSkill5 = SubResource("Resource_odtg0")
+MaxHealth = 120.0
+MoveSpeed = 240.0
+Gravity = 600.0
+NormalCombo = Array[ExtResource("2_ghfw7")]([SubResource("Resource_qxnw4"), SubResource("Resource_8wjvg"), SubResource("Resource_4g61u"), SubResource("Resource_hd74q")])
+
+[node name="BodyShape" type="CollisionShape2D" parent="." unique_id=1557688993]
+position = Vector2(0, -45)
 shape = SubResource("body_shape")
 
-[node name="Facing" type="Node2D" parent="."]
+[node name="Facing" type="Node2D" parent="." unique_id=642048580]
 
-[node name="Visual" type="Node2D" parent="Facing"]
+[node name="Visual" type="Node2D" parent="Facing" unique_id=2083502363]
 position = Vector2(0, -70)
 
-[node name="RoleBody" type="Sprite2D" parent="Facing/Visual"]
+[node name="RoleBody" type="Sprite2D" parent="Facing/Visual" unique_id=81426783]
 texture = ExtResource("9")
 hframes = 6
 vframes = 14
 
-[node name="RoleEquipment" type="Sprite2D" parent="Facing/Visual"]
+[node name="RoleEquipment" type="Sprite2D" parent="Facing/Visual" unique_id=404352549]
 texture = ExtResource("10")
 hframes = 6
 vframes = 14
 
-[node name="SpecialEffect" type="AnimatedSprite2D" parent="Facing/Visual"]
+[node name="SpecialEffect2" type="AnimatedSprite2D" parent="Facing/Visual" unique_id=1773456562]
+scale = Vector2(0.5, 1)
+sprite_frames = SubResource("125")
+animation = &"empty"
+offset = Vector2(20, 40)
+
+[node name="SpecialEffect" type="AnimatedSprite2D" parent="Facing/Visual" unique_id=137139577]
 visible = false
-scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("276")
 animation = &"wait"
+offset = Vector2(-25, -20)
 
-[node name="HitBox" type="Area2D" parent="Facing"]
+[node name="HitBox" type="Area2D" parent="Facing" unique_id=960246837]
 position = Vector2(0, -70)
 collision_layer = 0
 collision_mask = 4
 monitorable = false
 script = ExtResource("hitbox")
 
-[node name="Shape" type="CollisionShape2D" parent="Facing/HitBox"]
-position = Vector2(-45, -17)
+[node name="Shape" type="CollisionShape2D" parent="Facing/HitBox" unique_id=985858686]
+position = Vector2(0, 36.25)
 shape = SubResource("277")
 
-[node name="HurtBox" type="Area2D" parent="."]
-position = Vector2(0, -45.0)
+[node name="HurtBox" type="Area2D" parent="." unique_id=1621995925]
+position = Vector2(0, -45)
 collision_layer = 4
 collision_mask = 0
 monitoring = false
 script = ExtResource("hurtbox")
 
-[node name="Shape" type="CollisionShape2D" parent="HurtBox"]
+[node name="Shape" type="CollisionShape2D" parent="HurtBox" unique_id=1037725953]
 shape = SubResource("body_shape")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1244389493]
 callback_mode_process = 0
-libraries = {
-"": SubResource("library")
-}
+libraries/ = SubResource("library")
 
-[node name="HealthBar" type="ProgressBar" parent="."]
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=1259145844]
 offset_left = -35.0
 offset_top = -118.0
 offset_right = 35.0

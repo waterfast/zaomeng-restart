@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://Scripts/Actors/Monster.cs" id="actor"]
 [ext_resource type="Script" path="res://Scripts/Combat/HitBox.cs" id="hitbox"]
 [ext_resource type="Script" path="res://Scripts/Combat/HurtBox.cs" id="hurtbox"]
-[ext_resource type="Resource" path="res://Content/MonsterHit.tres" id="hit"]
+[ext_resource type="Resource" path="res://Content/MonsterAttackStep.tres" id="attack_step"]
 [sub_resource type="AtlasTexture" id="1"]
 atlas = ExtResource( "3" )
 region = Rect2(0, 0, 91, 88)
@@ -595,7 +595,7 @@ script = ExtResource("actor")
 Team = 1
 MaxHealth = 60.0
 MoveSpeed = 85.0
-NormalAttack = ExtResource("hit")
+NormalCombo = Array[Resource]([ExtResource("attack_step")])
 MoveAnimation = &"walk"
 AirAnimation = &"wait"
 

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="AttackStep" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Combat/AttackStep.cs" id="1"]
+[ext_resource type="Resource" path="res://Content/MonsterHit.tres" id="2"]
+
+[resource]
+script = ExtResource("1")
+Animation = &"hit1"
+Hit = ExtResource("2")

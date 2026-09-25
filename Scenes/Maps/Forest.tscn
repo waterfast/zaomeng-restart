@@ -1,9 +1,9 @@
-[gd_scene load_steps=15 format=3]
+[gd_scene format=3 uid="uid://ceicxixhy8egf"]
 
-[ext_resource type="PackedScene" path="res://Scenes/Maps/Slope.tscn" id="3"]
-[ext_resource type="Texture2D" path="res://Assets/Art/Level/Level_1/19_1.png" id="4"]
-[ext_resource type="Texture2D" path="res://Assets/Art/Level/Level_1/48.png" id="5"]
-[ext_resource type="Texture2D" path="res://Assets/Art/Level/Level_1/183.png" id="6"]
+[ext_resource type="PackedScene" uid="uid://cktm5md1r16le" path="res://Scenes/Maps/Slope.tscn" id="3"]
+[ext_resource type="Texture2D" uid="uid://ya4ne2xbh57x" path="res://Assets/Art/Level/Level_1/19_1.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://dometij0c0ycl" path="res://Assets/Art/Level/Level_1/48.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://dkmtbly818arl" path="res://Assets/Art/Level/Level_1/183.png" id="6"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(1536, 1803)
@@ -22,114 +22,101 @@ size = Vector2(204.5, 22)
 radius = 13.4349
 height = 131.522
 
-[sub_resource type="RectangleShape2D" id="6"]
-size = Vector2(1143, 1296.5)
+[node name="Forest" type="Node2D" unique_id=2142156043]
 
-[sub_resource type="RectangleShape2D" id="7"]
-size = Vector2(946.5, 1296.5)
-
-[sub_resource type="RectangleShape2D" id="8"]
-size = Vector2(81, 1296.5)
-
-[sub_resource type="RectangleShape2D" id="9"]
-size = Vector2(1105.25, 1296.5)
-
-[node name="Forest" type="Node2D"]
-
-[node name="wall" type="StaticBody2D" parent="."]
+[node name="wall" type="StaticBody2D" parent="." unique_id=543604039]
 position = Vector2(0, 112)
-collision_layer = 1
 collision_mask = 0
-[node name="wall_left" type="CollisionShape2D" parent="wall"]
-position = Vector2(-766, -419.5)
-shape = SubResource( "1" )
 
-[node name="floor2" type="CollisionShape2D" parent="wall"]
+[node name="wall_left" type="CollisionShape2D" parent="wall" unique_id=1520767738]
+position = Vector2(-766, -419.5)
+shape = SubResource("1")
+
+[node name="floor2" type="CollisionShape2D" parent="wall" unique_id=570903266]
 position = Vector2(2656, 1174)
-shape = SubResource( "2" )
+shape = SubResource("2")
 metadata/_edit_lock_ = true
 
-[node name="斜坡" parent="wall" instance=ExtResource( "3" )]
+[node name="斜坡" parent="wall" unique_id=1291672301 instance=ExtResource("3")]
 position = Vector2(1178, 331)
 
-[node name="斜坡4" parent="wall" instance=ExtResource( "3" )]
+[node name="斜坡4" parent="wall" unique_id=1906778106 instance=ExtResource("3")]
 position = Vector2(1656, 337)
 
-[node name="斜坡5" parent="wall" instance=ExtResource( "3" )]
+[node name="斜坡5" parent="wall" unique_id=324473583 instance=ExtResource("3")]
 position = Vector2(4604, 337)
 
-[node name="斜坡2" type="StaticBody2D" parent="wall"]
+[node name="斜坡2" type="StaticBody2D" parent="wall" unique_id=1761268876]
 position = Vector2(485, 4)
 collision_mask = 0
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="wall/斜坡2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall/斜坡2" unique_id=732703048]
 position = Vector2(1036, 371)
 rotation = 0.785398
-shape = SubResource( "3" )
+shape = SubResource("3")
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="wall/斜坡2"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="wall/斜坡2" unique_id=1152338683]
 position = Vector2(1171.75, 333)
-shape = SubResource( "4" )
+shape = SubResource("4")
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="wall/斜坡2"]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="wall/斜坡2" unique_id=1475109658]
 position = Vector2(1307, 372)
 rotation = -0.785398
-shape = SubResource( "5" )
+shape = SubResource("5")
 metadata/_edit_lock_ = true
 
-[node name="斜坡3" type="StaticBody2D" parent="wall"]
+[node name="斜坡3" type="StaticBody2D" parent="wall" unique_id=879804485]
 position = Vector2(3434, 4)
 collision_mask = 0
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="wall/斜坡3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall/斜坡3" unique_id=869565639]
 position = Vector2(1036, 371)
 rotation = 0.785398
-shape = SubResource( "3" )
+shape = SubResource("3")
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="wall/斜坡3"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="wall/斜坡3" unique_id=1292904372]
 position = Vector2(1171.75, 333)
-shape = SubResource( "4" )
+shape = SubResource("4")
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="wall/斜坡3"]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="wall/斜坡3" unique_id=120432328]
 position = Vector2(1307, 372)
 rotation = -0.785398
-shape = SubResource( "5" )
+shape = SubResource("5")
 metadata/_edit_lock_ = true
 
-
-[node name="RightBoundary" type="CollisionShape2D" parent="wall"]
+[node name="RightBoundary" type="CollisionShape2D" parent="wall" unique_id=759613749]
 position = Vector2(5568, -419.5)
 shape = SubResource("1")
 
-[node name="BackGround" type="ParallaxBackground" parent="."]
+[node name="BackGround" type="ParallaxBackground" parent="." unique_id=274469609]
 
-[node name="End" type="ParallaxLayer" parent="BackGround"]
+[node name="End" type="ParallaxLayer" parent="BackGround" unique_id=1255713481]
 motion_scale = Vector2(0, 0)
-[node name="end2" type="Sprite2D" parent="BackGround/End"]
+
+[node name="end2" type="Sprite2D" parent="BackGround/End" unique_id=362166249]
 position = Vector2(718, 244)
-texture = ExtResource( "4" )
+texture = ExtResource("4")
 metadata/_edit_lock_ = true
 
-[node name="front" type="ParallaxLayer" parent="BackGround"]
+[node name="front" type="ParallaxLayer" parent="BackGround" unique_id=2109165711]
 position = Vector2(2014, 36)
 metadata/_edit_lock_ = true
 
-[node name="front" type="Sprite2D" parent="BackGround/front"]
+[node name="front" type="Sprite2D" parent="BackGround/front" unique_id=923598129]
 position = Vector2(438, 338)
-texture = ExtResource( "5" )
+texture = ExtResource("5")
 metadata/_edit_lock_ = true
 
-[node name="floor3" type="ParallaxLayer" parent="BackGround"]
+[node name="floor3" type="ParallaxLayer" parent="BackGround" unique_id=1780138125]
 metadata/_edit_lock_ = true
 
-[node name="floor2" type="Sprite2D" parent="BackGround/floor3"]
+[node name="floor2" type="Sprite2D" parent="BackGround/floor3" unique_id=1424373061]
 position = Vector2(2403, 506)
-texture = ExtResource( "6" )
+texture = ExtResource("6")
 metadata/_edit_lock_ = true
-

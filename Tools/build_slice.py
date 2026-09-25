@@ -94,11 +94,17 @@ def actor_scene(hero):
     ext += f'''[ext_resource type="Script" path="res://Scripts/Actors/{actor}.cs" id="actor"]
 [ext_resource type="Script" path="res://Scripts/Combat/HitBox.cs" id="hitbox"]
 [ext_resource type="Script" path="res://Scripts/Combat/HurtBox.cs" id="hurtbox"]
+[ext_resource type="Script" path="res://Scripts/Combat/AttackStep.cs" id="attack_step_script"]
 [ext_resource type="Resource" path="res://Content/{actor}Hit.tres" id="hit"]
 '''
     library = '[sub_resource type="AnimationLibrary" id="library"]\n_data = {\n' + ',\n'.join(f'"{n}": SubResource("anim_{n}")' for n in selected) + '\n}\n'
     height = 90 if hero else 60
-    shapes = f'''[sub_resource type="CapsuleShape2D" id="body_shape"]
+    shapes = f'''[sub_resource type="Resource" id="normal_step"]
+script = ExtResource("attack_step_script")
+Animation = &"hit1"
+Hit = ExtResource("hit")
+
+[sub_resource type="CapsuleShape2D" id="body_shape"]
 radius = {20 if hero else 16}.0
 height = {height}.0
 '''
@@ -109,7 +115,7 @@ script = ExtResource("actor")
 Team = {0 if hero else 1}
 MaxHealth = {120 if hero else 60}.0
 MoveSpeed = {220 if hero else 85}.0
-NormalAttack = ExtResource("hit")
+NormalCombo = Array[Resource]([SubResource("normal_step")])
 MoveAnimation = &"{'run' if hero else 'walk'}"
 AirAnimation = &"{'jump1' if hero else 'wait'}"
 
