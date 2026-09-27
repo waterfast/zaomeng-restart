@@ -18,6 +18,11 @@ public partial class HitBox : Area2D
 
 	public void BeginAttack()
 	{
+		BeginHitWindow();
+	}
+
+	public void BeginHitWindow()
+	{
 		Active = false;
 		_hitTargets.Clear();
 	}

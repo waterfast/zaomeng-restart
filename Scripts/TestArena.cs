@@ -26,9 +26,7 @@ public partial class TestArena : Node2D
 	public override void _EnterTree()
 	{
 		(_character, _inventory) = GameSessionCharacter.Prepare(ItemCatalog);
-		float maxHealth = _character.BaseStats.MaxHealth + _character.PermanentBonuses.MaxHealth;
-		if (maxHealth > 0)
-			GetNode<Player>("Player").MaxHealth = maxHealth;
+		GetNode<Player>("Player").BindCharacter(_character, ItemCatalog);
 	}
 
 	public override void _Ready()

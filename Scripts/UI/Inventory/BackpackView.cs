@@ -171,7 +171,7 @@ public partial class BackpackView : Control
 		ItemDefinition definition = entry.Definition;
 		_itemName.Text = definition.DisplayName;
 		_itemStats.Text = definition.Category == ItemCategory.Equipment
-			? $"攻击 +{definition.Attack}\n暴击 +{definition.CriticalChance}%"
+			? $"攻击 +{definition.Attack}\n暴击值 +{definition.CriticalRating}\n命中值 +{definition.Accuracy}"
 			: $"数量 {entry.Count}";
 		_itemDescription.Text = definition.Description;
 		_detailIcon.Texture = definition.Icon;

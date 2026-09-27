@@ -18,6 +18,7 @@ public partial class SaveEditorPanel : VBoxContainer
 {
 	private readonly JsonSaveSerializer _serializer = new();
 	private readonly List<ItemDefinition> _definitions = new();
+	private readonly List<SaveSlotFile> _listedSaves = new();
 	private ItemCatalog? _catalog;
 	private GameSaveData? _data;
 	private string? _loadedPath;
@@ -28,6 +29,7 @@ public partial class SaveEditorPanel : VBoxContainer
 	private bool _jsonDirty;
 
 	private SpinBox _slot = null!;
+	private OptionButton _existingSaves = null!;
 	private SpinBox _newCapacity = null!;
 	private OptionButton _format = null!;
 	private LineEdit _key = null!;
@@ -45,42 +47,58 @@ public partial class SaveEditorPanel : VBoxContainer
 	private OptionButton _item = null!;
 	private SpinBox _amount = null!;
 	private TextEdit _json = null!;
+	private ConfirmationDialog _deleteConfirmation = null!;
+	private int _pendingDeleteSlot;
 
 	public override void _Ready()
 	{
 		Name = "存档管理";
-		CustomMinimumSize = new Vector2(900, 390);
+		CustomMinimumSize = new Vector2(440, 390);
 		SizeFlagsHorizontal = SizeFlags.ExpandFill;
 		BuildUi();
 		LoadCatalog();
+		RefreshSaveList();
 		if (_catalog is not null)
 			SetStatus("选择槽位后读取存档；新建只在内存中创建，点击保存才写入文件。");
 	}
 
 	private void BuildUi()
 	{
-		var toolbar = AddRow(this);
-		AddLabel(toolbar, "槽位");
-		_slot = AddSpin(toolbar, 1, 99, 1);
+		var existingRow = AddRow(this);
+		AddLabel(existingRow, "已有存档");
+		_existingSaves = new OptionButton { SizeFlagsHorizontal = SizeFlags.ExpandFill };
+		_existingSaves.ItemSelected += OnExistingSaveSelected;
+		existingRow.AddChild(_existingSaves);
+		AddButton(existingRow, "刷新", RefreshSaveList);
+
+		var selectionRow = AddRow(this);
+		AddLabel(selectionRow, "槽位");
+		_slot = AddSpin(selectionRow, 1, 99, 1);
 		_slot.CustomMinimumSize = new Vector2(65, 0);
-		AddLabel(toolbar, "格式");
+		AddLabel(selectionRow, "格式");
 		_format = new OptionButton();
 		_format.AddItem("开发 JSON");
 		_format.AddItem("加密 DAT");
-		_format.ItemSelected += _ => _keyRow.Visible = _format.Selected == 1;
-		toolbar.AddChild(_format);
-		AddLabel(toolbar, "新建容量");
-		_newCapacity = AddSpin(toolbar, 1, 999, 70);
+		_format.ItemSelected += _ => OnFormatSelected();
+		selectionRow.AddChild(_format);
+		AddLabel(selectionRow, "新建容量");
+		_newCapacity = AddSpin(selectionRow, 1, 999, 70);
 		_newCapacity.CustomMinimumSize = new Vector2(70, 0);
-		AddButton(toolbar, "读取", LoadSave);
-		AddButton(toolbar, "新建", CreateSave);
-		_saveButton = AddButton(toolbar, "保存", Save);
+		var actionRow = AddRow(this);
+		AddButton(actionRow, "读取", LoadSave);
+		AddButton(actionRow, "添加存档", CreateSave);
+		_saveButton = AddButton(actionRow, "保存", Save);
 		_saveButton.Disabled = true;
-		_status = new Label { SizeFlagsHorizontal = SizeFlags.ExpandFill };
-		toolbar.AddChild(_status);
+		AddButton(actionRow, "删除存档", RequestDelete);
+		_status = new Label
+		{
+			AutowrapMode = TextServer.AutowrapMode.WordSmart,
+			SizeFlagsHorizontal = SizeFlags.ExpandFill
+		};
+		AddChild(_status);
 
 		_keyRow = AddRow(this);
-		AddLabel(_keyRow, "加密密钥（64 位十六进制，仅本次编辑使用）");
+		AddLabel(_keyRow, "密钥");
 		_key = new LineEdit
 		{
 			Secret = true,
@@ -92,10 +110,12 @@ public partial class SaveEditorPanel : VBoxContainer
 
 		var tabs = new TabContainer { SizeFlagsVertical = SizeFlags.ExpandFill };
 		AddChild(tabs);
-		var basic = new HBoxContainer { Name = "常用修改" };
+		var basic = new VBoxContainer { Name = "角色与货币", SizeFlagsVertical = SizeFlags.ExpandFill };
 		tabs.AddChild(basic);
 		BuildPersistentDataColumn(basic);
-		BuildInventoryColumn(basic);
+		var inventoryTab = new VBoxContainer { Name = "背包", SizeFlagsVertical = SizeFlags.ExpandFill };
+		tabs.AddChild(inventoryTab);
+		BuildInventoryColumn(inventoryTab);
 		var advanced = new VBoxContainer { Name = "完整 JSON" };
 		tabs.AddChild(advanced);
 		AddLabel(advanced, "可修改所有存档字段。编辑后先点“应用 JSON”，通过校验后再保存。");
@@ -103,15 +123,27 @@ public partial class SaveEditorPanel : VBoxContainer
 		_json.TextChanged += () => { if (!_updatingJson) _jsonDirty = true; };
 		advanced.AddChild(_json);
 		AddButton(advanced, "应用 JSON", ApplyJson);
+		tabs.TabChanged += _ => SyncBasicFieldsToJson();
+		_deleteConfirmation = new ConfirmationDialog { Title = "删除存档" };
+		_deleteConfirmation.Confirmed += ConfirmDelete;
+		AddChild(_deleteConfirmation);
 	}
 
 	private void BuildPersistentDataColumn(Control parent)
 	{
-		var scroll = new ScrollContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill };
+		var scroll = new ScrollContainer
+		{
+			SizeFlagsHorizontal = SizeFlags.ExpandFill,
+			SizeFlagsVertical = SizeFlags.ExpandFill
+		};
 		parent.AddChild(scroll);
-		var column = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill };
+		var column = new VBoxContainer
+		{
+			SizeFlagsHorizontal = SizeFlags.ExpandFill,
+			SizeFlagsVertical = SizeFlags.ExpandFill
+		};
 		scroll.AddChild(column);
-		AddLabel(column, "角色成长与共享货币（每次进关从关卡起点开始）");
+		AddLabel(column, "角色与货币（关卡每次重开）");
 		_souls = AddLine(column, "灵魂");
 		_coupons = AddLine(column, "点券");
 		AddLabel(column, "角色档案");
@@ -119,9 +151,10 @@ public partial class SaveEditorPanel : VBoxContainer
 		_characters = new OptionButton { SizeFlagsHorizontal = SizeFlags.ExpandFill };
 		_characters.ItemSelected += OnCharacterSelected;
 		characterRow.AddChild(_characters);
+		var newCharacterRow = AddRow(column);
 		_newCharacterId = new LineEdit { PlaceholderText = "新角色 ID", SizeFlagsHorizontal = SizeFlags.ExpandFill };
-		characterRow.AddChild(_newCharacterId);
-		AddButton(characterRow, "新增", AddCharacter);
+		newCharacterRow.AddChild(_newCharacterId);
+		AddButton(newCharacterRow, "新增", AddCharacter);
 		_characterName = AddLine(column, "名字");
 		_level = AddLabeledSpin(column, "等级", 1, int.MaxValue, 1);
 		_experience = AddLine(column, "经验");
@@ -129,18 +162,23 @@ public partial class SaveEditorPanel : VBoxContainer
 
 	private void BuildInventoryColumn(Control parent)
 	{
-		var column = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill };
+		var column = new VBoxContainer
+		{
+			SizeFlagsHorizontal = SizeFlags.ExpandFill,
+			SizeFlagsVertical = SizeFlags.ExpandFill
+		};
 		parent.AddChild(column);
-		AddLabel(column, "背包槽位（选中后可清空；加减道具按堆叠规则自动分配）");
+		AddLabel(column, "背包槽位");
 		_inventory = new ItemList { SizeFlagsVertical = SizeFlags.ExpandFill };
 		column.AddChild(_inventory);
 		var itemRow = AddRow(column);
 		_item = new OptionButton { SizeFlagsHorizontal = SizeFlags.ExpandFill };
 		itemRow.AddChild(_item);
-		_amount = AddSpin(itemRow, 1, int.MaxValue, 1);
+		var itemActionRow = AddRow(column);
+		_amount = AddSpin(itemActionRow, 1, int.MaxValue, 1);
 		_amount.CustomMinimumSize = new Vector2(95, 0);
-		AddButton(itemRow, "增加", () => ChangeItem(add: true));
-		AddButton(itemRow, "扣除", () => ChangeItem(add: false));
+		AddButton(itemActionRow, "增加", () => ChangeItem(add: true));
+		AddButton(itemActionRow, "扣除", () => ChangeItem(add: false));
 		AddButton(column, "清空选中槽位", ClearSelectedSlot);
 	}
 
@@ -166,6 +204,100 @@ public partial class SaveEditorPanel : VBoxContainer
 		}
 	}
 
+	private void OnFormatSelected()
+	{
+		_keyRow.Visible = _format.Selected == 1;
+		SetStatus(_format.Selected == 1
+			? "当前游戏仅读取开发 JSON；加密 DAT 用于验证格式。切换格式后请重新读取存档。"
+			: "当前游戏读取开发 JSON。切换格式后请重新读取存档。");
+	}
+
+	private void RefreshSaveList() => TryAction(() =>
+	{
+		string directory = GetSaveDirectory();
+		_listedSaves.Clear();
+		_existingSaves.Clear();
+		_existingSaves.AddItem("选择默认目录中的存档");
+		var jsonManager = new SaveManager(_serializer, new PlainFileSaveStorage(directory));
+		int selectedIndex = 0;
+		foreach (SaveSlotFile file in SaveSlotFiles.List(directory))
+		{
+			_listedSaves.Add(file);
+			string description = file.Extension == "json"
+				? DescribeJsonSave(jsonManager, file.Slot)
+				: "加密存档";
+			string suffix = file.BackupOnly ? "（仅备份）" : "";
+			_existingSaves.AddItem($"{file.Slot:D2} · {file.Extension.ToUpperInvariant()} · {description}{suffix}");
+			if (file.Slot == (int)_slot.Value && file.Extension == SelectedExtension())
+				selectedIndex = _listedSaves.Count;
+		}
+		_existingSaves.Select(selectedIndex);
+	});
+
+	private static string DescribeJsonSave(SaveManager manager, int slot)
+	{
+		try
+		{
+			GameSaveData data = manager.Load(slot);
+			SaveCharacter? character = data.Characters.Find(entry => entry.Id == "role_1")
+				?? (data.Characters.Count > 0 ? data.Characters[0] : null);
+			if (character is null) return "无角色档案";
+			string name = string.IsNullOrWhiteSpace(character.Name) ? character.Id : character.Name;
+			return $"{name} Lv.{character.Level}";
+		}
+		catch (Exception) { return "无法读取"; }
+	}
+
+	private void OnExistingSaveSelected(long index)
+	{
+		if (index < 1 || index > _listedSaves.Count) return;
+		SaveSlotFile file = _listedSaves[(int)index - 1];
+		_slot.Value = file.Slot;
+		_format.Select(file.Extension == "dat" ? 1 : 0);
+		_keyRow.Visible = file.Extension == "dat";
+		SetStatus($"已选择存档 {file.Slot:D2}，点击读取后即可修改。");
+	}
+
+	private void RequestDelete() => TryAction(() =>
+	{
+		int slot = (int)_slot.Value;
+		if (!SaveSlotFiles.Exists(GetSaveDirectory(), slot, "json") &&
+			!SaveSlotFiles.Exists(GetSaveDirectory(), slot, "dat"))
+			throw new InvalidOperationException($"存档 {slot:D2} 不存在。");
+		_pendingDeleteSlot = slot;
+		_deleteConfirmation.DialogText = $"确定删除存档 {slot:D2}？\nJSON、DAT、备份和临时文件都会删除，无法恢复。";
+		_deleteConfirmation.PopupCentered();
+	});
+
+	private void ConfirmDelete() => TryAction(() =>
+	{
+		int slot = _pendingDeleteSlot;
+		if (!SaveSlotFiles.Delete(GetSaveDirectory(), slot))
+			throw new InvalidOperationException("存档文件不存在。");
+		ClearCurrentData();
+		RefreshSaveList();
+		SetStatus($"已删除存档 {slot:D2}。可在同一槽位添加新存档。");
+	});
+
+	private void ClearCurrentData()
+	{
+		_data = null;
+		_loadedPath = null;
+		_loadedKeyIdentity = null;
+		_loadedWriteTime = DateTime.MinValue;
+		_selectedCharacterIndex = -1;
+		_saveButton.Disabled = true;
+		_characters.Clear();
+		ShowCharacterFields();
+		_souls.Text = "";
+		_coupons.Text = "";
+		_inventory.Clear();
+		_updatingJson = true;
+		_json.Text = "";
+		_updatingJson = false;
+		_jsonDirty = false;
+	}
+
 	private void LoadSave() => TryAction(() =>
 	{
 		SaveManager manager = CreateManager();
@@ -180,13 +312,16 @@ public partial class SaveEditorPanel : VBoxContainer
 
 	private void CreateSave() => TryAction(() =>
 	{
-		string path = CurrentPath();
-		if (File.Exists(path)) throw new InvalidOperationException("该槽位已有存档，请先读取或切换空槽。");
+		string directory = GetSaveDirectory();
+		int slot = (int)_slot.Value;
+		if (SaveSlotFiles.Exists(directory, slot, "json") || SaveSlotFiles.Exists(directory, slot, "dat"))
+			throw new InvalidOperationException("该槽位已有存档，请先读取或切换空槽。");
 		CurrentKeyIdentity();
 		_data = new GameSaveData
 		{
 			Inventory = new InventorySaveData { Capacity = (int)_newCapacity.Value }
 		};
+		_data.Characters.Add(new SaveCharacter { Id = "role_1", Name = "孙悟空" });
 		for (int i = 0; i < _data.Inventory.Capacity; i++) _data.Inventory.Slots.Add(null);
 		RememberFile();
 		RefreshAll();
@@ -208,6 +343,7 @@ public partial class SaveEditorPanel : VBoxContainer
 		CreateManager().Save((int)_slot.Value, _data!);
 		RememberFile();
 		RefreshJson();
+		RefreshSaveList();
 		SetStatus("已保存；如有先前的有效存档，旧文件保存在同目录的 .bak 文件中。");
 	});
 
@@ -292,6 +428,16 @@ public partial class SaveEditorPanel : VBoxContainer
 		CommitCharacterFields();
 	}
 
+	private void SyncBasicFieldsToJson()
+	{
+		if (_data is null || _jsonDirty) return;
+		TryAction(() =>
+		{
+			CommitBasicFields();
+			RefreshJson();
+		});
+	}
+
 	private void CommitCharacterFields()
 	{
 		if (_data is null || _selectedCharacterIndex < 0 || _selectedCharacterIndex >= _data.Characters.Count) return;
@@ -360,7 +506,7 @@ public partial class SaveEditorPanel : VBoxContainer
 
 	private SaveManager CreateManager()
 	{
-		string directory = ProjectSettings.GlobalizePath("user://saves");
+		string directory = GetSaveDirectory();
 		ISaveStorage storage = _format.Selected == 0
 			? new PlainFileSaveStorage(directory)
 			: new EncryptedFileSaveStorage(directory, ReadKey());
@@ -380,11 +526,11 @@ public partial class SaveEditorPanel : VBoxContainer
 		_format.Selected == 0 ? "plain" : Convert.ToHexString(SHA256.HashData(ReadKey()));
 
 	private string CurrentPath()
-	{
-		int slot = (int)_slot.Value;
-		string extension = _format.Selected == 0 ? "json" : "dat";
-		return Path.Combine(ProjectSettings.GlobalizePath("user://saves"), $"save_{slot:D2}.{extension}");
-	}
+		=> SaveSlotFiles.GetPath(GetSaveDirectory(), (int)_slot.Value, SelectedExtension());
+
+	private static string GetSaveDirectory() => ProjectSettings.GlobalizePath("user://saves");
+
+	private string SelectedExtension() => _format.Selected == 0 ? "json" : "dat";
 
 	private void RememberFile()
 	{

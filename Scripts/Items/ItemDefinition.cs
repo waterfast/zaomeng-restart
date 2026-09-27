@@ -14,5 +14,6 @@ public partial class ItemDefinition : Resource
 	[Export] public Texture2D? Icon { get; set; }
 	[Export(PropertyHint.MultilineText)] public string Description { get; set; } = "";
 	[Export] public int Attack { get; set; }
-	[Export] public int CriticalChance { get; set; }
+	[Export] public int CriticalRating { get; set; }
+	[Export] public int Accuracy { get; set; }
 }

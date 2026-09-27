@@ -37,31 +37,11 @@ public static class GameSessionCharacter
 			data.Characters.Add(character);
 			updated = true;
 		}
-		// 兼容早期只有背包的存档；仅在基础属性全空时补入演示值。
-		if (character.BaseStats.MaxHealth == 0 && character.BaseStats.MaxMana == 0 &&
-			character.BaseStats.Attack == 0)
-		{
-			character.BaseStats = CreateStartingStats();
-			updated = true;
-		}
+		// 基础属性由角色和等级推导，旧存档中的演示值也在此修正。
+		updated |= CharacterProgression.SyncBaseStats(character);
 		if (updated)
 			GameSession.Save(inventory);
 		return (character, inventory);
 	}
 
-	private static CharacterStats CreateStartingStats() => new()
-	{
-		MaxHealth = 120,
-		MaxMana = 80,
-		Attack = 12,
-		PhysicalDefense = 15,
-		MagicDefense = 10,
-		CriticalRating = 10,
-		DodgeRating = 5,
-		HealthRegeneration = 1,
-		ManaRegeneration = 0.5f,
-		Luck = 5,
-		Toughness = 3,
-		Accuracy = 4
-	};
 }

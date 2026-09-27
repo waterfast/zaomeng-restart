@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Texture2D" path="res://Assets/Art/MainGame/ChoosePlayer/swk.png" id="1"]
+[ext_resource type="FontFile" path="res://Assets/Font/Aa文徵明琴赋小楷_mianfeiziti.com.ttf" id="3"]
+
+[node name="RoleButton" type="Button"]
+custom_minimum_size = Vector2(90, 114)
+offset_right = 8.0
+offset_bottom = 8.0
+icon = ExtResource( "1" )
+
+[node name="RoleName" type="Label" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 84.0
+offset_right = 90.0
+offset_bottom = 114.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = ExtResource( "3" )
+theme_override_font_sizes/font_size = 20
+text = "孙悟空"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true

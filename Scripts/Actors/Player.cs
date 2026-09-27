@@ -1,4 +1,7 @@
 using Godot;
+using SaveCharacter = Zaomeng.Character.Character;
+using Zaomeng.Character;
+using Zaomeng.Items;
 
 namespace Zaomeng;
 
@@ -25,6 +28,31 @@ public partial class Player : CharacterActor
 	[ExportGroup("")]
 	public bool InputEnabled { get; set; } = true;
 	private int _jumpsUsed;
+	private SaveCharacter? _characterData;
+
+	public void BindCharacter(SaveCharacter character, ItemCatalog catalog)
+	{
+		_characterData = character;
+		CharacterStats stats = CharacterStatCalculator.Calculate(character, catalog);
+		Level = character.Level;
+		MaxHealth = stats.MaxHealth;
+		Attack = stats.Attack;
+		PhysicalDefense = stats.PhysicalDefense;
+		MagicDefense = stats.MagicDefense;
+		CriticalRating = stats.CriticalRating;
+		CriticalResistance = stats.CriticalResistance;
+		DodgeRating = stats.DodgeRating;
+		Accuracy = stats.Accuracy;
+		Luck = stats.Luck;
+		Toughness = stats.Toughness;
+		ArmorPenetration = stats.ArmorPenetration;
+		MagicPenetration = stats.MagicPenetration;
+		LifeSteal = stats.LifeSteal;
+	}
+
+	protected override int GetSkillLevel(SkillDefinition skill)
+		=> _characterData?.SkillLevels.TryGetValue(skill.Id, out int level) == true
+			? Mathf.Max(1, level) : 1;
 
 	public override void _PhysicsProcess(double delta)
 	{

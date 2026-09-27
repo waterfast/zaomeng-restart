@@ -8,6 +8,21 @@ public partial class CharacterActor : CharacterBody2D
 {
 	[Export] public int Team { get; set; }//队伍
 	[Export] public float MaxHealth { get; set; } = 100;//最大体力
+	[Export] public float Attack { get; set; } = 12;
+	[Export] public int Level { get; set; } = 1;
+	[Export] public float PhysicalDefense { get; set; }
+	[Export] public float MagicDefense { get; set; }
+	[Export] public float DefenseConstant { get; set; } = 250;
+	[Export] public float CriticalRating { get; set; }
+	[Export] public float CriticalResistance { get; set; }
+	[Export] public float DodgeRating { get; set; }
+	[Export] public float Accuracy { get; set; }
+	[Export] public float Toughness { get; set; }
+	[Export] public float ArmorPenetration { get; set; }
+	[Export] public float MagicPenetration { get; set; }
+	[Export] public float LifeSteal { get; set; }
+	[Export] public float Luck { get; set; }
+	[Export] public float CriticalLuckConstant { get; set; } = 50;
 	[Export] public float MoveSpeed { get; set; } = 220;//移动速度
 	[Export] public float Gravity { get; set; } = 1000;//重力
 	[Export] public float KnockbackFriction { get; set; } = 350;//击退摩擦力
@@ -26,6 +41,7 @@ public partial class CharacterActor : CharacterBody2D
 	public AnimationPlayer Animator { get; private set; } = null!;
 	public HitBox AttackBox { get; private set; } = null!;
 	public HitDefinition? CurrentHit { get; private set; }
+	public int CurrentHitLevel { get; private set; } = 1;
 	public int CurrentComboStage { get; private set; } = -1;
 	protected float MoveDirection;//移动方向
 	private Node2D _facing = null!;
@@ -99,12 +115,13 @@ public partial class CharacterActor : CharacterBody2D
 			_skillCast = null;
 			_actionMotion = null;
 			CurrentHit = null;
+			CurrentHitLevel = 1;
 			if (State == ActorState.Attacking) State = ActorState.Free;
 			return;
 		}
 		_skillCast.Update();
 		// 即使动画轨道也改了 HitBox.Active，窗口外仍不能造成伤害。
-		CurrentHit = _skillCast.IsHitActive ? _skillCast.Definition.Hit : null;
+		CurrentHit = _skillCast.ActiveHit;
 	}
 
 	private void UpdateFreeMovementVisuals()
@@ -159,6 +176,7 @@ public partial class CharacterActor : CharacterBody2D
 		State = ActorState.Attacking;
 		CurrentComboStage = stage;
 		CurrentHit = attack.Hit;
+		CurrentHitLevel = 1;
 		_currentAttackStep = attack;
 		_currentAttackAnimation = attack.Animation;
 		_queuedNextAttack = false;
@@ -179,6 +197,7 @@ public partial class CharacterActor : CharacterBody2D
 		ResetCombo();
 		State = ActorState.Attacking;
 		CurrentHit = null;
+		CurrentHitLevel = GetSkillLevel(skill);
 		AttackBox.BeginAttack();
 		_skillCast = new SkillCast(skill, Animator, AttackBox, _facing, GetParent());
 		StartMotion(motion, skill.Animation, skill.FramesPerSecond);
@@ -196,12 +215,17 @@ public partial class CharacterActor : CharacterBody2D
 		}
 
 		double animationLength = Animator.GetAnimation(skill.Animation).Length;
-		if (skill.Hit != null && (skill.HitStartFrame < 0
-			|| skill.HitEndFrame <= skill.HitStartFrame
-			|| skill.HitStartFrame / (double)skill.FramesPerSecond >= animationLength))
+		int previousEnd = 0;
+		foreach (HitEvent? hitEvent in skill.Hits)
 		{
-			// 美术可以先调动画；攻击帧尚未配置时，播放技能但不开放命中框。
-			GD.PushWarning($"{Name}: 技能攻击框的开始帧或结束帧无效，本次只播放动画，不产生攻击命中");
+			if (hitEvent?.Hit == null || hitEvent.StartFrame < previousEnd
+				|| hitEvent.EndFrame <= hitEvent.StartFrame
+				|| hitEvent.StartFrame / (double)skill.FramesPerSecond >= animationLength)
+			{
+				GD.PushWarning($"{Name}: {skill.Animation} 的技能命中窗口无效");
+				return false;
+			}
+			previousEnd = hitEvent.EndFrame;
 		}
 		if (skill.EffectScene != null && (skill.EffectFrame < 0
 			|| skill.EffectFrame / (double)skill.FramesPerSecond >= animationLength))
@@ -213,6 +237,8 @@ public partial class CharacterActor : CharacterBody2D
 			skill.Animation, skill.FramesPerSecond)) return false;
 		return true;
 	}
+
+	protected virtual int GetSkillLevel(SkillDefinition skill) => 1;
 
 	private ActionMotion? SelectMotion(ActionMotion? groundMotion, ActionMotion? airMotion)
 		=> !IsOnFloor() && airMotion != null ? airMotion : groundMotion;
@@ -257,6 +283,13 @@ public partial class CharacterActor : CharacterBody2D
 		Play(IsDead ? "death" : "hurt", restart: true);
 	}
 
+	public void Heal(float amount)
+	{
+		if (IsDead || amount <= 0) return;
+		Health = Mathf.Min(MaxHealth, Health + amount);
+		_healthBar.Value = Health;
+	}
+
 	/// <summary>对象池再次启用角色时清理上一次战斗的瞬时状态。</summary>
 	public void ResetForSpawn(Vector2 position)
 	{
@@ -284,6 +317,7 @@ public partial class CharacterActor : CharacterBody2D
 			_skillCast = null;
 			_actionMotion = null;
 			CurrentHit = null;
+			CurrentHitLevel = 1;
 			State = ActorState.Free;
 			return;
 		}
@@ -312,6 +346,7 @@ public partial class CharacterActor : CharacterBody2D
 	private void ResetCombo()
 	{
 		CurrentHit = null;
+		CurrentHitLevel = 1;
 		CurrentComboStage = -1;
 		_queuedNextAttack = false;
 		_currentAttackStep = null;

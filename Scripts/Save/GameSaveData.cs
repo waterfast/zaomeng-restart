@@ -10,6 +10,8 @@ public sealed class GameSaveData
 	public InventorySaveData Inventory { get; set; } = new();
 	public Wallet Wallet { get; set; } = new();
 	public List<Zaomeng.Character.Character> Characters { get; set; } = new();
+	// 旧版存档没有此字段，反序列化时默认只开放第一关。
+	public int UnlockedLevel { get; set; } = 1;
 }
 
 public sealed class InventorySaveData

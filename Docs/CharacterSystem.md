@@ -21,6 +21,6 @@
 
 背包属性名称集中在 `CharacterStatsPresenter` 的行定义中，中文原文由 `Content/Localization/ui.csv` 翻译。CSV 第一列是稳定的界面原文，`zh_CN` 和 `en` 列是对应语言；例如“生命”对应 *Health*，“物防”对应 *Physical Defense*。新增属性时，同时补齐字段、行定义和翻译表。不要把译文写进存档，也不要根据界面文字反查属性字段。
 
-`BaseStats` 与 `PermanentBonuses` 分开存储，装备、被动技能和临时状态未来可按来源参与运行时结算，不把合成后的最终攻击力写回档案。旧工程的 `Hp`、`Mp` 是当前资源量，`exp` 是经验，`coin_num` 是货币，均未混进属性结构。旧工程没有统一的角色静态 ID 或成长曲线资源；这些数据由后续角色定义提供，不在档案里硬编码公式。
+`BaseStats` 与 `PermanentBonuses` 分开存储。`CharacterProgression` 按旧 `BaseRoleProperies.gd` 的五名角色固定基础值和每级增量计算 `BaseStats`；进入场景时会同步旧存档中的演示值。成长属性不查表，只有 1～19 级的升级经验使用旧表，20 级起使用旧公式。`CharacterStatCalculator` 汇总基础属性、永久加成和已穿戴装备，供玩家场景与面板共用；不把合成后的最终攻击力写回档案。旧工程的 `Hp`、`Mp` 是当前资源量，`exp` 是经验，`coin_num` 是货币，均未混进属性结构。被动技能和临时状态尚未参与汇总。
 
 旧背包界面会用 `Crit / (Crit + 100)`、`Miss / (Miss + 100)` 显示概率，所以暴击和闪避字段保存原始属性值，不保存换算后的百分比。`LifeSteal` 沿用旧工程的小数比例（例如 `0.1` 表示 10%）。

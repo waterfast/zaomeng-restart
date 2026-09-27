@@ -27,15 +27,14 @@ public partial class GameplayLevel : Node2D
 	private LegacyBackpackView _backpackView = null!;
 	private SaveCharacter _character = null!;
 	private Label _status = null!;
+	private readonly CapsuleShape2D _spawnClearance = new() { Radius = 18, Height = 60 };
 	private float _spawnClock;
 	private bool _transitioning;
 
 	public override void _EnterTree()
 	{
 		(_character, _inventory) = GameSessionCharacter.Prepare(ItemCatalog);
-		float maxHealth = _character.BaseStats.MaxHealth + _character.PermanentBonuses.MaxHealth;
-		if (maxHealth > 0)
-			GetNode<Player>("Player").MaxHealth = maxHealth;
+		GetNode<Player>("Player").BindCharacter(_character, ItemCatalog);
 	}
 
 	public override void _Ready()
@@ -58,6 +57,7 @@ public partial class GameplayLevel : Node2D
 			oldHud.GetNode<CanvasLayer>("roleLayer").Visible = !isOpen;
 		};
 		oldHud.GetNode<AnimatedSprite2D>("roleLayer/Gogo").Hide();
+		oldHud.GetNode<Label>("roleLayer/role_hp_mp_exp/role_level").Text = _character.Level.ToString();
 		oldHud.GetNode<BaseButton>("roleLayer/role_menu/backpack").Pressed += () => menus.ToggleMenu("bag");
 		foreach (string name in new[] { "set", "skill", "magic_weapon", "pet" })
 			oldHud.GetNode<BaseButton>($"roleLayer/role_menu/{name}").Disabled = true;
@@ -79,16 +79,19 @@ public partial class GameplayLevel : Node2D
 		float step = (float)delta;
 		_camera.Position = new Vector2(Mathf.Clamp(_player.Position.X, 480, 4700), 280);
 		UpdateMonsters(step);
-		_spawnClock += step;
-		if (_spawnClock >= SpawnInterval && !_player.IsDead && _active.Count < MaximumMonsters)
-		{
-			_spawnClock = 0;
-			SpawnRandomMonster();
-		}
 		_status.Text = $"{LevelName}  {_player.Health:0}/{_player.MaxHealth:0}   小怪 {_active.Count}/{MaximumMonsters}"
 			+ (_player.IsDead ? "   按 R 重试" : "");
 		UpdateOldHud();
 		if (_player.Position.X > 4600 && !_player.IsDead) CompleteLevel();
+	}
+
+	public override void _PhysicsProcess(double delta)
+	{
+		if (_transitioning || _player.IsDead || _active.Count >= MaximumMonsters) return;
+		_spawnClock += (float)delta;
+		if (_spawnClock < SpawnInterval) return;
+		_spawnClock = 0;
+		SpawnRandomMonster();
 	}
 
 	private string LevelName => LevelNumber switch { 1 => "花果山", 2 => "水帘洞", _ => "桃花源" };
@@ -137,36 +140,53 @@ public partial class GameplayLevel : Node2D
 			2 when progress < 1600 => 1,
 			_ => GD.Randf() < 0.5f ? 2 : 3
 		};
-		float direction = GD.Randf() < 0.8f ? 1 : -1;
-		float x = Mathf.Clamp(_player.Position.X + direction * (350 + GD.Randf() * 300), 250, 4450);
-		Monster monster = _pool.Spawn(kind, new Vector2(x, 490));
-		_active[monster] = (kind, 0);
+		for (int attempt = 0; attempt < 12; attempt++)
+		{
+			float direction = GD.Randf() < 0.8f ? 1 : -1;
+			float x = Mathf.Clamp(_player.Position.X + direction * (350 + GD.Randf() * 300), 250, 4450);
+			if (!TryFindSpawnPosition(x, out Vector2 position)) continue;
+			Monster monster = _pool.Spawn(kind, position);
+			_active[monster] = (kind, 0);
+			return;
+		}
+	}
+
+	private bool TryFindSpawnPosition(float x, out Vector2 position)
+	{
+		position = default;
+		var space = GetWorld2D().DirectSpaceState;
+		var ray = PhysicsRayQueryParameters2D.Create(new Vector2(x, 240), new Vector2(x, 700), 1);
+		var groundHit = space.IntersectRay(ray);
+		if (groundHit.Count == 0) return false;
+		Vector2 ground = groundHit["position"].AsVector2();
+		Vector2 normal = groundHit["normal"].AsVector2();
+		// 旧关卡有斜坡和高墙，拒绝陡面及高墙顶面的落点。
+		if (ground.Y is < 370 or > 560 || normal.Dot(Vector2.Up) < 0.7f) return false;
+		var playerRay = PhysicsRayQueryParameters2D.Create(
+			_player.GlobalPosition + new Vector2(0, -50), new Vector2(_player.GlobalPosition.X, 700), 1);
+		var playerGroundHit = space.IntersectRay(playerRay);
+		if (playerGroundHit.Count == 0 ||
+			Mathf.Abs(playerGroundHit["position"].AsVector2().Y - ground.Y) > 35) return false;
+		position = new Vector2(x, ground.Y - 3);
+		// 出生点即使不与墙重叠，也不能隔着斜坡或挡墙追击玩家。
+		var path = PhysicsRayQueryParameters2D.Create(
+			_player.GlobalPosition + new Vector2(0, -35), position + new Vector2(0, -35), 1);
+		if (space.IntersectRay(path).Count > 0) return false;
+		var clearance = new PhysicsShapeQueryParameters2D
+		{
+			Shape = _spawnClearance,
+			Transform = new Transform2D(0, position + new Vector2(0, -32)),
+			CollisionMask = 1,
+			CollideWithBodies = true
+		};
+		return space.IntersectShape(clearance, 1).Count == 0;
 	}
 
 	private void CompleteLevel()
 	{
 		_transitioning = true;
-		if (LevelNumber == 3)
-		{
-			GameSession.Save(_inventory);
-			_status.Text = "前三关已完成";
-			_player.InputEnabled = false;
-			foreach (var entry in _active)
-				_pool.Release(entry.Value.Kind, entry.Key);
-			_active.Clear();
-			var returnButton = new Button
-			{
-				Text = "返回主菜单",
-				Position = new Vector2(380, 250),
-				Size = new Vector2(180, 56)
-			};
-			returnButton.Pressed += () => GetTree().ChangeSceneToFile("res://Scenes/UI/MainMenu/MainMenu.tscn");
-			GetNode("HUD").AddChild(returnButton);
-			return;
-		}
-		string next = $"res://Scenes/Level/Level_{LevelNumber + 1}.tscn";
-		GameSession.Save(_inventory);
-		GetTree().ChangeSceneToFile(next);
+		GameSession.CompleteLevel(LevelNumber, _inventory);
+		GetTree().ChangeSceneToFile(GameSession.FirstMap);
 	}
 
 	public override void _UnhandledInput(InputEvent input)

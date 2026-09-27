@@ -11,4 +11,5 @@ MaxStack = 1
 Icon = ExtResource("2")
 Description = "看似普通的宝剑，蕴藏有神秘的力量。"
 Attack = 30
-CriticalChance = 3
+CriticalRating = 3
+Accuracy = 3

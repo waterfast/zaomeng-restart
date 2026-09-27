@@ -1,9 +1,5 @@
 [gd_scene format=3 uid="uid://cbtmnmvr3j2wr"]
 
-[ext_resource type="Script" uid="uid://bkmtytacgctxd" path="res://Scripts/Combat/AttackStep.cs" id="2_ghfw7"]
-[ext_resource type="Script" uid="uid://d4daj54a2ec00" path="res://Scripts/Combat/SkillDefinition.cs" id="3_6johy"]
-[ext_resource type="Script" uid="uid://c76o6v4o8ovjr" path="res://Scripts/Combat/HitDefinition.cs" id="3_8d0aw"]
-[ext_resource type="Script" path="res://Scripts/Combat/ActionMotion.cs" id="motion"]
 [ext_resource type="Texture2D" uid="uid://dwk38ggu3wlb5" path="res://Assets/Art/HeroPicture/Role1AllEquipment/Role_1_Body_Empty.png" id="9"]
 [ext_resource type="Texture2D" uid="uid://be1t8pqvj3pcy" path="res://Assets/Art/HeroPicture/Role1AllEquipment/Role_1_Eq_Empty.png" id="10"]
 [ext_resource type="Texture2D" uid="uid://bh35qhtpw26s4" path="res://Assets/Art/HeroPicture/Role1SpecialEffect/HYJJround.png" id="11"]
@@ -22,130 +18,17 @@
 [ext_resource type="Texture2D" uid="uid://debj0k0qitjyv" path="res://Assets/Art/HeroPicture/Role1SpecialEffect/Role1ZZ_1.png" id="24"]
 [ext_resource type="Texture2D" uid="uid://wtn1k61tquhi" path="res://Assets/Art/HeroPicture/Role1SpecialEffect/Role1zz.png" id="25"]
 [ext_resource type="Script" uid="uid://dggdqdsybl6be" path="res://Scripts/Actors/Player.cs" id="actor"]
+[ext_resource type="Resource" path="res://Content/Skills/Wukong/jdy.tres" id="skill_jdy"]
+[ext_resource type="Resource" path="res://Content/Skills/Wukong/lyfb.tres" id="skill_lyfb"]
+[ext_resource type="Resource" path="res://Content/Skills/Wukong/lys.tres" id="skill_lys"]
+[ext_resource type="Resource" path="res://Content/Skills/Wukong/qsez.tres" id="skill_qsez"]
+[ext_resource type="Resource" path="res://Content/Skills/Wukong/slz.tres" id="skill_slz"]
+[ext_resource type="Resource" path="res://Content/Attacks/Wukong/hit1.tres" id="attack_hit1"]
+[ext_resource type="Resource" path="res://Content/Attacks/Wukong/hit2.tres" id="attack_hit2"]
+[ext_resource type="Resource" path="res://Content/Attacks/Wukong/hit3.tres" id="attack_hit3"]
+[ext_resource type="Resource" path="res://Content/Attacks/Wukong/hit4.tres" id="attack_hit4"]
 [ext_resource type="Script" uid="uid://dk4pw4it2tps" path="res://Scripts/Combat/HitBox.cs" id="hitbox"]
 [ext_resource type="Script" uid="uid://ccahdwf0cyxog" path="res://Scripts/Combat/HurtBox.cs" id="hurtbox"]
-
-[sub_resource type="Resource" id="motion_jdy"]
-script = ExtResource("motion")
-Mode = 2
-Speed = 1000.0
-
-[sub_resource type="Resource" id="motion_lyfb_air"]
-script = ExtResource("motion")
-Mode = 1
-
-[sub_resource type="Resource" id="motion_lys"]
-script = ExtResource("motion")
-Mode = 2
-Speed = 1000.0
-
-[sub_resource type="Resource" id="motion_qsez"]
-script = ExtResource("motion")
-Mode = 2
-Speed = 1000.0
-
-[sub_resource type="Resource" id="motion_slz"]
-script = ExtResource("motion")
-Mode = 1
-
-[sub_resource type="Resource" id="motion_hit1"]
-script = ExtResource("motion")
-Mode = 1
-
-[sub_resource type="Resource" id="Resource_vicpa"]
-script = ExtResource("3_8d0aw")
-metadata/_custom_type_script = "uid://c76o6v4o8ovjr"
-
-[sub_resource type="Resource" id="Resource_eh7e4"]
-script = ExtResource("3_6johy")
-Animation = &"jdy"
-Motion = SubResource("motion_jdy")
-Hit = SubResource("Resource_vicpa")
-metadata/_custom_type_script = "uid://d4daj54a2ec00"
-
-[sub_resource type="Resource" id="Resource_eq85b"]
-script = ExtResource("3_8d0aw")
-metadata/_custom_type_script = "uid://c76o6v4o8ovjr"
-
-[sub_resource type="Resource" id="Resource_wkalc"]
-script = ExtResource("3_6johy")
-Animation = &"lyfb"
-AirMotion = SubResource("motion_lyfb_air")
-Hit = SubResource("Resource_eq85b")
-metadata/_custom_type_script = "uid://d4daj54a2ec00"
-
-[sub_resource type="Resource" id="Resource_12j5v"]
-script = ExtResource("3_8d0aw")
-metadata/_custom_type_script = "uid://c76o6v4o8ovjr"
-
-[sub_resource type="Resource" id="Resource_2pxvu"]
-script = ExtResource("3_6johy")
-Animation = &"lys"
-Motion = SubResource("motion_lys")
-Hit = SubResource("Resource_12j5v")
-metadata/_custom_type_script = "uid://d4daj54a2ec00"
-
-[sub_resource type="Resource" id="Resource_ydhup"]
-script = ExtResource("3_8d0aw")
-metadata/_custom_type_script = "uid://c76o6v4o8ovjr"
-
-[sub_resource type="Resource" id="Resource_2ra4n"]
-script = ExtResource("3_6johy")
-Animation = &"qsez"
-Motion = SubResource("motion_qsez")
-Hit = SubResource("Resource_ydhup")
-metadata/_custom_type_script = "uid://d4daj54a2ec00"
-
-[sub_resource type="Resource" id="Resource_c0wnk"]
-script = ExtResource("3_8d0aw")
-metadata/_custom_type_script = "uid://c76o6v4o8ovjr"
-
-[sub_resource type="Resource" id="Resource_odtg0"]
-script = ExtResource("3_6johy")
-Animation = &"slz"
-Motion = SubResource("motion_slz")
-Hit = SubResource("Resource_c0wnk")
-metadata/_custom_type_script = "uid://d4daj54a2ec00"
-
-[sub_resource type="Resource" id="Resource_6johy"]
-script = ExtResource("3_8d0aw")
-metadata/_custom_type_script = "uid://c76o6v4o8ovjr"
-
-[sub_resource type="Resource" id="Resource_qxnw4"]
-script = ExtResource("2_ghfw7")
-Motion = SubResource("motion_hit1")
-Hit = SubResource("Resource_6johy")
-metadata/_custom_type_script = "uid://bkmtytacgctxd"
-
-[sub_resource type="Resource" id="Resource_f5146"]
-script = ExtResource("3_8d0aw")
-metadata/_custom_type_script = "uid://c76o6v4o8ovjr"
-
-[sub_resource type="Resource" id="Resource_8wjvg"]
-script = ExtResource("2_ghfw7")
-Animation = &"hit2"
-Hit = SubResource("Resource_f5146")
-metadata/_custom_type_script = "uid://bkmtytacgctxd"
-
-[sub_resource type="Resource" id="Resource_q8oot"]
-script = ExtResource("3_8d0aw")
-metadata/_custom_type_script = "uid://c76o6v4o8ovjr"
-
-[sub_resource type="Resource" id="Resource_4g61u"]
-script = ExtResource("2_ghfw7")
-Animation = &"hit3"
-Hit = SubResource("Resource_q8oot")
-metadata/_custom_type_script = "uid://bkmtytacgctxd"
-
-[sub_resource type="Resource" id="Resource_rs7pg"]
-script = ExtResource("3_8d0aw")
-metadata/_custom_type_script = "uid://c76o6v4o8ovjr"
-
-[sub_resource type="Resource" id="Resource_hd74q"]
-script = ExtResource("2_ghfw7")
-Animation = &"hit4"
-Hit = SubResource("Resource_rs7pg")
-metadata/_custom_type_script = "uid://bkmtytacgctxd"
 
 [sub_resource type="CapsuleShape2D" id="body_shape"]
 radius = 20.0
@@ -4384,15 +4267,15 @@ _data = {
 [node name="Player" type="CharacterBody2D" unique_id=464675697]
 collision_layer = 2
 script = ExtResource("actor")
-EquippedSkill1 = SubResource("Resource_eh7e4")
-EquippedSkill2 = SubResource("Resource_wkalc")
-EquippedSkill3 = SubResource("Resource_2pxvu")
-EquippedSkill4 = SubResource("Resource_2ra4n")
-EquippedSkill5 = SubResource("Resource_odtg0")
+EquippedSkill1 = ExtResource("skill_jdy")
+EquippedSkill2 = ExtResource("skill_lyfb")
+EquippedSkill3 = ExtResource("skill_lys")
+EquippedSkill4 = ExtResource("skill_qsez")
+EquippedSkill5 = ExtResource("skill_slz")
 MaxHealth = 120.0
 MoveSpeed = 240.0
 Gravity = 600.0
-NormalCombo = Array[ExtResource("2_ghfw7")]([SubResource("Resource_qxnw4"), SubResource("Resource_8wjvg"), SubResource("Resource_4g61u"), SubResource("Resource_hd74q")])
+NormalCombo = Array[Resource]([ExtResource("attack_hit1"), ExtResource("attack_hit2"), ExtResource("attack_hit3"), ExtResource("attack_hit4")])
 
 [node name="BodyShape" type="CollisionShape2D" parent="." unique_id=1557688993]
 position = Vector2(0, -45)

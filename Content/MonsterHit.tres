@@ -2,6 +2,7 @@
 [ext_resource type="Script" path="res://Scripts/Combat/HitDefinition.cs" id="1"]
 [resource]
 script = ExtResource("1")
-Damage = 8.0
+AttackMultiplier = 1.0
+AttackMultiplierMax = 1.0
 Knockback = Vector2(60, 0)
 Hitstun = 0.22

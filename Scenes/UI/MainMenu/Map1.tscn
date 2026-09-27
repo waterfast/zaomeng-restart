@@ -1,0 +1,1428 @@
+[gd_scene load_steps=102 format=3]
+
+[ext_resource type="Script" path="res://Scripts/UI/MainMenu/Map1.cs" id="map_script"]
+
+[ext_resource type="Texture2D" path="res://Assets/Art/game_pic/183.png" id="2"]
+[ext_resource type="Texture2D" path="res://Assets/Art/game_pic/level_choose/185.png" id="3"]
+[ext_resource type="Texture2D" path="res://Assets/Art/game_pic/level_choose/188.png" id="4"]
+[ext_resource type="Texture2D" path="res://Assets/Art/game_pic/level_choose/192.png" id="5"]
+[ext_resource type="Texture2D" path="res://Assets/Art/game_pic/level_choose/195.png" id="6"]
+[ext_resource type="Texture2D" path="res://Assets/Art/game_pic/level_choose/199.png" id="7"]
+[ext_resource type="Texture2D" path="res://Assets/Art/game_pic/level_choose/202.png" id="8"]
+[ext_resource type="Texture2D" path="res://Assets/Art/game_pic/level_choose/206.png" id="9"]
+[ext_resource type="Texture2D" path="res://Assets/Art/game_pic/level_choose/209.png" id="10"]
+[ext_resource type="Texture2D" path="res://Assets/Art/game_pic/level_choose/220.png" id="11"]
+[ext_resource type="Texture2D" path="res://Assets/Art/game_pic/level_choose/223.png" id="12"]
+[ext_resource type="Texture2D" path="res://Assets/Art/game_pic/level_choose/213.png" id="13"]
+[ext_resource type="Texture2D" path="res://Assets/Art/game_pic/level_choose/216.png" id="14"]
+[ext_resource type="Texture2D" path="res://Assets/Art/game_pic/qa.png" id="15"]
+[ext_resource type="Texture2D" path="res://Assets/Art/game_pic/level_choose/ShallowShore.png" id="16"]
+[ext_resource type="Texture2D" path="res://Assets/Art/game_pic/dh.png" id="17"]
+[ext_resource type="Texture2D" path="res://Assets/Art/game_pic/level_choose/EastSea.png" id="18"]
+[ext_resource type="Texture2D" path="res://Assets/Art/game_pic/level_choose/267.png" id="19"]
+[ext_resource type="Texture2D" path="res://Assets/Art/game_pic/level_choose/SharkVortex.png" id="20"]
+[ext_resource type="Texture2D" path="res://Assets/Art/game_pic/level_choose/234.png" id="21"]
+[ext_resource type="Texture2D" path="res://Assets/Art/game_pic/level_choose/237.png" id="22"]
+[ext_resource type="Texture2D" path="res://Assets/Art/game_pic/level_choose/241.png" id="23"]
+[ext_resource type="Texture2D" path="res://Assets/Art/game_pic/level_choose/244.png" id="24"]
+[ext_resource type="Texture2D" path="res://Assets/Art/game_pic/level_choose/227.png" id="25"]
+[ext_resource type="Texture2D" path="res://Assets/Art/game_pic/level_choose/230.png" id="26"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Game_2/Button/445.png" id="27"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Game_2/Button/447.png" id="28"]
+[ext_resource type="Texture2D" path="res://Assets/Art/game_pic/level_choose/294.png" id="29"]
+[ext_resource type="Texture2D" path="res://Assets/Art/game_pic/487.png" id="30"]
+[ext_resource type="Texture2D" path="res://Assets/Art/game_pic/481.png" id="31"]
+[ext_resource type="Texture2D" path="res://Assets/Art/game_pic/480.png" id="32"]
+[ext_resource type="Texture2D" path="res://Assets/Art/game_pic/492.png" id="33"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Game_3/OtherMapButton/gg_1.png" id="34"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Game_3/OtherMapButton/gg_2.png" id="35"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Level/Level_9/80.png" id="36"]
+[ext_resource type="Texture2D" path="res://Assets/Art/MainGame/463.png" id="37"]
+[ext_resource type="FontFile" path="res://Assets/Font/HYZhuZiMeiXinTiW.ttf" id="38"]
+[ext_resource type="Texture2D" path="res://Assets/Art/MainGame/49.png" id="39"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Game_2/Button/ButtonReturnMainMenu.png" id="40"]
+[ext_resource type="FontFile" path="res://Assets/Font/华康海报体W12 &amp; 华康海报体W12(P).ttc" id="41"]
+[ext_resource type="Shader" path="res://Assets/Shaders/LevelButton.gdshader" id="42"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Game_3/OtherMapButton/hj2.png" id="43"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Game_3/OtherMapButton/hj1.png" id="44"]
+
+[sub_resource type="StyleBoxEmpty" id="1"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="2"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="3"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="4"]
+script = null
+
+[sub_resource type="StyleBoxEmpty" id="5"]
+script = null
+
+[sub_resource type="AtlasTexture" id="6"]
+atlas = ExtResource( "39" )
+region = Rect2(0, 0, 192, 192)
+script = null
+
+[sub_resource type="AtlasTexture" id="7"]
+atlas = ExtResource( "39" )
+region = Rect2(192, 0, 192, 192)
+script = null
+
+[sub_resource type="AtlasTexture" id="8"]
+atlas = ExtResource( "39" )
+region = Rect2(384, 0, 192, 192)
+script = null
+
+[sub_resource type="AtlasTexture" id="9"]
+atlas = ExtResource( "39" )
+region = Rect2(576, 0, 192, 192)
+script = null
+
+[sub_resource type="AtlasTexture" id="10"]
+atlas = ExtResource( "39" )
+region = Rect2(0, 0, 192, 192)
+script = null
+
+[sub_resource type="AtlasTexture" id="11"]
+atlas = ExtResource( "39" )
+region = Rect2(192, 0, 192, 192)
+script = null
+
+[sub_resource type="AtlasTexture" id="12"]
+atlas = ExtResource( "39" )
+region = Rect2(384, 0, 192, 192)
+script = null
+
+[sub_resource type="AtlasTexture" id="13"]
+atlas = ExtResource( "39" )
+region = Rect2(576, 0, 192, 192)
+script = null
+
+[sub_resource type="AtlasTexture" id="14"]
+atlas = ExtResource( "39" )
+region = Rect2(0, 0, 192, 192)
+script = null
+
+[sub_resource type="AtlasTexture" id="15"]
+atlas = ExtResource( "39" )
+region = Rect2(192, 0, 192, 192)
+script = null
+
+[sub_resource type="AtlasTexture" id="16"]
+atlas = ExtResource( "39" )
+region = Rect2(384, 0, 192, 192)
+script = null
+
+[sub_resource type="AtlasTexture" id="17"]
+atlas = ExtResource( "39" )
+region = Rect2(576, 0, 192, 192)
+script = null
+
+[sub_resource type="AtlasTexture" id="18"]
+atlas = ExtResource( "39" )
+region = Rect2(0, 0, 192, 192)
+script = null
+
+[sub_resource type="AtlasTexture" id="19"]
+atlas = ExtResource( "39" )
+region = Rect2(192, 0, 192, 192)
+script = null
+
+[sub_resource type="AtlasTexture" id="20"]
+atlas = ExtResource( "39" )
+region = Rect2(384, 0, 192, 192)
+script = null
+
+[sub_resource type="AtlasTexture" id="21"]
+atlas = ExtResource( "39" )
+region = Rect2(576, 0, 192, 192)
+script = null
+
+[sub_resource type="SpriteFrames" id="22"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource( "6" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "7" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "8" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "9" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "10" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "11" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "12" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "13" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "14" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "15" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "16" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "17" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "18" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "19" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "20" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "21" )
+}],
+"loop": true,
+"name": &"chuansong",
+"speed": 14.0
+}]
+script = null
+
+[sub_resource type="ShaderMaterial" id="23"]
+shader = ExtResource( "42" )
+shader_parameter/line_color = Color(1, 1, 0, 1)
+shader_parameter/line_thickness = 1.0
+script = null
+
+[sub_resource type="Animation" id="24"]
+resource_name = "Level1"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("level_1:material:shader_parameter/line_thickness")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 3.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("level_1:material:shader")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource( "42" )]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("level_1:material:shader_parameter/line_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 0, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("level_1:material")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource( "23" )]
+}
+script = null
+
+[sub_resource type="Animation" id="25"]
+length = 0.001
+script = null
+
+[sub_resource type="ShaderMaterial" id="26"]
+shader = ExtResource( "42" )
+shader_parameter/line_color = Color(1, 1, 0, 1)
+shader_parameter/line_thickness = 1.0
+script = null
+
+[sub_resource type="Animation" id="27"]
+resource_name = "level10"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("level_10:material:shader_parameter/line_thickness")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 3.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("level_10:material:shader")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource( "42" )]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("level_10:material")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource( "26" )]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("level_10:material:shader_parameter/line_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 0, 1)]
+}
+script = null
+
+[sub_resource type="Animation" id="28"]
+resource_name = "level10_1"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("level_10:material")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+script = null
+
+[sub_resource type="Animation" id="29"]
+resource_name = "level1_1"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("level_1:material")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+script = null
+
+[sub_resource type="ShaderMaterial" id="30"]
+shader = ExtResource( "42" )
+shader_parameter/line_color = Color(1, 1, 0, 1)
+shader_parameter/line_thickness = 1.0
+script = null
+
+[sub_resource type="Animation" id="31"]
+resource_name = "level2"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("level_2:material:shader_parameter/line_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("level_2:material")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource( "30" )]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("level_2:material:shader_parameter/line_thickness")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 3.0, 1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("level_2:material:shader")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource( "42" )]
+}
+script = null
+
+[sub_resource type="Animation" id="32"]
+resource_name = "level2_1"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("level_2:material")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+script = null
+
+[sub_resource type="ShaderMaterial" id="33"]
+shader = ExtResource( "42" )
+shader_parameter/line_color = Color(1, 1, 0, 1)
+shader_parameter/line_thickness = 1.0
+script = null
+
+[sub_resource type="Animation" id="34"]
+resource_name = "level3"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("level_3:material")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource( "33" )]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("level_3:material:shader")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource( "42" )]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("level_3:material:shader_parameter/line_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 0, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("level_3:material:shader_parameter/line_thickness")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 3.0, 1.0]
+}
+script = null
+
+[sub_resource type="Animation" id="35"]
+resource_name = "level3_1"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("level_3:material")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+script = null
+
+[sub_resource type="ShaderMaterial" id="36"]
+shader = ExtResource( "42" )
+shader_parameter/line_color = Color(1, 1, 0, 1)
+shader_parameter/line_thickness = 1.0
+script = null
+
+[sub_resource type="Animation" id="37"]
+resource_name = "level4"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("level_4:material:shader_parameter/line_thickness")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 3.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("level_4:material:shader")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource( "42" )]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("level_4:material")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource( "36" )]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("level_4:material:shader_parameter/line_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 0, 1)]
+}
+script = null
+
+[sub_resource type="Animation" id="38"]
+resource_name = "level4_1"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("level_4:material")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+script = null
+
+[sub_resource type="ShaderMaterial" id="39"]
+shader = ExtResource( "42" )
+shader_parameter/line_color = Color(1, 1, 0, 1)
+shader_parameter/line_thickness = 1.0
+script = null
+
+[sub_resource type="Animation" id="40"]
+resource_name = "level5"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("level_5:material:shader_parameter/line_thickness")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 3.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("level_5:material")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource( "39" )]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("level_5:material:shader")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource( "42" )]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("level_5:material:shader_parameter/line_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 0, 1)]
+}
+script = null
+
+[sub_resource type="Animation" id="41"]
+resource_name = "level5_1"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("level_5:material")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+script = null
+
+[sub_resource type="ShaderMaterial" id="42"]
+shader = ExtResource( "42" )
+shader_parameter/line_color = Color(1, 1, 0, 1)
+shader_parameter/line_thickness = 1.0
+script = null
+
+[sub_resource type="Animation" id="43"]
+resource_name = "level6"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("level_6:material:shader_parameter/line_thickness")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 3.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("level_6:material:shader_parameter/line_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 0, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("level_6:material:shader")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource( "42" )]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("level_6:material")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource( "42" )]
+}
+script = null
+
+[sub_resource type="Animation" id="44"]
+resource_name = "level6_1"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("level_6:material")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+script = null
+
+[sub_resource type="ShaderMaterial" id="45"]
+shader = ExtResource( "42" )
+shader_parameter/line_color = Color(1, 1, 0, 1)
+shader_parameter/line_thickness = 1.0
+script = null
+
+[sub_resource type="Animation" id="46"]
+resource_name = "level7"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("level_7:material:shader_parameter/line_thickness")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 3.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("level_7:material")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource( "45" )]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("level_7:material:shader")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource( "42" )]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("level_7:material:shader_parameter/line_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 0, 1)]
+}
+script = null
+
+[sub_resource type="Animation" id="47"]
+resource_name = "level7_1"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("level_7:material")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+script = null
+
+[sub_resource type="ShaderMaterial" id="48"]
+shader = ExtResource( "42" )
+shader_parameter/line_color = Color(1, 1, 0, 1)
+shader_parameter/line_thickness = 1.0
+script = null
+
+[sub_resource type="Animation" id="49"]
+resource_name = "level8"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("level_8:material:shader_parameter/line_thickness")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 3.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("level_8:material:shader")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource( "42" )]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("level_8:material")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource( "48" )]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("level_8:material:shader_parameter/line_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 0, 1)]
+}
+script = null
+
+[sub_resource type="Animation" id="50"]
+resource_name = "level8_1"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("level_8:material")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+script = null
+
+[sub_resource type="ShaderMaterial" id="51"]
+shader = ExtResource( "42" )
+shader_parameter/line_color = Color(1, 1, 0, 1)
+shader_parameter/line_thickness = 1.0
+script = null
+
+[sub_resource type="Animation" id="52"]
+resource_name = "level9"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D2/Node2D/level_9:material")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource( "51" )]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D2/Node2D/level_9:material:shader")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource( "42" )]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D2/Node2D/level_9:material:shader_parameter/line_thickness")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 3.0, 1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node2D2/Node2D/level_9:material:shader_parameter/line_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 0, 1)]
+}
+script = null
+
+[sub_resource type="Animation" id="53"]
+resource_name = "level9_1"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D2/Node2D/level_9:material")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+script = null
+
+[sub_resource type="AnimationLibrary" id="54"]
+_data = {
+"Level1": SubResource( "24" ),
+"RESET": SubResource( "25" ),
+"level10": SubResource( "27" ),
+"level10_1": SubResource( "28" ),
+"level1_1": SubResource( "29" ),
+"level2": SubResource( "31" ),
+"level2_1": SubResource( "32" ),
+"level3": SubResource( "34" ),
+"level3_1": SubResource( "35" ),
+"level4": SubResource( "37" ),
+"level4_1": SubResource( "38" ),
+"level5": SubResource( "40" ),
+"level5_1": SubResource( "41" ),
+"level6": SubResource( "43" ),
+"level6_1": SubResource( "44" ),
+"level7": SubResource( "46" ),
+"level7_1": SubResource( "47" ),
+"level8": SubResource( "49" ),
+"level8_1": SubResource( "50" ),
+"level9": SubResource( "52" ),
+"level9_1": SubResource( "53" )
+}
+script = null
+
+[sub_resource type="Animation" id="55"]
+resource_name = "szwl"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D2/Node2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D2:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.8, 0.4)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Level2:speed_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.5]
+}
+script = null
+
+[sub_resource type="Animation" id="56"]
+resource_name = "szwl2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D2:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.6, 0.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D2/Node2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+script = null
+
+[sub_resource type="AnimationLibrary" id="57"]
+_data = {
+"szwl": SubResource( "55" ),
+"szwl2": SubResource( "56" )
+}
+script = null
+
+[node name="Map_1" type="Node2D"]
+process_mode = 3
+script = ExtResource("map_script")
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(469, 296)
+texture = ExtResource( "2" )
+metadata/_edit_lock_ = true
+
+[node name="level_1" type="TextureButton" parent="."]
+offset_left = 174.0
+offset_top = 133.0
+offset_right = 242.0
+offset_bottom = 211.0
+texture_normal = ExtResource( "3" )
+texture_pressed = ExtResource( "4" )
+texture_hover = ExtResource( "4" )
+texture_disabled = ExtResource( "3" )
+stretch_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="level_2" type="TextureButton" parent="."]
+offset_left = 325.0
+offset_top = 127.0
+offset_right = 393.0
+offset_bottom = 205.0
+texture_normal = ExtResource( "5" )
+texture_pressed = ExtResource( "6" )
+texture_hover = ExtResource( "6" )
+texture_disabled = ExtResource( "5" )
+stretch_mode = 3
+metadata/_edit_lock_ = true
+
+[node name="level_3" type="TextureButton" parent="."]
+offset_left = 527.0
+offset_top = 55.0
+offset_right = 595.0
+offset_bottom = 133.0
+texture_normal = ExtResource( "7" )
+texture_pressed = ExtResource( "8" )
+texture_hover = ExtResource( "8" )
+texture_disabled = ExtResource( "7" )
+stretch_mode = 3
+metadata/_edit_lock_ = true
+
+[node name="level_4" type="TextureButton" parent="."]
+offset_left = 657.0
+offset_top = 37.0
+offset_right = 725.0
+offset_bottom = 115.0
+texture_normal = ExtResource( "9" )
+texture_pressed = ExtResource( "10" )
+texture_hover = ExtResource( "10" )
+texture_disabled = ExtResource( "9" )
+stretch_mode = 3
+metadata/_edit_lock_ = true
+
+[node name="level_5" type="TextureButton" parent="."]
+offset_left = 584.0
+offset_top = 217.0
+offset_right = 670.0
+offset_bottom = 295.0
+texture_normal = ExtResource( "11" )
+texture_pressed = ExtResource( "12" )
+texture_hover = ExtResource( "12" )
+texture_disabled = ExtResource( "11" )
+stretch_mode = 3
+metadata/_edit_lock_ = true
+
+[node name="level_6" type="TextureButton" parent="."]
+offset_left = 733.0
+offset_top = 117.0
+offset_right = 858.0
+offset_bottom = 195.0
+texture_normal = ExtResource( "13" )
+texture_pressed = ExtResource( "14" )
+texture_hover = ExtResource( "14" )
+texture_disabled = ExtResource( "13" )
+stretch_mode = 3
+metadata/_edit_lock_ = true
+
+[node name="level_7" type="TextureButton" parent="."]
+offset_left = 345.0
+offset_top = 238.0
+offset_right = 569.0
+offset_bottom = 396.0
+texture_normal = ExtResource( "15" )
+texture_pressed = ExtResource( "16" )
+texture_hover = ExtResource( "16" )
+ignore_texture_size = true
+metadata/_edit_lock_ = true
+
+[node name="level_8" type="TextureButton" parent="."]
+self_modulate = Color(1, 1, 0.835294, 1)
+offset_left = 270.0
+offset_top = 318.0
+offset_right = 920.0
+offset_bottom = 452.0
+texture_normal = ExtResource( "17" )
+texture_pressed = ExtResource( "18" )
+texture_hover = ExtResource( "18" )
+ignore_texture_size = true
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="Node2D2" type="Node2D" parent="."]
+position = Vector2(775, 519)
+scale = Vector2(0.6, 0.5)
+
+[node name="Node2D" type="Node2D" parent="Node2D2"]
+
+[node name="level_9" type="TextureButton" parent="Node2D2/Node2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -107.201
+offset_top = -105.424
+offset_right = 125.799
+offset_bottom = 102.576
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource( "19" )
+texture_pressed = ExtResource( "20" )
+texture_hover = ExtResource( "20" )
+texture_disabled = ExtResource( "19" )
+ignore_texture_size = true
+metadata/_edit_lock_ = true
+
+[node name="level_10" type="TextureButton" parent="."]
+offset_left = 203.0
+offset_top = 354.0
+offset_right = 328.0
+offset_bottom = 432.0
+texture_normal = ExtResource( "21" )
+texture_pressed = ExtResource( "22" )
+texture_hover = ExtResource( "22" )
+texture_disabled = ExtResource( "21" )
+stretch_mode = 3
+metadata/_edit_lock_ = true
+
+[node name="ldl" type="TextureButton" parent="."]
+offset_left = 108.0
+offset_top = 420.0
+offset_right = 233.0
+offset_bottom = 498.0
+texture_normal = ExtResource( "23" )
+texture_pressed = ExtResource( "24" )
+texture_hover = ExtResource( "24" )
+texture_disabled = ExtResource( "23" )
+stretch_mode = 3
+metadata/_edit_lock_ = true
+
+[node name="jjc" type="TextureButton" parent="."]
+offset_left = 806.0
+offset_top = 199.0
+offset_right = 931.0
+offset_bottom = 277.0
+disabled = true
+texture_normal = ExtResource( "25" )
+texture_pressed = ExtResource( "26" )
+texture_hover = ExtResource( "26" )
+texture_disabled = ExtResource( "25" )
+stretch_mode = 3
+metadata/_edit_lock_ = true
+
+[node name="Shop" type="TextureButton" parent="."]
+offset_left = 33.0
+offset_top = 428.0
+offset_right = 93.0
+offset_bottom = 490.0
+texture_normal = ExtResource( "27" )
+texture_pressed = ExtResource( "27" )
+texture_hover = ExtResource( "28" )
+texture_disabled = ExtResource( "27" )
+metadata/_edit_lock_ = true
+
+[node name="bc_game" type="TextureButton" parent="."]
+offset_left = -1.0
+offset_top = 179.0
+offset_right = 137.0
+offset_bottom = 272.0
+texture_normal = ExtResource( "29" )
+texture_pressed = ExtResource( "29" )
+texture_hover = ExtResource( "29" )
+texture_disabled = ExtResource( "29" )
+stretch_mode = 3
+metadata/_edit_lock_ = true
+
+[node name="Skill_learn" type="TextureButton" parent="."]
+offset_left = 43.0
+offset_top = 88.0
+offset_right = 102.0
+offset_bottom = 128.0
+texture_normal = ExtResource( "30" )
+texture_pressed = ExtResource( "30" )
+texture_hover = ExtResource( "30" )
+metadata/_edit_lock_ = true
+
+[node name="481" type="Sprite2D" parent="Skill_learn"]
+position = Vector2(14, 32)
+texture = ExtResource( "31" )
+
+[node name="480" type="Sprite2D" parent="Skill_learn"]
+position = Vector2(40, 3)
+texture = ExtResource( "32" )
+
+[node name="492" type="Sprite2D" parent="Skill_learn"]
+position = Vector2(20, 51)
+texture = ExtResource( "33" )
+
+[node name="GameAn" type="TextureButton" parent="."]
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 70.0
+offset_bottom = 72.0
+texture_normal = ExtResource( "34" )
+texture_pressed = ExtResource( "34" )
+texture_hover = ExtResource( "35" )
+texture_disabled = ExtResource( "34" )
+metadata/_edit_lock_ = true
+
+[node name="Task" type="TextureButton" parent="."]
+offset_left = 825.0
+offset_top = 7.0
+offset_right = 928.0
+offset_bottom = 109.0
+texture_normal = ExtResource( "36" )
+texture_pressed = ExtResource( "36" )
+texture_hover = ExtResource( "36" )
+texture_disabled = ExtResource( "36" )
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_lock_ = true
+
+[node name="bg" type="Sprite2D" parent="Task"]
+position = Vector2(53, 103)
+texture = ExtResource( "37" )
+metadata/_edit_lock_ = true
+
+[node name="difu" type="Label" parent="Task/bg"]
+offset_left = -35.0
+offset_top = -9.99997
+offset_right = 37.0
+offset_bottom = 12.0
+theme_override_colors/font_color = Color(1, 0.290196, 0, 1)
+theme_override_fonts/font = ExtResource( "38" )
+theme_override_font_sizes/font_size = 18
+text = "任务"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="ldl2" type="Node2D" parent="."]
+position = Vector2(0, 1)
+
+[node name="next" type="Button" parent="."]
+offset_left = 35.0
+offset_top = 506.0
+offset_right = 105.0
+offset_bottom = 571.0
+scale = Vector2(0.8, 0.8)
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource( "1" )
+theme_override_styles/hover = SubResource( "2" )
+theme_override_styles/pressed = SubResource( "3" )
+theme_override_styles/disabled = SubResource( "4" )
+theme_override_styles/focus = SubResource( "5" )
+disabled = true
+metadata/_edit_lock_ = true
+
+[node name="NewWorld" type="AnimatedSprite2D" parent="next"]
+position = Vector2(34, 31)
+scale = Vector2(0.8, 0.8)
+sprite_frames = SubResource( "22" )
+animation = &"chuansong"
+autoplay = "chuansong"
+frame_progress = 0.954827
+metadata/_edit_lock_ = true
+
+[node name="bg" type="Sprite2D" parent="next/NewWorld"]
+position = Vector2(-1.25, 68.7499)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource( "37" )
+metadata/_edit_lock_ = true
+
+[node name="difu" type="Label" parent="next/NewWorld/bg"]
+offset_left = -35.0
+offset_top = -9.99997
+offset_right = 37.0
+offset_bottom = 12.0
+theme_override_colors/font_color = Color(1, 0.290196, 0, 1)
+theme_override_fonts/font = ExtResource( "38" )
+theme_override_font_sizes/font_size = 18
+text = "地府入口"
+
+[node name="turn_mainmenu" type="TextureButton" parent="."]
+offset_left = 12.0
+offset_top = 289.0
+offset_right = 124.0
+offset_bottom = 403.0
+texture_normal = ExtResource( "40" )
+texture_pressed = ExtResource( "40" )
+texture_hover = ExtResource( "40" )
+texture_disabled = ExtResource( "40" )
+metadata/_edit_lock_ = true
+
+[node name="TEXT" type="Label" parent="turn_mainmenu"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 86.0
+offset_right = 97.0
+offset_bottom = 111.0
+theme_override_colors/font_color = Color(1, 0.470588, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource( "41" )
+theme_override_font_sizes/font_size = 15
+text = "返回主菜单"
+metadata/_edit_lock_ = true
+
+[node name="Level" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource( "54" )
+}
+
+[node name="Level2" type="AnimationPlayer" parent="."]
+speed_scale = 0.5
+libraries = {
+"": SubResource( "57" )
+}
+
+[node name="level_lhhj" type="TextureButton" parent="."]
+offset_left = 773.0
+offset_top = 194.0
+offset_right = 983.0
+offset_bottom = 314.0
+scale = Vector2(0.8, 0.8)
+texture_normal = ExtResource( "43" )
+texture_pressed = ExtResource( "43" )
+texture_hover = ExtResource( "44" )
+texture_disabled = ExtResource( "43" )
+metadata/_edit_lock_ = true
+
+[node name="bg" type="Sprite2D" parent="level_lhhj"]
+position = Vector2(110.5, 98)
+texture = ExtResource( "37" )
+
+[node name="difu" type="Label" parent="level_lhhj/bg"]
+offset_left = -35.0
+offset_top = -9.99997
+offset_right = 37.0
+offset_bottom = 12.0
+theme_override_colors/font_color = Color(1, 0.290196, 0, 1)
+theme_override_fonts/font = ExtResource( "38" )
+theme_override_font_sizes/font_size = 18
+text = "轮回幻境"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+

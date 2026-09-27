@@ -2,6 +2,7 @@ using System;
 using System.Globalization;
 using Godot;
 using Zaomeng.Character;
+using Zaomeng.Items;
 using SaveCharacter = Zaomeng.Character.Character;
 
 namespace Zaomeng.UI.Inventory;
@@ -45,16 +46,11 @@ public sealed class CharacterStatsPresenter
 		null, null, null, null
 	];
 
-	private static readonly int[] ExperienceThresholds =
-	[
-		140, 160, 180, 200, 220, 300, 400, 500, 600, 700,
-		800, 900, 1200, 1400, 1600, 2000, 2400, 3000, 4000
-	];
-
 	private readonly Label[] _values = new Label[NodeNames.Length];
 	private readonly Label[] _captions = new Label[NodeNames.Length];
 	private readonly SaveCharacter _character;
 	private readonly Player _player;
+	private readonly ItemCatalog _catalog;
 	private readonly TextureRect _firstLevelDigit;
 	private readonly TextureRect _secondLevelDigit;
 	private readonly HBoxContainer _levelDigits;
@@ -62,10 +58,11 @@ public sealed class CharacterStatsPresenter
 	private readonly Label _experienceText;
 	private int _page = 1;
 
-	public CharacterStatsPresenter(Node2D backpack, SaveCharacter character, Player player)
+	public CharacterStatsPresenter(Node2D backpack, SaveCharacter character, Player player, ItemCatalog catalog)
 	{
 		_character = character;
 		_player = player;
+		_catalog = catalog;
 		Node information = backpack.GetNode("background/infomation");
 		for (int i = 0; i < NodeNames.Length; i++)
 		{
@@ -102,7 +99,7 @@ public sealed class CharacterStatsPresenter
 
 	private string FormatRow(StatLine row, int index)
 	{
-		float value = row.Read(_character.BaseStats) + row.Read(_character.PermanentBonuses);
+		float value = row.Read(CharacterStatCalculator.Calculate(_character, _catalog));
 		if (_page == 1 && index == 0)
 			return $"{Number(_player.Health)}/{Number(value)}";
 		if (_page == 1 && index == 1)
@@ -134,9 +131,7 @@ public sealed class CharacterStatsPresenter
 			_secondLevelDigit.Texture = LevelDigit(level % 10);
 		}
 
-		long threshold = _character.Level <= ExperienceThresholds.Length
-			? ExperienceThresholds[_character.Level - 1]
-			: 5000L + 5000L * (_character.Level - 19);
+		long threshold = CharacterProgression.ExperienceToNextLevel(_character.Level);
 		_experienceBar.MaxValue = threshold;
 		_experienceBar.Value = Math.Min(_character.Experience, threshold);
 		_experienceText.Text = $"{_character.Experience}/{threshold}";

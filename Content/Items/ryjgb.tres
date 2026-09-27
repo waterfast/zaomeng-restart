@@ -11,4 +11,5 @@ MaxStack = 1
 Icon = ExtResource("2")
 Description = "东海龙宫之定海神针，一万三千五百斤。"
 Attack = 75
-CriticalChance = 6
+CriticalRating = 6
+Accuracy = 6

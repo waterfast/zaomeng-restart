@@ -12,6 +12,7 @@ namespace Zaomeng.Save;
 public static class GameSession
 {
 	public const string FirstLevel = "res://Scenes/Level/Level_1.tscn";
+	public const string FirstMap = "res://Scenes/UI/MainMenu/Map1.tscn";
 	private static readonly string SaveDirectory = ProjectSettings.GlobalizePath("user://saves");
 	private static readonly SaveManager Manager = new(new JsonSaveSerializer(), new PlainFileSaveStorage(SaveDirectory));
 	public static int Slot { get; private set; }
@@ -19,9 +20,32 @@ public static class GameSession
 	public static InventoryService? Inventory { get; private set; }
 
 	public static bool SlotExists(int slot)
+		=> SaveSlotFiles.Exists(SaveDirectory, slot, "json");
+
+	public static string GetSlotSummary(int slot)
 	{
-		string path = Path.Combine(SaveDirectory, $"save_{slot:D2}.json");
-		return File.Exists(path) || File.Exists(path + ".bak");
+		try
+		{
+			GameSaveData data = Manager.Load(slot);
+			Zaomeng.Character.Character? character = data.Characters.Find(entry => entry.Id == "role_1")
+				?? (data.Characters.Count > 0 ? data.Characters[0] : null);
+			if (character is null) return "无角色档案";
+			string name = string.IsNullOrWhiteSpace(character.Name) ? character.Id : character.Name;
+			return $"{name} Lv.{character.Level}";
+		}
+		catch (Exception) { return "存档无法读取"; }
+	}
+
+	public static bool DeleteSlot(int slot)
+	{
+		bool deleted = SaveSlotFiles.Delete(SaveDirectory, slot);
+		if (deleted && Slot == slot)
+		{
+			Slot = 0;
+			Data = null;
+			Inventory = null;
+		}
+		return deleted;
 	}
 
 	public static void SelectNewSlot(int slot)
@@ -44,7 +68,7 @@ public static class GameSession
 		if (Slot is < 1 or > 99) throw new InvalidOperationException("请先选择存档槽位。");
 		Inventory = new InventoryService(70, catalog);
 		Data = InventorySaveMapper.Capture(Inventory);
-		Data.Characters.Add(new Zaomeng.Character.Character { Id = "role_1", Name = "孙悟空" });
+		Data.Characters.Add(new Zaomeng.Character.Character { Id = "role_1", Name = "孙悟空", Level = 1 });
 		Manager.Save(Slot, Data);
 	}
 
@@ -61,5 +85,13 @@ public static class GameSession
 		if (Slot == 0) return;
 		Data = InventorySaveMapper.Capture(inventory, Data);
 		Manager.Save(Slot, Data);
+	}
+
+	public static void CompleteLevel(int levelNumber, InventoryService inventory)
+	{
+		if (levelNumber is < 1 or > 3) throw new ArgumentOutOfRangeException(nameof(levelNumber));
+		if (Data is null) throw new InvalidOperationException("没有正在使用的存档。");
+		Data.UnlockedLevel = Math.Max(Data.UnlockedLevel, levelNumber + 1);
+		Save(inventory);
 	}
 }

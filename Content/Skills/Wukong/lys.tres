@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="SkillDefinition" format=3]
+
+[ext_resource type="Script" path="res://Scripts/Combat/SkillDefinition.cs" id="skill"]
+[ext_resource type="Script" path="res://Scripts/Combat/HitEvent.cs" id="event"]
+[ext_resource type="Script" path="res://Scripts/Combat/HitDefinition.cs" id="hit"]
+[ext_resource type="Script" path="res://Scripts/Combat/ActionMotion.cs" id="motion"]
+
+[sub_resource type="Resource" id="movement"]
+script = ExtResource("motion")
+Mode = 2
+Speed = 1000.0
+
+[sub_resource type="Resource" id="hit_data"]
+script = ExtResource("hit")
+AttackMultiplier = 0.2
+AttackMultiplierMax = 0.2
+MultiplierPerLevel = 0.02
+FlatDamage = 35.0
+DamageType = 1
+Knockback = Vector2(30, 15)
+
+[sub_resource type="Resource" id="hit_window"]
+script = ExtResource("event")
+StartFrame = 0
+EndFrame = 9
+Hit = SubResource("hit_data")
+
+[resource]
+script = ExtResource("skill")
+Id = "lys"
+Animation = &"lys"
+CooldownSeconds = 2.8
+BaseManaCost = 12
+ManaCostLinearGrowth = 4
+ManaCostQuadraticGrowth = 2
+Motion = SubResource("movement")
+Hits = Array[ExtResource("event")]([SubResource("hit_window")])

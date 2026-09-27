@@ -1,0 +1,53 @@
+[gd_resource type="Resource" script_class="SkillDefinition" format=3]
+
+[ext_resource type="Script" path="res://Scripts/Combat/SkillDefinition.cs" id="skill"]
+[ext_resource type="Script" path="res://Scripts/Combat/HitEvent.cs" id="event"]
+[ext_resource type="Script" path="res://Scripts/Combat/HitDefinition.cs" id="hit"]
+[ext_resource type="Script" path="res://Scripts/Combat/ActionMotion.cs" id="motion"]
+
+[sub_resource type="Resource" id="air_movement"]
+script = ExtResource("motion")
+Mode = 1
+
+[sub_resource type="Resource" id="hit_data"]
+script = ExtResource("hit")
+AttackMultiplier = 1.1
+AttackMultiplierMax = 1.1
+MultiplierPerLevel = 0.2
+DamageType = 1
+Knockback = Vector2(270, -75)
+
+[sub_resource type="Resource" id="wave_1"]
+script = ExtResource("event")
+StartFrame = 1
+EndFrame = 3
+Hit = SubResource("hit_data")
+
+[sub_resource type="Resource" id="wave_2"]
+script = ExtResource("event")
+StartFrame = 4
+EndFrame = 6
+Hit = SubResource("hit_data")
+
+[sub_resource type="Resource" id="wave_3"]
+script = ExtResource("event")
+StartFrame = 7
+EndFrame = 9
+Hit = SubResource("hit_data")
+
+[sub_resource type="Resource" id="wave_4"]
+script = ExtResource("event")
+StartFrame = 10
+EndFrame = 11
+Hit = SubResource("hit_data")
+
+[resource]
+script = ExtResource("skill")
+Id = "lyfb"
+Animation = &"lyfb"
+CooldownSeconds = 3.2
+BaseManaCost = 35
+ManaCostLinearGrowth = 6
+ManaCostQuadraticGrowth = 2
+AirMotion = SubResource("air_movement")
+Hits = Array[ExtResource("event")]([SubResource("wave_1"), SubResource("wave_2"), SubResource("wave_3"), SubResource("wave_4")])

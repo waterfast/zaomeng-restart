@@ -11,4 +11,5 @@ MaxStack = 1
 Icon = ExtResource("2")
 Description = "传说由青龙的尖牙锻铸的大刀，挥舞间雷声贯耳。"
 Attack = 45
-CriticalChance = 3
+CriticalRating = 3
+Accuracy = 5

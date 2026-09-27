@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="AttackStep" format=3]
+
+[ext_resource type="Script" path="res://Scripts/Combat/AttackStep.cs" id="step"]
+[ext_resource type="Script" path="res://Scripts/Combat/HitDefinition.cs" id="hit"]
+
+[sub_resource type="Resource" id="hit_data"]
+script = ExtResource("hit")
+AttackMultiplier = 1.2
+AttackMultiplierMax = 1.4
+Knockback = Vector2(180, -75)
+Hitstun = 0.35
+
+[resource]
+script = ExtResource("step")
+Animation = &"hit4"
+Hit = SubResource("hit_data")

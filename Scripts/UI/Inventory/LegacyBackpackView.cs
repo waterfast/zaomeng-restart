@@ -12,6 +12,8 @@ namespace Zaomeng.UI.Inventory;
 public sealed class LegacyBackpackView : IDisposable
 {
 	private const int SlotsPerPage = 35;
+	// 空格贴图原色偏灰；统一暖色调，填充和空格共用同一底图与颜色。
+	private static readonly Color SlotBackgroundTint = new(1.22f, 1.12f, 0.78f);
 	private static readonly ItemCategory[] Categories =
 		[ItemCategory.Equipment, ItemCategory.Material, ItemCategory.Consumable];
 	private static readonly string GridPath =
@@ -39,6 +41,8 @@ public sealed class LegacyBackpackView : IDisposable
 	private readonly TextureButton _previousPage;
 	private readonly TextureButton _nextPage;
 	private readonly TextureButton[] _tabs;
+	private readonly PanelContainer _itemTooltip;
+	private readonly Label _itemTooltipText;
 	private readonly Dictionary<string, (Button Button, Texture2D? EmptyIcon)> _equipmentSlots = new();
 	private ItemCategory _category = ItemCategory.Equipment;
 	private IReadOnlyList<InventoryDisplayEntry> _entries = Array.Empty<InventoryDisplayEntry>();
@@ -56,7 +60,7 @@ public sealed class LegacyBackpackView : IDisposable
 		_character = character;
 		_wallet = wallet;
 		_saveChanges = saveChanges;
-		_stats = new CharacterStatsPresenter(root, character, player);
+		_stats = new CharacterStatsPresenter(root, character, player, catalog);
 		_emptyIcon = GD.Load<Texture2D>("res://Assets/Art/BackPack/AllItems/empty.png");
 		_tabNormal = GD.Load<Texture2D>("res://Assets/Art/BackPack/zb_button.png");
 		_tabSelected = GD.Load<Texture2D>("res://Assets/Art/BackPack/zb_button_choose.png");
@@ -87,7 +91,11 @@ public sealed class LegacyBackpackView : IDisposable
 				continue;
 			int index = _slots.Count;
 			button.Pressed += () => SelectSlot(index);
+			button.MouseEntered += () => ShowItemTooltip(index);
+			button.MouseExited += HideItemTooltip;
 			button.Icon = _emptyIcon;
+			button.SelfModulate = SlotBackgroundTint;
+			button.TooltipText = "";
 			var itemIcon = new TextureRect
 			{
 				Name = "ItemIcon",
@@ -103,6 +111,7 @@ public sealed class LegacyBackpackView : IDisposable
 		}
 		if (_slots.Count != SlotsPerPage)
 			throw new InvalidOperationException($"旧背包应有 {SlotsPerPage} 个格子，实际为 {_slots.Count} 个。");
+		(_itemTooltip, _itemTooltipText) = CreateItemTooltip();
 
 		for (int i = 0; i < _tabs.Length; i++)
 		{
@@ -165,10 +174,12 @@ public sealed class LegacyBackpackView : IDisposable
 		if (entryIndex >= _entries.Count) return;
 		_selectedSlot = _entries[entryIndex].SlotIndex;
 		RefreshItems();
+		ShowItemTooltip(index);
 	}
 
 	private void RefreshItems()
 	{
+		HideItemTooltip();
 		_entries = _adapter.GetEntries(_category);
 		int pageCount = Math.Max(1, (_entries.Count + SlotsPerPage - 1) / SlotsPerPage);
 		_page = Math.Clamp(_page, 0, pageCount - 1);
@@ -192,9 +203,65 @@ public sealed class LegacyBackpackView : IDisposable
 			Button slot = _slots[i];
 			_itemIcons[i].Texture = entry?.Definition.Icon;
 			slot.GetNode<Label>("item_number").Text = entry?.Count > 1 ? entry.Count.ToString() : "";
-			slot.TooltipText = entry is null ? "" : ItemTooltip(entry);
 		}
 	}
+
+	private (PanelContainer Panel, Label Text) CreateItemTooltip()
+	{
+		var style = new StyleBoxFlat
+		{
+			BgColor = new Color("38200f"),
+			BorderColor = new Color("dbaa59"),
+			BorderWidthLeft = 2,
+			BorderWidthTop = 2,
+			BorderWidthRight = 2,
+			BorderWidthBottom = 2,
+			ContentMarginLeft = 10,
+			ContentMarginTop = 8,
+			ContentMarginRight = 10,
+			ContentMarginBottom = 8
+		};
+		var panel = new PanelContainer
+		{
+			Name = "ItemTooltip",
+			MouseFilter = Control.MouseFilterEnum.Ignore,
+			CustomMinimumSize = new Vector2(220, 0),
+			ZIndex = 100,
+			Visible = false
+		};
+		panel.AddThemeStyleboxOverride("panel", style);
+		var label = new Label
+		{
+			MouseFilter = Control.MouseFilterEnum.Ignore,
+			AutowrapMode = TextServer.AutowrapMode.WordSmart,
+			CustomMinimumSize = new Vector2(200, 0)
+		};
+		label.AddThemeColorOverride("font_color", new Color("ffe2a2"));
+		label.AddThemeFontOverride("font", GD.Load<FontFile>("res://Assets/Font/8_FZCuYuan-M03S.ttf"));
+		panel.AddChild(label);
+		_root.AddChild(panel);
+		return (panel, label);
+	}
+
+	private void ShowItemTooltip(int index)
+	{
+		int entryIndex = _page * SlotsPerPage + index;
+		if (entryIndex >= _entries.Count)
+		{
+			HideItemTooltip();
+			return;
+		}
+		_itemTooltipText.Text = ItemTooltip(_entries[entryIndex]);
+		_itemTooltip.Show();
+		Vector2 viewport = _root.GetViewportRect().Size;
+		Vector2 cursor = _root.GetViewport().GetMousePosition();
+		// 放在背包右侧，避免半透明浮层让其它格子看起来被染色。
+		float x = Math.Min(viewport.X - 228, _scroll.GlobalPosition.X + _scroll.Size.X + 8);
+		float y = Mathf.Clamp(cursor.Y, 8, viewport.Y - 120);
+		_itemTooltip.GlobalPosition = new Vector2(x, y);
+	}
+
+	private void HideItemTooltip() => _itemTooltip.Hide();
 
 	private void BindEquipmentSlots()
 	{
@@ -258,7 +325,7 @@ public sealed class LegacyBackpackView : IDisposable
 	{
 		ItemDefinition definition = entry.Definition;
 		string stats = definition.Category == ItemCategory.Equipment
-			? $"攻击 +{definition.Attack}　暴击 +{definition.CriticalChance}%"
+			? $"攻击 +{definition.Attack}　暴击值 +{definition.CriticalRating}　命中值 +{definition.Accuracy}"
 			: $"数量 {entry.Count}";
 		return $"{definition.DisplayName}\n{stats}\n{definition.Description}";
 	}

@@ -52,13 +52,23 @@ public partial class MenuPauseSmokeTest : Node
 			var grid = backpack.GetNode<GridContainer>(
 				"Main_Backpack/MarginContainer/VBoxContainer/MarginContainer/Sc_Box/Gd_Box");
 			Button firstSlot = grid.GetNode<Button>("box_1");
+			Color backgroundTint = firstSlot.SelfModulate;
 			firstSlot.EmitSignal(BaseButton.SignalName.Pressed);
 			Check(firstSlot.Icon == GD.Load<Texture2D>("res://Assets/Art/BackPack/AllItems/empty.png") &&
 				firstSlot.GetNode<TextureRect>("ItemIcon").Texture is not null,
 				"filled slots use the same bright base image as empty slots");
-			Check(firstSlot.SelfModulate == Colors.White &&
-				grid.GetNode<Button>("box_2").SelfModulate == Colors.White,
+			Check(firstSlot.SelfModulate == backgroundTint &&
+				grid.GetNode<Button>("box_2").SelfModulate == backgroundTint,
 				"clicking an item does not recolor other slots");
+			var itemTooltip = backpack.GetNode<PanelContainer>("ItemTooltip");
+			Check(firstSlot.TooltipText.Length == 0 && itemTooltip.Visible,
+				"item details use the backpack popup instead of the translucent system tooltip");
+			if (DisplayServer.GetName() != "headless")
+			{
+				await ToSignal(RenderingServer.Singleton, RenderingServer.SignalName.FramePostDraw);
+				GetViewport().GetTexture().GetImage().SavePng("res://Tests/backpack-item-popup-preview.png");
+			}
+			firstSlot.EmitSignal(Control.SignalName.MouseExited);
 			backpack.GetNode<TextureButton>("Main_Backpack/MarginContainer/VBoxContainer/HBoxContainer/dj")
 				.EmitSignal(BaseButton.SignalName.Pressed);
 			Check(backpack.GetNode<Label>("Main_Backpack/MarginContainer/VBoxContainer/title").Text == "道具背包",

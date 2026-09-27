@@ -76,13 +76,18 @@ try
 	plain.Save(1, data);
 	Check(plain.Load(1).Inventory.Slots[1]?.Count == 7, "plain JSON round trip");
 	GameSaveData loaded = plain.Load(1);
-	Check(loaded.Characters.Count == 2 && loaded.Characters[0].BaseStats.Attack == 12 &&
+	Check(loaded.UnlockedLevel == 1, "new save begins with only the first level unlocked");
+	Check(loaded.Characters.Count == 2 && loaded.Characters[0].Level == 1 && loaded.Characters[0].BaseStats.Attack == 12 &&
 		loaded.Characters[0].EquippedSkillIds[0] == "rising_dragon" && loaded.Wallet.Souls == 70,
 		"character and shared wallet round trip");
 	var legacy = serializer.Deserialize(
 		"{\"version\":1,\"player\":{\"scenePath\":\"res://Scenes/TestArena.tscn\",\"health\":80,\"facingDirection\":1},\"inventory\":{\"capacity\":1,\"slots\":[null]}}"u8.ToArray());
-	Check(legacy.Wallet.Souls == 0 && legacy.Characters.Count == 0,
+	Check(legacy.Wallet.Souls == 0 && legacy.Characters.Count == 0 && legacy.UnlockedLevel == 1,
 		"older version 1 saves gain empty character and wallet data");
+	data.UnlockedLevel = 2;
+	Check(serializer.Deserialize(serializer.Serialize(data)).UnlockedLevel == 2,
+		"unlocked level survives save round trip");
+	data.UnlockedLevel = 1;
 	Check(!Encoding.UTF8.GetString(serializer.Serialize(legacy)).Contains("\"player\"", StringComparison.Ordinal),
 		"legacy scene snapshot is discarded when saved again");
 	wukong.EquippedSkillIds[0] = "unknown";
@@ -119,6 +124,26 @@ try
 	Check(encrypted.Load(1).Wallet.Souls == 70, "tampered primary falls back to backup");
 	Expect<InvalidDataException>(() => new SaveManager(serializer,
 		new EncryptedFileSaveStorage(secureRoot, RandomNumberGenerator.GetBytes(32))).Load(1));
+	string plainRoot = Path.Combine(root, "plain");
+	plain.Save(2, data);
+	string firstSlotPath = SaveSlotFiles.GetPath(plainRoot, 1, "json");
+	File.WriteAllText(firstSlotPath + ".tmp", "unfinished");
+	File.WriteAllText(SaveSlotFiles.GetPath(plainRoot, 1, "dat"), "old encrypted save");
+	File.WriteAllText(SaveSlotFiles.GetPath(plainRoot, 1, "dat") + ".bak", "old backup");
+	string backupOnlyPath = SaveSlotFiles.GetPath(plainRoot, 3, "json") + ".bak";
+	File.WriteAllBytes(backupOnlyPath, serializer.Serialize(data));
+	Check(SaveSlotFiles.List(plainRoot).Any(file => file.Slot == 3 && file.Extension == "json" && file.BackupOnly),
+		"save list includes backup-only slots");
+	Check(SaveSlotFiles.List(plainRoot).Any(file => file.Slot == 1 && file.Extension == "dat"),
+		"save list includes encrypted slots");
+	Check(SaveSlotFiles.Delete(plainRoot, 1), "save deletion finds an occupied slot");
+	Check(!SaveSlotFiles.Exists(plainRoot, 1, "json") && !SaveSlotFiles.Exists(plainRoot, 1, "dat") &&
+		!File.Exists(firstSlotPath + ".tmp"), "save deletion removes both formats, backups and temporary files");
+	Check(SaveSlotFiles.Exists(plainRoot, 2, "json") && plain.Load(2).Wallet.Souls == data.Wallet.Souls,
+		"save deletion leaves other slots untouched");
+	Check(SaveSlotFiles.Delete(plainRoot, 3) && !File.Exists(backupOnlyPath),
+		"save deletion removes backup-only slots");
+	Check(!SaveSlotFiles.Delete(plainRoot, 1), "deleting an empty slot reports no change");
 	Expect<NotSupportedException>(() => serializer.Deserialize(
 		"{\"version\":2,\"inventory\":{}}"u8.ToArray()));
 	Console.WriteLine("Save logic tests passed.");

@@ -23,6 +23,8 @@ public static class SaveDataValidator
 		}
 		if (data.Wallet is null || data.Wallet.Souls < 0 || data.Wallet.Coupons < 0)
 			throw new InvalidDataException("存档中的货币余额无效。");
+		if (data.UnlockedLevel is < 1 or > 4)
+			throw new InvalidDataException("存档中的关卡进度无效。");
 		if (data.Characters is null)
 			throw new InvalidDataException("存档中的角色列表无效。");
 		var characterIds = new HashSet<string>(StringComparer.Ordinal);

@@ -11,3 +11,4 @@ MaxStack = 1
 Icon = ExtResource("2")
 Description = "诸法因缘生，我说是因缘；因缘尽故灭，我作如是说。"
 Attack = 18
+Accuracy = 3
