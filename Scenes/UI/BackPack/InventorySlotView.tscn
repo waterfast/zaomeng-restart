@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://Scripts/UI/Inventory/InventorySlotView.cs" id="1"]
+[ext_resource type="Texture2D" path="res://Assets/Art/BackPack/AllItems/empty.png" id="2"]
+[ext_resource type="FontFile" path="res://Assets/Font/8_FZCuYuan-M03S.ttf" id="3"]
+
+[node name="InventorySlotView" type="TextureButton"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
+ignore_texture_size = true
+texture_normal = ExtResource("2")
+script = ExtResource("1")
+EmptyTexture = ExtResource("2")
+
+[node name="CountLabel" type="Label" parent="."]
+layout_mode = 1
+offset_left = 2.0
+offset_top = 27.0
+offset_right = 48.0
+offset_bottom = 49.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 0.55, 0.12, 1)
+theme_override_colors/font_outline_color = Color(0.13, 0.07, 0.03, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3")
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 2
+vertical_alignment = 2

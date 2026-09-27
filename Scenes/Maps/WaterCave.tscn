@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Texture2D" path="res://Assets/Art/Level/Level_1/19_1.png" id="1"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Level/level_2/50.png" id="2"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Level/level_2/227.png" id="3"]
+[ext_resource type="PackedScene" path="res://Scenes/Maps/Stage.tscn" id="4"]
+
+[sub_resource type="RectangleShape2D" id="floor"]
+size = Vector2(5300, 200)
+
+[node name="WaterCave" type="Node2D"]
+
+[node name="BackGround" type="ParallaxBackground" parent="."]
+
+[node name="End" type="ParallaxLayer" parent="BackGround"]
+motion_scale = Vector2(0, 0)
+
+[node name="Background" type="Sprite2D" parent="BackGround/End"]
+z_index = -3
+position = Vector2(723, 244)
+texture = ExtResource("1")
+
+[node name="Cave" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(2339, 329)
+texture = ExtResource("2")
+
+[node name="FloorArt" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(2360, 493)
+texture = ExtResource("3")
+
+[node name="Ground" type="StaticBody2D" parent="."]
+
+[node name="Floor" type="CollisionShape2D" parent="Ground"]
+position = Vector2(2650, 620)
+shape = SubResource("floor")
+
+[node name="Stage1" parent="." instance=ExtResource("4")]
+position = Vector2(1487, 368)
+
+[node name="Stage2" parent="." instance=ExtResource("4")]
+position = Vector2(1215, 365)
+
+[node name="Stage3" parent="." instance=ExtResource("4")]
+position = Vector2(2012, 268)
+
+[node name="Stage4" parent="." instance=ExtResource("4")]
+position = Vector2(2177, 121)
+
+[node name="Stage5" parent="." instance=ExtResource("4")]
+position = Vector2(2344, 265)
+
+[node name="Stage6" parent="." instance=ExtResource("4")]
+position = Vector2(3292, 356)

@@ -1,0 +1,256 @@
+[gd_scene format=3 uid="uid://dirqsomcl4tbs"]
+
+[ext_resource type="Script" uid="uid://dhywp4o32unb7" path="res://Scripts/UI/Inventory/BackpackView.cs" id="1"]
+[ext_resource type="Texture2D" uid="uid://b2753ahkbqp6l" path="res://Assets/Art/BackPack/207.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://dwk38ggu3wlb5" path="res://Assets/Art/HeroPicture/Role1AllEquipment/Role_1_Body_Empty.png" id="3"]
+[ext_resource type="FontFile" uid="uid://dyqdvy2loesxx" path="res://Assets/Font/8_FZCuYuan-M03S.ttf" id="4"]
+[ext_resource type="Texture2D" uid="uid://dr0r8xxlqwlfw" path="res://Assets/Art/BackPack/zb_button.png" id="5"]
+[ext_resource type="FontFile" uid="uid://b4d2mjhkurcwo" path="res://Assets/Font/华康海报体W12 &amp; 华康海报体W12(P).ttc" id="5_ek0rc"]
+[ext_resource type="Texture2D" uid="uid://c5irwposgroxl" path="res://Assets/Art/BackPack/zb_button_choose.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://dlh58vxkbow8j" path="res://Assets/Art/BackPack/LastPageN.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://dwlwooag1uu8q" path="res://Assets/Art/BackPack/LastPageY.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://gb2jj2bu4g70" path="res://Assets/Art/BackPack/NextPageN.png" id="9"]
+[ext_resource type="Texture2D" uid="uid://dn3jckwfukksy" path="res://Assets/Art/BackPack/NextPageY.png" id="10"]
+[ext_resource type="Texture2D" uid="uid://b1ximvde8iick" path="res://Assets/Art/BackPack/49.png" id="11"]
+
+[sub_resource type="AtlasTexture" id="PortraitFrame"]
+atlas = ExtResource("3")
+region = Rect2(0, 0, 200, 200)
+
+[node name="BackpackView" type="Control" unique_id=1128125944]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 960.0
+offset_bottom = 540.0
+script = ExtResource("1")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1320309206]
+layout_mode = 0
+offset_right = 960.0
+offset_bottom = 540.0
+mouse_filter = 2
+texture = ExtResource("2")
+
+[node name="Detail" type="Control" parent="." unique_id=1191834243]
+anchors_preset = 0
+offset_left = 150.0
+offset_top = 105.0
+offset_right = 490.0
+offset_bottom = 495.0
+mouse_filter = 2
+
+[node name="Heading" type="Label" parent="Detail" unique_id=2043645458]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 5.0
+offset_right = 322.0
+offset_bottom = 37.0
+theme_override_colors/font_color = Color(1, 0.86, 0.54, 1)
+theme_override_fonts/font = ExtResource("4")
+theme_override_font_sizes/font_size = 23
+text = "装备预览"
+horizontal_alignment = 1
+
+[node name="Portrait" type="TextureRect" parent="Detail" unique_id=881993611]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 55.0
+offset_right = 152.0
+offset_bottom = 191.0
+mouse_filter = 2
+texture = SubResource("PortraitFrame")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ItemName" type="Label" parent="Detail" unique_id=1054430125]
+layout_mode = 0
+offset_left = 163.0
+offset_top = 54.0
+offset_right = 323.0
+offset_bottom = 82.0
+theme_override_colors/font_color = Color(1, 0.86, 0.54, 1)
+theme_override_fonts/font = ExtResource("4")
+theme_override_font_sizes/font_size = 18
+text = "选择一件物品"
+
+[node name="Icon" type="TextureRect" parent="Detail" unique_id=1629433796]
+layout_mode = 0
+offset_left = 165.0
+offset_top = 91.0
+offset_right = 215.0
+offset_bottom = 141.0
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ItemStats" type="Label" parent="Detail" unique_id=550089835]
+layout_mode = 0
+offset_left = 165.0
+offset_top = 151.0
+offset_right = 324.0
+offset_bottom = 209.0
+theme_override_colors/font_color = Color(0.93, 0.8, 0.61, 1)
+theme_override_fonts/font = ExtResource("4")
+theme_override_font_sizes/font_size = 16
+
+[node name="Divider" type="ColorRect" parent="Detail" unique_id=39715548]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 228.0
+offset_right = 321.0
+offset_bottom = 230.0
+mouse_filter = 2
+color = Color(0.56, 0.35, 0.16, 1)
+
+[node name="Description" type="Label" parent="Detail" unique_id=1798281280]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 240.0
+offset_right = 317.0
+offset_bottom = 343.0
+theme_override_colors/font_color = Color(0.95, 0.84, 0.66, 1)
+theme_override_fonts/font = ExtResource("4")
+theme_override_font_sizes/font_size = 16
+text = "点击右侧格子查看物品信息。"
+autowrap_mode = 2
+
+[node name="InventoryPanel" type="Control" parent="." unique_id=891612669]
+anchors_preset = 0
+offset_left = 516.0
+offset_top = 103.0
+offset_right = 831.0
+offset_bottom = 503.0
+
+[node name="Title" type="Label" parent="InventoryPanel" unique_id=388267062]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 1.0
+offset_right = 312.0
+offset_bottom = 33.0
+theme_override_colors/font_color = Color(1, 0.86, 0.54, 1)
+theme_override_fonts/font = ExtResource("5_ek0rc")
+theme_override_font_sizes/font_size = 25
+text = "装备背包"
+horizontal_alignment = 1
+
+[node name="Tabs" type="Control" parent="InventoryPanel" unique_id=1397449567]
+anchors_preset = 0
+offset_left = 13.0
+offset_top = 45.0
+offset_right = 302.0
+offset_bottom = 72.0
+
+[node name="Equipment" type="TextureButton" parent="InventoryPanel/Tabs" unique_id=111955870]
+layout_mode = 0
+offset_right = 73.0
+offset_bottom = 27.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("6")
+
+[node name="Label" type="Label" parent="InventoryPanel/Tabs/Equipment" unique_id=1532563489]
+layout_mode = 0
+offset_right = 73.0
+offset_bottom = 27.0
+theme_override_fonts/font = ExtResource("5_ek0rc")
+theme_override_font_sizes/font_size = 17
+text = "装备"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Material" type="TextureButton" parent="InventoryPanel/Tabs" unique_id=2176584]
+layout_mode = 0
+offset_left = 76.0
+offset_right = 149.0
+offset_bottom = 27.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("5")
+
+[node name="Label" type="Label" parent="InventoryPanel/Tabs/Material" unique_id=336829366]
+layout_mode = 0
+offset_right = 73.0
+offset_bottom = 27.0
+theme_override_fonts/font = ExtResource("5_ek0rc")
+theme_override_font_sizes/font_size = 17
+text = "道具"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Consumable" type="TextureButton" parent="InventoryPanel/Tabs" unique_id=2144966882]
+layout_mode = 0
+offset_left = 152.0
+offset_right = 225.0
+offset_bottom = 27.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("5")
+
+[node name="Label" type="Label" parent="InventoryPanel/Tabs/Consumable" unique_id=277795507]
+layout_mode = 0
+offset_right = 73.0
+offset_bottom = 27.0
+theme_override_fonts/font = ExtResource("5_ek0rc")
+theme_override_font_sizes/font_size = 16
+text = "消耗品"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Scroll" type="ScrollContainer" parent="InventoryPanel" unique_id=1601382053]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 77.0
+offset_right = 309.0
+offset_bottom = 356.0
+horizontal_scroll_mode = 0
+
+[node name="Grid" type="GridContainer" parent="InventoryPanel/Scroll" unique_id=830058711]
+layout_mode = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+columns = 5
+
+[node name="PreviousPage" type="TextureButton" parent="InventoryPanel" unique_id=1678753952]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 364.0
+offset_right = 42.0
+offset_bottom = 390.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("7")
+texture_hover = ExtResource("8")
+
+[node name="PageLabel" type="Label" parent="InventoryPanel" unique_id=535399734]
+layout_mode = 0
+offset_left = 82.0
+offset_top = 371.0
+offset_right = 140.0
+offset_bottom = 398.0
+theme_override_colors/font_color = Color(1, 0.86, 0.54, 1)
+theme_override_fonts/font = ExtResource("4")
+theme_override_font_sizes/font_size = 17
+text = "1/1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NextPage" type="TextureButton" parent="InventoryPanel" unique_id=269843149]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 364.0
+offset_right = 215.0
+offset_bottom = 397.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("9")
+texture_hover = ExtResource("10")
+
+[node name="CloseButton" type="TextureButton" parent="." unique_id=2056619921]
+layout_mode = 0
+offset_left = 818.0
+offset_top = 56.0
+offset_right = 859.0
+offset_bottom = 97.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("11")

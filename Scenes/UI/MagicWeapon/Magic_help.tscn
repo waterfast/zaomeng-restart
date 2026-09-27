@@ -1,0 +1,208 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://Assets/Art/MagicWeapon/66.png" id="2"]
+[ext_resource type="FontFile" path="res://Assets/Font/HYZhuZiMeiXinTiW.ttf" id="3"]
+[ext_resource type="FontFile" path="res://Assets/Font/华康宋体W3.ttc" id="4"]
+[ext_resource type="Texture2D" path="res://Assets/Art/MagicWeapon/220.png" id="5"]
+[ext_resource type="Texture2D" path="res://Assets/Art/MagicWeapon/222.png" id="6"]
+
+[node name="MagicHelp" type="Node2D"]
+metadata/_edit_lock_ = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -768.0
+offset_top = -469.0
+offset_right = 770.0
+offset_bottom = 464.0
+color = Color(0, 0, 0, 0.45098)
+metadata/_edit_lock_ = true
+
+[node name="BG" type="Sprite2D" parent="."]
+texture = ExtResource( "2" )
+metadata/_edit_lock_ = true
+
+[node name="Title" type="Label" parent="BG"]
+offset_left = -89.0
+offset_top = -220.0
+offset_right = 91.0
+offset_bottom = -186.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource( "3" )
+theme_override_font_sizes/font_size = 30
+text = "法宝使用帮助"
+metadata/_edit_lock_ = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="BG"]
+offset_left = -312.0
+offset_top = -173.0
+offset_right = 297.0
+offset_bottom = 208.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BG/ScrollContainer"]
+custom_minimum_size = Vector2(600, 400)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Text_1" type="Label" parent="BG/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource( "4" )
+theme_override_font_sizes/font_size = 18
+text = "1.法宝成长率影响法宝升级增加的属性"
+autowrap_mode = 1
+
+[node name="Text_11" type="Label" parent="BG/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource( "4" )
+theme_override_font_sizes/font_size = 18
+text = "2.金五行增加升级攻击力，木五行增强法宝能力，水五行增加升级法力，火五行增加升级生命，土五行增加升级双抗。"
+autowrap_mode = 1
+
+[node name="Text_12" type="Label" parent="BG/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource( "4" )
+theme_override_font_sizes/font_size = 18
+text = "3.法宝分为属性法宝和实战法宝，使用实战法宝的功能需要拥有至少一个这种法宝！"
+autowrap_mode = 1
+
+[node name="Text_13" type="Label" parent="BG/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource( "4" )
+theme_override_font_sizes/font_size = 18
+text = "4.属性法宝为你在背包装备的法宝，该法宝的属性作为法宝提供的属性。"
+autowrap_mode = 1
+
+[node name="Text_14" type="Label" parent="BG/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource( "4" )
+theme_override_font_sizes/font_size = 18
+text = "5.实战法宝为法宝实际生效的功能，也是跟随玩家的法宝。"
+autowrap_mode = 1
+
+[node name="Text_15" type="Label" parent="BG/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource( "4" )
+theme_override_font_sizes/font_size = 18
+text = "6.当未选择任何法宝技能作为生效技能时，法宝技能效果为你装备的法宝，否则优先为你选择的技能。"
+autowrap_mode = 1
+
+[node name="Text_16" type="Label" parent="BG/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource( "4" )
+theme_override_font_sizes/font_size = 18
+text = "7.实际生效的技能等级为你拥有的该法宝的最高等级"
+autowrap_mode = 1
+
+[node name="Text_17" type="Label" parent="BG/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource( "4" )
+theme_override_font_sizes/font_size = 18
+text = "8.只要你拥有的该法宝中任意一个法宝包含木五行（双五行包含木也可以），那么则会生效木五行效果."
+autowrap_mode = 1
+
+[node name="Text_18" type="Label" parent="BG/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource( "4" )
+theme_override_font_sizes/font_size = 18
+text = "9.属性界面显示的法宝为你装备的法宝详情，可以在这里进行升级等操作。"
+autowrap_mode = 1
+
+[node name="Text_19" type="Label" parent="BG/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource( "4" )
+theme_override_font_sizes/font_size = 18
+text = "10.法宝洗炼：花费一定数量的洗炼石可以重置法宝的五行和成长率，高级五行洗炼必定提升一个五行（上限3个）"
+autowrap_mode = 1
+
+[node name="Close" type="TextureButton" parent="BG"]
+offset_left = 267.0
+offset_top = -221.0
+offset_right = 308.0
+offset_bottom = -180.0
+texture_normal = ExtResource( "5" )
+texture_pressed = ExtResource( "5" )
+texture_hover = ExtResource( "6" )
+texture_disabled = ExtResource( "5" )
+metadata/_edit_lock_ = true
+

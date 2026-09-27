@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemDefinition" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Items/ItemDefinition.cs" id="1"]
+[ext_resource type="Texture2D" path="res://Assets/Art/BackPack/AllItems/whg.png" id="2"]
+
+[resource]
+script = ExtResource("1")
+Id = "whg"
+DisplayName = "尾火棍"
+MaxStack = 1
+Icon = ExtResource("2")
+Description = "诸法因缘生，我说是因缘；因缘尽故灭，我作如是说。"
+Attack = 18

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://Scenes/Actors/Monster.tscn" id="1"]
+[ext_resource type="SpriteFrames" path="res://Content/Monsters/Monster2Frames.tres" id="2"]
+
+[node name="Monster2" instance=ExtResource("1")]
+MaxHealth = 75.0
+MoveSpeed = 96.0
+
+[node name="Body" parent="Facing/Visual" index="0"]
+sprite_frames = ExtResource("2")

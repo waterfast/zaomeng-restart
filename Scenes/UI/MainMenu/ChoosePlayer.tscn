@@ -1,0 +1,1255 @@
+[gd_scene load_steps=121 format=3]
+
+[ext_resource type="Script" path="res://Scripts/UI/MainMenu/ChoosePlayer.cs" id="choose_player_script"]
+
+[ext_resource type="Texture2D" path="res://Assets/Art/Level/Game3Level/Level_Hide/bg.png" id="2"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Level/Game3Level/Level_Hide/bd5.png" id="3"]
+[ext_resource type="Texture2D" path="res://Assets/Art/MainGame/ChoosePlayer/13.png" id="4"]
+[ext_resource type="FontFile" path="res://Assets/Font/Aa文徵明琴赋小楷_mianfeiziti.com.ttf" id="5"]
+[ext_resource type="FontFile" path="res://Assets/Font/1_fonts.FZCY_FZCuYuan-M03.ttf" id="6"]
+[ext_resource type="Texture2D" path="res://Assets/Art/MainGame/ChoosePlayer/Yun.png" id="7"]
+[ext_resource type="Texture2D" path="res://Assets/Art/MainGame/ChoosePlayer/SpecialEffect_1.png" id="8"]
+[ext_resource type="Texture2D" path="res://Assets/Art/MainGame/ChoosePlayer/SpecialEffect_2.png" id="9"]
+[ext_resource type="Texture2D" path="res://Assets/Art/MainGame/ChoosePlayer/SpecialEffect_3.png" id="10"]
+[ext_resource type="Texture2D" path="res://Assets/Art/MainGame/ChoosePlayer/SpecialEffect_4.png" id="11"]
+[ext_resource type="Texture2D" path="res://Assets/Art/MainGame/ChoosePlayer/SpecialEffect_5-0.png" id="12"]
+[ext_resource type="Texture2D" path="res://Assets/Art/MainGame/ChoosePlayer/SpecialEffect_5-1.png" id="13"]
+[ext_resource type="Texture2D" path="res://Assets/Art/MainGame/ChoosePlayer/Button2_1.png" id="14"]
+[ext_resource type="Texture2D" path="res://Assets/Art/MainGame/ChoosePlayer/Button2_2.png" id="15"]
+[ext_resource type="Texture2D" path="res://Assets/Art/MainGame/ChoosePlayer/Button2_3.png" id="16"]
+[ext_resource type="Texture2D" path="res://Assets/Art/MainGame/ChoosePlayer/Button1_1.png" id="17"]
+[ext_resource type="Texture2D" path="res://Assets/Art/MainGame/ChoosePlayer/Button1_2.png" id="18"]
+[ext_resource type="Texture2D" path="res://Assets/Art/MainGame/ChoosePlayer/Button1_3.png" id="19"]
+[ext_resource type="FontFile" path="res://Assets/Font/Aa梦里掏花对月饮_mianfeiziti.com.ttf" id="20"]
+[ext_resource type="Texture2D" path="res://Assets/Art/MainGame/ChoosePlayer/ui_juese_wukong01.png" id="21"]
+[ext_resource type="Texture2D" path="res://Assets/Art/MainGame/ChoosePlayer/ui_juese_sanzang01.png" id="22"]
+[ext_resource type="Texture2D" path="res://Assets/Art/MainGame/ChoosePlayer/ui_juese_bajie01.png" id="23"]
+[ext_resource type="Texture2D" path="res://Assets/Art/MainGame/ChoosePlayer/ui_juese_wujing01.png" id="24"]
+[ext_resource type="Texture2D" path="res://Assets/Art/MainGame/ChoosePlayer/ui_juese_bailong01.png" id="25"]
+
+[sub_resource type="AtlasTexture" id="1"]
+atlas = ExtResource( "8" )
+region = Rect2(0, 0, 306, 368)
+
+[sub_resource type="AtlasTexture" id="2"]
+atlas = ExtResource( "8" )
+region = Rect2(306, 0, 306, 368)
+
+[sub_resource type="AtlasTexture" id="3"]
+atlas = ExtResource( "8" )
+region = Rect2(612, 0, 306, 368)
+
+[sub_resource type="AtlasTexture" id="4"]
+atlas = ExtResource( "8" )
+region = Rect2(918, 0, 306, 368)
+
+[sub_resource type="AtlasTexture" id="5"]
+atlas = ExtResource( "8" )
+region = Rect2(1224, 0, 306, 368)
+
+[sub_resource type="AtlasTexture" id="6"]
+atlas = ExtResource( "8" )
+region = Rect2(1530, 0, 306, 368)
+
+[sub_resource type="AtlasTexture" id="7"]
+atlas = ExtResource( "8" )
+region = Rect2(0, 368, 306, 368)
+
+[sub_resource type="AtlasTexture" id="8"]
+atlas = ExtResource( "8" )
+region = Rect2(306, 368, 306, 368)
+
+[sub_resource type="AtlasTexture" id="9"]
+atlas = ExtResource( "8" )
+region = Rect2(612, 368, 306, 368)
+
+[sub_resource type="AtlasTexture" id="10"]
+atlas = ExtResource( "8" )
+region = Rect2(918, 368, 306, 368)
+
+[sub_resource type="AtlasTexture" id="11"]
+atlas = ExtResource( "8" )
+region = Rect2(1224, 368, 306, 368)
+
+[sub_resource type="AtlasTexture" id="12"]
+atlas = ExtResource( "8" )
+region = Rect2(1530, 368, 306, 368)
+
+[sub_resource type="AtlasTexture" id="13"]
+atlas = ExtResource( "8" )
+region = Rect2(0, 736, 306, 368)
+
+[sub_resource type="AtlasTexture" id="14"]
+atlas = ExtResource( "8" )
+region = Rect2(306, 736, 306, 368)
+
+[sub_resource type="AtlasTexture" id="15"]
+atlas = ExtResource( "8" )
+region = Rect2(612, 736, 306, 368)
+
+[sub_resource type="AtlasTexture" id="16"]
+atlas = ExtResource( "9" )
+region = Rect2(0, 0, 315, 295)
+
+[sub_resource type="AtlasTexture" id="17"]
+atlas = ExtResource( "9" )
+region = Rect2(315, 0, 315, 295)
+
+[sub_resource type="AtlasTexture" id="18"]
+atlas = ExtResource( "9" )
+region = Rect2(630, 0, 315, 295)
+
+[sub_resource type="AtlasTexture" id="19"]
+atlas = ExtResource( "9" )
+region = Rect2(945, 0, 315, 295)
+
+[sub_resource type="AtlasTexture" id="20"]
+atlas = ExtResource( "9" )
+region = Rect2(1260, 0, 315, 295)
+
+[sub_resource type="AtlasTexture" id="21"]
+atlas = ExtResource( "9" )
+region = Rect2(1575, 0, 315, 295)
+
+[sub_resource type="AtlasTexture" id="22"]
+atlas = ExtResource( "9" )
+region = Rect2(0, 295, 315, 295)
+
+[sub_resource type="AtlasTexture" id="23"]
+atlas = ExtResource( "9" )
+region = Rect2(315, 295, 315, 295)
+
+[sub_resource type="AtlasTexture" id="24"]
+atlas = ExtResource( "9" )
+region = Rect2(630, 295, 315, 295)
+
+[sub_resource type="AtlasTexture" id="25"]
+atlas = ExtResource( "9" )
+region = Rect2(945, 295, 315, 295)
+
+[sub_resource type="AtlasTexture" id="26"]
+atlas = ExtResource( "9" )
+region = Rect2(1260, 295, 315, 295)
+
+[sub_resource type="AtlasTexture" id="27"]
+atlas = ExtResource( "9" )
+region = Rect2(1575, 295, 315, 295)
+
+[sub_resource type="AtlasTexture" id="28"]
+atlas = ExtResource( "9" )
+region = Rect2(0, 590, 315, 295)
+
+[sub_resource type="AtlasTexture" id="29"]
+atlas = ExtResource( "9" )
+region = Rect2(315, 590, 315, 295)
+
+[sub_resource type="AtlasTexture" id="30"]
+atlas = ExtResource( "9" )
+region = Rect2(630, 590, 315, 295)
+
+[sub_resource type="AtlasTexture" id="31"]
+atlas = ExtResource( "10" )
+region = Rect2(0, 0, 420, 349)
+
+[sub_resource type="AtlasTexture" id="32"]
+atlas = ExtResource( "10" )
+region = Rect2(420, 0, 420, 349)
+
+[sub_resource type="AtlasTexture" id="33"]
+atlas = ExtResource( "10" )
+region = Rect2(840, 0, 420, 349)
+
+[sub_resource type="AtlasTexture" id="34"]
+atlas = ExtResource( "10" )
+region = Rect2(1260, 0, 420, 349)
+
+[sub_resource type="AtlasTexture" id="35"]
+atlas = ExtResource( "10" )
+region = Rect2(0, 349, 420, 349)
+
+[sub_resource type="AtlasTexture" id="36"]
+atlas = ExtResource( "10" )
+region = Rect2(420, 349, 420, 349)
+
+[sub_resource type="AtlasTexture" id="37"]
+atlas = ExtResource( "10" )
+region = Rect2(840, 349, 420, 349)
+
+[sub_resource type="AtlasTexture" id="38"]
+atlas = ExtResource( "10" )
+region = Rect2(1260, 349, 420, 349)
+
+[sub_resource type="AtlasTexture" id="39"]
+atlas = ExtResource( "10" )
+region = Rect2(0, 698, 420, 349)
+
+[sub_resource type="AtlasTexture" id="40"]
+atlas = ExtResource( "10" )
+region = Rect2(420, 698, 420, 349)
+
+[sub_resource type="AtlasTexture" id="41"]
+atlas = ExtResource( "10" )
+region = Rect2(840, 698, 420, 349)
+
+[sub_resource type="AtlasTexture" id="42"]
+atlas = ExtResource( "10" )
+region = Rect2(1260, 698, 420, 349)
+
+[sub_resource type="AtlasTexture" id="43"]
+atlas = ExtResource( "10" )
+region = Rect2(0, 1047, 420, 349)
+
+[sub_resource type="AtlasTexture" id="44"]
+atlas = ExtResource( "10" )
+region = Rect2(420, 1047, 420, 349)
+
+[sub_resource type="AtlasTexture" id="45"]
+atlas = ExtResource( "10" )
+region = Rect2(840, 1047, 420, 349)
+
+[sub_resource type="AtlasTexture" id="46"]
+atlas = ExtResource( "11" )
+region = Rect2(0, 0, 295, 391)
+
+[sub_resource type="AtlasTexture" id="47"]
+atlas = ExtResource( "11" )
+region = Rect2(295, 0, 295, 391)
+
+[sub_resource type="AtlasTexture" id="48"]
+atlas = ExtResource( "11" )
+region = Rect2(590, 0, 295, 391)
+
+[sub_resource type="AtlasTexture" id="49"]
+atlas = ExtResource( "11" )
+region = Rect2(885, 0, 295, 391)
+
+[sub_resource type="AtlasTexture" id="50"]
+atlas = ExtResource( "11" )
+region = Rect2(1180, 0, 295, 391)
+
+[sub_resource type="AtlasTexture" id="51"]
+atlas = ExtResource( "11" )
+region = Rect2(1475, 0, 295, 391)
+
+[sub_resource type="AtlasTexture" id="52"]
+atlas = ExtResource( "11" )
+region = Rect2(0, 391, 295, 391)
+
+[sub_resource type="AtlasTexture" id="53"]
+atlas = ExtResource( "11" )
+region = Rect2(295, 391, 295, 391)
+
+[sub_resource type="AtlasTexture" id="54"]
+atlas = ExtResource( "11" )
+region = Rect2(590, 391, 295, 391)
+
+[sub_resource type="AtlasTexture" id="55"]
+atlas = ExtResource( "11" )
+region = Rect2(885, 391, 295, 391)
+
+[sub_resource type="AtlasTexture" id="56"]
+atlas = ExtResource( "11" )
+region = Rect2(1180, 391, 295, 391)
+
+[sub_resource type="AtlasTexture" id="57"]
+atlas = ExtResource( "11" )
+region = Rect2(1475, 391, 295, 391)
+
+[sub_resource type="AtlasTexture" id="58"]
+atlas = ExtResource( "11" )
+region = Rect2(0, 782, 295, 391)
+
+[sub_resource type="AtlasTexture" id="59"]
+atlas = ExtResource( "11" )
+region = Rect2(295, 782, 295, 391)
+
+[sub_resource type="AtlasTexture" id="60"]
+atlas = ExtResource( "11" )
+region = Rect2(590, 782, 295, 391)
+
+[sub_resource type="AtlasTexture" id="61"]
+atlas = ExtResource( "12" )
+region = Rect2(0, 0, 556, 342)
+
+[sub_resource type="AtlasTexture" id="62"]
+atlas = ExtResource( "12" )
+region = Rect2(556, 0, 556, 342)
+
+[sub_resource type="AtlasTexture" id="63"]
+atlas = ExtResource( "12" )
+region = Rect2(1112, 0, 556, 342)
+
+[sub_resource type="AtlasTexture" id="64"]
+atlas = ExtResource( "12" )
+region = Rect2(0, 342, 556, 342)
+
+[sub_resource type="AtlasTexture" id="65"]
+atlas = ExtResource( "12" )
+region = Rect2(556, 342, 556, 342)
+
+[sub_resource type="AtlasTexture" id="66"]
+atlas = ExtResource( "12" )
+region = Rect2(1112, 342, 556, 342)
+
+[sub_resource type="AtlasTexture" id="67"]
+atlas = ExtResource( "12" )
+region = Rect2(0, 684, 556, 342)
+
+[sub_resource type="AtlasTexture" id="68"]
+atlas = ExtResource( "12" )
+region = Rect2(556, 684, 556, 342)
+
+[sub_resource type="AtlasTexture" id="69"]
+atlas = ExtResource( "12" )
+region = Rect2(1112, 684, 556, 342)
+
+[sub_resource type="AtlasTexture" id="70"]
+atlas = ExtResource( "12" )
+region = Rect2(0, 1026, 556, 342)
+
+[sub_resource type="AtlasTexture" id="71"]
+atlas = ExtResource( "12" )
+region = Rect2(556, 1026, 556, 342)
+
+[sub_resource type="AtlasTexture" id="72"]
+atlas = ExtResource( "12" )
+region = Rect2(1112, 1026, 556, 342)
+
+[sub_resource type="AtlasTexture" id="73"]
+atlas = ExtResource( "12" )
+region = Rect2(0, 1368, 556, 342)
+
+[sub_resource type="AtlasTexture" id="74"]
+atlas = ExtResource( "12" )
+region = Rect2(556, 1368, 556, 342)
+
+[sub_resource type="AtlasTexture" id="75"]
+atlas = ExtResource( "12" )
+region = Rect2(1112, 1368, 556, 342)
+
+[sub_resource type="AtlasTexture" id="76"]
+atlas = ExtResource( "13" )
+region = Rect2(0, 0, 556, 342)
+
+[sub_resource type="AtlasTexture" id="77"]
+atlas = ExtResource( "13" )
+region = Rect2(556, 0, 556, 342)
+
+[sub_resource type="AtlasTexture" id="78"]
+atlas = ExtResource( "13" )
+region = Rect2(1112, 0, 556, 342)
+
+[sub_resource type="AtlasTexture" id="79"]
+atlas = ExtResource( "13" )
+region = Rect2(0, 342, 556, 342)
+
+[sub_resource type="AtlasTexture" id="80"]
+atlas = ExtResource( "13" )
+region = Rect2(556, 342, 556, 342)
+
+[sub_resource type="AtlasTexture" id="81"]
+atlas = ExtResource( "13" )
+region = Rect2(1112, 342, 556, 342)
+
+[sub_resource type="AtlasTexture" id="82"]
+atlas = ExtResource( "13" )
+region = Rect2(0, 684, 556, 342)
+
+[sub_resource type="AtlasTexture" id="83"]
+atlas = ExtResource( "13" )
+region = Rect2(556, 684, 556, 342)
+
+[sub_resource type="AtlasTexture" id="84"]
+atlas = ExtResource( "13" )
+region = Rect2(1112, 684, 556, 342)
+
+[sub_resource type="AtlasTexture" id="85"]
+atlas = ExtResource( "13" )
+region = Rect2(0, 1026, 556, 342)
+
+[sub_resource type="SpriteFrames" id="86"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource( "1" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "2" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "3" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "4" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "5" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "6" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "7" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "8" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "9" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "10" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "11" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "12" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "13" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "14" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "15" )
+}],
+"loop": true,
+"name": &"1",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource( "16" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "17" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "18" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "19" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "20" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "21" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "22" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "23" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "24" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "25" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "26" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "27" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "28" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "29" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "30" )
+}],
+"loop": true,
+"name": &"2",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource( "31" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "32" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "33" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "34" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "35" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "36" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "37" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "38" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "39" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "40" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "41" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "42" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "43" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "44" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "45" )
+}],
+"loop": true,
+"name": &"3",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource( "46" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "47" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "48" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "49" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "50" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "51" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "52" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "53" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "54" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "55" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "56" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "57" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "58" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "59" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "60" )
+}],
+"loop": true,
+"name": &"4",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource( "61" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "62" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "63" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "64" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "65" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "66" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "67" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "68" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "69" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "70" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "71" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "72" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "73" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "74" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "75" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "76" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "77" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "78" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "79" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "80" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "81" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "82" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "83" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "84" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "85" )
+}],
+"loop": true,
+"name": &"5",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"Empty",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="87"]
+resource_name = "Empty"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RolePic:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RolePic/SpecialEffect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"Empty", 1.0, false],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="88"]
+resource_name = "Role_1"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RolePic:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(10, -40), Vector2(10, -50), Vector2(10, -40), Vector2(10, -30), Vector2(10, -40)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RolePic/SpecialEffect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-26, 61)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RolePic/SpecialEffect")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"1", 1.0, false],
+"method": &"play"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RolePic:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource( "21" )]
+}
+
+[sub_resource type="Animation" id="89"]
+resource_name = "Role_2"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RolePic:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource( "22" )]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RolePic:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(10, -40), Vector2(10, -50), Vector2(10, -40), Vector2(10, -30), Vector2(10, -40)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RolePic/SpecialEffect:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-14, 64)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RolePic/SpecialEffect")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"2", 1.0, false],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="90"]
+resource_name = "Role_3"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RolePic:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(10, -40), Vector2(10, -50), Vector2(10, -40), Vector2(10, -30), Vector2(10, -40)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RolePic:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource( "23" )]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RolePic/SpecialEffect:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(22.7432, 20.4915)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RolePic/SpecialEffect")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"3", 1.0, false],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="91"]
+resource_name = "Role_4"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RolePic:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(10, -40), Vector2(10, -50), Vector2(10, -40), Vector2(10, -30), Vector2(10, -40)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RolePic:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource( "24" )]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RolePic/SpecialEffect:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(37.6264, -8.60583)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RolePic/SpecialEffect")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"4", 1.0, false],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="92"]
+resource_name = "Role_1"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RolePic:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(10, -40), Vector2(10, -50), Vector2(10, -40), Vector2(10, -30), Vector2(10, -40)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RolePic/SpecialEffect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-143, 44)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RolePic/SpecialEffect")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"5", 1.0, false],
+"method": &"play"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RolePic:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource( "25" )]
+}
+
+[sub_resource type="AnimationLibrary" id="93"]
+_data = {
+"Empty": SubResource( "87" ),
+"Role_1": SubResource( "88" ),
+"Role_2": SubResource( "89" ),
+"Role_3": SubResource( "90" ),
+"Role_4": SubResource( "91" ),
+"Role_5": SubResource( "92" )
+}
+
+[sub_resource type="Animation" id="94"]
+resource_name = "Yun"
+length = 30.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Yun:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 30),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1439.21, 336.273), Vector2(-144.367, 341.563)]
+}
+
+[sub_resource type="AnimationLibrary" id="95"]
+_data = {
+"Yun": SubResource( "94" )
+}
+
+[node name="ChoosePlayer" type="Node2D"]
+script = ExtResource("choose_player_script")
+process_mode = 3
+metadata/_edit_horizontal_guides_ = [-72.0]
+
+[node name="Bg" type="Sprite2D" parent="."]
+position = Vector2(469, 293.75)
+scale = Vector2(0.671897, 0.756082)
+texture = ExtResource( "2" )
+metadata/_edit_lock_ = true
+
+[node name="Bd5" type="Sprite2D" parent="Bg"]
+position = Vector2(0.744202, 0.330658)
+scale = Vector2(1.16957, 0.993652)
+texture = ExtResource( "3" )
+metadata/_edit_lock_ = true
+
+[node name="Bg" type="Sprite2D" parent="Bg"]
+position = Vector2(462.868, -61.8319)
+scale = Vector2(1.48832, 1.32261)
+texture = ExtResource( "4" )
+metadata/_edit_lock_ = true
+
+[node name="ColorRect" type="ColorRect" parent="Bg/Bg"]
+show_behind_parent = true
+offset_left = -117.0
+offset_top = -160.0
+offset_right = 117.0
+offset_bottom = 156.0
+color = Color(1, 0.411765, 0, 0.105882)
+metadata/_edit_lock_ = true
+
+[node name="RoleName" type="Label" parent="Bg/Bg"]
+offset_left = -139.0
+offset_top = -194.0
+offset_right = 140.0
+offset_bottom = -148.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 7
+theme_override_fonts/font = ExtResource( "5" )
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="shengcun" type="HBoxContainer" parent="Bg/Bg"]
+offset_left = -47.0
+offset_top = -147.0
+offset_right = 179.0
+offset_bottom = -107.0
+scale = Vector2(0.6, 0.6)
+metadata/_edit_lock_ = true
+
+[node name="gongji" type="HBoxContainer" parent="Bg/Bg"]
+offset_left = -47.0
+offset_top = -114.0
+offset_right = 179.0
+offset_bottom = -74.0
+scale = Vector2(0.6, 0.6)
+metadata/_edit_lock_ = true
+
+[node name="minjie" type="HBoxContainer" parent="Bg/Bg"]
+offset_left = -47.0
+offset_top = -81.0
+offset_right = 179.0
+offset_bottom = -41.0
+scale = Vector2(0.6, 0.6)
+metadata/_edit_lock_ = true
+
+[node name="caozuo" type="HBoxContainer" parent="Bg/Bg"]
+offset_left = -47.0
+offset_top = -16.0
+offset_right = 179.0
+offset_bottom = 24.0
+scale = Vector2(0.6, 0.6)
+metadata/_edit_lock_ = true
+
+[node name="Prop" type="Label" parent="Bg/Bg"]
+offset_left = -50.0
+offset_top = -48.0
+offset_right = 102.0
+offset_bottom = -23.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource( "6" )
+theme_override_font_sizes/font_size = 20
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Info" type="Label" parent="Bg/Bg"]
+offset_left = -110.0
+offset_top = 14.0
+offset_right = 106.0
+offset_bottom = 153.0
+theme_override_colors/font_color = Color(0.372549, 0.117647, 0.0196078, 1)
+theme_override_colors/font_outline_color = Color(0.372549, 0.117647, 0.0196078, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource( "6" )
+autowrap_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="Yun" type="Sprite2D" parent="Bg"]
+position = Vector2(-1439.21, 336.273)
+scale = Vector2(1.48832, 1.32261)
+texture = ExtResource( "7" )
+
+[node name="Yun2" type="Sprite2D" parent="Bg/Yun"]
+position = Vector2(945, -1)
+texture = ExtResource( "7" )
+metadata/_edit_lock_ = true
+
+[node name="RolePic" type="Sprite2D" parent="Bg"]
+position = Vector2(10, -40)
+metadata/_edit_lock_ = true
+
+[node name="SpecialEffect" type="AnimatedSprite2D" parent="Bg/RolePic"]
+position = Vector2(-26, 61)
+sprite_frames = SubResource( "86" )
+animation = &"Empty"
+frame = 1
+frame_progress = 1.0
+
+[node name="qued" type="TextureButton" parent="Bg"]
+offset_left = -95.2526
+offset_top = 234.432
+offset_right = 98.7474
+offset_bottom = 300.432
+texture_normal = ExtResource( "14" )
+texture_pressed = ExtResource( "14" )
+texture_hover = ExtResource( "15" )
+texture_disabled = ExtResource( "16" )
+metadata/_edit_lock_ = true
+
+[node name="tt" type="Label" parent="Bg/qued"]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 7.0
+offset_right = 159.0
+offset_bottom = 56.0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 7
+theme_override_fonts/font = ExtResource( "5" )
+theme_override_font_sizes/font_size = 30
+text = "确定选择"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="ReturnMainMenu" type="TextureButton" parent="Bg"]
+offset_left = 550.679
+offset_top = -379.258
+offset_right = 668.679
+offset_bottom = -342.258
+scale = Vector2(1.2, 1.2)
+texture_normal = ExtResource( "17" )
+texture_pressed = ExtResource( "17" )
+texture_hover = ExtResource( "18" )
+texture_disabled = ExtResource( "19" )
+metadata/_edit_lock_ = true
+
+[node name="tt" type="Label" parent="Bg/ReturnMainMenu"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 3.0
+offset_right = 109.0
+offset_bottom = 32.0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 7
+theme_override_fonts/font = ExtResource( "20" )
+theme_override_font_sizes/font_size = 18
+text = "返回主菜单"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Title" type="Label" parent="Bg"]
+offset_left = -700.0
+offset_top = -387.0
+offset_right = 700.0
+offset_bottom = -325.0
+theme_override_colors/font_color = Color(1, 0.545098, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 0.545098, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 14
+theme_override_fonts/font = ExtResource( "5" )
+theme_override_font_sizes/font_size = 50
+text = "创建新角色"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="CanChooseRole" type="Label" parent="Bg"]
+offset_left = -680.163
+offset_top = -372.645
+offset_right = -476.163
+offset_bottom = -323.645
+theme_override_colors/font_color = Color(0, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 1, 1, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 11
+theme_override_fonts/font = ExtResource( "20" )
+theme_override_font_sizes/font_size = 34
+text = "可选择的角色"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Bg"]
+offset_left = -642.955
+offset_top = -307.837
+offset_right = -546.955
+offset_bottom = 299.163
+scale = Vector2(1.1, 1.1)
+metadata/_edit_lock_ = true
+
+[node name="PlayerList" type="VBoxContainer" parent="Bg/ScrollContainer"]
+layout_mode = 2
+
+[node name="SpecialEffectPlayer" type="AnimationPlayer" parent="Bg"]
+libraries = {
+"": SubResource( "93" )
+}
+
+[node name="YunPlayer" type="AnimationPlayer" parent="Bg"]
+autoplay = "Yun"
+libraries = {
+"": SubResource( "95" )
+}
+

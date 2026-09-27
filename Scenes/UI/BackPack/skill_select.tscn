@@ -1,0 +1,135 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://Assets/Art/MagicWeapon/34.png" id="2"]
+[ext_resource type="FontFile" path="res://Assets/Font/华康宋体W3.ttc" id="3"]
+[ext_resource type="Texture2D" path="res://Assets/Art/MagicWeapon/Skill_Icon/39.png" id="4"]
+[ext_resource type="Texture2D" path="res://Assets/Art/MagicWeapon/149.png" id="5"]
+[ext_resource type="Texture2D" path="res://Assets/Art/MagicWeapon/145.png" id="6"]
+[ext_resource type="FontFile" path="res://Assets/Font/HYZhuZiMeiXinTiW.ttf" id="7"]
+
+[node name="Skill_select" type="Node2D"]
+metadata/_edit_lock_ = true
+
+[node name="BG" type="Sprite2D" parent="."]
+texture = ExtResource( "2" )
+metadata/_edit_lock_ = true
+
+[node name="SkillIcon" type="Sprite2D" parent="BG"]
+position = Vector2(-219, -11)
+
+[node name="MU" type="Sprite2D" parent="BG/SkillIcon"]
+position = Vector2(50, -20)
+metadata/_edit_lock_ = true
+
+[node name="Name_" type="Label" parent="BG/SkillIcon"]
+offset_left = -80.0
+offset_top = 33.0
+offset_right = 84.0
+offset_bottom = 58.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = ExtResource( "3" )
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="SkillName" type="Label" parent="BG"]
+offset_left = -141.0
+offset_top = -43.0
+offset_right = -77.0
+offset_bottom = -18.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = ExtResource( "3" )
+autowrap_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="Level" type="Label" parent="BG/SkillName"]
+layout_mode = 0
+offset_left = 69.0
+offset_right = 109.0
+offset_bottom = 20.0
+theme_override_colors/font_color = Color(1, 0.556863, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 0.556863, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 8
+theme_override_fonts/font = ExtResource( "3" )
+text = "Lv:"
+
+[node name="Skill_Infor" type="Label" parent="BG"]
+offset_left = -141.0
+offset_top = -17.0
+offset_right = 185.0
+offset_bottom = 42.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource( "3" )
+theme_override_font_sizes/font_size = 15
+autowrap_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="isChoose" type="Sprite2D" parent="BG"]
+visible = false
+position = Vector2(240, 0)
+texture = ExtResource( "4" )
+metadata/_edit_lock_ = true
+
+[node name="choose" type="TextureButton" parent="BG"]
+offset_left = 191.0
+offset_top = -8.0
+offset_right = 284.0
+offset_bottom = 27.0
+texture_normal = ExtResource( "5" )
+texture_pressed = ExtResource( "5" )
+texture_hover = ExtResource( "6" )
+metadata/_edit_lock_ = true
+
+[node name="choose_" type="Label" parent="BG/choose"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 89.0
+offset_bottom = 32.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = ExtResource( "3" )
+text = "启用"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="NoHave" type="Label" parent="BG"]
+offset_left = -23.0
+offset_top = -42.0
+offset_right = 37.0
+offset_bottom = -18.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource( "7" )
+theme_override_font_sizes/font_size = 20
+metadata/_edit_lock_ = true
+

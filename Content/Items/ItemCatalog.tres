@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemCatalog" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Items/ItemCatalog.cs" id="1"]
+[ext_resource type="Script" path="res://Scripts/Items/ItemDefinition.cs" id="definition_script"]
+[ext_resource type="Resource" path="res://Content/Items/ptxzg.tres" id="2"]
+[ext_resource type="Resource" path="res://Content/Items/yxxzg.tres" id="3"]
+[ext_resource type="Resource" path="res://Content/Items/whg.tres" id="4"]
+[ext_resource type="Resource" path="res://Content/Items/jcbj.tres" id="5"]
+[ext_resource type="Resource" path="res://Content/Items/qld.tres" id="6"]
+[ext_resource type="Resource" path="res://Content/Items/ryjgb.tres" id="7"]
+
+[resource]
+script = ExtResource("1")
+Definitions = Array[ExtResource("definition_script")]([ExtResource("2"), ExtResource("3"), ExtResource("4"), ExtResource("5"), ExtResource("6"), ExtResource("7")])

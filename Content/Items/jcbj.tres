@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemDefinition" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Items/ItemDefinition.cs" id="1"]
+[ext_resource type="Texture2D" path="res://Assets/Art/BackPack/AllItems/jcbj.png" id="2"]
+
+[resource]
+script = ExtResource("1")
+Id = "jcbj"
+DisplayName = "家传宝剑"
+MaxStack = 1
+Icon = ExtResource("2")
+Description = "看似普通的宝剑，蕴藏有神秘的力量。"
+Attack = 30
+CriticalChance = 3

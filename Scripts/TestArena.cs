@@ -1,13 +1,35 @@
 using Godot;
 using System;
+using Zaomeng.Items;
+using Zaomeng.Inventory;
+using Zaomeng.UI;
+using Zaomeng.UI.Inventory;
+using Zaomeng.Save;
+using SaveCharacter = Zaomeng.Character.Character;
 
 namespace Zaomeng;
 
 public partial class TestArena : Node2D
 {
+	[Export] public ItemCatalog ItemCatalog { get; set; } = null!;
+
 	private Player _player = null!;
 	private Monster _monster = null!;
 	private Label _status = null!;
+	private Node2D _backpack = null!;
+	private MenuManager _menuManager = null!;
+	private InventoryViewAdapter _inventoryAdapter = null!;
+	private LegacyBackpackView _backpackView = null!;
+	private InventoryService _inventory = null!;
+	private SaveCharacter _character = null!;
+
+	public override void _EnterTree()
+	{
+		(_character, _inventory) = GameSessionCharacter.Prepare(ItemCatalog);
+		float maxHealth = _character.BaseStats.MaxHealth + _character.PermanentBonuses.MaxHealth;
+		if (maxHealth > 0)
+			GetNode<Player>("Player").MaxHealth = maxHealth;
+	}
 
 	public override void _Ready()
 	{
@@ -15,11 +37,28 @@ public partial class TestArena : Node2D
 		_player = GetNode<Player>("Player");
 		_monster = GetNode<Monster>("Monster");
 		_status = GetNode<Label>("HUD/Panel/Status");
+		_backpack = GetNode<Node2D>("HUD/BackPack");
+		_menuManager = GetNode<MenuManager>("MenuManager");
+		_menuManager.MenuStateChanged += isOpen => GetNode<ColorRect>("HUD/Panel").Visible = !isOpen;
+		_inventoryAdapter = new InventoryViewAdapter(_inventory, ItemCatalog);
+		_backpackView = new LegacyBackpackView(_backpack, _inventoryAdapter, ItemCatalog,
+			_character, GameSession.Data!.Wallet, _player, () => GameSession.Save(_inventory));
+		_menuManager.RegisterMenu("bag", _backpack);
+		_backpackView.CloseRequested += _menuManager.CloseMenu;
 		if (Array.Exists(OS.GetCmdlineUserArgs(), value => value == "--smoke-test"))
 			CallDeferred(MethodName.StartSmokeTest);
+		if (Array.Exists(OS.GetCmdlineUserArgs(), value => value == "--menu-pause-test"))
+			CallDeferred(MethodName.StartMenuPauseTest);
+	}
+
+	public override void _ExitTree()
+	{
+		_backpackView?.Dispose();
+		_inventoryAdapter?.Dispose();
 	}
 
 	private void StartSmokeTest() => AddChild(new CombatSmokeTest());
+	private void StartMenuPauseTest() => AddChild(new MenuPauseSmokeTest());
 
 	public override void _Process(double delta)
 	{

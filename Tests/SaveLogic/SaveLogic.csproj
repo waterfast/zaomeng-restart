@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="../../Scripts/Inventory/*.cs" />
+    <Compile Include="../../Scripts/Character/*.cs" />
+    <Compile Include="../../Scripts/Save/*.cs" Exclude="../../Scripts/Save/GameSession.cs;../../Scripts/Save/GameSessionCharacter.cs" />
+    <Compile Include="../../Scripts/Save/Serialization/*.cs" />
+    <Compile Include="../../Scripts/Save/Storage/*.cs" />
+  </ItemGroup>
+</Project>

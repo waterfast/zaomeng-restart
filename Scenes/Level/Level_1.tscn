@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Level/GameplayLevel.cs" id="1"]
+[ext_resource type="PackedScene" path="res://Scenes/Maps/Forest.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://Scenes/Actors/Player.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/Level/Role_information.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/BackPack/BackPack.tscn" id="5"]
+[ext_resource type="Resource" path="res://Content/Items/ItemCatalog.tres" id="6"]
+[ext_resource type="Script" path="res://Scripts/UI/MenuManager.cs" id="7"]
+
+[node name="Level_1" type="Node2D"]
+script = ExtResource("1")
+LevelNumber = 1
+ItemCatalog = ExtResource("6")
+
+[node name="Map" parent="." instance=ExtResource("2")]
+
+[node name="Player" parent="." instance=ExtResource("3")]
+position = Vector2(380, 490)
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(480, 280)
+limit_left = 0
+limit_top = 0
+limit_right = 5300
+limit_bottom = 540
+position_smoothing_enabled = true
+
+[node name="OldHud" parent="." instance=ExtResource("4")]
+
+[node name="MenuManager" type="Node" parent="."]
+script = ExtResource("7")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Status" type="Label" parent="HUD"]
+offset_left = 16.0
+offset_top = 115.0
+offset_right = 650.0
+offset_bottom = 145.0
+theme_override_font_sizes/font_size = 16
+
+[node name="BackPack" parent="HUD" instance=ExtResource("5")]
+visible = false

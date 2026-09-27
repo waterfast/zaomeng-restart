@@ -1,0 +1,395 @@
+[gd_scene format=3]
+
+[ext_resource type="FontFile" path="res://Assets/Font/华康海报体W12 &amp; 华康海报体W12(P).ttc" id="2"]
+[ext_resource type="Texture2D" path="res://Assets/Art/BackPack/zb_button_choose.png" id="3"]
+[ext_resource type="Texture2D" path="res://Assets/Art/BackPack/zb_button.png" id="4"]
+[ext_resource type="FontFile" path="res://Assets/Font/HYZhuZiMeiXinTiW.ttf" id="5"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/BackPack/Box_1.tscn" id="6"]
+[ext_resource type="Texture2D" path="res://Assets/Art/BackPack/LastPageN.png" id="7"]
+[ext_resource type="Texture2D" path="res://Assets/Art/BackPack/LastPageY.png" id="8"]
+[ext_resource type="Texture2D" path="res://Assets/Art/BackPack/NextPageN.png" id="9"]
+[ext_resource type="Texture2D" path="res://Assets/Art/BackPack/NextPageY.png" id="10"]
+[ext_resource type="Texture2D" path="res://Assets/Art/BackPack/lh_wk.png" id="11"]
+[ext_resource type="FontFile" path="res://Assets/Font/8_FZCuYuan-M03S.ttf" id="12"]
+
+[sub_resource type="StyleBoxTexture" id="1"]
+texture = ExtResource( "3" )
+
+[sub_resource type="StyleBoxTexture" id="2"]
+texture = ExtResource( "3" )
+
+[sub_resource type="StyleBoxTexture" id="3"]
+texture = ExtResource( "4" )
+
+[sub_resource type="StyleBoxTexture" id="4"]
+texture = ExtResource( "4" )
+
+[sub_resource type="ImageTexture" id="5"]
+
+[node name="Main_Backpack" type="Control"]
+layout_mode = 3
+anchor_left = 0.323
+anchor_top = 0.146
+anchor_right = 0.646
+anchor_bottom = 0.802
+offset_left = -303.62
+offset_top = -86.14
+offset_right = -607.24
+offset_bottom = -473.18
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+metadata/_edit_lock_ = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.5
+offset_top = -196.5
+offset_right = 150.5
+offset_bottom = 196.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.219608, 0.109804, 0.0313726, 1)
+metadata/_edit_lock_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -149.0
+offset_top = -193.5
+offset_right = 157.0
+offset_bottom = 173.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.98, 0.98)
+theme_override_constants/margin_left = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+
+[node name="title" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource( "2" )
+theme_override_font_sizes/font_size = 25
+text = "装备背包"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TabBar" type="TabBar" parent="MarginContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+size_flags_vertical = 0
+mouse_default_cursor_shape = 2
+theme_override_constants/h_separation = 16
+theme_override_constants/icon_max_width = 14
+theme_override_fonts/font = ExtResource( "2" )
+theme_override_font_sizes/font_size = 18
+theme_override_styles/tab_selected = SubResource( "1" )
+theme_override_styles/tab_hovered = SubResource( "2" )
+theme_override_styles/tab_unselected = SubResource( "3" )
+theme_override_styles/button_pressed = SubResource( "4" )
+max_tab_width = 50
+tab_count = 3
+tab_0/title = "装备"
+tab_0/icon = SubResource( "5" )
+tab_1/title = "道具"
+tab_1/icon = ExtResource( "4" )
+tab_2/title = "消耗品"
+tab_2/icon = ExtResource( "4" )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="zb" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource( "4" )
+texture_pressed = ExtResource( "3" )
+texture_hover = ExtResource( "3" )
+texture_focused = ExtResource( "3" )
+
+[node name="zb" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/zb"]
+layout_mode = 0
+offset_top = 1.0
+offset_right = 73.0
+offset_bottom = 26.0
+theme_override_fonts/font = ExtResource( "5" )
+text = "装备"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="dj" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource( "4" )
+texture_pressed = ExtResource( "3" )
+texture_hover = ExtResource( "3" )
+texture_focused = ExtResource( "3" )
+
+[node name="dj" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/dj"]
+layout_mode = 0
+offset_top = 1.0
+offset_right = 73.0
+offset_bottom = 26.0
+theme_override_fonts/font = ExtResource( "5" )
+theme_override_font_sizes/font_size = 18
+text = "道具"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="xhp" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource( "4" )
+texture_pressed = ExtResource( "3" )
+texture_hover = ExtResource( "3" )
+texture_focused = ExtResource( "3" )
+
+[node name="xhp" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/xhp"]
+layout_mode = 0
+offset_top = 1.0
+offset_right = 73.0
+offset_bottom = 26.0
+theme_override_fonts/font = ExtResource( "5" )
+text = "消耗品"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="pl_sell" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource( "4" )
+texture_pressed = ExtResource( "3" )
+texture_hover = ExtResource( "3" )
+texture_focused = ExtResource( "3" )
+metadata/_edit_lock_ = true
+
+[node name="plcs" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/pl_sell"]
+layout_mode = 0
+offset_top = 1.0
+offset_right = 73.0
+offset_bottom = 26.0
+theme_override_fonts/font = ExtResource( "5" )
+theme_override_font_sizes/font_size = 15
+text = "批量出售"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+theme_override_constants/margin_left = -3
+
+[node name="Sc_Box" type="ScrollContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Gd_Box" type="GridContainer" parent="MarginContainer/VBoxContainer/MarginContainer/Sc_Box"]
+layout_mode = 2
+theme_override_constants/h_separation = 11
+theme_override_constants/v_separation = 11
+columns = 5
+
+[node name="box_1" parent="MarginContainer/VBoxContainer/MarginContainer/Sc_Box/Gd_Box" instance=ExtResource( "6" )]
+layout_mode = 2
+
+[node name="box_2" parent="MarginContainer/VBoxContainer/MarginContainer/Sc_Box/Gd_Box" instance=ExtResource( "6" )]
+layout_mode = 2
+
+[node name="box_3" parent="MarginContainer/VBoxContainer/MarginContainer/Sc_Box/Gd_Box" instance=ExtResource( "6" )]
+layout_mode = 2
+
+[node name="box_4" parent="MarginContainer/VBoxContainer/MarginContainer/Sc_Box/Gd_Box" instance=ExtResource( "6" )]
+layout_mode = 2
+
+[node name="box_5" parent="MarginContainer/VBoxContainer/MarginContainer/Sc_Box/Gd_Box" instance=ExtResource( "6" )]
+layout_mode = 2
+
+[node name="box_6" parent="MarginContainer/VBoxContainer/MarginContainer/Sc_Box/Gd_Box" instance=ExtResource( "6" )]
+layout_mode = 2
+
+[node name="box_7" parent="MarginContainer/VBoxContainer/MarginContainer/Sc_Box/Gd_Box" instance=ExtResource( "6" )]
+layout_mode = 2
+
+[node name="box_8" parent="MarginContainer/VBoxContainer/MarginContainer/Sc_Box/Gd_Box" instance=ExtResource( "6" )]
+layout_mode = 2
+
+[node name="box_9" parent="MarginContainer/VBoxContainer/MarginContainer/Sc_Box/Gd_Box" instance=ExtResource( "6" )]
+layout_mode = 2
+
+[node name="box_10" parent="MarginContainer/VBoxContainer/MarginContainer/Sc_Box/Gd_Box" instance=ExtResource( "6" )]
+layout_mode = 2
+
+[node name="box_11" parent="MarginContainer/VBoxContainer/MarginContainer/Sc_Box/Gd_Box" instance=ExtResource( "6" )]
+layout_mode = 2
+
+[node name="box_12" parent="MarginContainer/VBoxContainer/MarginContainer/Sc_Box/Gd_Box" instance=ExtResource( "6" )]
+layout_mode = 2
+
+[node name="box_13" parent="MarginContainer/VBoxContainer/MarginContainer/Sc_Box/Gd_Box" instance=ExtResource( "6" )]
+layout_mode = 2
+
+[node name="box_14" parent="MarginContainer/VBoxContainer/MarginContainer/Sc_Box/Gd_Box" instance=ExtResource( "6" )]
+layout_mode = 2
+
+[node name="box_15" parent="MarginContainer/VBoxContainer/MarginContainer/Sc_Box/Gd_Box" instance=ExtResource( "6" )]
+layout_mode = 2
+
+[node name="box_16" parent="MarginContainer/VBoxContainer/MarginContainer/Sc_Box/Gd_Box" instance=ExtResource( "6" )]
+layout_mode = 2
+
+[node name="box_17" parent="MarginContainer/VBoxContainer/MarginContainer/Sc_Box/Gd_Box" instance=ExtResource( "6" )]
+layout_mode = 2
+
+[node name="box_18" parent="MarginContainer/VBoxContainer/MarginContainer/Sc_Box/Gd_Box" instance=ExtResource( "6" )]
+layout_mode = 2
+
+[node name="box_19" parent="MarginContainer/VBoxContainer/MarginContainer/Sc_Box/Gd_Box" instance=ExtResource( "6" )]
+layout_mode = 2
+
+[node name="box_20" parent="MarginContainer/VBoxContainer/MarginContainer/Sc_Box/Gd_Box" instance=ExtResource( "6" )]
+layout_mode = 2
+
+[node name="box_21" parent="MarginContainer/VBoxContainer/MarginContainer/Sc_Box/Gd_Box" instance=ExtResource( "6" )]
+layout_mode = 2
+
+[node name="box_22" parent="MarginContainer/VBoxContainer/MarginContainer/Sc_Box/Gd_Box" instance=ExtResource( "6" )]
+layout_mode = 2
+
+[node name="box_23" parent="MarginContainer/VBoxContainer/MarginContainer/Sc_Box/Gd_Box" instance=ExtResource( "6" )]
+layout_mode = 2
+
+[node name="box_24" parent="MarginContainer/VBoxContainer/MarginContainer/Sc_Box/Gd_Box" instance=ExtResource( "6" )]
+layout_mode = 2
+
+[node name="box_25" parent="MarginContainer/VBoxContainer/MarginContainer/Sc_Box/Gd_Box" instance=ExtResource( "6" )]
+layout_mode = 2
+
+[node name="box_26" parent="MarginContainer/VBoxContainer/MarginContainer/Sc_Box/Gd_Box" instance=ExtResource( "6" )]
+layout_mode = 2
+
+[node name="box_27" parent="MarginContainer/VBoxContainer/MarginContainer/Sc_Box/Gd_Box" instance=ExtResource( "6" )]
+layout_mode = 2
+
+[node name="box_28" parent="MarginContainer/VBoxContainer/MarginContainer/Sc_Box/Gd_Box" instance=ExtResource( "6" )]
+layout_mode = 2
+
+[node name="box_29" parent="MarginContainer/VBoxContainer/MarginContainer/Sc_Box/Gd_Box" instance=ExtResource( "6" )]
+layout_mode = 2
+
+[node name="box_30" parent="MarginContainer/VBoxContainer/MarginContainer/Sc_Box/Gd_Box" instance=ExtResource( "6" )]
+layout_mode = 2
+
+[node name="box_31" parent="MarginContainer/VBoxContainer/MarginContainer/Sc_Box/Gd_Box" instance=ExtResource( "6" )]
+layout_mode = 2
+
+[node name="box_32" parent="MarginContainer/VBoxContainer/MarginContainer/Sc_Box/Gd_Box" instance=ExtResource( "6" )]
+layout_mode = 2
+
+[node name="box_33" parent="MarginContainer/VBoxContainer/MarginContainer/Sc_Box/Gd_Box" instance=ExtResource( "6" )]
+layout_mode = 2
+
+[node name="box_34" parent="MarginContainer/VBoxContainer/MarginContainer/Sc_Box/Gd_Box" instance=ExtResource( "6" )]
+layout_mode = 2
+
+[node name="box_35" parent="MarginContainer/VBoxContainer/MarginContainer/Sc_Box/Gd_Box" instance=ExtResource( "6" )]
+layout_mode = 2
+
+[node name="ChangePage" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = -153.0
+offset_top = 166.0
+offset_right = 55.0
+offset_bottom = 199.0
+scale = Vector2(0.84, 0.91)
+theme_override_constants/separation = -1
+metadata/_edit_lock_ = true
+
+[node name="LastPage" type="TextureButton" parent="ChangePage"]
+layout_mode = 2
+texture_normal = ExtResource( "7" )
+texture_pressed = ExtResource( "7" )
+texture_hover = ExtResource( "8" )
+texture_disabled = ExtResource( "7" )
+
+[node name="CurrentPageText" type="Label" parent="ChangePage"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource( "5" )
+text = "1/4"
+vertical_alignment = 2
+
+[node name="NextPage" type="TextureButton" parent="ChangePage"]
+layout_mode = 2
+texture_normal = ExtResource( "9" )
+texture_pressed = ExtResource( "9" )
+texture_hover = ExtResource( "10" )
+texture_disabled = ExtResource( "9" )
+
+[node name="coin_text" type="Sprite2D" parent="."]
+position = Vector2(84.895, 181)
+scale = Vector2(1.02488, 0.928572)
+texture = ExtResource( "11" )
+metadata/_edit_lock_ = true
+
+[node name="coin_number" type="Label" parent="coin_text"]
+offset_left = -10.0243
+offset_top = -7.92307
+offset_right = 60.9757
+offset_bottom = 9.07693
+scale = Vector2(1, 1.3)
+theme_override_fonts/font = ExtResource( "12" )
+theme_override_font_sizes/font_size = 12
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="add_equ" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 13.0
+offset_top = -1.99999
+offset_right = 85.0
+offset_bottom = 29.0
+mouse_default_cursor_shape = 2
+disabled = true
+text = "添加装备"
+metadata/_edit_lock_ = true
+
+[node name="add_dj" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 214.0
+offset_top = 4.00001
+offset_right = 286.0
+offset_bottom = 35.0
+mouse_default_cursor_shape = 2
+disabled = true
+text = "添加道具"
+
+[node name="add_xhp" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 205.0
+offset_top = 1.00001
+offset_right = 293.0
+offset_bottom = 32.0
+mouse_default_cursor_shape = 2
+disabled = true
+text = "添加消耗品"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.051
+autostart = true
+

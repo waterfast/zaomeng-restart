@@ -1,0 +1,231 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://Assets/Art/MagicWeapon/66.png" id="2"]
+[ext_resource type="FontFile" path="res://Assets/Font/华康海报体W12 &amp; 华康海报体W12(P).ttc" id="3"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/BackPack/Box_1.tscn" id="4"]
+[ext_resource type="Texture2D" path="res://Assets/Art/MagicWeapon/149.png" id="5"]
+[ext_resource type="Texture2D" path="res://Assets/Art/MagicWeapon/145.png" id="6"]
+
+[node name="UseItems" type="Node2D"]
+
+[node name="Other" type="ColorRect" parent="."]
+offset_left = -382.0
+offset_top = -344.0
+offset_right = 1348.0
+offset_bottom = 854.0
+color = Color(0, 0, 0, 0.227451)
+metadata/_edit_lock_ = true
+
+[node name="Bg" type="Sprite2D" parent="."]
+position = Vector2(470, 237.175)
+scale = Vector2(0.4, 0.256599)
+texture = ExtResource( "2" )
+metadata/_edit_lock_ = true
+
+[node name="Title" type="Label" parent="."]
+offset_left = 437.0
+offset_top = 181.0
+offset_right = 497.0
+offset_bottom = 200.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource( "3" )
+theme_override_font_sizes/font_size = 15
+text = "物品使用"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="ItemPic" parent="." instance=ExtResource( "4" )]
+offset_left = 349.0
+offset_top = 208.0
+offset_right = 399.0
+offset_bottom = 258.0
+
+[node name="ItemName" type="Label" parent="."]
+offset_left = 403.0
+offset_top = 210.0
+offset_right = 473.0
+offset_bottom = 232.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 14
+text = "物品名称："
+
+[node name="Name" type="Label" parent="ItemName"]
+layout_mode = 0
+offset_left = 66.0
+offset_right = 182.0
+offset_bottom = 21.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 13
+text = "强化石宝箱"
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Up" type="TextureButton" parent="."]
+offset_left = 537.0
+offset_top = 233.0
+offset_right = 630.0
+offset_bottom = 273.0
+scale = Vector2(0.25, 0.8)
+texture_normal = ExtResource( "5" )
+texture_pressed = ExtResource( "5" )
+texture_hover = ExtResource( "6" )
+texture_disabled = ExtResource( "5" )
+metadata/_edit_lock_ = true
+
+[node name="UpLabel" type="Label" parent="."]
+offset_left = 539.0
+offset_top = 221.0
+offset_right = 558.0
+offset_bottom = 270.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 33
+text = "+"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Down" type="TextureButton" parent="."]
+offset_left = 425.0
+offset_top = 233.0
+offset_right = 518.0
+offset_bottom = 273.0
+scale = Vector2(0.25, 0.8)
+texture_normal = ExtResource( "5" )
+texture_pressed = ExtResource( "5" )
+texture_hover = ExtResource( "6" )
+texture_disabled = ExtResource( "5" )
+metadata/_edit_lock_ = true
+
+[node name="DownLabel" type="Label" parent="."]
+offset_left = 427.0
+offset_top = 215.0
+offset_right = 446.0
+offset_bottom = 269.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 37
+text = "-"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Max" type="TextureButton" parent="."]
+offset_left = 562.0
+offset_top = 233.0
+offset_right = 655.0
+offset_bottom = 273.0
+scale = Vector2(0.25, 0.8)
+texture_normal = ExtResource( "5" )
+texture_pressed = ExtResource( "5" )
+texture_hover = ExtResource( "6" )
+texture_disabled = ExtResource( "5" )
+metadata/_edit_lock_ = true
+
+[node name="MaxLabel" type="Label" parent="."]
+offset_left = 563.0
+offset_top = 221.0
+offset_right = 584.0
+offset_bottom = 270.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 10
+text = "Max"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Min" type="TextureButton" parent="."]
+offset_left = 400.0
+offset_top = 233.0
+offset_right = 493.0
+offset_bottom = 273.0
+scale = Vector2(0.25, 0.8)
+texture_normal = ExtResource( "5" )
+texture_pressed = ExtResource( "5" )
+texture_hover = ExtResource( "6" )
+texture_disabled = ExtResource( "5" )
+metadata/_edit_lock_ = true
+
+[node name="MinLabel" type="Label" parent="."]
+offset_left = 401.0
+offset_top = 221.0
+offset_right = 422.0
+offset_bottom = 270.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 11
+text = "Min"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="LineEdit" type="LineEdit" parent="."]
+offset_left = 456.0
+offset_top = 232.0
+offset_right = 523.063
+offset_bottom = 263.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+text = "0"
+alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="QD" type="TextureButton" parent="."]
+offset_left = 378.0
+offset_top = 270.0
+offset_right = 471.0
+offset_bottom = 310.0
+scale = Vector2(0.8, 0.8)
+texture_normal = ExtResource( "5" )
+texture_pressed = ExtResource( "5" )
+texture_hover = ExtResource( "6" )
+texture_disabled = ExtResource( "5" )
+metadata/_edit_lock_ = true
+
+[node name="qd" type="Label" parent="QD"]
+layout_mode = 0
+offset_top = 1.0
+offset_right = 92.0
+offset_bottom = 34.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "确定"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QX" type="TextureButton" parent="."]
+offset_left = 491.0
+offset_top = 270.0
+offset_right = 584.0
+offset_bottom = 310.0
+scale = Vector2(0.8, 0.8)
+texture_normal = ExtResource( "5" )
+texture_pressed = ExtResource( "5" )
+texture_hover = ExtResource( "6" )
+texture_disabled = ExtResource( "5" )
+metadata/_edit_lock_ = true
+
+[node name="qx" type="Label" parent="QX"]
+layout_mode = 0
+offset_left = 1.0
+offset_right = 93.0
+offset_bottom = 33.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "取消"
+horizontal_alignment = 1
+vertical_alignment = 1

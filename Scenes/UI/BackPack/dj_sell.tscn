@@ -1,0 +1,100 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://Assets/Art/Game_2/Ldl/841.png" id="2"]
+[ext_resource type="Texture2D" path="res://Assets/Art/BackPack/AllItems/330.png" id="3"]
+[ext_resource type="Texture2D" path="res://Assets/Art/BackPack/cannotuse.png" id="4"]
+[ext_resource type="Texture2D" path="res://Assets/Art/BackPack/AllItems/335.png" id="5"]
+
+[sub_resource type="StyleBoxEmpty" id="1"]
+
+[sub_resource type="StyleBoxEmpty" id="2"]
+
+[sub_resource type="StyleBoxEmpty" id="3"]
+
+[sub_resource type="StyleBoxEmpty" id="4"]
+
+[sub_resource type="StyleBoxEmpty" id="5"]
+
+[sub_resource type="StyleBoxEmpty" id="6"]
+
+[sub_resource type="StyleBoxEmpty" id="7"]
+
+[sub_resource type="StyleBoxEmpty" id="8"]
+
+[node name="dj_sell" type="Control"]
+layout_mode = 3
+anchor_right = 0.056
+anchor_bottom = 0.078
+offset_right = 35.36
+offset_bottom = 30.98
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+layout_mode = 2
+offset_left = -24.0
+offset_top = -48.0
+offset_right = 132.0
+offset_bottom = 181.0
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Bg" type="TextureRect" parent="MarginContainer2"]
+layout_mode = 2
+texture = ExtResource( "2" )
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = -2
+
+[node name="infor" type="Label" parent="MarginContainer2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 12
+text = "名字："
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="sell_number" type="LineEdit" parent="MarginContainer2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_placeholder_color = Color(0.94902, 0.94902, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource( "1" )
+theme_override_styles/focus = SubResource( "2" )
+theme_override_styles/read_only = SubResource( "3" )
+placeholder_text = "输入数量"
+alignment = 1
+
+[node name="use" type="TextureButton" parent="MarginContainer2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource( "3" )
+texture_pressed = ExtResource( "3" )
+texture_hover = ExtResource( "3" )
+texture_disabled = ExtResource( "4" )
+stretch_mode = 3
+
+[node name="sell" type="Button" parent="MarginContainer2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource( "4" )
+theme_override_styles/hover = SubResource( "5" )
+theme_override_styles/pressed = SubResource( "6" )
+theme_override_styles/disabled = SubResource( "7" )
+theme_override_styles/focus = SubResource( "8" )
+icon = ExtResource( "5" )
+icon_alignment = 1
+

@@ -1,8 +1,10 @@
 # 造梦重启：C# 战斗起点
 
-使用 **Godot 4.7.2 .NET + .NET 10 SDK** 打开 `project.godot`，点击构建，再按 F6 运行 `Scenes/TestArena.tscn`，或 F5 运行项目。
+使用 **Godot 4.7.2 .NET + .NET 10 SDK** 打开 `project.godot`，点击构建，按 F5 从旧版主菜单进入游戏；按 F6 运行 `Scenes/TestArena.tscn` 可继续调试战斗。
 
-这是供后续自己写代码的最小战斗起点：悟空、小猴、原第一关。没有接入旧项目的全局单例、装备、存档或数值框架。
+主菜单的“进入游戏”打开存档格。空格位进入旧版选角界面并创建孙悟空存档；已有存档从第一关花果山开始。前三关依次为花果山、水帘洞、桃花源，进入关卡右侧后进入下一关，第三关完成后可返回主菜单。关卡使用新存档系统保存角色档案和背包，不保存关卡中途位置、血量或敌人。
+
+`Scenes/TestArena.tscn` 仍是独立的战斗测试场景。直接运行时读取当前选择的存档；未选择存档时使用一号槽。旧测试存档缺少角色属性时，会补入孙悟空的演示基础值。
 
 ## 操作
 
@@ -11,8 +13,12 @@
 | A / D、左右方向键 | 移动 |
 | 空格 / K | 跳跃 |
 | J | 悟空第一段普攻 |
+| C | 打开旧版背包并暂停游戏；再次按 C 或点关闭按钮恢复 |
 | F2 | 小猴 AI / 木桩切换 |
 | R | 重载关卡，恢复双方血量和位置 |
+
+TestArena 和前三关共用旧版 `Scenes/UI/BackPack/BackPack.tscn` 的外观；右侧分类、翻页和格子从当前存档与 `Content/Items/` 的物品定义读取，左侧属性从角色基础值与永久加成读取。当前只接入浏览和昵称修改，穿戴、使用和出售尚无游戏规则。属性中英文文案在 `Content/Localization/ui.csv`，字段对应关系见 [角色档案](Docs/CharacterSystem.md)；物品数据结构见 [物品系统设计](Docs/ItemSystemDesign.md)。
+测试大厅通过 `Scripts/UI/MenuManager.cs` 统一注册菜单快捷键；将来的技能、法宝面板可沿用同一入口和暂停规则。
 
 ## 从哪里开始写
 
@@ -54,9 +60,9 @@
 `dotnet build` 编译运行代码。使用 Godot .NET 可执行文件运行：
 
 ```text
-Godot --headless --path . -- --smoke-test
+Godot --headless --path . res://Scenes/TestArena.tscn -- --smoke-test
 ```
 
-测试直接运行真实关卡与物理帧，检查地面、攻击时长、重复命中、再次攻击、左右朝向、击退、受击打断、阵营、怪物攻击、跳跃落地和死亡。成功输出 `COMBAT_SMOKE_TEST: PASS` 并退出。去掉 `--headless` 会额外保存 `Tests/combat-preview.png` 供视觉检查。
+测试直接运行 TestArena 与物理帧，检查地面、攻击时长、重复命中、再次攻击、左右朝向、击退、受击打断、阵营、怪物攻击、跳跃落地和死亡。成功输出 `COMBAT_SMOKE_TEST: PASS` 并退出。去掉 `--headless` 会额外保存 `Tests/combat-preview.png` 供视觉检查。将参数改为 `--menu-pause-test` 可检查背包开关、存档属性、分类和暂停。
 
 `Tools/` 中 Python/GDScript 仅是一次性素材恢复工具，游戏运行代码全为 C#。`build_slice.py` 会覆盖生成的角色和地图场景，手工编辑场景后不要随意重跑。新角色可以复制现有角色场景，更换贴图/动画及攻击资源，并沿用 C# 基类。

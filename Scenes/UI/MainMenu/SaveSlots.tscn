@@ -1,0 +1,154 @@
+[gd_scene load_steps=20 format=3]
+
+[ext_resource type="Script" path="res://Scripts/UI/MainMenu/SaveSlots.cs" id="save_slots_script"]
+
+[ext_resource type="Texture2D" path="res://Assets/Art/game_pic/ArchivePicture/87.png" id="2"]
+[ext_resource type="FontFile" path="res://Assets/Font/Aa我读山月山月独我_mianfeiziti.com.ttf" id="3"]
+[ext_resource type="Texture2D" path="res://Assets/Art/BackPack/49.png" id="4"]
+[ext_resource type="Texture2D" path="res://Assets/Art/MagicWeapon/222.png" id="5"]
+[ext_resource type="FontFile" path="res://Assets/Font/华康宋体W3.ttc" id="6"]
+
+[sub_resource type="StyleBoxFlat" id="1"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="2"]
+
+[sub_resource type="StyleBoxFlat" id="3"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="4"]
+
+[sub_resource type="StyleBoxFlat" id="5"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="6"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="7"]
+
+[sub_resource type="StyleBoxEmpty" id="8"]
+
+[sub_resource type="StyleBoxEmpty" id="9"]
+
+[sub_resource type="StyleBoxEmpty" id="10"]
+
+[sub_resource type="StyleBoxEmpty" id="11"]
+
+[sub_resource type="StyleBoxEmpty" id="12"]
+
+[sub_resource type="StyleBoxEmpty" id="13"]
+
+[node name="Read_Archive_Interface" type="Node2D"]
+script = ExtResource("save_slots_script")
+metadata/_edit_lock_ = true
+metadata/_edit_vertical_guides_ = [529.0, 257.0]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -543.0
+offset_top = -370.0
+offset_right = 1432.0
+offset_bottom = 919.0
+color = Color(0, 0, 0, 0)
+metadata/_edit_lock_ = true
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(471, 294)
+scale = Vector2(1.01594, 1.07276)
+texture = ExtResource( "2" )
+metadata/_edit_lock_ = true
+
+[node name="delete" type="Button" parent="background"]
+offset_left = 52.1685
+offset_top = -115.59
+offset_right = 124.168
+offset_bottom = -84.5899
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.827451, 0.552941, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource( "3" )
+theme_override_font_sizes/font_size = 19
+theme_override_styles/normal = SubResource( "1" )
+theme_override_styles/hover = SubResource( "2" )
+theme_override_styles/pressed = SubResource( "3" )
+theme_override_styles/disabled = SubResource( "4" )
+theme_override_styles/focus = SubResource( "5" )
+text = "删除存档"
+metadata/_edit_lock_ = true
+
+[node name="close" type="TextureButton" parent="background"]
+offset_left = 249.03
+offset_top = -186.435
+offset_right = 290.03
+offset_bottom = -145.435
+texture_normal = ExtResource( "4" )
+texture_pressed = ExtResource( "4" )
+texture_hover = ExtResource( "5" )
+metadata/_edit_lock_ = true
+
+[node name="cd_number" type="LineEdit" parent="background"]
+offset_left = 135.835
+offset_top = -115.59
+offset_right = 232.835
+offset_bottom = -84.5899
+theme_override_colors/font_placeholder_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/minimum_character_width = 0
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource( "3" )
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource( "6" )
+theme_override_styles/focus = SubResource( "7" )
+theme_override_styles/read_only = SubResource( "8" )
+placeholder_text = "输入存档号"
+alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Addcd" type="Button" parent="background"]
+offset_left = -263.795
+offset_top = -114.658
+offset_right = -175.795
+offset_bottom = -83.6575
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 0.415686, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource( "6" )
+theme_override_styles/normal = SubResource( "9" )
+theme_override_styles/hover = SubResource( "10" )
+theme_override_styles/pressed = SubResource( "11" )
+theme_override_styles/disabled = SubResource( "12" )
+theme_override_styles/focus = SubResource( "13" )
+text = "增加存档格"
+metadata/_edit_lock_ = true
+
+[node name="Removecd" type="Button" parent="background"]
+offset_left = -177.176
+offset_top = -114.658
+offset_right = -89.1758
+offset_bottom = -83.6575
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 0.415686, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource( "6" )
+theme_override_styles/normal = SubResource( "9" )
+theme_override_styles/hover = SubResource( "10" )
+theme_override_styles/pressed = SubResource( "11" )
+theme_override_styles/disabled = SubResource( "12" )
+theme_override_styles/focus = SubResource( "13" )
+text = "减少存档格"
+metadata/_edit_lock_ = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+offset_left = 201.0
+offset_top = 208.0
+offset_right = 731.0
+offset_bottom = 480.0
+metadata/_edit_lock_ = true
+
+[node name="AllAr" type="GridContainer" parent="ScrollContainer"]
+layout_mode = 2
+columns = 2
+metadata/_edit_lock_ = true
+

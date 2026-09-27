@@ -257,6 +257,25 @@ public partial class CharacterActor : CharacterBody2D
 		Play(IsDead ? "death" : "hurt", restart: true);
 	}
 
+	/// <summary>对象池再次启用角色时清理上一次战斗的瞬时状态。</summary>
+	public void ResetForSpawn(Vector2 position)
+	{
+		_skillCast?.Stop();
+		_skillCast = null;
+		_actionMotion = null;
+		ResetCombo();
+		AttackBox.Active = false;
+		Motor.ApplyKnockback(this, Vector2.Zero);
+		Velocity = Vector2.Zero;
+		GlobalPosition = position;
+		Health = MaxHealth;
+		_healthBar.Value = Health;
+		State = ActorState.Free;
+		_hurtRemaining = 0;
+		Face(-1);
+		Play(IdleAnimation, restart: true);
+	}
+
 	private void OnAnimationFinished(StringName animation)//动作结束
 	{
 		if (_skillCast != null && animation == _skillCast.Definition.Animation)

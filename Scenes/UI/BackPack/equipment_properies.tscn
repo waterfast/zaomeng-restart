@@ -1,0 +1,458 @@
+[gd_scene format=3]
+
+[ext_resource type="FontFile" path="res://Assets/Font/Aa梦里掏花对月饮_mianfeiziti.com.ttf" id="2"]
+[ext_resource type="Texture2D" path="res://Assets/Art/game_pic/679.PNG" id="3"]
+[ext_resource type="FontFile" path="res://Assets/Font/1_fonts.FZCY_FZCuYuan-M03.ttf" id="4"]
+[ext_resource type="FontFile" path="res://Assets/Font/华康宋体W3.ttc" id="5"]
+
+[sub_resource type="ShaderMaterial" id="1"]
+
+[node name="Equipment_properies" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource( "1" )
+offset_left = 15.0
+offset_right = 215.0
+offset_bottom = 1219.0
+color = Color(0, 0, 0, 0.705882)
+metadata/_edit_lock_ = true
+
+[node name="pro_wk" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(200, 0)
+offset_left = 15.0
+offset_right = 121.0
+offset_bottom = 1219.0
+size_flags_vertical = 0
+metadata/_edit_lock_ = true
+
+[node name="information" type="MarginContainer" parent="pro_wk"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+metadata/_edit_lock_ = true
+
+[node name="inf" type="VBoxContainer" parent="pro_wk/information"]
+layout_mode = 2
+size_flags_vertical = 0
+alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="pro_wk/information/inf"]
+layout_mode = 2
+
+[node name="eq_name" type="Label" parent="pro_wk/information/inf/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource( "2" )
+theme_override_font_sizes/font_size = 20
+text = "名称："
+vertical_alignment = 1
+
+[node name="eq_pz" type="Label" parent="pro_wk/information/inf/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource( "2" )
+theme_override_font_sizes/font_size = 20
+text = "品质："
+vertical_alignment = 1
+
+[node name="fgx" type="Sprite2D" parent="pro_wk/information/inf/VBoxContainer2/eq_pz"]
+position = Vector2(109, 27)
+scale = Vector2(0.892116, 1)
+texture = ExtResource( "3" )
+metadata/_edit_lock_ = true
+
+[node name="eq_lx" type="Label" parent="pro_wk/information/inf/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource( "2" )
+theme_override_font_sizes/font_size = 20
+text = "类型："
+vertical_alignment = 1
+
+[node name="fgx2" type="Sprite2D" parent="pro_wk/information/inf/VBoxContainer2/eq_lx"]
+position = Vector2(116, 29)
+scale = Vector2(0.838174, 1)
+texture = ExtResource( "3" )
+metadata/_edit_lock_ = true
+
+[node name="have" type="Label" parent="pro_wk/information/inf/VBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource( "2" )
+theme_override_font_sizes/font_size = 20
+text = "拥有："
+vertical_alignment = 1
+
+[node name="fgx2" type="Sprite2D" parent="pro_wk/information/inf/VBoxContainer2/have"]
+position = Vector2(116, 29)
+scale = Vector2(0.838174, 1)
+texture = ExtResource( "3" )
+metadata/_edit_lock_ = true
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="pro_wk/information/inf"]
+layout_mode = 2
+
+[node name="eq_czl" type="Label" parent="pro_wk/information/inf/VBoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource( "2" )
+theme_override_font_sizes/font_size = 20
+text = "成长率："
+vertical_alignment = 1
+
+[node name="fgx2" type="Sprite2D" parent="pro_wk/information/inf/VBoxContainer3/eq_czl"]
+position = Vector2(116, 29)
+scale = Vector2(0.838174, 1)
+texture = ExtResource( "3" )
+
+[node name="eq_star_level" type="Label" parent="pro_wk/information/inf/VBoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource( "2" )
+theme_override_font_sizes/font_size = 20
+text = "五行："
+vertical_alignment = 1
+
+[node name="fgx2" type="Sprite2D" parent="pro_wk/information/inf/VBoxContainer3/eq_star_level"]
+position = Vector2(116, 29)
+scale = Vector2(0.838174, 1)
+texture = ExtResource( "3" )
+
+[node name="eq_hp" type="Label" parent="pro_wk/information/inf/VBoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.6, 0.2, 1)
+theme_override_fonts/font = ExtResource( "4" )
+theme_override_font_sizes/font_size = 16
+text = "生命："
+vertical_alignment = 1
+
+[node name="eq_mp" type="Label" parent="pro_wk/information/inf/VBoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.6, 0.2, 1)
+theme_override_fonts/font = ExtResource( "4" )
+theme_override_font_sizes/font_size = 16
+text = "魔法："
+vertical_alignment = 1
+
+[node name="eq_power" type="Label" parent="pro_wk/information/inf/VBoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.6, 0.2, 1)
+theme_override_fonts/font = ExtResource( "4" )
+theme_override_font_sizes/font_size = 16
+text = "攻击："
+vertical_alignment = 1
+
+[node name="eq_def" type="Label" parent="pro_wk/information/inf/VBoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.6, 0.2, 1)
+theme_override_fonts/font = ExtResource( "4" )
+theme_override_font_sizes/font_size = 16
+text = "物防："
+vertical_alignment = 1
+
+[node name="eq_mdef" type="Label" parent="pro_wk/information/inf/VBoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.6, 0.2, 1)
+theme_override_fonts/font = ExtResource( "4" )
+theme_override_font_sizes/font_size = 16
+text = "魔防："
+vertical_alignment = 1
+
+[node name="eq_crit" type="Label" parent="pro_wk/information/inf/VBoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.6, 0.2, 1)
+theme_override_fonts/font = ExtResource( "4" )
+theme_override_font_sizes/font_size = 16
+text = "暴击："
+vertical_alignment = 1
+
+[node name="eq_miss" type="Label" parent="pro_wk/information/inf/VBoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.6, 0.2, 1)
+theme_override_fonts/font = ExtResource( "4" )
+theme_override_font_sizes/font_size = 16
+text = "闪避："
+vertical_alignment = 1
+
+[node name="eq_ehp" type="Label" parent="pro_wk/information/inf/VBoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.6, 0.2, 1)
+theme_override_fonts/font = ExtResource( "4" )
+theme_override_font_sizes/font_size = 16
+text = "回血："
+vertical_alignment = 1
+
+[node name="eq_emp" type="Label" parent="pro_wk/information/inf/VBoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.6, 0.2, 1)
+theme_override_fonts/font = ExtResource( "4" )
+theme_override_font_sizes/font_size = 16
+text = "回魔："
+vertical_alignment = 1
+
+[node name="eq_mz" type="Label" parent="pro_wk/information/inf/VBoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.6, 0.2, 1)
+theme_override_fonts/font = ExtResource( "4" )
+theme_override_font_sizes/font_size = 16
+text = "命中："
+vertical_alignment = 1
+
+[node name="eq_lucky" type="Label" parent="pro_wk/information/inf/VBoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.6, 0.2, 1)
+theme_override_fonts/font = ExtResource( "4" )
+theme_override_font_sizes/font_size = 16
+text = "幸运："
+vertical_alignment = 1
+
+[node name="eq_rx" type="Label" parent="pro_wk/information/inf/VBoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.6, 0.2, 1)
+theme_override_fonts/font = ExtResource( "4" )
+theme_override_font_sizes/font_size = 16
+text = "韧性："
+vertical_alignment = 1
+
+[node name="eq_pj" type="Label" parent="pro_wk/information/inf/VBoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.6, 0.2, 1)
+theme_override_fonts/font = ExtResource( "4" )
+theme_override_font_sizes/font_size = 16
+text = "破甲："
+vertical_alignment = 1
+
+[node name="eq_pm" type="Label" parent="pro_wk/information/inf/VBoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.6, 0.2, 1)
+theme_override_fonts/font = ExtResource( "4" )
+theme_override_font_sizes/font_size = 16
+text = "破魔："
+vertical_alignment = 1
+
+[node name="eq_xx" type="Label" parent="pro_wk/information/inf/VBoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.6, 0.2, 1)
+theme_override_fonts/font = ExtResource( "4" )
+theme_override_font_sizes/font_size = 16
+text = "吸血："
+vertical_alignment = 1
+
+[node name="eq_bm" type="Label" parent="pro_wk/information/inf/VBoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.6, 0.2, 1)
+theme_override_fonts/font = ExtResource( "4" )
+theme_override_font_sizes/font_size = 16
+text = "暴免："
+vertical_alignment = 1
+
+[node name="BsProp" type="VBoxContainer" parent="pro_wk/information/inf"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 5
+
+[node name="Title" type="Label" parent="pro_wk/information/inf/BsProp"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource( "5" )
+theme_override_font_sizes/font_size = 20
+text = "宝石加成"
+vertical_alignment = 1
+
+[node name="eq_hp" type="Label" parent="pro_wk/information/inf/BsProp"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource( "5" )
+theme_override_font_sizes/font_size = 15
+text = "生命："
+vertical_alignment = 1
+
+[node name="eq_mp" type="Label" parent="pro_wk/information/inf/BsProp"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource( "5" )
+theme_override_font_sizes/font_size = 15
+text = "魔法："
+vertical_alignment = 1
+
+[node name="eq_power" type="Label" parent="pro_wk/information/inf/BsProp"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource( "5" )
+theme_override_font_sizes/font_size = 15
+text = "攻击："
+vertical_alignment = 1
+
+[node name="eq_def" type="Label" parent="pro_wk/information/inf/BsProp"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource( "5" )
+theme_override_font_sizes/font_size = 15
+text = "物防："
+vertical_alignment = 1
+
+[node name="eq_mdef" type="Label" parent="pro_wk/information/inf/BsProp"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource( "5" )
+theme_override_font_sizes/font_size = 15
+text = "魔防："
+vertical_alignment = 1
+
+[node name="eq_crit" type="Label" parent="pro_wk/information/inf/BsProp"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource( "5" )
+theme_override_font_sizes/font_size = 15
+text = "暴击："
+vertical_alignment = 1
+
+[node name="eq_miss" type="Label" parent="pro_wk/information/inf/BsProp"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource( "5" )
+theme_override_font_sizes/font_size = 15
+text = "闪避："
+vertical_alignment = 1
+
+[node name="eq_ehp" type="Label" parent="pro_wk/information/inf/BsProp"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource( "5" )
+theme_override_font_sizes/font_size = 15
+text = "回血："
+vertical_alignment = 1
+
+[node name="eq_emp" type="Label" parent="pro_wk/information/inf/BsProp"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource( "5" )
+theme_override_font_sizes/font_size = 15
+text = "回魔："
+vertical_alignment = 1
+
+[node name="eq_mz" type="Label" parent="pro_wk/information/inf/BsProp"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource( "5" )
+theme_override_font_sizes/font_size = 15
+text = "命中："
+vertical_alignment = 1
+
+[node name="eq_lucky" type="Label" parent="pro_wk/information/inf/BsProp"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource( "5" )
+theme_override_font_sizes/font_size = 15
+text = "幸运："
+vertical_alignment = 1
+
+[node name="eq_rx" type="Label" parent="pro_wk/information/inf/BsProp"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource( "5" )
+theme_override_font_sizes/font_size = 15
+text = "韧性："
+vertical_alignment = 1
+
+[node name="eq_pj" type="Label" parent="pro_wk/information/inf/BsProp"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource( "5" )
+theme_override_font_sizes/font_size = 15
+text = "破甲："
+vertical_alignment = 1
+
+[node name="eq_pm" type="Label" parent="pro_wk/information/inf/BsProp"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource( "5" )
+theme_override_font_sizes/font_size = 15
+text = "破魔："
+vertical_alignment = 1
+
+[node name="eq_xx" type="Label" parent="pro_wk/information/inf/BsProp"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource( "5" )
+theme_override_font_sizes/font_size = 15
+text = "吸血："
+vertical_alignment = 1
+
+[node name="eq_bm" type="Label" parent="pro_wk/information/inf/BsProp"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource( "5" )
+theme_override_font_sizes/font_size = 15
+text = "暴免："
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="pro_wk/information/inf"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 16
+
+[node name="eq_ms" type="Label" parent="pro_wk/information/inf/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource( "5" )
+theme_override_font_sizes/font_size = 13
+text = "描述："
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="eq_sj" type="Label" parent="pro_wk/information/inf/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.6, 0.2, 1)
+theme_override_colors/font_outline_color = Color(1, 0.6, 0.2, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource( "5" )
+theme_override_font_sizes/font_size = 17
+text = "售价："
+vertical_alignment = 1

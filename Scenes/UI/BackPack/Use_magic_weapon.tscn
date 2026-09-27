@@ -1,0 +1,85 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://Assets/Art/MagicWeapon/64.png" id="2"]
+[ext_resource type="FontFile" path="res://Assets/Font/华康宋体W3.ttc" id="3"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Shop/71.png" id="4"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Shop/69.png" id="5"]
+[ext_resource type="FontFile" path="res://Assets/Font/HYZhuZiMeiXinTiW.ttf" id="6"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Shop/76.png" id="7"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Shop/74.png" id="8"]
+[ext_resource type="Texture2D" path="res://Assets/Art/MagicWeapon/220.png" id="9"]
+[ext_resource type="Texture2D" path="res://Assets/Art/MagicWeapon/222.png" id="10"]
+
+[node name="UseMagicWeapon" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -942.0
+offset_top = -544.0
+offset_right = 950.0
+offset_bottom = 483.0
+color = Color(0, 0, 0, 0.47451)
+metadata/_edit_lock_ = true
+
+[node name="BG" type="Sprite2D" parent="."]
+texture = ExtResource( "2" )
+
+[node name="chooseSkill" type="Label" parent="BG"]
+offset_left = -301.0
+offset_top = -188.0
+offset_right = 309.0
+offset_bottom = -163.0
+theme_override_colors/font_color = Color(1, 0.607843, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 0.607843, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = ExtResource( "3" )
+text = "从下面的法宝技能中选择一个作为实际技能（需拥有该法宝！）"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BG"]
+offset_left = -76.0
+offset_top = 202.0
+offset_right = 71.0
+offset_bottom = 235.0
+theme_override_constants/separation = 10
+
+[node name="Last" type="TextureButton" parent="BG/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource( "4" )
+texture_pressed = ExtResource( "4" )
+texture_hover = ExtResource( "5" )
+texture_disabled = ExtResource( "4" )
+
+[node name="PageInfor" type="Label" parent="BG/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource( "6" )
+text = "1/1"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Next" type="TextureButton" parent="BG/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource( "7" )
+texture_pressed = ExtResource( "7" )
+texture_hover = ExtResource( "8" )
+texture_disabled = ExtResource( "7" )
+
+[node name="Close" type="TextureButton" parent="BG"]
+offset_left = 282.0
+offset_top = -232.0
+offset_right = 323.0
+offset_bottom = -191.0
+texture_normal = ExtResource( "9" )
+texture_pressed = ExtResource( "9" )
+texture_hover = ExtResource( "10" )
+texture_disabled = ExtResource( "9" )
+metadata/_edit_lock_ = true
+

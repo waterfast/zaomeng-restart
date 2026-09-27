@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Texture2D" path="res://Assets/Art/Level/Level_1/19_1.png" id="1"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Level/level_3/55.png" id="2"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Level/Level_1/183.png" id="3"]
+[ext_resource type="PackedScene" path="res://Scenes/Maps/Stage.tscn" id="4"]
+
+[sub_resource type="RectangleShape2D" id="floor"]
+size = Vector2(5300, 200)
+
+[node name="PeachGarden" type="Node2D"]
+
+[node name="BackGround" type="ParallaxBackground" parent="."]
+
+[node name="End" type="ParallaxLayer" parent="BackGround"]
+motion_scale = Vector2(0, 0)
+
+[node name="Background" type="Sprite2D" parent="BackGround/End"]
+z_index = -3
+position = Vector2(723, 244)
+texture = ExtResource("1")
+
+[node name="Garden" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(2476, 388)
+texture = ExtResource("2")
+
+[node name="FloorArt" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(2403, 506)
+texture = ExtResource("3")
+
+[node name="Ground" type="StaticBody2D" parent="."]
+
+[node name="Floor" type="CollisionShape2D" parent="Ground"]
+position = Vector2(2650, 620)
+shape = SubResource("floor")
+
+[node name="Stage1" parent="." instance=ExtResource("4")]
+position = Vector2(3158, 366)
+
+[node name="Stage2" parent="." instance=ExtResource("4")]
+position = Vector2(1981, 361)

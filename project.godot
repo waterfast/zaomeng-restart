@@ -11,14 +11,14 @@ config_version=5
 [application]
 
 config/name="zaomeng-restart"
-run/main_scene="res://Scenes/TestArena.tscn"
+run/main_scene="res://Scenes/UI/MainMenu/MainMenu.tscn"
 config/features=PackedStringArray("4.7", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [display]
 
-window/size/viewport_width=960
-window/size/viewport_height=540
+window/size/viewport_width=940
+window/size/viewport_height=590
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
@@ -27,6 +27,15 @@ window/stretch/aspect="expand"
 [dotnet]
 
 project/assembly_name="zaomeng-restart"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/SaveEditor/plugin.cfg")
+
+[internationalization]
+
+locale/translations=PackedStringArray("res://Content/Localization/ui.en.translation", "res://Content/Localization/ui.zh_CN.translation")
+locale/fallback="zh_CN"
 
 [input]
 

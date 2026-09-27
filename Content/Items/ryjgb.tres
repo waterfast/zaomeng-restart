@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemDefinition" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Items/ItemDefinition.cs" id="1"]
+[ext_resource type="Texture2D" path="res://Assets/Art/BackPack/AllItems/ryjgb.png" id="2"]
+
+[resource]
+script = ExtResource("1")
+Id = "ryjgb"
+DisplayName = "如意金箍棒"
+MaxStack = 1
+Icon = ExtResource("2")
+Description = "东海龙宫之定海神针，一万三千五百斤。"
+Attack = 75
+CriticalChance = 6
