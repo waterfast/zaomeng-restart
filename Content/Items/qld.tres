@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="ItemDefinition" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="EquipmentDefinition" load_steps=3 format=3]
 
-[ext_resource type="Script" path="res://Scripts/Items/ItemDefinition.cs" id="1"]
+[ext_resource type="Script" path="res://Scripts/Equipment/EquipmentDefinition.cs" id="1"]
 [ext_resource type="Texture2D" path="res://Assets/Art/BackPack/AllItems/qld.png" id="2"]
 
 [resource]
@@ -9,7 +9,12 @@ Id = "qld"
 DisplayName = "青龙刀"
 MaxStack = 1
 Icon = ExtResource("2")
-Description = "传说由青龙的尖牙锻铸的大刀，挥舞间雷声贯耳。"
+Description = "传说由青龙的尖牙锻铸的大刀，挥舞间雷声贯耳，宛如青龙咆哮。"
 Attack = 45
 CriticalRating = 3
 Accuracy = 5
+Quality = "优秀"
+QualityColor = Color(0.0, 1.0, 0.0, 1)
+SellPrice = 40
+OwnerCaption = "悟空"
+RequiredCharacterId = "role_1"

@@ -16,7 +16,8 @@ public static class InventorySaveMapper
 			savedInventory.Slots.Add(stack is null ? null : new ItemStackSaveData
 			{
 				ItemId = stack.ItemId,
-				Count = stack.Count
+				Count = stack.Count,
+				Equipment = stack.Equipment
 			});
 		data.Inventory = savedInventory;
 		SaveDataValidator.Validate(data);
@@ -29,7 +30,7 @@ public static class InventorySaveMapper
 		SaveDataValidator.Validate(data);
 		var slots = new List<ItemStack?>(data.Inventory.Capacity);
 		foreach (ItemStackSaveData? stack in data.Inventory.Slots)
-			slots.Add(stack is null ? null : new ItemStack(stack.ItemId, stack.Count));
+			slots.Add(stack is null ? null : new ItemStack(stack.ItemId, stack.Count, stack.Equipment));
 		inventory.RestoreSlots(slots);
 	}
 }

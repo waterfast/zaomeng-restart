@@ -1,5 +1,6 @@
 using System;
 using Zaomeng.Items;
+using Zaomeng.Equipment;
 
 namespace Zaomeng.Character;
 
@@ -14,18 +15,26 @@ public static class CharacterStatCalculator
 		Add(result, character.BaseStats);
 		Add(result, character.PermanentBonuses);
 
-		EquipmentLoadout equipment = character.Equipment;
-		foreach (string id in new[] { equipment.WeaponId, equipment.ArmorId,
-			equipment.AccessoryId, equipment.WingId, equipment.TitleId,
-			equipment.CostumeId, equipment.MagicWeaponId })
+		foreach (EquipmentSlot slot in Enum.GetValues<EquipmentSlot>())
 		{
-			if (string.IsNullOrEmpty(id) || !catalog.TryGetDefinition(id, out ItemDefinition? item)
-				|| item?.Category != ItemCategory.Equipment)
-				continue;
-			// 当前目录只迁入六件武器；它们的旧版有效属性是攻击、暴击值和命中值。
-			result.Attack += item.Attack;
-			result.CriticalRating += item.CriticalRating;
-			result.Accuracy += item.Accuracy;
+			EquipmentInstance? instance = character.Equipment.Get(slot);
+			if (instance is null) continue;
+			catalog.ValidateEquipmentInstance(instance, slot);
+			Add(result, CalculateEquipment(instance, catalog));
+		}
+		return result;
+	}
+
+	public static CharacterStats CalculateEquipment(EquipmentInstance instance, ItemCatalog catalog)
+	{
+		catalog.ValidateEquipmentInstance(instance);
+		catalog.TryGetDefinition(instance.DefinitionId, out ItemDefinition? item);
+		var result = ((EquipmentDefinition)item!).GetStatBonuses();
+		foreach (string gemId in instance.SocketedGemIds)
+		{
+			if (gemId.Length == 0) continue;
+			catalog.TryGetDefinition(gemId, out ItemDefinition? gem);
+			Add(result, ((GemDefinition)gem!).GetStatBonuses());
 		}
 		return result;
 	}

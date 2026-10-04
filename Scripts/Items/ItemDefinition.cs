@@ -12,6 +12,7 @@ public partial class ItemDefinition : Resource
 	[Export] public ItemCategory Category { get; set; } = ItemCategory.Equipment;
 	[Export(PropertyHint.Range, "1,9999,1")] public int MaxStack { get; set; } = 1;
 	[Export] public Texture2D? Icon { get; set; }
+	[Export] public int SellPrice { get; set; }
 	[Export(PropertyHint.MultilineText)] public string Description { get; set; } = "";
 	[Export] public int Attack { get; set; }
 	[Export] public int CriticalRating { get; set; }

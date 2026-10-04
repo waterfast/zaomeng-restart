@@ -1,0 +1,67 @@
+# 背包物品点击与操作
+
+背包单击物品打开操作框；装备默认有“装备 / 出售”。悬停仍显示属性，右键装备仍可打开宝石面板。操作框复用旧工程 `Scene/BackPack/sell_or_equ.tscn` 的背景与按钮图案，当前对应 `Scenes/UI/BackPack/sell_or_equ.tscn`。旧版 `Box_1.gd._onPressWhenInBack` 按类型分别调用装备框和道具框；新实现保留表现，按钮由服务提供。
+
+人物装备槽也使用格子底图与独立物品图层。悬停读取该槽位的真实实例，显示完整属性及宝石；单击只打开“卸下”菜单，选择后才提交请求。目标包含 `EquippedSlot` 和实例 ID，装备更换后旧请求不会卸下新装备。
+
+## 调用流程
+
+1. `LegacyBackpackView` 把真实背包槽位、物品定义 ID、装备实例 ID 交给 `ItemActionMenu`。
+2. `ItemActionRequested.GetOptions(target)` 查询选项以及当前禁用原因，查询不修改游戏数据。
+3. 点击选项发送 `ItemActionRequest(actionId, target)`。
+4. `GameplayEquipmentBinding` 防止重入；`ItemActionService` 重新查找物品，检查实例与规则。菜单打开时的可用状态不能代替执行检查。
+5. 服务提交数据；装配层保存，按需发出 `EquipmentChanged`，最后广播 `ItemActionCompleted`。界面刷新物品、人物属性和余额。失败返回原因，不广播成功通知或写盘。
+
+`ItemActionRequested.tres` 和 `ItemActionCompleted.tres` 已放入 `GameData/Events` 并接入 `GameplayEvents.tres`。离场释放请求处理者，查询恢复为空、请求返回服务未连接。
+
+## 自定义类别与单个物品
+
+在关卡创建 `GameplayEquipmentBinding` 后通过 `binding.ItemActions` 注册。每个类别有默认操作列表；单个物品可以覆盖整个列表，例如消耗品通常使用，而宝箱打开。注册会替换对应列表，不叠加重复按钮。
+
+```csharp
+binding.ItemActions.RegisterCategory(ItemCategory.Consumable,
+    new ItemActionRule("use", "使用",
+        context => consumableService.Use(context),
+        context => consumableService.GetUnavailableReason(context)));
+
+binding.ItemActions.RegisterItem("chest_id",
+    new ItemActionRule("open", "打开",
+        context => chestService.Open(context),
+        context => chestService.GetUnavailableReason(context)));
+```
+
+这里的两个服务是自定义接入示例。默认 `ConsumableService` 已支持灵魂药水和随机材料宝箱；资源配置决定具体奖励。没有注册的动作即便手动发送请求也会被拒绝。按钮不依赖固定枚举，可以增加任意有唯一字符串标识的操作。
+
+- `Check` 返回空字符串表示允许，其他字符串作为禁用原因；必须无副作用。菜单查询和执行前都会调用。
+- `Execute` 必须先检查自身业务条件再统一提交。只有实际修改数据时返回 `new ItemActionResult(true, Changed: true)`，装配层才保存与通知。失败不能留下半完成状态。
+- `ItemActionContext` 包含当前物品定义、不可变物品快照、目标和角色。背包、钱包等服务通过闭包注入对应业务服务，不交给按钮修改。
+- 装备请求仍复用 `EquipmentService`，直接穿戴/卸下请求与背包物品请求共享重入保护。自定义处理函数应直接调用业务服务；不要嵌套发送其他物品、穿戴或宝石请求。
+- 调整注册规则后重新打开菜单即可显示新列表；执行始终使用当前注册规则。
+
+## 装备出售
+
+装备出售只接受背包中的确切实例，售价读取基类 `ItemDefinition.SellPrice`，收入计入共享钱包的灵魂余额。材料和消耗品出售每次扣除当前选中格子的一件。售价小于等于零不可出售；余额溢出不可出售。沿用旧版 `sell_or_equ.gd` 的宝石保护：有镶嵌宝石时必须先卸下。
+
+在背包副本上移除目标，提交前验证数据；钱包和背包在通知前一起更新，不采用“先删除再加钱”两个独立操作。保存捕获的是已经同时更新的余额与背包。重复出售、失效槽位以及同名装备替换请求均拒绝；穿戴中的装备须先卸下进入背包。
+
+写盘失败保留内存中的已完成操作，并通过 `SaveFailed` 提示；不会伪装成未出售让玩家重复获取收入。
+
+## 已迁入的消耗品与数据来源
+
+| 物品 ID | 名称 | 操作与效果 | 售价（灵魂） |
+| --- | --- | --- | --- |
+| `qhsbx` | 强化石随机宝箱 | 打开：随机获得一种 1～4 级强化石，共 3～4 个 | 200 |
+| `xlhys` | 小灵魂药水 | 使用：增加 150000 灵魂 | 0（禁用出售） |
+| `dlhys` | 大灵魂药水 | 使用：增加 600000 灵魂 | 0（禁用出售） |
+
+同时迁入奖励 `qhs_1`～`qhs_4`，售价分别为 5、10、20、30。这里只提供材料数据，强化装备逻辑尚未实现。所有物品已经加入 `Content/Items/ItemCatalog.tres`，可通过背包服务 `AddItem` 发放；没有自动修改已有玩家存档。
+
+名称、描述和售价核对旧版 `AllEquipment.gd`；效果核对 `Script/BackPack/dj_sell.gd` 与 `Global.gd.GetAllItemNum`。图标路径根据旧版 `Box_1.gd.load_` 的实际映射核对，原图片缺失，取自 `F:\godot\zmbh-rebuild\assets\Art\BackPack\AllItems`。
+
+每次点击使用/打开/出售处理一件。消耗、奖励和钱包在副本上统一提交；背包不足、余额溢出时不消耗源物品。成功后提示实际奖励并保存。
+
+背包灵魂标签读取当前存档共享钱包 `GameSession.Data.Wallet.Souls`，不是临时人物战斗属性。关卡装配层把同一钱包注入界面和操作服务；背包打开、出售完成或药水使用完成后读取最新余额。
+
+## 验证
+
+运行 `Tests/ItemActionsSmokeTest.tscn`：覆盖实例错位、重复出售、售价、余额溢出、宝石保护、原子通知、嵌套请求、保存后数据、类别与物品覆盖、使用条件复检、宝箱奖励空间和药水收益，以及实际暂停背包的点击/出售/打开、穿戴槽说明与卸下菜单、关闭。测试只使用内存数据，不修改玩家存档。

@@ -183,7 +183,8 @@ public partial class CombatSmokeTest : Node
 		monster.ResetForSpawn(player.Position - new Vector2(70, 0));
 		var leveledCharacter = new Zaomeng.Character.Character
 		{
-			BaseStats = new() { Attack = 12 }
+			// 运行时重绑定现在会同步生命上限，测试档案也必须保留有效生命。
+			BaseStats = new() { Attack = 12, MaxHealth = player.MaxHealth, MaxMana = 1000 }
 		};
 		leveledCharacter.LearnSkill("level_test", 2);
 		player.BindCharacter(leveledCharacter, GetParent<TestArena>().ItemCatalog);
@@ -232,7 +233,8 @@ public partial class CombatSmokeTest : Node
 			&& CharacterProgression.ExperienceToNextLevel(20) == 10000,
 			"old experience threshold switches from table to formula");
 		character.PermanentBonuses.Attack = 2;
-		character.Equipment.WeaponId = "qld";
+		character.Equipment.Set(Zaomeng.Equipment.EquipmentSlot.Weapon,
+			Zaomeng.Equipment.EquipmentInstance.Create("qld", 0));
 		CharacterStats stats = CharacterStatCalculator.Calculate(character, catalog);
 		Check(stats.Attack == 91 && stats.CriticalRating == 3 && stats.Accuracy == 5,
 			"equipped weapon and permanent bonuses enter final player stats");
@@ -278,6 +280,8 @@ public partial class CombatSmokeTest : Node
 
 	private async Task CheckActionMotion(Player player)
 	{
+		// 位移测试提供足够法力；资源约束由独立的玩家资源测试覆盖。
+		player.RestoreMana(player.MaxMana);
 		player.InputEnabled = true;
 		player.Position = new(400, 490);
 		player.Velocity = Vector2.Zero;
@@ -331,6 +335,7 @@ public partial class CombatSmokeTest : Node
 		await Frames(1);
 		Check(Mathf.IsZeroApprox(player.Velocity.X), "hurt cancels fire dash");
 		await Frames(12);
+		while (player.GetSkillCooldown(player.EquippedSkill3!) > 0) await Frames(1);
 
 		player.Position = new(400, 490);
 		player.Velocity = Vector2.Zero;

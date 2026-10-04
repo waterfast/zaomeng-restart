@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ItemCatalog" load_steps=9 format=3]
+[gd_resource type="Resource" script_class="ItemCatalog" load_steps=16 format=3]
 
 [ext_resource type="Script" path="res://Scripts/Items/ItemCatalog.cs" id="1"]
 [ext_resource type="Script" path="res://Scripts/Items/ItemDefinition.cs" id="definition_script"]
@@ -8,7 +8,14 @@
 [ext_resource type="Resource" path="res://Content/Items/jcbj.tres" id="5"]
 [ext_resource type="Resource" path="res://Content/Items/qld.tres" id="6"]
 [ext_resource type="Resource" path="res://Content/Items/ryjgb.tres" id="7"]
+[ext_resource type="Resource" path="res://Content/Items/Consumables/qhsbx.tres" id="8"]
+[ext_resource type="Resource" path="res://Content/Items/Consumables/xlhys.tres" id="9"]
+[ext_resource type="Resource" path="res://Content/Items/Consumables/dlhys.tres" id="10"]
+[ext_resource type="Resource" path="res://Content/Items/Materials/qhs_1.tres" id="11"]
+[ext_resource type="Resource" path="res://Content/Items/Materials/qhs_2.tres" id="12"]
+[ext_resource type="Resource" path="res://Content/Items/Materials/qhs_3.tres" id="13"]
+[ext_resource type="Resource" path="res://Content/Items/Materials/qhs_4.tres" id="14"]
 
 [resource]
 script = ExtResource("1")
-Definitions = Array[ExtResource("definition_script")]([ExtResource("2"), ExtResource("3"), ExtResource("4"), ExtResource("5"), ExtResource("6"), ExtResource("7")])
+Definitions = Array[ExtResource("definition_script")]([ExtResource("2"), ExtResource("3"), ExtResource("4"), ExtResource("5"), ExtResource("6"), ExtResource("7"), ExtResource("8"), ExtResource("9"), ExtResource("10"), ExtResource("11"), ExtResource("12"), ExtResource("13"), ExtResource("14")])

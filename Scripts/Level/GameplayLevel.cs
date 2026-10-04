@@ -4,6 +4,8 @@ using Godot;
 using Zaomeng.Inventory;
 using Zaomeng.Items;
 using Zaomeng.Save;
+using Zaomeng.Equipment;
+using Zaomeng.Events;
 using Zaomeng.UI;
 using Zaomeng.UI.Inventory;
 using SaveCharacter = Zaomeng.Character.Character;
@@ -15,6 +17,7 @@ public partial class GameplayLevel : Node2D
 {
 	[Export(PropertyHint.Range, "1,3,1")] public int LevelNumber { get; set; } = 1;
 	[Export] public ItemCatalog ItemCatalog { get; set; } = null!;
+	[Export] public GameplayEvents Events { get; set; } = null!;
 	[Export] public float SpawnInterval { get; set; } = 2.1f;
 	[Export] public int MaximumMonsters { get; set; } = 5;
 
@@ -26,6 +29,7 @@ public partial class GameplayLevel : Node2D
 	private InventoryViewAdapter _inventoryAdapter = null!;
 	private LegacyBackpackView _backpackView = null!;
 	private SaveCharacter _character = null!;
+	private GameplayEquipmentBinding _equipmentBinding = null!;
 	private Label _status = null!;
 	private readonly CapsuleShape2D _spawnClearance = new() { Radius = 18, Height = 60 };
 	private float _spawnClock;
@@ -40,24 +44,30 @@ public partial class GameplayLevel : Node2D
 	public override void _Ready()
 	{
 		_player = GetNode<Player>("Player");
+		_player.ProgressionChanged += SaveProgression;
+		_player.SoulsCollected += CollectSouls;
+		_equipmentBinding = new(_character, ItemCatalog, _inventory, Events,
+			_player.RefreshCharacterStats, () => GameSession.Save(_inventory), GameSession.Data!.Wallet);
 		_camera = GetNode<Camera2D>("Camera2D");
 		_pool = new MonsterPool(GetNode("Enemies"));
 		_inventoryAdapter = new InventoryViewAdapter(_inventory, ItemCatalog);
 		var backpack = GetNode<Node2D>("HUD/BackPack");
 		_backpackView = new LegacyBackpackView(backpack, _inventoryAdapter, ItemCatalog,
-			_character, GameSession.Data!.Wallet, _player, () => GameSession.Save(_inventory));
+			_character, GameSession.Data!.Wallet, _player, () => GameSession.Save(_inventory), Events);
 		var menus = GetNode<MenuManager>("MenuManager");
 		menus.RegisterMenu("bag", backpack);
 		_backpackView.CloseRequested += menus.CloseMenu;
 		_status = GetNode<Label>("HUD/Status");
 		var oldHud = GetNode<Node2D>("OldHud");
+		var playerHud = new PlayerHud();
+		playerHud.Bind(oldHud, _player);
+		oldHud.AddChild(playerHud);
 		menus.MenuStateChanged += isOpen =>
 		{
 			_status.Visible = !isOpen;
 			oldHud.GetNode<CanvasLayer>("roleLayer").Visible = !isOpen;
 		};
 		oldHud.GetNode<AnimatedSprite2D>("roleLayer/Gogo").Hide();
-		oldHud.GetNode<Label>("roleLayer/role_hp_mp_exp/role_level").Text = _character.Level.ToString();
 		oldHud.GetNode<BaseButton>("roleLayer/role_menu/backpack").Pressed += () => menus.ToggleMenu("bag");
 		foreach (string name in new[] { "set", "skill", "magic_weapon", "pet" })
 			oldHud.GetNode<BaseButton>($"roleLayer/role_menu/{name}").Disabled = true;
@@ -69,8 +79,11 @@ public partial class GameplayLevel : Node2D
 
 	public override void _ExitTree()
 	{
+		if (_player is not null) _player.ProgressionChanged -= SaveProgression;
+		if (_player is not null) _player.SoulsCollected -= CollectSouls;
 		_backpackView?.Dispose();
 		_inventoryAdapter?.Dispose();
+		_equipmentBinding?.Dispose();
 	}
 
 	public override void _Process(double delta)
@@ -81,7 +94,6 @@ public partial class GameplayLevel : Node2D
 		UpdateMonsters(step);
 		_status.Text = $"{LevelName}  {_player.Health:0}/{_player.MaxHealth:0}   小怪 {_active.Count}/{MaximumMonsters}"
 			+ (_player.IsDead ? "   按 R 重试" : "");
-		UpdateOldHud();
 		if (_player.Position.X > 4600 && !_player.IsDead) CompleteLevel();
 	}
 
@@ -96,13 +108,12 @@ public partial class GameplayLevel : Node2D
 
 	private string LevelName => LevelNumber switch { 1 => "花果山", 2 => "水帘洞", _ => "桃花源" };
 
-	private void UpdateOldHud()
+	private void SaveProgression() => GameSession.Save(_inventory);
+
+	private void CollectSouls(int amount)
 	{
-		var hud = GetNode<Node2D>("OldHud");
-		var hp = hud.GetNode<TextureProgressBar>("roleLayer/role_hp_mp_exp/hp_bar");
-		hp.MaxValue = _player.MaxHealth;
-		hp.Value = _player.Health;
-		hud.GetNode<Label>("roleLayer/role_hp_mp_exp/hp_bar/hp_text").Text = $"{_player.Health:0}/{_player.MaxHealth:0}";
+		GameSession.Data!.Wallet.Add(CurrencyType.Soul, amount);
+		GameSession.Save(_inventory);
 	}
 
 	private void UpdateMonsters(float delta)

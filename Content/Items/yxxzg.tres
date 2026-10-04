@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="ItemDefinition" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="EquipmentDefinition" load_steps=3 format=3]
 
-[ext_resource type="Script" path="res://Scripts/Items/ItemDefinition.cs" id="1"]
+[ext_resource type="Script" path="res://Scripts/Equipment/EquipmentDefinition.cs" id="1"]
 [ext_resource type="Texture2D" path="res://Assets/Art/BackPack/AllItems/yxxzg.png" id="2"]
 
 [resource]
@@ -11,3 +11,8 @@ MaxStack = 1
 Icon = ExtResource("2")
 Description = "一把看起来还不错的武器。"
 Attack = 15
+Quality = "优秀"
+QualityColor = Color(0.0, 1.0, 0.0, 1)
+SellPrice = 40
+OwnerCaption = "悟空"
+RequiredCharacterId = "role_1"

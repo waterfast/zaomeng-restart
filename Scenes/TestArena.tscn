@@ -7,10 +7,12 @@
 [ext_resource type="PackedScene" path="res://Scenes/UI/BackPack/BackPack.tscn" id="backpack"]
 [ext_resource type="Resource" path="res://Content/Items/ItemCatalog.tres" id="item_catalog"]
 [ext_resource type="Script" path="res://Scripts/UI/MenuManager.cs" id="menu_manager"]
+[ext_resource type="Resource" path="res://GameData/Events/GameplayEvents.tres" id="events"]
 
 [node name="TestArena" type="Node2D" unique_id=256839790]
 script = ExtResource("arena")
 ItemCatalog = ExtResource("item_catalog")
+Events = ExtResource("events")
 
 [node name="MenuManager" type="Node" parent="."]
 script = ExtResource("menu_manager")

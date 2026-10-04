@@ -45,7 +45,6 @@ public partial class CharacterActor : CharacterBody2D
 	public int CurrentComboStage { get; private set; } = -1;
 	protected float MoveDirection;//移动方向
 	private Node2D _facing = null!;
-	private ProgressBar _healthBar = null!;
 	private float _hurtRemaining;
 	private float _comboGraceRemaining;
 	private int _nextComboStage;
@@ -55,15 +54,18 @@ public partial class CharacterActor : CharacterBody2D
 	private SkillCast? _skillCast;
 	private ActionMotionPlayback? _actionMotion;
 
+	/// <summary>最大生命变更只截断超出的血量，穿脱装备不会治疗或复活角色。</summary>
+	protected void RefreshHealthLimit()
+	{
+		Health = Mathf.Clamp(Health, 0, Mathf.Max(0, MaxHealth));
+	}
+
 	public override void _Ready()
 	{
 		Health = MaxHealth;
 		_facing = GetNode<Node2D>("Facing");
 		Animator = GetNode<AnimationPlayer>("AnimationPlayer");
 		AttackBox = GetNode<HitBox>("Facing/HitBox");
-		_healthBar = GetNode<ProgressBar>("HealthBar");
-		_healthBar.MaxValue = MaxHealth;
-		_healthBar.Value = Health;
 		Animator.AnimationFinished += OnAnimationFinished;
 		Face(1);
 		Play(IdleAnimation);
@@ -187,7 +189,7 @@ public partial class CharacterActor : CharacterBody2D
 		return true;
 	}
 
-	public bool TryUseSkill(SkillDefinition? skill)
+	public virtual bool TryUseSkill(SkillDefinition? skill)
 	{
 		if (State != ActorState.Free || skill == null) return false;
 		if (!IsSkillConfigured(skill)) return false;
@@ -270,8 +272,8 @@ public partial class CharacterActor : CharacterBody2D
 	public void ReceiveHit(HitResult hit)
 	{
 		if (IsDead) return;
+		CombatTextSpawner.ShowDamage(this, hit);
 		Health = Mathf.Max(0, Health - hit.Damage);
-		_healthBar.Value = Health;
 		AttackBox.Active = false;
 		_skillCast?.Stop();
 		_skillCast = null;
@@ -287,11 +289,10 @@ public partial class CharacterActor : CharacterBody2D
 	{
 		if (IsDead || amount <= 0) return;
 		Health = Mathf.Min(MaxHealth, Health + amount);
-		_healthBar.Value = Health;
 	}
 
 	/// <summary>对象池再次启用角色时清理上一次战斗的瞬时状态。</summary>
-	public void ResetForSpawn(Vector2 position)
+	public virtual void ResetForSpawn(Vector2 position)
 	{
 		_skillCast?.Stop();
 		_skillCast = null;
@@ -302,7 +303,6 @@ public partial class CharacterActor : CharacterBody2D
 		Velocity = Vector2.Zero;
 		GlobalPosition = position;
 		Health = MaxHealth;
-		_healthBar.Value = Health;
 		State = ActorState.Free;
 		_hurtRemaining = 0;
 		Face(-1);

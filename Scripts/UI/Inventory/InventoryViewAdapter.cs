@@ -2,10 +2,11 @@ using System;
 using System.Collections.Generic;
 using Zaomeng.Inventory;
 using Zaomeng.Items;
+using Zaomeng.Equipment;
 
 namespace Zaomeng.UI.Inventory;
 
-public sealed record InventoryDisplayEntry(int SlotIndex, ItemDefinition Definition, int Count);
+public sealed record InventoryDisplayEntry(int SlotIndex, ItemDefinition Definition, int Count, EquipmentInstance? Equipment);
 
 /// <summary>把背包的格子快照解析为 UI 数据，不让格子视图了解背包或物品规则。</summary>
 public sealed class InventoryViewAdapter : IDisposable
@@ -32,7 +33,7 @@ public sealed class InventoryViewAdapter : IDisposable
 			if (stack is null || !_catalog.TryGetDefinition(stack.ItemId, out ItemDefinition? definition))
 				continue;
 			if (definition!.Category == category)
-				entries.Add(new InventoryDisplayEntry(index, definition, stack.Count));
+				entries.Add(new InventoryDisplayEntry(index, definition, stack.Count, stack.Equipment));
 		}
 		return entries;
 	}

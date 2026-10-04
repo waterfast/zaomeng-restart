@@ -11,6 +11,8 @@
     <Compile Include="../../Scripts/Character/Character.cs" />
     <Compile Include="../../Scripts/Character/CharacterStats.cs" />
     <Compile Include="../../Scripts/Character/EquipmentLoadout.cs" />
+		<Compile Include="../../Scripts/Equipment/EquipmentSlot.cs" />
+		<Compile Include="../../Scripts/Equipment/EquipmentInstance.cs" />
     <Compile Include="../../Scripts/Save/*.cs" Exclude="../../Scripts/Save/GameSession.cs;../../Scripts/Save/GameSessionCharacter.cs" />
     <Compile Include="../../Scripts/Save/Serialization/*.cs" />
     <Compile Include="../../Scripts/Save/Storage/*.cs" />

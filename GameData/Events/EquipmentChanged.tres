@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="EquipmentChangedChannel" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Events/EquipmentChangedChannel.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+Description = "装备交换完成后的通知，携带角色、槽位及新旧装备实例快照。"

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using Zaomeng.Character;
+using Zaomeng.Equipment;
 
 namespace Zaomeng.Save;
 
@@ -15,11 +16,18 @@ public static class SaveDataValidator
 		if (data.Inventory is null || data.Inventory.Capacity <= 0 ||
 			data.Inventory.Slots is null || data.Inventory.Slots.Count != data.Inventory.Capacity)
 			throw new InvalidDataException("存档中的背包容量或槽位数无效。");
+		var instanceIds = new HashSet<string>(StringComparer.Ordinal);
 		for (int i = 0; i < data.Inventory.Slots.Count; i++)
 		{
 			ItemStackSaveData? stack = data.Inventory.Slots[i];
 			if (stack is not null && (string.IsNullOrWhiteSpace(stack.ItemId) || stack.Count <= 0))
 				throw new InvalidDataException($"存档中第 {i} 格的物品无效。");
+			if (stack?.Equipment is EquipmentInstance instance)
+			{
+				if (stack.Count != 1 || stack.ItemId != instance.DefinitionId)
+					throw new InvalidDataException($"存档中第 {i} 格的装备与物品不一致。");
+				ValidateInstance(instance, instanceIds);
+			}
 		}
 		if (data.Wallet is null || data.Wallet.Souls < 0 || data.Wallet.Coupons < 0)
 			throw new InvalidDataException("存档中的货币余额无效。");
@@ -39,11 +47,13 @@ public static class SaveDataValidator
 				character.EquippedSkillIds.Count != Zaomeng.Character.Character.SkillSlotCount ||
 				!HasFiniteStats(character.BaseStats) || !HasFiniteStats(character.PermanentBonuses))
 				throw new InvalidDataException("存档中的角色档案无效。");
-			if (character.Equipment.WeaponId is null || character.Equipment.ArmorId is null ||
-				character.Equipment.AccessoryId is null || character.Equipment.WingId is null ||
-				character.Equipment.TitleId is null || character.Equipment.CostumeId is null ||
-				character.Equipment.MagicWeaponId is null)
+			if (character.Equipment.Slots is null)
 				throw new InvalidDataException($"角色 {character.Id} 的装备配置无效。");
+			foreach (var (slot, instance) in character.Equipment.Slots)
+			{
+				if (!Enum.IsDefined(slot)) throw new InvalidDataException("无效的穿戴槽位。");
+				ValidateInstance(instance, instanceIds);
+			}
 			foreach (var (skillId, level) in character.SkillLevels)
 				if (string.IsNullOrWhiteSpace(skillId) || level < 1)
 					throw new InvalidDataException($"角色 {character.Id} 的已学技能无效。");
@@ -54,6 +64,12 @@ public static class SaveDataValidator
 				if (string.IsNullOrWhiteSpace(talentId))
 					throw new InvalidDataException($"角色 {character.Id} 的天赋 ID 无效。");
 		}
+	}
+
+	private static void ValidateInstance(EquipmentInstance instance, HashSet<string> ids)
+	{
+		if (instance is null || !instance.IsValid || !ids.Add(instance.InstanceId))
+			throw new InvalidDataException("装备实例无效或同时出现在多个背包/角色槽位中。");
 	}
 
 	private static bool HasFiniteStats(CharacterStats stats) =>

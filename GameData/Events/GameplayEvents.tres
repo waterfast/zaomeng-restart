@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="GameplayEvents" load_steps=10 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Events/GameplayEvents.cs" id="1"]
+[ext_resource type="Resource" path="res://GameData/Events/EquipmentRequested.tres" id="2"]
+[ext_resource type="Resource" path="res://GameData/Events/EquipmentChanged.tres" id="3"]
+[ext_resource type="Resource" path="res://GameData/Events/InventoryChanged.tres" id="4"]
+[ext_resource type="Resource" path="res://GameData/Events/SaveFailed.tres" id="5"]
+[ext_resource type="Resource" path="res://GameData/Events/GemRequested.tres" id="6"]
+[ext_resource type="Resource" path="res://GameData/Events/EquipmentModified.tres" id="7"]
+[ext_resource type="Resource" path="res://GameData/Events/ItemActionRequested.tres" id="8"]
+[ext_resource type="Resource" path="res://GameData/Events/ItemActionCompleted.tres" id="9"]
+
+[resource]
+script = ExtResource("1")
+EquipmentRequested = ExtResource("2")
+EquipmentChanged = ExtResource("3")
+InventoryChanged = ExtResource("4")
+SaveFailed = ExtResource("5")
+GemRequested = ExtResource("6")
+EquipmentModified = ExtResource("7")
+ItemActionRequested = ExtResource("8")
+ItemActionCompleted = ExtResource("9")

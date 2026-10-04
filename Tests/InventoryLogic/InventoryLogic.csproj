@@ -7,6 +7,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
-    <Compile Include="../../Scripts/Inventory/*.cs" />
+		<Compile Include="../../Scripts/Inventory/*.cs" />
+		<Compile Include="../../Scripts/Equipment/EquipmentInstance.cs" />
   </ItemGroup>
 </Project>

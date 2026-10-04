@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3]
+[gd_scene load_steps=9 format=3]
 
 [ext_resource type="Script" path="res://Scripts/Level/GameplayLevel.cs" id="1"]
 [ext_resource type="PackedScene" path="res://Scenes/Maps/Forest.tscn" id="2"]
@@ -7,11 +7,13 @@
 [ext_resource type="PackedScene" path="res://Scenes/UI/BackPack/BackPack.tscn" id="5"]
 [ext_resource type="Resource" path="res://Content/Items/ItemCatalog.tres" id="6"]
 [ext_resource type="Script" path="res://Scripts/UI/MenuManager.cs" id="7"]
+[ext_resource type="Resource" path="res://GameData/Events/GameplayEvents.tres" id="8"]
 
 [node name="Level_1" type="Node2D"]
 script = ExtResource("1")
 LevelNumber = 1
 ItemCatalog = ExtResource("6")
+Events = ExtResource("8")
 
 [node name="Map" parent="." instance=ExtResource("2")]
 

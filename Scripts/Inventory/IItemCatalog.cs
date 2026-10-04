@@ -1,9 +1,11 @@
 namespace Zaomeng.Inventory;
 
 /// <summary>
-/// 从唯一的物品定义来源读取背包所需的堆叠规则。后续可由 Expresso 的物品数据库实现。
+/// 从物品定义读取堆叠、装备孔位及宝石类型，背包不依赖引擎资源。
 /// </summary>
 public interface IItemCatalog
 {
 	bool TryGetMaxStack(string itemId, out int maxStack);
+	bool TryGetEquipmentSocketCount(string itemId, out int socketCount);
+	bool IsGem(string itemId);
 }

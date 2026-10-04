@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="ItemActionRequestChannel" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Events/ItemActionRequestChannel.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+Description = "背包物品操作请求：按类别或物品配置检查后执行装备、出售及自定义操作。"

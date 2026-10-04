@@ -5,6 +5,8 @@ using Zaomeng.Inventory;
 using Zaomeng.UI;
 using Zaomeng.UI.Inventory;
 using Zaomeng.Save;
+using Zaomeng.Equipment;
+using Zaomeng.Events;
 using SaveCharacter = Zaomeng.Character.Character;
 
 namespace Zaomeng;
@@ -12,6 +14,7 @@ namespace Zaomeng;
 public partial class TestArena : Node2D
 {
 	[Export] public ItemCatalog ItemCatalog { get; set; } = null!;
+	[Export] public GameplayEvents Events { get; set; } = null!;
 
 	private Player _player = null!;
 	private Monster _monster = null!;
@@ -22,6 +25,7 @@ public partial class TestArena : Node2D
 	private LegacyBackpackView _backpackView = null!;
 	private InventoryService _inventory = null!;
 	private SaveCharacter _character = null!;
+	private GameplayEquipmentBinding _equipmentBinding = null!;
 
 	public override void _EnterTree()
 	{
@@ -31,8 +35,11 @@ public partial class TestArena : Node2D
 
 	public override void _Ready()
 	{
-		//获取角色事件之类的
 		_player = GetNode<Player>("Player");
+		_player.ProgressionChanged += SaveProgression;
+		_player.SoulsCollected += CollectSouls;
+		_equipmentBinding = new(_character, ItemCatalog, _inventory, Events,
+			_player.RefreshCharacterStats, () => GameSession.Save(_inventory), GameSession.Data!.Wallet);
 		_monster = GetNode<Monster>("Monster");
 		_status = GetNode<Label>("HUD/Panel/Status");
 		_backpack = GetNode<Node2D>("HUD/BackPack");
@@ -40,23 +47,48 @@ public partial class TestArena : Node2D
 		_menuManager.MenuStateChanged += isOpen => GetNode<ColorRect>("HUD/Panel").Visible = !isOpen;
 		_inventoryAdapter = new InventoryViewAdapter(_inventory, ItemCatalog);
 		_backpackView = new LegacyBackpackView(_backpack, _inventoryAdapter, ItemCatalog,
-			_character, GameSession.Data!.Wallet, _player, () => GameSession.Save(_inventory));
+			_character, GameSession.Data!.Wallet, _player, () => GameSession.Save(_inventory), Events);
 		_menuManager.RegisterMenu("bag", _backpack);
 		_backpackView.CloseRequested += _menuManager.CloseMenu;
+		var hud = GD.Load<PackedScene>("res://Scenes/UI/Level/Role_information.tscn").Instantiate<Node2D>();
+		hud.Name = "PlayerHud";
+		AddChild(hud);
+		var playerHud = new PlayerHud();
+		playerHud.Bind(hud, _player);
+		hud.AddChild(playerHud);
+		hud.GetNode<AnimatedSprite2D>("roleLayer/Gogo").Hide();
+		hud.GetNode<BaseButton>("roleLayer/role_menu/backpack").Pressed += () => _menuManager.ToggleMenu("bag");
+		foreach (string name in new[] { "set", "skill", "magic_weapon", "pet" })
+			hud.GetNode<BaseButton>($"roleLayer/role_menu/{name}").Disabled = true;
+		_menuManager.MenuStateChanged += isOpen => hud.GetNode<CanvasLayer>("roleLayer").Visible = !isOpen;
 		if (Array.Exists(OS.GetCmdlineUserArgs(), value => value == "--smoke-test"))
 			CallDeferred(MethodName.StartSmokeTest);
 		if (Array.Exists(OS.GetCmdlineUserArgs(), value => value == "--menu-pause-test"))
 			CallDeferred(MethodName.StartMenuPauseTest);
+		if (Array.Exists(OS.GetCmdlineUserArgs(), value => value == "--equipment-architecture-test"))
+			CallDeferred(MethodName.StartEquipmentArchitectureTest);
 	}
 
 	public override void _ExitTree()
 	{
+		if (_player is not null) _player.ProgressionChanged -= SaveProgression;
+		if (_player is not null) _player.SoulsCollected -= CollectSouls;
 		_backpackView?.Dispose();
 		_inventoryAdapter?.Dispose();
+		_equipmentBinding?.Dispose();
+	}
+
+	private void SaveProgression() => GameSession.Save(_inventory);
+
+	private void CollectSouls(int amount)
+	{
+		GameSession.Data!.Wallet.Add(CurrencyType.Soul, amount);
+		GameSession.Save(_inventory);
 	}
 
 	private void StartSmokeTest() => AddChild(new CombatSmokeTest());
 	private void StartMenuPauseTest() => AddChild(new MenuPauseSmokeTest());
+	private void StartEquipmentArchitectureTest() => AddChild(new EquipmentArchitectureSmokeTest());
 
 	public override void _Process(double delta)
 	{

@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="VoidEventChannel" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Events/VoidEventChannel.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+Description = "物品操作成功提交并尝试保存后通知界面刷新；失败不广播。"

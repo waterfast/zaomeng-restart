@@ -4,6 +4,8 @@
 [ext_resource type="SpriteFrames" path="res://Content/Monsters/Monster3Frames.tres" id="2"]
 
 [node name="Monster3" instance=ExtResource("1")]
+ExperienceReward = 10
+SoulValuePerOrb = 2
 MaxHealth = 95.0
 MoveSpeed = 75.0
 

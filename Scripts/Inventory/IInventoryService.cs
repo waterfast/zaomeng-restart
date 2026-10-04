@@ -12,6 +12,7 @@ public interface IInventoryService
 
 	bool AddItem(string itemId, int amount);
 	bool RemoveItem(string itemId, int amount);
+	bool RemoveEquipment(string instanceId);
 	int GetItemCount(string itemId);
 
 	/// <summary>移动指定数量。目标为空时可拆堆，同种物品时可合堆；不自动交换异种物品。</summary>

@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="ItemDefinition" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="EquipmentDefinition" load_steps=3 format=3]
 
-[ext_resource type="Script" path="res://Scripts/Items/ItemDefinition.cs" id="1"]
+[ext_resource type="Script" path="res://Scripts/Equipment/EquipmentDefinition.cs" id="1"]
 [ext_resource type="Texture2D" path="res://Assets/Art/BackPack/AllItems/ryjgb.png" id="2"]
 
 [resource]
@@ -9,7 +9,12 @@ Id = "ryjgb"
 DisplayName = "如意金箍棒"
 MaxStack = 1
 Icon = ExtResource("2")
-Description = "东海龙宫之定海神针，一万三千五百斤。"
+Description = "东海龙宫之定海神针，一万三千五百斤，浩劫之际，元归齐天。"
 Attack = 75
 CriticalRating = 6
 Accuracy = 6
+Quality = "精良"
+QualityColor = Color(0.0, 0.5411764705882353, 1.0, 1)
+SellPrice = 80
+OwnerCaption = "悟空"
+RequiredCharacterId = "role_1"

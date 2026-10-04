@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ConsumableDefinition" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Items/ConsumableDefinition.cs" id="1"]
+[ext_resource type="Texture2D" path="res://Assets/Art/BackPack/AllItems/qhsbx.png" id="2"]
+
+[resource]
+script = ExtResource("1")
+Id = "qhsbx"
+DisplayName = "强化石随机宝箱"
+Category = 2
+MaxStack = 99
+Icon = ExtResource("2")
+Description = "打开后随机获得一种1～4级强化石，共3～4个。"
+SellPrice = 200
+Effect = 1
+RewardItemIds = PackedStringArray("qhs_1", "qhs_2", "qhs_3", "qhs_4")
+RewardMinCount = 3
+RewardMaxCount = 4

@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="GemRequestChannel" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Events/GemRequestChannel.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+Description = "按装备实例请求镶嵌或拆卸宝石，统一消耗或归还背包宝石。"

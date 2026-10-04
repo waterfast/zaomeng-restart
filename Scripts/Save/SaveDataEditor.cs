@@ -48,7 +48,7 @@ public static class SaveDataEditor
 			throw new InvalidDataException("存档背包容量与槽位数不一致。");
 		var slots = new List<ItemStack?>(data.Capacity);
 		foreach (ItemStackSaveData? stack in data.Slots)
-			slots.Add(stack is null ? null : new ItemStack(stack.ItemId, stack.Count));
+			slots.Add(stack is null ? null : new ItemStack(stack.ItemId, stack.Count, stack.Equipment));
 		var inventory = new InventoryService(data.Capacity, catalog);
 		inventory.RestoreSlots(slots);
 		return inventory;
@@ -59,7 +59,8 @@ public static class SaveDataEditor
 		// 只在操作完整成功后回写，失败时原存档数据保持不变。
 		var saved = new List<ItemStackSaveData?>(slots.Count);
 		foreach (ItemStack? stack in slots)
-			saved.Add(stack is null ? null : new ItemStackSaveData { ItemId = stack.ItemId, Count = stack.Count });
+			saved.Add(stack is null ? null : new ItemStackSaveData
+				{ ItemId = stack.ItemId, Count = stack.Count, Equipment = stack.Equipment });
 		data.Slots = saved;
 	}
 }

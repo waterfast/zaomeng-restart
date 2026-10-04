@@ -4332,11 +4332,3 @@ shape = SubResource("body_shape")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1244389493]
 callback_mode_process = 0
 libraries/ = SubResource("library")
-
-[node name="HealthBar" type="ProgressBar" parent="." unique_id=1259145844]
-offset_left = -35.0
-offset_top = -118.0
-offset_right = 35.0
-offset_bottom = -111.0
-mouse_filter = 2
-show_percentage = false

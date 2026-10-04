@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="ItemDefinition" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="EquipmentDefinition" load_steps=3 format=3]
 
-[ext_resource type="Script" path="res://Scripts/Items/ItemDefinition.cs" id="1"]
+[ext_resource type="Script" path="res://Scripts/Equipment/EquipmentDefinition.cs" id="1"]
 [ext_resource type="Texture2D" path="res://Assets/Art/BackPack/AllItems/jcbj.png" id="2"]
 
 [resource]
@@ -9,7 +9,12 @@ Id = "jcbj"
 DisplayName = "家传宝剑"
 MaxStack = 1
 Icon = ExtResource("2")
-Description = "看似普通的宝剑，蕴藏有神秘的力量。"
+Description = "看似普通的宝剑，蕴藏有神秘的力量，只有凑齐家传装备才能释放出这股力量。"
 Attack = 30
 CriticalRating = 3
 Accuracy = 3
+Quality = "优秀"
+QualityColor = Color(0.0, 1.0, 0.0, 1)
+SellPrice = 40
+OwnerCaption = "悟空"
+RequiredCharacterId = "role_1"

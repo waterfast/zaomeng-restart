@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="EquipmentRequestChannel" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Events/EquipmentRequestChannel.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+Description = "请求穿戴或卸下装备：仅允许一个装备服务处理，同步返回结果。"

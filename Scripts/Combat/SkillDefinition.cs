@@ -9,7 +9,7 @@ public partial class SkillDefinition : Resource
     [Export] public string Id { get; set; } = "";
     [Export] public StringName Animation { get; set; } = "";
     [Export] public int FramesPerSecond { get; set; } = 30;
-    // 旧版冷却和蓝耗先作为静态策划数据保存；角色法力与冷却运行态尚未接入。
+    // 旧版冷却和蓝耗作为静态策划数据保存；运行态由玩家管理。
     [Export] public float CooldownSeconds { get; set; }
     [Export] public int BaseManaCost { get; set; }
     [Export] public int ManaCostLinearGrowth { get; set; }

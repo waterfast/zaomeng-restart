@@ -2,7 +2,8 @@ using Godot;
 
 namespace Zaomeng;
 
-public readonly record struct HitResult(float Damage, Vector2 Knockback, float Hitstun);
+public readonly record struct HitResult(float Damage, Vector2 Knockback, float Hitstun,
+	DamageType DamageType = DamageType.Physical, bool Critical = false);
 
 public static class CombatResolver
 {
@@ -21,9 +22,17 @@ public static class CombatResolver
 		float power = Mathf.Max(0, attacker.Attack * multiplier + hit.FlatDamage);
 		LegacyDamageCalculator.Result result = LegacyDamageCalculator.Calculate(attacker, target,
 			power, hit.DamageType, hit.CanCrit, GD.Randf(), GD.Randf());
-		if (result.Missed) return true;
+		if (result.Missed)
+		{
+			CombatTextSpawner.ShowMiss(target);
+			return true;
+		}
 		var knockback = new Vector2(hit.Knockback.X * attacker.FacingDirection, hit.Knockback.Y);
-		target.ReceiveHit(new HitResult(result.Damage, knockback, Mathf.Max(0, hit.Hitstun)));
+		target.ReceiveHit(new HitResult(result.Damage, knockback, Mathf.Max(0, hit.Hitstun),
+			hit.DamageType, result.Critical));
+		// 只在致死命中结算一次；尸体回收、离屏回收均不产生经验。
+		if (target.IsDead && target is Monster monster && attacker is Player player)
+			Zaomeng.Level.MonsterRewardSpawner.Award(monster, player);
 		if (hit.DamageType == DamageType.Physical && attacker.LifeSteal > 0)
 			attacker.Heal(result.Damage * attacker.LifeSteal);
 		return true;

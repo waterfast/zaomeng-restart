@@ -20,6 +20,8 @@ public partial class MenuPauseSmokeTest : Node
 			var monster = GetParent().GetNode<Monster>("Monster");
 			var character = GameSession.Data!.Characters.FirstOrDefault(entry => entry.Id == "role_1")
 				?? GameSession.Data.Characters[0];
+			// 独立测试目录中的新存档背包为空；展示检查自己准备物品，不依赖玩家存档内容。
+			Check(GameSession.Inventory!.AddItem("ryjgb", 1), "menu test prepares its own display item");
 
 			PressBagAction(menuManager);
 			await NextFrame();
@@ -60,9 +62,9 @@ public partial class MenuPauseSmokeTest : Node
 			Check(firstSlot.SelfModulate == backgroundTint &&
 				grid.GetNode<Button>("box_2").SelfModulate == backgroundTint,
 				"clicking an item does not recolor other slots");
-			var itemTooltip = backpack.GetNode<PanelContainer>("ItemTooltip");
-			Check(firstSlot.TooltipText.Length == 0 && itemTooltip.Visible,
-				"item details use the backpack popup instead of the translucent system tooltip");
+			var itemTooltip = backpack.GetNode<Node2D>("ItemTooltip");
+			Check(firstSlot.TooltipText.Length == 0 && !itemTooltip.Visible && backpack.GetNode<PopupPanel>("ItemActionMenu").Visible,
+				"single click opens actions and hides the hover tooltip");
 			if (DisplayServer.GetName() != "headless")
 			{
 				await ToSignal(RenderingServer.Singleton, RenderingServer.SignalName.FramePostDraw);

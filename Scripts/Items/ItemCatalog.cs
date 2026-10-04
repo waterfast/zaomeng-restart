@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Godot;
 using Zaomeng.Inventory;
+using Zaomeng.Equipment;
 
 namespace Zaomeng.Items;
 
@@ -48,6 +49,55 @@ public partial class ItemCatalog : Resource, IItemCatalog
 				throw new InvalidOperationException($"物品 ID 为空或重复：{definition.Id}");
 			if (definition.MaxStack < 1)
 				throw new InvalidOperationException($"物品 {definition.Id} 的最大堆叠数必须大于零。");
+			if (definition.SellPrice < 0) throw new InvalidOperationException($"物品 {definition.Id} 的售价不能为负数。");
+			if (definition is ConsumableDefinition consumable)
+			{
+				if (consumable.Category != ItemCategory.Consumable || !Enum.IsDefined(consumable.Effect))
+					throw new InvalidOperationException($"消耗品 {definition.Id} 的类别或效果无效。");
+				if (consumable.Effect == ConsumableEffect.GrantSouls && consumable.SoulsGranted <= 0)
+					throw new InvalidOperationException($"药水 {definition.Id} 的灵魂奖励必须大于零。");
+				if (consumable.Effect == ConsumableEffect.RandomMaterialChest)
+				{
+					if (consumable.RewardItemIds.Length == 0 || consumable.RewardMinCount < 1 ||
+						consumable.RewardMaxCount < consumable.RewardMinCount || consumable.RewardMaxCount > 9999)
+						throw new InvalidOperationException($"宝箱 {definition.Id} 的奖励配置无效。");
+					foreach (string id in consumable.RewardItemIds)
+						if (!TryGetDefinition(id, out ItemDefinition? reward) || reward!.Category != ItemCategory.Material)
+							throw new InvalidOperationException($"宝箱 {definition.Id} 的奖励 {id} 必须是目录中的材料。");
+				}
+			}
+			if (definition.Category == ItemCategory.Equipment && definition is not EquipmentDefinition)
+				throw new InvalidOperationException($"装备 {definition.Id} 必须使用 EquipmentDefinition。");
+			if (definition is EquipmentDefinition equipment && (equipment.Category != ItemCategory.Equipment ||
+				equipment.MaxStack != 1 || equipment.GemSocketCount < 0 || equipment.GemSocketCount > 8))
+				throw new InvalidOperationException($"装备 {definition.Id} 的类型、堆叠数或宝石孔配置无效。");
+			if (definition is GemDefinition gem && (gem.Category != ItemCategory.Material ||
+				!Enum.IsDefined(gem.Attribute) || !float.IsFinite(gem.Bonus) || gem.Bonus < 0))
+				throw new InvalidOperationException($"宝石 {definition.Id} 的类型或属性配置无效。");
 		}
+	}
+
+	public bool TryGetEquipmentSocketCount(string itemId, out int socketCount)
+	{
+		if (TryGetDefinition(itemId, out ItemDefinition? item) && item is EquipmentDefinition equipment)
+		{
+			socketCount = equipment.GemSocketCount;
+			return true;
+		}
+		socketCount = 0;
+		return false;
+	}
+
+	public bool IsGem(string itemId) => TryGetDefinition(itemId, out ItemDefinition? item) && item is GemDefinition;
+
+	public void ValidateEquipmentInstance(EquipmentInstance instance, EquipmentSlot? slot = null)
+	{
+		if (!instance.IsValid || !TryGetDefinition(instance.DefinitionId, out ItemDefinition? item) ||
+			item is not EquipmentDefinition equipment || instance.SocketedGemIds.Length != equipment.GemSocketCount ||
+			(slot.HasValue && equipment.Slot != slot.Value))
+			throw new InvalidOperationException($"装备实例 {instance.InstanceId} 与物品定义或槽位不匹配。");
+		foreach (string gemId in instance.SocketedGemIds)
+			if (gemId.Length > 0 && !IsGem(gemId))
+				throw new InvalidOperationException($"装备实例 {instance.InstanceId} 引用了未知宝石 {gemId}。");
 	}
 }

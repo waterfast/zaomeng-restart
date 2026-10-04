@@ -1,5 +1,4 @@
 using System;
-using System.Globalization;
 using Godot;
 using Zaomeng.Character;
 using Zaomeng.Items;
@@ -7,43 +6,15 @@ using SaveCharacter = Zaomeng.Character.Character;
 
 namespace Zaomeng.UI.Inventory;
 
-/// <summary>把角色档案映射到旧背包的两页属性格，界面不保存或计算成长数据。</summary>
-public sealed class CharacterStatsPresenter
+/// <summary>按注册顺序分页映射角色属性，界面不保存或计算成长数据。</summary>
+public sealed class CharacterStatsPresenter : IDisposable
 {
-	private sealed record StatLine(string Caption, Func<CharacterStats, float> Read,
-		float RatingDenominator = 0, bool IsPercent = false);
-
 	private static readonly (string Value, string Caption)[] NodeNames =
 	[
 		("hp", "Hp_tt"), ("mp", "Mp_tt"), ("att", "Att_tt"),
 		("lucky", "Lucky_tt"), ("def", "Def_tt"), ("mdef", "Mdef_tt"),
 		("crit", "Crit_tt"), ("miss", "misstt"), ("ehp", "ehp_tt"),
 		("emp", "emp_tt")
-	];
-
-	private static readonly StatLine?[] FirstPage =
-	[
-		new("生命", stats => stats.MaxHealth),
-		new("魔法", stats => stats.MaxMana),
-		new("攻击", stats => stats.Attack),
-		new("幸运", stats => stats.Luck, 50),
-		new("物防", stats => stats.PhysicalDefense, 250),
-		new("魔防", stats => stats.MagicDefense, 250),
-		new("暴击", stats => stats.CriticalRating, 100),
-		new("闪避", stats => stats.DodgeRating, 100),
-		new("回血", stats => stats.HealthRegeneration),
-		new("回魔", stats => stats.ManaRegeneration)
-	];
-
-	private static readonly StatLine?[] SecondPage =
-	[
-		new("命中", stats => stats.Accuracy),
-		new("韧性", stats => stats.Toughness),
-		new("吸血", stats => stats.LifeSteal, IsPercent: true),
-		new("破甲", stats => stats.ArmorPenetration),
-		new("暴免", stats => stats.CriticalResistance),
-		new("破魔", stats => stats.MagicPenetration),
-		null, null, null, null
 	];
 
 	private readonly Label[] _values = new Label[NodeNames.Length];
@@ -56,10 +27,18 @@ public sealed class CharacterStatsPresenter
 	private readonly HBoxContainer _levelDigits;
 	private readonly TextureProgressBar _experienceBar;
 	private readonly Label _experienceText;
+	private readonly TextureButton _previousPage;
+	private readonly TextureButton _nextPage;
+	private readonly Label _previousPageCaption;
+	private readonly Label _nextPageCaption;
+	public CharacterStatRegistry Registry { get; }
 	private int _page = 1;
+	public int PageCount => Math.Max(1, (Registry.Entries.Count + NodeNames.Length - 1) / NodeNames.Length);
 
-	public CharacterStatsPresenter(Node2D backpack, SaveCharacter character, Player player, ItemCatalog catalog)
+	public CharacterStatsPresenter(Node2D backpack, SaveCharacter character, Player player, ItemCatalog catalog,
+		CharacterStatRegistry? registry = null)
 	{
+		Registry = registry ?? CharacterStatRegistry.CreateDefault();
 		_character = character;
 		_player = player;
 		_catalog = catalog;
@@ -74,45 +53,73 @@ public sealed class CharacterStatsPresenter
 		_secondLevelDigit = _levelDigits.GetNode<TextureRect>("Number_2");
 		_experienceBar = information.GetNode<TextureProgressBar>("exp_bar");
 		_experienceText = _experienceBar.GetNode<Label>("exp_text");
-		information.GetNode<TextureButton>("first").Pressed += () => ShowPage(1);
-		information.GetNode<TextureButton>("second").Pressed += () => ShowPage(2);
+		_previousPage = information.GetNode<TextureButton>("first");
+		_nextPage = information.GetNode<TextureButton>("second");
+		_previousPageCaption = AddNavigationCaption(_previousPage, "‹");
+		_nextPageCaption = AddNavigationCaption(_nextPage, "›");
+		_previousPage.Pressed += PreviousPage;
+		_nextPage.Pressed += NextPage;
+		Registry.Changed += Refresh;
 		Refresh();
 	}
 
 	public void Refresh()
 	{
-		StatLine?[] rows = _page == 1 ? FirstPage : SecondPage;
-		for (int i = 0; i < rows.Length; i++)
+		_page = Math.Clamp(_page, 1, PageCount);
+		CharacterStats stats = CharacterStatCalculator.Calculate(_character, _catalog);
+		for (int i = 0; i < NodeNames.Length; i++)
 		{
-			StatLine? row = rows[i];
+			int index = (_page - 1) * NodeNames.Length + i;
+			CharacterStatRegistry.Entry? row = index < Registry.Entries.Count ? Registry.Entries[index] : null;
 			_captions[i].Text = row is null ? "" : TranslationServer.Translate(row.Caption).ToString();
-			_values[i].Text = row is null ? "" : FormatRow(row, i);
+			_values[i].Text = row is null ? "" : row.Format?.Invoke(row.Read(stats), _player)
+				?? CharacterStatRegistry.Number(row.Read(stats));
 		}
+		_previousPage.Disabled = _page == 1;
+		_nextPage.Disabled = _page == PageCount;
+		_previousPage.TooltipText = $"上一页（{_page}/{PageCount}）";
+		_nextPage.TooltipText = $"下一页（{_page}/{PageCount}）";
+		// 超过两页时不再显示固定的 1、2，避免让玩家误以为没有第三页。
+		_previousPageCaption.Visible = PageCount > 2;
+		_nextPageCaption.Visible = PageCount > 2;
 		UpdateLevel();
 	}
 
-	private void ShowPage(int page)
+	public void Dispose()
 	{
-		_page = page;
-		Refresh();
+		Registry.Changed -= Refresh;
+		_previousPage.Pressed -= PreviousPage;
+		_nextPage.Pressed -= NextPage;
+		_previousPageCaption.QueueFree();
+		_nextPageCaption.QueueFree();
 	}
 
-	private string FormatRow(StatLine row, int index)
+	private static Label AddNavigationCaption(TextureButton button, string text)
 	{
-		float value = row.Read(CharacterStatCalculator.Calculate(_character, _catalog));
-		if (_page == 1 && index == 0)
-			return $"{Number(_player.Health)}/{Number(value)}";
-		if (_page == 1 && index == 1)
-			return $"{Number(value)}/{Number(value)}"; // 当前魔法量尚无运行时字段。
-		if (row.IsPercent)
-			return $"{Number(value * 100)}%";
-		if (row.RatingDenominator > 0)
+		var caption = new Label
 		{
-			float rating = Math.Max(0, value);
-			float percent = rating / (rating + row.RatingDenominator) * 100;
-			return $"{Number(value)}({Number(MathF.Round(percent, 1))}%)";
-		}
-		return Number(value);
+			Text = text, HorizontalAlignment = HorizontalAlignment.Center,
+			VerticalAlignment = VerticalAlignment.Center, MouseFilter = Control.MouseFilterEnum.Ignore,
+			Visible = false
+		};
+		caption.AddThemeStyleboxOverride("normal", new StyleBoxFlat
+		{
+			BgColor = new Color("70441d"), BorderColor = new Color("dbaa59"),
+			BorderWidthLeft = 2, BorderWidthRight = 2, BorderWidthTop = 2, BorderWidthBottom = 2
+		});
+		caption.AddThemeColorOverride("font_color", new Color("ffe2a2"));
+		button.AddChild(caption);
+		caption.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.FullRect);
+		return caption;
+	}
+
+	private void PreviousPage() => ShowPage(_page - 1);
+	private void NextPage() => ShowPage(_page + 1);
+
+	public void ShowPage(int page)
+	{
+		_page = Math.Clamp(page, 1, PageCount);
+		Refresh();
 	}
 
 	private void UpdateLevel()
@@ -140,5 +147,4 @@ public sealed class CharacterStatsPresenter
 	private static Texture2D LevelDigit(int digit) =>
 		GD.Load<Texture2D>($"res://Assets/Art/AllNumber/Level/Level_{digit}.png");
 
-	private static string Number(float value) => value.ToString("0.##", CultureInfo.InvariantCulture);
 }

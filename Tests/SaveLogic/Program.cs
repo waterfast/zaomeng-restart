@@ -6,6 +6,7 @@ using System.Security.Cryptography;
 using System.Text;
 using Zaomeng.Character;
 using Zaomeng.Inventory;
+using Zaomeng.Equipment;
 using Zaomeng.Save;
 using Zaomeng.Save.Serialization;
 using Zaomeng.Save.Storage;
@@ -15,7 +16,8 @@ try
 {
 	var catalog = new TestCatalog(new Dictionary<string, int> { ["herb"] = 10, ["sword"] = 1 });
 	var inventory = new InventoryService(3, catalog);
-	inventory.RestoreSlots(new ItemStack?[] { null, new("herb", 7), new("sword", 1) });
+	EquipmentInstance sword = EquipmentInstance.Create("sword", 0);
+	inventory.RestoreSlots(new ItemStack?[] { null, new("herb", 7), new("sword", 1, sword) });
 	Check(inventory.Slots[0] is null && inventory.Slots[1] == new ItemStack("herb", 7),
 		"restore keeps empty slots and ordering");
 	int changes = 0;
@@ -33,7 +35,7 @@ try
 		{
 			Capacity = 3,
 			Slots = [null, new ItemStackSaveData { ItemId = "herb", Count = 7 },
-				new ItemStackSaveData { ItemId = "sword", Count = 1 }]
+				new ItemStackSaveData { ItemId = "sword", Count = 1, Equipment = sword }]
 		}
 	};
 	Check(SaveDataEditor.AddItem(data.Inventory, catalog, "herb", 5), "save editor adds item through inventory rules");
@@ -56,6 +58,8 @@ try
 	InventorySaveMapper.Restore(data, restoredInventory);
 	Check(restoredInventory.Slots[1] == new ItemStack("herb", 7),
 		"persistent inventory restores without a scene snapshot");
+	Check(restoredInventory.Slots[2]!.Equipment!.InstanceId == sword.InstanceId,
+		"inventory save and editor retain equipment identity");
 	GameSaveData captured = InventorySaveMapper.Capture(restoredInventory, data);
 	Check(ReferenceEquals(captured, data) && captured.Inventory.Slots[1]?.Count == 7,
 		"inventory capture keeps character and wallet data");
@@ -80,16 +84,12 @@ try
 	Check(loaded.Characters.Count == 2 && loaded.Characters[0].Level == 1 && loaded.Characters[0].BaseStats.Attack == 12 &&
 		loaded.Characters[0].EquippedSkillIds[0] == "rising_dragon" && loaded.Wallet.Souls == 70,
 		"character and shared wallet round trip");
-	var legacy = serializer.Deserialize(
-		"{\"version\":1,\"player\":{\"scenePath\":\"res://Scenes/TestArena.tscn\",\"health\":80,\"facingDirection\":1},\"inventory\":{\"capacity\":1,\"slots\":[null]}}"u8.ToArray());
-	Check(legacy.Wallet.Souls == 0 && legacy.Characters.Count == 0 && legacy.UnlockedLevel == 1,
-		"older version 1 saves gain empty character and wallet data");
+	Expect<NotSupportedException>(() => serializer.Deserialize(
+		"{\"version\":1,\"inventory\":{\"capacity\":1,\"slots\":[null]}}"u8.ToArray()));
 	data.UnlockedLevel = 2;
 	Check(serializer.Deserialize(serializer.Serialize(data)).UnlockedLevel == 2,
 		"unlocked level survives save round trip");
 	data.UnlockedLevel = 1;
-	Check(!Encoding.UTF8.GetString(serializer.Serialize(legacy)).Contains("\"player\"", StringComparison.Ordinal),
-		"legacy scene snapshot is discarded when saved again");
 	wukong.EquippedSkillIds[0] = "unknown";
 	Expect<InvalidDataException>(() => serializer.Serialize(data));
 	wukong.EquippedSkillIds[0] = "rising_dragon";
@@ -145,7 +145,7 @@ try
 		"save deletion removes backup-only slots");
 	Check(!SaveSlotFiles.Delete(plainRoot, 1), "deleting an empty slot reports no change");
 	Expect<NotSupportedException>(() => serializer.Deserialize(
-		"{\"version\":2,\"inventory\":{}}"u8.ToArray()));
+		"{\"version\":999,\"inventory\":{}}"u8.ToArray()));
 	Console.WriteLine("Save logic tests passed.");
 }
 finally
@@ -167,5 +167,7 @@ static void Expect<T>(Action action) where T : Exception
 
 sealed class TestCatalog(IReadOnlyDictionary<string, int> maxStacks) : IItemCatalog
 {
+	public bool TryGetEquipmentSocketCount(string itemId, out int socketCount) { socketCount = 0; return itemId == "sword"; }
+	public bool IsGem(string itemId) => false;
 	public bool TryGetMaxStack(string itemId, out int maxStack) => maxStacks.TryGetValue(itemId, out maxStack);
 }

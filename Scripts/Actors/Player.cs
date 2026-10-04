@@ -1,4 +1,7 @@
 using Godot;
+using System;
+using System.Collections.Generic;
+using Zaomeng.Equipment;
 using SaveCharacter = Zaomeng.Character.Character;
 using Zaomeng.Character;
 using Zaomeng.Items;
@@ -29,13 +32,92 @@ public partial class Player : CharacterActor
 	public bool InputEnabled { get; set; } = true;
 	private int _jumpsUsed;
 	private SaveCharacter? _characterData;
+	private ItemCatalog? _itemCatalog;
+	public CharacterStats? CalculatedStats { get; private set; }
+	[Export] public float MaxMana { get; set; } = 50;
+	public float Mana { get; private set; }
+	public string CharacterId => _characterData?.Id ?? "role_1";
+	public long Experience => _characterData?.Experience ?? 0;
+	public bool IsMaximumLevel => Level >= CharacterProgression.MaxLevel;
+	public long ExperienceToNextLevel => CharacterProgression.ExperienceToNextLevel(Level);
+	public event Action? ProgressionChanged;
+	public event Action<int>? SoulsCollected;
+	private readonly System.Collections.Generic.Dictionary<SkillDefinition, float> _skillCooldowns = new();
+	private float _recoveryClock;
+
+	public override void _Ready()
+	{
+		base._Ready();
+		Mana = MaxMana;
+	}
+
+	public void RestoreMana(float amount)
+	{
+		if (IsDead || amount <= 0 || !float.IsFinite(amount)) return;
+		Mana = Mathf.Min(MaxMana, Mana + amount);
+	}
+
+	public bool TrySpendMana(float amount)
+	{
+		if (IsDead || amount < 0 || !float.IsFinite(amount) || Mana < amount) return false;
+		Mana -= amount;
+		return true;
+	}
+
+	public float GetSkillCooldown(SkillDefinition skill)
+		=> _skillCooldowns.TryGetValue(skill, out float remaining) ? remaining : 0;
+
+	public override bool TryUseSkill(SkillDefinition? skill)
+	{
+		if (skill is null || GetSkillCooldown(skill) > 0) return false;
+		int manaCost = Math.Max(0, skill.GetManaCost(GetSkillLevel(skill)));
+		if (Mana < manaCost || !base.TryUseSkill(skill)) return false;
+		// 动作校验成功后才扣蓝、开始冷却，失败按键不消耗资源。
+		TrySpendMana(manaCost);
+		_skillCooldowns[skill] = Mathf.Max(0, skill.CooldownSeconds);
+		return true;
+	}
+
+	public void GainExperience(long amount)
+	{
+		if (_characterData is null || amount <= 0 || IsDead || IsMaximumLevel) return;
+		_characterData.Experience += Math.Min(amount, long.MaxValue - _characterData.Experience);
+		if (_characterData.Experience >= ExperienceToNextLevel)
+		{
+			// 沿用旧版：升级清空本级经验，不把超出门槛的经验结转到下一等级。
+			_characterData.Level++;
+			_characterData.Experience = 0;
+			CharacterProgression.SyncBaseStats(_characterData);
+			RefreshCharacterStats();
+			CombatTextSpawner.ShowLevelUp(this);
+		}
+		ProgressionChanged?.Invoke();
+	}
+
+	public bool TryCollectSouls(int amount)
+	{
+		if (IsDead || amount <= 0) return false;
+		// 灵魂是存档共用货币，交给关卡写入 Wallet，不混入角色属性。
+		SoulsCollected?.Invoke(amount);
+		return true;
+	}
 
 	public void BindCharacter(SaveCharacter character, ItemCatalog catalog)
 	{
 		_characterData = character;
-		CharacterStats stats = CharacterStatCalculator.Calculate(character, catalog);
-		Level = character.Level;
+		_itemCatalog = catalog;
+		RefreshCharacterStats();
+	}
+
+	public void RefreshCharacterStats()
+	{
+		if (_characterData is null || _itemCatalog is null) return;
+		CharacterStats stats = CharacterStatCalculator.Calculate(_characterData, _itemCatalog);
+		CalculatedStats = stats;
+		Level = _characterData.Level;
 		MaxHealth = stats.MaxHealth;
+		MaxMana = Mathf.Max(0, stats.MaxMana);
+		Mana = Mathf.Clamp(Mana, 0, MaxMana);
 		Attack = stats.Attack;
 		PhysicalDefense = stats.PhysicalDefense;
 		MagicDefense = stats.MagicDefense;
@@ -48,6 +130,7 @@ public partial class Player : CharacterActor
 		ArmorPenetration = stats.ArmorPenetration;
 		MagicPenetration = stats.MagicPenetration;
 		LifeSteal = stats.LifeSteal;
+		if (IsNodeReady()) RefreshHealthLimit();
 	}
 
 	protected override int GetSkillLevel(SkillDefinition skill)
@@ -56,12 +139,32 @@ public partial class Player : CharacterActor
 
 	public override void _PhysicsProcess(double delta)
 	{
+		UpdateResources((float)delta);
 		if (IsOnFloor()) _jumpsUsed = 0;
 		if (InputEnabled) ReadCombatButtons();
 		bool wasOnFloor = IsOnFloor();
 		base._PhysicsProcess(delta);
 		// 走出平台时也视为消耗地面跳，避免空中额外跳两次。
 		if (wasOnFloor && !IsOnFloor() && _jumpsUsed == 0) _jumpsUsed = 1;
+	}
+
+	private void UpdateResources(float delta)
+	{
+		foreach (SkillDefinition skill in new System.Collections.Generic.List<SkillDefinition>(_skillCooldowns.Keys))
+		{
+			float remaining = _skillCooldowns[skill] - delta;
+			if (remaining <= 0) _skillCooldowns.Remove(skill);
+			else _skillCooldowns[skill] = remaining;
+		}
+		if (IsDead) return;
+		_recoveryClock += delta;
+		// 旧版每秒恢复一次，基础回魔为零；装备和永久加成通过汇总属性提供。
+		while (_recoveryClock >= 1)
+		{
+			_recoveryClock -= 1;
+			RestoreMana(CalculatedStats?.ManaRegeneration ?? 0);
+			Heal(Mathf.Floor(CalculatedStats?.HealthRegeneration ?? 0));
+		}
 	}
 
 	private void ReadCombatButtons()

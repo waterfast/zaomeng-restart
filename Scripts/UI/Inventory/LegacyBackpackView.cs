@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using Godot;
+using Zaomeng.Equipment;
+using Zaomeng.Events;
 using Zaomeng.Character;
 using Zaomeng.Items;
 using Zaomeng.Save;
@@ -27,6 +29,16 @@ public sealed class LegacyBackpackView : IDisposable
 	private readonly SaveCharacter _character;
 	private readonly Wallet _wallet;
 	private readonly Action _saveChanges;
+	private readonly GameplayEvents _events;
+	private readonly IDisposable _equipmentConnection;
+	private readonly IDisposable _modificationConnection;
+	private readonly IDisposable _saveFailureConnection;
+	private readonly AcceptDialog _feedback;
+	private readonly GemSocketView _gemSockets;
+	private readonly ItemActionMenu _actionMenu;
+	private readonly IDisposable _itemActionConnection;
+	private readonly List<(Control Control, Control.GuiInputEventHandler Handler)> _activationHandlers = new();
+	private readonly List<(Button Button, Action Handler)> _equipmentClickHandlers = new();
 	private readonly CharacterStatsPresenter _stats;
 	private readonly List<Button> _slots = new();
 	private readonly List<TextureRect> _itemIcons = new();
@@ -41,9 +53,10 @@ public sealed class LegacyBackpackView : IDisposable
 	private readonly TextureButton _previousPage;
 	private readonly TextureButton _nextPage;
 	private readonly TextureButton[] _tabs;
-	private readonly PanelContainer _itemTooltip;
-	private readonly Label _itemTooltipText;
-	private readonly Dictionary<string, (Button Button, Texture2D? EmptyIcon)> _equipmentSlots = new();
+	private readonly LegacyItemTooltip _itemTooltip;
+	public CharacterStatRegistry StatRegistry => _stats.Registry;
+	private readonly Dictionary<string, (Button Button, TextureRect Icon, Texture2D? EmptyIcon)> _equipmentSlots = new();
+	private readonly List<(Button Button, Action Enter, Action Exit)> _equipmentHoverHandlers = new();
 	private ItemCategory _category = ItemCategory.Equipment;
 	private IReadOnlyList<InventoryDisplayEntry> _entries = Array.Empty<InventoryDisplayEntry>();
 	private int _page;
@@ -52,7 +65,9 @@ public sealed class LegacyBackpackView : IDisposable
 	public event Action? CloseRequested;
 
 	public LegacyBackpackView(Node2D root, InventoryViewAdapter adapter, ItemCatalog catalog,
-		SaveCharacter character, Wallet wallet, Player player, Action saveChanges)
+		SaveCharacter character, Wallet wallet, Player player, Action saveChanges,
+		GameplayEvents events,
+		CharacterStatRegistry? statRegistry = null)
 	{
 		_root = root;
 		_adapter = adapter;
@@ -60,12 +75,26 @@ public sealed class LegacyBackpackView : IDisposable
 		_character = character;
 		_wallet = wallet;
 		_saveChanges = saveChanges;
-		_stats = new CharacterStatsPresenter(root, character, player, catalog);
+		_events = events;
+		events.Validate();
+		_feedback = new AcceptDialog { Name = "EquipmentFeedback", Title = "物品提示" };
+		_root.AddChild(_feedback);
+		_gemSockets = new GemSocketView(root, adapter, character, catalog, events, ShowFeedback);
+		_actionMenu = new ItemActionMenu(root, events, ShowFeedback);
+		_itemActionConnection = events.ItemActionCompleted.Subscribe(Refresh);
+		_equipmentConnection = events.EquipmentChanged.Subscribe(OnEquipmentChanged);
+		_modificationConnection = events.EquipmentModified.Subscribe(change =>
+		{
+			if (change.CharacterId == _character.Id) Refresh();
+		});
+		_saveFailureConnection = events.SaveFailed.Subscribe(ShowFeedback);
+		_stats = new CharacterStatsPresenter(root, character, player, catalog, statRegistry);
 		_emptyIcon = GD.Load<Texture2D>("res://Assets/Art/BackPack/AllItems/empty.png");
 		_tabNormal = GD.Load<Texture2D>("res://Assets/Art/BackPack/zb_button.png");
 		_tabSelected = GD.Load<Texture2D>("res://Assets/Art/BackPack/zb_button_choose.png");
 		_scroll = root.GetNode<ScrollContainer>(
 			"Main_Backpack/MarginContainer/VBoxContainer/MarginContainer/Sc_Box");
+		_scroll.GetVScrollBar().ValueChanged += OnScrollChanged;
 		_title = root.GetNode<Label>("Main_Backpack/MarginContainer/VBoxContainer/title");
 		_pageLabel = root.GetNode<Label>("Main_Backpack/ChangePage/CurrentPageText");
 		_coinLabel = root.GetNode<Label>("Main_Backpack/coin_text/coin_number");
@@ -91,6 +120,9 @@ public sealed class LegacyBackpackView : IDisposable
 				continue;
 			int index = _slots.Count;
 			button.Pressed += () => SelectSlot(index);
+			Control.GuiInputEventHandler activate = input => OnSlotInput(index, input);
+			button.GuiInput += activate;
+			_activationHandlers.Add((button, activate));
 			button.MouseEntered += () => ShowItemTooltip(index);
 			button.MouseExited += HideItemTooltip;
 			button.Icon = _emptyIcon;
@@ -111,7 +143,7 @@ public sealed class LegacyBackpackView : IDisposable
 		}
 		if (_slots.Count != SlotsPerPage)
 			throw new InvalidOperationException($"旧背包应有 {SlotsPerPage} 个格子，实际为 {_slots.Count} 个。");
-		(_itemTooltip, _itemTooltipText) = CreateItemTooltip();
+		_itemTooltip = new LegacyItemTooltip(root);
 
 		for (int i = 0; i < _tabs.Length; i++)
 		{
@@ -133,13 +165,36 @@ public sealed class LegacyBackpackView : IDisposable
 
 	public void Dispose()
 	{
+		_gemSockets.Dispose();
+		_actionMenu.Dispose();
+		_itemActionConnection.Dispose();
+		_equipmentConnection.Dispose();
+		_modificationConnection.Dispose();
+		_saveFailureConnection.Dispose();
+		foreach (var (control, handler) in _activationHandlers) control.GuiInput -= handler;
+		foreach (var (button, handler) in _equipmentClickHandlers) button.Pressed -= handler;
+		foreach (var (button, enter, exit) in _equipmentHoverHandlers)
+		{
+			button.MouseEntered -= enter;
+			button.MouseExited -= exit;
+		}
+		_feedback.QueueFree();
+		_stats.Dispose();
 		_adapter.Changed -= RefreshItems;
 		_root.VisibilityChanged -= OnVisibilityChanged;
+		_scroll.GetVScrollBar().ValueChanged -= OnScrollChanged;
+	}
+
+	private void OnScrollChanged(double value)
+	{
+		_actionMenu.Hide();
+		_itemTooltip.Hide();
 	}
 
 	private void OnVisibilityChanged()
 	{
 		if (_root.Visible) Refresh();
+		else { _itemTooltip.Hide(); _actionMenu.Hide(); _gemSockets.Hide(); _feedback.Hide(); }
 	}
 
 	private void Refresh()
@@ -174,12 +229,45 @@ public sealed class LegacyBackpackView : IDisposable
 		if (entryIndex >= _entries.Count) return;
 		_selectedSlot = _entries[entryIndex].SlotIndex;
 		RefreshItems();
-		ShowItemTooltip(index);
+		InventoryDisplayEntry entry = _entries[entryIndex];
+		Button slot = _slots[index];
+		Rect2 area = slot.GetGlobalTransformWithCanvas() * new Rect2(Vector2.Zero, slot.Size);
+		_actionMenu.Show(new(entry.SlotIndex, entry.Definition.Id, entry.Equipment?.InstanceId ?? ""), area, _page, index);
+	}
+
+	private void OnSlotInput(int index, InputEvent input)
+	{
+		if (input is not InputEventMouseButton { Pressed: true } mouse) return;
+		int entryIndex = _page * SlotsPerPage + index;
+		if (entryIndex >= _entries.Count) return;
+		InventoryDisplayEntry entry = _entries[entryIndex];
+		if (entry.Definition.Category != ItemCategory.Equipment) return;
+		if (mouse.ButtonIndex == MouseButton.Right && entry.Equipment is not null)
+		{
+			_itemTooltip.Hide();
+			_actionMenu.Hide();
+			_gemSockets.Show(entry.Equipment);
+			return;
+		}
+	}
+
+	private void OnEquipmentChanged(EquipmentChange change)
+	{
+		if (change.CharacterId != _character.Id) return;
+		_selectedSlot = null;
+		Refresh();
+	}
+
+	private void ShowFeedback(string message)
+	{
+		_feedback.DialogText = message;
+		_feedback.PopupCentered();
 	}
 
 	private void RefreshItems()
 	{
 		HideItemTooltip();
+		_actionMenu.Hide();
 		_entries = _adapter.GetEntries(_category);
 		int pageCount = Math.Max(1, (_entries.Count + SlotsPerPage - 1) / SlotsPerPage);
 		_page = Math.Clamp(_page, 0, pageCount - 1);
@@ -206,59 +294,19 @@ public sealed class LegacyBackpackView : IDisposable
 		}
 	}
 
-	private (PanelContainer Panel, Label Text) CreateItemTooltip()
-	{
-		var style = new StyleBoxFlat
-		{
-			BgColor = new Color("38200f"),
-			BorderColor = new Color("dbaa59"),
-			BorderWidthLeft = 2,
-			BorderWidthTop = 2,
-			BorderWidthRight = 2,
-			BorderWidthBottom = 2,
-			ContentMarginLeft = 10,
-			ContentMarginTop = 8,
-			ContentMarginRight = 10,
-			ContentMarginBottom = 8
-		};
-		var panel = new PanelContainer
-		{
-			Name = "ItemTooltip",
-			MouseFilter = Control.MouseFilterEnum.Ignore,
-			CustomMinimumSize = new Vector2(220, 0),
-			ZIndex = 100,
-			Visible = false
-		};
-		panel.AddThemeStyleboxOverride("panel", style);
-		var label = new Label
-		{
-			MouseFilter = Control.MouseFilterEnum.Ignore,
-			AutowrapMode = TextServer.AutowrapMode.WordSmart,
-			CustomMinimumSize = new Vector2(200, 0)
-		};
-		label.AddThemeColorOverride("font_color", new Color("ffe2a2"));
-		label.AddThemeFontOverride("font", GD.Load<FontFile>("res://Assets/Font/8_FZCuYuan-M03S.ttf"));
-		panel.AddChild(label);
-		_root.AddChild(panel);
-		return (panel, label);
-	}
-
 	private void ShowItemTooltip(int index)
 	{
+		if (_actionMenu.Visible) return;
 		int entryIndex = _page * SlotsPerPage + index;
 		if (entryIndex >= _entries.Count)
 		{
 			HideItemTooltip();
 			return;
 		}
-		_itemTooltipText.Text = ItemTooltip(_entries[entryIndex]);
-		_itemTooltip.Show();
-		Vector2 viewport = _root.GetViewportRect().Size;
-		Vector2 cursor = _root.GetViewport().GetMousePosition();
-		// 放在背包右侧，避免半透明浮层让其它格子看起来被染色。
-		float x = Math.Min(viewport.X - 228, _scroll.GlobalPosition.X + _scroll.Size.X + 8);
-		float y = Mathf.Clamp(cursor.Y, 8, viewport.Y - 120);
-		_itemTooltip.GlobalPosition = new Vector2(x, y);
+		InventoryDisplayEntry entry = _entries[entryIndex];
+		Button slot = _slots[index];
+		Rect2 slotArea = slot.GetGlobalTransformWithCanvas() * new Rect2(Vector2.Zero, slot.Size);
+		_itemTooltip.Show(entry.Definition, entry.Count, slotArea, entry.Equipment, _catalog);
 	}
 
 	private void HideItemTooltip() => _itemTooltip.Hide();
@@ -266,45 +314,84 @@ public sealed class LegacyBackpackView : IDisposable
 	private void BindEquipmentSlots()
 	{
 		const string information = "background/infomation";
-		AddEquipmentSlot("wq", $"{information}/equ_/HBoxContainer/wq");
-		AddEquipmentSlot("fj", $"{information}/equ_/HBoxContainer/fj");
-		AddEquipmentSlot("sp", $"{information}/equ_/VBoxContainer/sp");
-		AddEquipmentSlot("fb", $"{information}/equ_/VBoxContainer/fb");
-		AddEquipmentSlot("tx", $"{information}/tx");
-		AddEquipmentSlot("sz", $"{information}/sz");
-		AddEquipmentSlot("cb", $"{information}/cb");
+		AddEquipmentSlot("wq", $"{information}/equ_/HBoxContainer/wq", EquipmentSlot.Weapon);
+		AddEquipmentSlot("fj", $"{information}/equ_/HBoxContainer/fj", EquipmentSlot.Armor);
+		AddEquipmentSlot("sp", $"{information}/equ_/VBoxContainer/sp", EquipmentSlot.Accessory);
+		AddEquipmentSlot("fb", $"{information}/equ_/VBoxContainer/fb", EquipmentSlot.MagicWeapon);
+		AddEquipmentSlot("tx", $"{information}/tx", EquipmentSlot.Title);
+		AddEquipmentSlot("sz", $"{information}/sz", EquipmentSlot.Costume);
+		AddEquipmentSlot("cb", $"{information}/cb", EquipmentSlot.Wing);
 	}
 
-	private void AddEquipmentSlot(string key, string path)
+	private void AddEquipmentSlot(string key, string path, EquipmentSlot slot)
 	{
 		Button button = _root.GetNode<Button>(path);
-		_equipmentSlots.Add(key, (button, button.Icon));
+		var icon = new TextureRect
+		{
+			Name = "ItemIcon", MouseFilter = Control.MouseFilterEnum.Ignore,
+			StretchMode = TextureRect.StretchModeEnum.Scale,
+			Material = _itemIcons[0].Material
+		};
+		_equipmentSlots.Add(key, (button, icon, button.Icon));
+		button.AddChild(icon);
+		icon.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.FullRect);
+		button.Icon = _emptyIcon;
+		button.SelfModulate = SlotBackgroundTint;
+		button.TooltipText = "";
+		Action openMenu = () =>
+		{
+			_itemTooltip.Hide();
+			if (_character.Equipment.Get(slot) is not EquipmentInstance instance) { _actionMenu.Hide(); return; }
+			Rect2 area = button.GetGlobalTransformWithCanvas() * new Rect2(Vector2.Zero, button.Size);
+			_actionMenu.Show(new(-1, instance.DefinitionId, instance.InstanceId, slot), area, caption: "已穿戴");
+		};
+		button.Pressed += openMenu;
+		_equipmentClickHandlers.Add((button, openMenu));
+		Action hover = () =>
+		{
+			if (_actionMenu.Visible || _character.Equipment.Get(slot) is not EquipmentInstance instance ||
+				!_catalog.TryGetDefinition(instance.DefinitionId, out ItemDefinition? definition)) return;
+			Rect2 area = button.GetGlobalTransformWithCanvas() * new Rect2(Vector2.Zero, button.Size);
+			_itemTooltip.Show(definition!, 1, area, instance, _catalog);
+		};
+		button.MouseEntered += hover;
+		button.MouseExited += HideItemTooltip;
+		_equipmentHoverHandlers.Add((button, hover, HideItemTooltip));
+		Control.GuiInputEventHandler socketInput = input =>
+		{
+			if (input is InputEventMouseButton { ButtonIndex: MouseButton.Right, Pressed: true } &&
+				_character.Equipment.Get(slot) is EquipmentInstance instance)
+			{
+				_itemTooltip.Hide(); _actionMenu.Hide(); _gemSockets.Show(instance);
+			}
+		};
+		button.GuiInput += socketInput;
+		_activationHandlers.Add((button, socketInput));
 	}
 
 	private void RefreshEquipment()
 	{
 		EquipmentLoadout equipment = _character.Equipment;
-		ShowEquipment("wq", equipment.WeaponId);
-		ShowEquipment("fj", equipment.ArmorId);
-		ShowEquipment("sp", equipment.AccessoryId);
-		ShowEquipment("fb", equipment.MagicWeaponId);
-		ShowEquipment("tx", equipment.TitleId);
-		ShowEquipment("sz", equipment.CostumeId);
-		ShowEquipment("cb", equipment.WingId);
+		ShowEquipment("wq", equipment.Get(EquipmentSlot.Weapon));
+		ShowEquipment("fj", equipment.Get(EquipmentSlot.Armor));
+		ShowEquipment("sp", equipment.Get(EquipmentSlot.Accessory));
+		ShowEquipment("fb", equipment.Get(EquipmentSlot.MagicWeapon));
+		ShowEquipment("tx", equipment.Get(EquipmentSlot.Title));
+		ShowEquipment("sz", equipment.Get(EquipmentSlot.Costume));
+		ShowEquipment("cb", equipment.Get(EquipmentSlot.Wing));
 	}
 
-	private void ShowEquipment(string key, string itemId)
+	private void ShowEquipment(string key, EquipmentInstance? instance)
 	{
-		(Button button, Texture2D? emptyIcon) = _equipmentSlots[key];
+		(Button button, TextureRect icon, Texture2D? emptyIcon) = _equipmentSlots[key];
+		string itemId = instance?.DefinitionId ?? "";
 		if (_catalog.TryGetDefinition(itemId, out ItemDefinition? definition))
 		{
-			button.Icon = definition!.Icon ?? emptyIcon;
-			button.TooltipText = definition.DisplayName;
+			icon.Texture = definition!.Icon ?? emptyIcon;
 		}
 		else
 		{
-			button.Icon = emptyIcon;
-			button.TooltipText = itemId.Length == 0 ? "" : $"尚未迁入物品定义：{itemId}";
+			icon.Texture = emptyIcon;
 		}
 	}
 
@@ -321,12 +408,4 @@ public sealed class LegacyBackpackView : IDisposable
 		_saveChanges();
 	}
 
-	private static string ItemTooltip(InventoryDisplayEntry entry)
-	{
-		ItemDefinition definition = entry.Definition;
-		string stats = definition.Category == ItemCategory.Equipment
-			? $"攻击 +{definition.Attack}　暴击值 +{definition.CriticalRating}　命中值 +{definition.Accuracy}"
-			: $"数量 {entry.Count}";
-		return $"{definition.DisplayName}\n{stats}\n{definition.Description}";
-	}
 }

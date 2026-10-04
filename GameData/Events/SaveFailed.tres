@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="StringEventChannel" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Events/StringEventChannel.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+Description = "穿戴已经完成，但存档写盘失败；消息用于界面提示。"

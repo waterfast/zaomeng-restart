@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Zaomeng.Inventory;
+using Zaomeng.Equipment;
 
 var catalog = new TestCatalog(new Dictionary<string, int>
 {
@@ -63,6 +64,22 @@ Check(largeInventory.GetItemCount("large") == int.MaxValue,
 ExpectException<ArgumentOutOfRangeException>(() => inventory.AddItem("herb", 0));
 ExpectException<ArgumentOutOfRangeException>(() => inventory.MoveStack(-1, 0, 1));
 ExpectException<ArgumentException>(() => inventory.RemoveItem(" ", 1));
+var gearBag = new InventoryService(3, catalog);
+Check(gearBag.AddItem("sword", 2), "two weapons create two physical items");
+EquipmentInstance firstWeapon = gearBag.Slots[0]!.Equipment!;
+EquipmentInstance secondWeapon = gearBag.Slots[1]!.Equipment!;
+Check(firstWeapon.InstanceId != secondWeapon.InstanceId, "equipment acquisition assigns unique IDs");
+var gearSnapshot = gearBag.Slots;
+Check(gearBag.MoveStack(0, 2, 1) && ReferenceEquals(gearBag.Slots[2]!.Equipment, firstWeapon),
+	"moving equipment preserves its original instance");
+Check(gearBag.RemoveEquipment(secondWeapon.InstanceId) && gearBag.Slots[1] is null,
+	"equipment removal targets a particular instance");
+Check(!gearBag.RemoveEquipment(secondWeapon.InstanceId) && gearBag.Slots[2]!.Equipment!.InstanceId == firstWeapon.InstanceId,
+	"repeating removal does not destroy another same-name item");
+Check(gearSnapshot[0]!.Equipment!.InstanceId == firstWeapon.InstanceId && gearSnapshot[1]!.Equipment!.InstanceId == secondWeapon.InstanceId,
+	"equipment snapshots remain unchanged after move and removal");
+ExpectException<ArgumentException>(() => gearBag.RestoreSlots([gearBag.Slots[2], gearBag.Slots[2], null]));
+Check(gearBag.Slots[2]!.Equipment!.InstanceId == firstWeapon.InstanceId, "duplicate restore preserves original equipment");
 Console.WriteLine("Inventory logic tests passed.");
 
 static bool SameSlots(IReadOnlyList<ItemStack?> first, IReadOnlyList<ItemStack?> second)
@@ -98,6 +115,8 @@ static void ExpectException<T>(Action action) where T : Exception
 
 sealed class TestCatalog(IReadOnlyDictionary<string, int> maxStacks) : IItemCatalog
 {
+	public bool TryGetEquipmentSocketCount(string itemId, out int socketCount) { socketCount = 0; return itemId == "sword"; }
+	public bool IsGem(string itemId) => itemId == "gem";
 	public bool TryGetMaxStack(string itemId, out int maxStack) =>
 		maxStacks.TryGetValue(itemId, out maxStack);
 }

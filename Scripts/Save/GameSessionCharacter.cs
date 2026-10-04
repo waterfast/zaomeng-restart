@@ -28,6 +28,9 @@ public static class GameSessionCharacter
 
 		InventoryService inventory = GameSession.PrepareInventory(catalog);
 		GameSaveData data = GameSession.Data!;
+		foreach (SaveCharacter entry in data.Characters)
+			foreach (var (slot, instance) in entry.Equipment.Slots)
+				catalog.ValidateEquipmentInstance(instance, slot);
 		SaveCharacter? character = data.Characters.FirstOrDefault(entry => entry.Id == "role_1")
 			?? data.Characters.FirstOrDefault();
 		bool updated = false;
@@ -37,7 +40,7 @@ public static class GameSessionCharacter
 			data.Characters.Add(character);
 			updated = true;
 		}
-		// 基础属性由角色和等级推导，旧存档中的演示值也在此修正。
+		// 基础属性由角色和等级推导，不把装备或宝石加成写回基础值。
 		updated |= CharacterProgression.SyncBaseStats(character);
 		if (updated)
 			GameSession.Save(inventory);
