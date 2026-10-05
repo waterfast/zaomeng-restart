@@ -8,3 +8,4 @@ Tests/*-preview.png
 Tests/*-preview.png.import
 __pycache__/
 *.pyc
+.DS_Store

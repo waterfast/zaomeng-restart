@@ -8,6 +8,7 @@ public partial class WorldMapDefinition : Resource
 {
 	[Export(PropertyHint.File, "*.tscn")] public string ScenePath { get; set; } = "";
 	[Export] public bool HasPlayableLevels { get; set; }
+	[Export] public Godot.Collections.Array<LevelEntranceDefinition> LevelEntrances { get; set; } = new();
 	[Export] public NodePath SkillButton { get; set; } = "";
 	[Export] public NodePath QuestButton { get; set; } = "";
 	[Export] public NodePath SaveButton { get; set; } = "";

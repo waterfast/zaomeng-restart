@@ -1,10 +1,32 @@
 [gd_resource type="Resource" script_class="WorldMapDefinition" format=3]
 [ext_resource type="Script" path="res://Scripts/UI/MainMenu/WorldMapDefinition.cs" id="1"]
 [ext_resource type="Resource" path="res://Content/Maps/Underworld.tres" id="next"]
+[ext_resource type="Script" path="res://Scripts/UI/MainMenu/LevelEntranceDefinition.cs" id="entrance"]
+[ext_resource type="Resource" path="res://Content/Levels/forest.tres" id="forest"]
+[ext_resource type="Resource" path="res://Content/Levels/forest_dark.tres" id="forest_dark"]
+[ext_resource type="Resource" path="res://Content/Levels/water_cave.tres" id="water_cave"]
+[ext_resource type="Resource" path="res://Content/Levels/peach_garden.tres" id="peach_garden"]
+
+[sub_resource type="Resource" id="entry1"]
+script = ExtResource("entrance")
+ButtonPath = NodePath("level_1")
+Levels = Array[Resource]([ExtResource("forest"), ExtResource("forest_dark")])
+
+[sub_resource type="Resource" id="entry2"]
+script = ExtResource("entrance")
+ButtonPath = NodePath("level_2")
+Levels = Array[Resource]([ExtResource("water_cave")])
+
+[sub_resource type="Resource" id="entry3"]
+script = ExtResource("entrance")
+ButtonPath = NodePath("level_3")
+Levels = Array[Resource]([ExtResource("peach_garden")])
+
 [resource]
 script = ExtResource("1")
 ScenePath = "res://Scenes/UI/MainMenu/Map1.tscn"
 HasPlayableLevels = true
+LevelEntrances = Array[Resource]([SubResource("entry1"), SubResource("entry2"), SubResource("entry3")])
 SkillButton = NodePath("Skill_learn")
 QuestButton = NodePath("Task")
 SaveButton = NodePath("bc_game")

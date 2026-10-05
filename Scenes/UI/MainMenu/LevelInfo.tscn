@@ -1,0 +1,349 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://Scripts/UI/MainMenu/LevelPreviewPanel.cs" id="runtime"]
+
+[ext_resource type="Texture2D" path="res://Assets/Art/show_text/502.png" id="2"]
+
+[ext_resource type="Texture2D" path="res://Assets/Art/Level/Challenge/ui_beizhan_anniudi.png" id="3"]
+
+[ext_resource type="FontFile" path="res://Assets/Font/HYZhuZiMeiXinTiW.ttf" id="4"]
+
+[ext_resource type="Texture2D" path="res://Assets/Art/BackPack/ClothesChange/8.png" id="5"]
+
+[ext_resource type="Texture2D" path="res://Assets/Art/BackPack/ClothesChange/10.png" id="6"]
+
+[ext_resource type="Texture2D" path="res://Assets/Art/LevelInfoBg/hgs.png" id="7"]
+
+[ext_resource type="FontFile" path="res://Assets/Font/Aa文徵明琴赋小楷_mianfeiziti.com.ttf" id="8"]
+
+[ext_resource type="Texture2D" path="res://Assets/Art/Level/Challenge/ui_beizhan_bmiaoshudi.png" id="9"]
+
+[ext_resource type="Texture2D" path="res://Assets/Art/Level/Challenge/ui_beizhan_diaoluodi.png" id="10"]
+
+[ext_resource type="Texture2D" path="res://Assets/Art/MagicWeapon/149.png" id="11"]
+
+[ext_resource type="Texture2D" path="res://Assets/Art/MagicWeapon/145.png" id="12"]
+
+[ext_resource type="FontFile" path="res://Assets/Font/华康宋体W3.ttc" id="13"]
+
+[node name="LevelInfo" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -77.0
+offset_top = -40.0
+offset_right = -77.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.1, 1.1)
+script = ExtResource("runtime")
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -35.0
+offset_top = -24.0
+offset_right = 970.0
+offset_bottom = 612.0
+color = Color(0, 0, 0, 0.478431)
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect"]
+layout_mode = 0
+offset_left = 319.545
+offset_top = 93.0909
+offset_right = 1045.545
+offset_bottom = 567.091
+scale = Vector2(0.8, 0.8)
+texture = ExtResource( "2" )
+mouse_filter = 2
+
+[node name="UiBeizhanAnniudi" type="Sprite2D" parent="ColorRect/TextureRect"]
+position = Vector2(360.435, 57.6801)
+rotation = -1.57292
+scale = Vector2(0.414757, 2.22928)
+texture = ExtResource( "3" )
+
+[node name="Title" type="Label" parent="ColorRect/TextureRect"]
+texture_filter = 2
+layout_mode = 0
+offset_left = 60.0
+offset_top = 39.0
+offset_right = 650.0
+offset_bottom = 78.0
+theme_override_colors/font_color = Color(0.952941, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource( "4" )
+theme_override_font_sizes/font_size = 35
+horizontal_alignment = 1
+vertical_alignment = 1
+mouse_filter = 2
+
+[node name="Close" type="TextureButton" parent="ColorRect/TextureRect"]
+layout_mode = 0
+offset_left = 645.454
+offset_top = 6.81818
+offset_right = 703.454
+offset_bottom = 62.8182
+scale = Vector2(1.2, 1.2)
+texture_normal = ExtResource( "5" )
+texture_pressed = ExtResource( "5" )
+texture_hover = ExtResource( "6" )
+texture_disabled = ExtResource( "5" )
+
+[node name="Mybg" type="TextureRect" parent="ColorRect/TextureRect"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 89.0
+offset_right = 850.0
+offset_bottom = 269.0
+scale = Vector2(0.83, 0.65)
+texture = ExtResource( "7" )
+expand_mode = 1
+mouse_filter = 2
+
+[node name="Enemy" type="Label" parent="ColorRect/TextureRect"]
+texture_filter = 2
+layout_mode = 0
+offset_left = 21.5915
+offset_top = 94.3182
+offset_right = 141.592
+offset_bottom = 129.318
+theme_override_colors/font_color = Color(0.952941, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource( "8" )
+theme_override_font_sizes/font_size = 24
+text = "敌方阵容："
+mouse_filter = 2
+
+[node name="TextureRect2" type="TextureRect" parent="ColorRect/TextureRect"]
+visible = false
+layout_mode = 0
+offset_left = 37.5
+offset_top = 112.5
+offset_right = 692.5
+offset_bottom = 183.5
+texture = ExtResource( "9" )
+stretch_mode = 2
+
+[node name="ScrollContainer2" type="ScrollContainer" parent="ColorRect/TextureRect"]
+layout_mode = 0
+offset_left = 133.0
+offset_top = 100.682
+offset_right = 693.0
+offset_bottom = 188.682
+mouse_filter = 0
+
+[node name="MonsterList" type="HBoxContainer" parent="ColorRect/TextureRect/ScrollContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 0
+theme_override_constants/separation = 10
+
+[node name="TextureRect3" type="TextureRect" parent="ColorRect/TextureRect"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 345.773
+offset_right = 676.0
+offset_bottom = 460.773
+scale = Vector2(1, 0.7)
+texture = ExtResource( "10" )
+stretch_mode = 2
+mouse_filter = 2
+
+[node name="Challenge" type="TextureButton" parent="ColorRect/TextureRect"]
+layout_mode = 0
+offset_left = 608.75
+offset_top = 339.773
+offset_right = 713.75
+offset_bottom = 444.773
+texture_normal = ExtResource( "11" )
+texture_pressed = ExtResource( "11" )
+texture_hover = ExtResource( "12" )
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="ColorRect/TextureRect/Challenge"]
+texture_filter = 2
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 101.0
+offset_bottom = 97.0
+theme_override_colors/font_color = Color(0.929412, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = ExtResource( "4" )
+theme_override_font_sizes/font_size = 31
+text = "挑战"
+horizontal_alignment = 1
+vertical_alignment = 1
+mouse_filter = 2
+
+[node name="pj" type="Label" parent="ColorRect/TextureRect"]
+texture_filter = 2
+layout_mode = 0
+offset_left = 20.5
+offset_top = 299.545
+offset_right = 296.5
+offset_bottom = 335.545
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 12
+theme_override_fonts/font = ExtResource( "13" )
+theme_override_font_sizes/font_size = 22
+text = "本关历史最高评价："
+horizontal_alignment = 2
+mouse_filter = 2
+
+[node name="MyPj" type="Label" parent="ColorRect/TextureRect/pj"]
+layout_mode = 0
+offset_left = 279.523
+offset_top = -0.568178
+offset_right = 329.523
+offset_bottom = 28.4318
+theme_override_colors/font_color = Color(0.505882, 0.505882, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource( "4" )
+theme_override_font_sizes/font_size = 22
+text = "暂无"
+vertical_alignment = 1
+mouse_filter = 2
+
+[node name="Fall" type="Label" parent="ColorRect/TextureRect"]
+texture_filter = 2
+layout_mode = 0
+offset_left = 12.0
+offset_top = 352.773
+offset_right = 207.0
+offset_bottom = 422.773
+theme_override_colors/font_color = Color(0.952941, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.952941, 1, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = ExtResource( "13" )
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 2
+mouse_filter = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ColorRect/TextureRect"]
+layout_mode = 2
+offset_left = 217.0
+offset_top = 355.773
+offset_right = 600.0
+offset_bottom = 419.773
+
+[node name="FallList" type="HBoxContainer" parent="ColorRect/TextureRect/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/separation = 7
+
+[node name="Speed" type="TextureButton" parent="ColorRect/TextureRect"]
+layout_mode = 0
+offset_left = 565.909
+offset_top = 295.454
+offset_right = 658.909
+offset_bottom = 330.454
+texture_normal = ExtResource( "11" )
+texture_pressed = ExtResource( "11" )
+texture_hover = ExtResource( "12" )
+texture_disabled = ExtResource( "11" )
+
+[node name="createspeed" type="Label" parent="ColorRect/TextureRect/Speed"]
+texture_filter = 2
+layout_mode = 0
+offset_left = -155.0
+offset_top = 3.59091
+offset_right = -1.0
+offset_bottom = 29.5909
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 12
+theme_override_fonts/font = ExtResource( "13" )
+theme_override_font_sizes/font_size = 22
+text = "怪物生成速度："
+mouse_filter = 2
+
+[node name="speedtext" type="Label" parent="ColorRect/TextureRect/Speed"]
+texture_filter = 2
+layout_mode = 0
+offset_left = 3.0
+offset_top = -3.68182
+offset_right = 91.0
+offset_bottom = 36.3182
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = ExtResource( "8" )
+theme_override_font_sizes/font_size = 27
+text = "× 2"
+horizontal_alignment = 1
+vertical_alignment = 1
+mouse_filter = 2
+
+[node name="Level" type="Label" parent="ColorRect/TextureRect"]
+layout_mode = 0
+offset_left = 410.0
+offset_top = 255.0
+offset_right = 474.0
+offset_bottom = 275.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 1, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = ExtResource( "13" )
+theme_override_font_sizes/font_size = 25
+text = "等级压制:"
+mouse_filter = 2
+
+[node name="LevelDown" type="Label" parent="ColorRect/TextureRect/Level"]
+layout_mode = 0
+offset_left = 115.001
+offset_top = 0.681824
+offset_right = 342.001
+offset_bottom = 29.6818
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 1, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = ExtResource( "13" )
+theme_override_font_sizes/font_size = 25
+text = "10"
+mouse_filter = 2
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.909
+offset_top = -255.909
+offset_right = 453.091
+offset_bottom = 280.091
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0)

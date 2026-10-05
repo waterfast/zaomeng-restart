@@ -5,6 +5,7 @@ using Zaomeng.Inventory;
 using Zaomeng.Items;
 using Zaomeng.Save.Serialization;
 using Zaomeng.Save.Storage;
+using Zaomeng.Level;
 
 namespace Zaomeng.Save;
 
@@ -18,6 +19,17 @@ public static class GameSession
 	public static int Slot { get; private set; }
 	public static GameSaveData? Data { get; private set; }
 	public static InventoryService? Inventory { get; private set; }
+	public static LevelDefinition? SelectedLevel { get; private set; }
+	public static float SelectedSpawnSpeed { get; private set; } = 1;
+
+	public static void SelectLevel(LevelDefinition level, float spawnSpeed)
+	{
+		if (string.IsNullOrWhiteSpace(level.LevelScenePath) || !ResourceLoader.Exists(level.LevelScenePath) ||
+			level.MapScene is null || level.ProgressLevel < 1 || spawnSpeed <= 0)
+			throw new ArgumentException("关卡缺少场景、地图或有效的出怪配置。");
+		SelectedLevel = level;
+		SelectedSpawnSpeed = spawnSpeed;
+	}
 
 	public static bool SlotExists(int slot)
 		=> SaveSlotFiles.Exists(SaveDirectory, slot, "json");
@@ -43,6 +55,7 @@ public static class GameSession
 			Slot = 0;
 			Data = null;
 			Inventory = null;
+			SelectedLevel = null;
 		}
 		return deleted;
 	}
@@ -52,6 +65,7 @@ public static class GameSession
 		Slot = slot;
 		Data = null;
 		Inventory = null;
+		SelectedLevel = null;
 	}
 
 	public static void Load(int slot)
@@ -60,6 +74,7 @@ public static class GameSession
 		Slot = slot;
 		Data = data;
 		Inventory = null;
+		SelectedLevel = null;
 	}
 
 	public static void BeginNewGame(ItemCatalog catalog, string characterId = "role_1")

@@ -19,6 +19,7 @@ public partial class GameplayLevel : Node2D
 	[Export(PropertyHint.Range, "1,3,1")] public int LevelNumber { get; set; } = 1;
 	[Export] public ItemCatalog ItemCatalog { get; set; } = null!;
 	[Export] public GameplayEvents Events { get; set; } = null!;
+	[Export] public LevelDefinition? DefaultDefinition { get; set; }
 	[Export] public float SpawnInterval { get; set; } = 2.1f;
 	[Export] public int MaximumMonsters { get; set; } = 5;
 
@@ -47,9 +48,19 @@ public partial class GameplayLevel : Node2D
 	private ComboHud _combo = null!;
 	private AnimatedSprite2D _advancePrompt = null!;
 	private readonly HashSet<Monster> _lootAwarded = new();
+	private LevelDefinition _definition = null!;
+	private float _selectedSpawnSpeed = 1;
 
 	public override void _EnterTree()
 	{
+		_definition = GameSession.SelectedLevel is { } selected && selected.ProgressLevel == LevelNumber
+			? selected : DefaultDefinition ?? throw new InvalidOperationException("关卡没有配置 LevelDefinition。");
+		_selectedSpawnSpeed = ReferenceEquals(_definition, GameSession.SelectedLevel) ? GameSession.SelectedSpawnSpeed : 1;
+		if (_definition.MapScene is null) throw new InvalidOperationException($"{_definition.Id} 缺少地图场景。");
+		var map = _definition.MapScene.Instantiate<Node2D>();
+		map.Name = "Map";
+		AddChild(map);
+		MoveChild(map, 0);
 		(_character, _inventory) = GameSessionCharacter.Prepare(ItemCatalog);
 		var role = SkillCatalogRegistry.Default.Get(_character.Id);
 		Player existing = GetNode<Player>("Player");
@@ -124,10 +135,10 @@ public partial class GameplayLevel : Node2D
 		oldHud.GetNode<BaseButton>("roleLayer/role_menu/skill").Pressed += () => menus.ToggleMenu("skills_menu");
 		oldHud.GetNode<BaseButton>("roleLayer/role_menu/magic_weapon").Pressed += () => menus.ToggleMenu("bag");
 		oldHud.GetNode<BaseButton>("roleLayer/role_menu/pet").Disabled = true;
-		if (LevelNumber == 1)
+		if (_definition.WaveEncounter is { } waves)
 		{
 			_forest = new ForestEncounter();
-			_forest.Configure(this, _player, _pool);
+			_forest.Configure(this, _player, _pool, waves, _definition.DisplayName, _selectedSpawnSpeed);
 			_forest.MonsterDefeated += AwardLoot;
 			_forest.Cleared += () => { _exitPending = true; _exitDelay = 2; };
 			AddChild(_forest);
@@ -199,12 +210,12 @@ public partial class GameplayLevel : Node2D
 		}
 		if (_forest is not null || _transitioning || _player.IsDead || _active.Count >= MaximumMonsters) return;
 		_spawnClock += (float)delta;
-		if (_spawnClock < SpawnInterval) return;
+		if (_spawnClock < SpawnInterval / _selectedSpawnSpeed) return;
 		_spawnClock = 0;
 		SpawnRandomMonster();
 	}
 
-	private string LevelName => LevelNumber switch { 1 => "花果山", 2 => "水帘洞", _ => "桃花源" };
+	private string LevelName => _definition.DisplayName;
 
 	private void SaveProgression() => GameSession.Save(_inventory);
 
@@ -309,14 +320,14 @@ public partial class GameplayLevel : Node2D
 		_advancePrompt.Hide();
 		foreach (Node node in GetTree().GetNodesInGroup("monsters"))
 			if (node is Monster monster) { monster.AiEnabled = false; monster.SetPhysicsProcess(false); }
-		if (victory) GameSession.CompleteLevel(LevelNumber, _inventory);
+		if (victory) GameSession.CompleteLevel(_definition.ProgressLevel, _inventory);
 		else GameSession.Save(_inventory);
 	}
 	private void OpenExit()
 	{
 		_exitPending = false;
 		_exit = GD.Load<PackedScene>("res://Scenes/LevelExit.tscn").Instantiate<LevelExit>();
-		_exit.Position = new(ForestEncounter.FinalBoundaryX - 120, 427);
+		_exit.Position = _definition.WaveEncounter!.ExitPosition;
 		_exit.Bind(_player);
 		_exit.Activated += () => BeginEnding(true);
 		AddChild(_exit);
@@ -343,13 +354,13 @@ public partial class GameplayLevel : Node2D
 
 	private void AwardLoot(Monster monster)
 	{
-		string[] pool = LevelNumber == 1 ? ["ptxzg", "ptxzf"] : ["ptxzg", "ptxzf", "dsyj", "dslj", "jcsz"];
+		string[] pool = _definition.CommonDropIds;
 		if (monster.IsBoss)
 		{
-			foreach (string id in new[] { "dsyj", "dslj", "dshl" })
+			foreach (string id in _definition.BossDropIds)
 				if (!_inventory.AddItem(id, 1)) _status.Text = "背包已满，无法领取 Boss 装备";
 		}
-		else if (GD.Randf() < 0.18f) _inventory.AddItem(pool[GD.RandRange(0, pool.Length - 1)], 1);
+		else if (pool.Length > 0 && GD.Randf() < 0.18f) _inventory.AddItem(pool[GD.RandRange(0, pool.Length - 1)], 1);
 		GameSession.Save(_inventory);
 	}
 

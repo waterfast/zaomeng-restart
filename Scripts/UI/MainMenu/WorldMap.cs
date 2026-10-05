@@ -5,6 +5,7 @@ using Zaomeng.Save;
 using Zaomeng.Skills;
 using Zaomeng.Quests;
 using Zaomeng.UI.Quests;
+using Zaomeng.Level;
 
 namespace Zaomeng.UI.MainMenu;
 
@@ -16,6 +17,8 @@ public partial class WorldMap : Node2D
 	private QuestInteraction? _quests;
 	private MenuManager _menus = null!;
 	private AcceptDialog _feedback = null!;
+	private CanvasLayer _layer = null!;
+	private LevelPreviewPanel? _preview;
 
 	public override void _Ready()
 	{
@@ -23,6 +26,7 @@ public partial class WorldMap : Node2D
 		var (character, inventory) = GameSessionCharacter.Prepare(catalog);
 		_inventory = inventory;
 		var layer = new CanvasLayer();
+		_layer = layer;
 		AddChild(layer);
 		_feedback = new AcceptDialog { Title = "地图", ProcessMode = ProcessModeEnum.Always };
 		layer.AddChild(_feedback);
@@ -54,18 +58,13 @@ public partial class WorldMap : Node2D
 		BindButton(Definition.QuestButton, () => menus.ToggleMenu("quests_menu"));
 		if (Definition.HasPlayableLevels)
 		{
-			for (int level = 1; level <= 3; level++)
+			foreach (LevelEntranceDefinition entrance in Definition.LevelEntrances)
 			{
-				int selectedLevel = level;
-				var button = GetNode<TextureButton>($"level_{level}");
-				button.Disabled = level > GameSession.Data!.UnlockedLevel;
-				button.TooltipText = level switch
-				{
-					1 => "花果山",
-					2 => "水帘洞",
-					_ => "桃花源"
-				};
-				button.Pressed += () => EnterLevel(selectedLevel);
+				if (entrance.Levels.Count == 0) continue;
+				var button = GetNode<TextureButton>(entrance.ButtonPath);
+				button.Disabled = entrance.Levels[0].ProgressLevel > GameSession.Data!.UnlockedLevel;
+				button.TooltipText = entrance.Levels[0].DisplayName;
+				button.Pressed += () => OpenLevelPreview(entrance, catalog);
 			}
 		}
 		BindButton(Definition.SaveButton, () => TrySave());
@@ -105,10 +104,31 @@ public partial class WorldMap : Node2D
 	}
 	private void ShowFeedback(string message) { _feedback.DialogText = message; _feedback.PopupCentered(); }
 
-	private void EnterLevel(int level)
+	private void OpenLevelPreview(LevelEntranceDefinition entrance, ItemCatalog catalog)
 	{
-		if (level > GameSession.Data!.UnlockedLevel) return;
-		GetTree().ChangeSceneToFile($"res://Scenes/Level/Level_{level}.tscn");
+		if (_preview is not null) return;
+		if (entrance.Levels.Count == 0 || entrance.Levels[0].ProgressLevel > GameSession.Data!.UnlockedLevel) return;
+		_menus.CloseMenu();
+		_preview = GD.Load<PackedScene>("res://Scenes/UI/MainMenu/LevelInfo.tscn").Instantiate<LevelPreviewPanel>();
+		_preview.Bind(entrance, catalog);
+		_preview.Closed += CloseLevelPreview;
+		_preview.ChallengeRequested += EnterLevel;
+		_layer.AddChild(_preview);
+	}
+
+	private void CloseLevelPreview()
+	{
+		_preview?.QueueFree();
+		_preview = null;
+	}
+
+	private void EnterLevel(LevelDefinition level, float spawnSpeed)
+	{
+		if (level.ProgressLevel > GameSession.Data!.UnlockedLevel) return;
+		try { GameSession.SelectLevel(level, spawnSpeed); }
+		catch (System.Exception error) { ShowFeedback(error.Message); return; }
+		Error result = GetTree().ChangeSceneToFile(level.LevelScenePath);
+		if (result != Error.Ok) ShowFeedback($"进入关卡失败：{result}");
 	}
 	public override void _ExitTree() => _quests?.Dispose();
 }
