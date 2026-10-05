@@ -9,7 +9,7 @@ public enum GemAttribute
 {
 	Health, Mana, Attack, PhysicalDefense, MagicDefense, Critical, Dodge,
 	HealthRegeneration, ManaRegeneration, Accuracy, Luck, Toughness,
-	ArmorPenetration, MagicPenetration, LifeSteal, CriticalResistance
+	ArmorPenetration, MagicPenetration, LifeSteal, CriticalResistance, Haste, SkillLevel
 }
 
 /// <summary>宝石是可堆叠物品；镶嵌后定义 ID 留在装备实例中，效果仍由资源提供。</summary>
@@ -42,6 +42,8 @@ public partial class GemDefinition : ItemDefinition
 			case GemAttribute.MagicPenetration: result.MagicPenetration = Bonus; break;
 			case GemAttribute.LifeSteal: result.LifeSteal = Bonus; break;
 			case GemAttribute.CriticalResistance: result.CriticalResistance = Bonus; break;
+			case GemAttribute.Haste: result.HasteRating = Bonus; break;
+			case GemAttribute.SkillLevel: result.SkillLevelBonus = Bonus; break;
 			default: throw new InvalidOperationException("未知的宝石属性类型。");
 		}
 		return result;

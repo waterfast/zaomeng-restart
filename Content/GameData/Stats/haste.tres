@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CharacterStatDefinition" format=3]
+[ext_resource type="Script" path="res://Scripts/Character/CharacterStatDefinition.cs" id="1"]
+[resource]
+script = ExtResource("1")
+Id = "haste"
+Field = 16
+NameKey = "STAT_HASTE_NAME"
+DescriptionKey = "STAT_HASTE_DESCRIPTION"
+Format = 3
+RatingConstant = 100

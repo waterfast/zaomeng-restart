@@ -1,0 +1,21 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://Scripts/Combat/Skills/SkillProjectile.cs" id="behavior"]
+[ext_resource type="Script" path="res://Scripts/Combat/HitDefinition.cs" id="hit"]
+[ext_resource type="SpriteFrames" path="res://Content/Skills/Tangseng/IceDragonFrames.tres" id="frames"]
+
+[sub_resource type="Resource" id="damage"]
+script = ExtResource("hit")
+AttackMultiplier = 0.6
+MultiplierPerLevel = 0.05
+DamageType = 1
+Knockback = Vector2(90, -60)
+
+[node name="IceDragon" type="Node2D"]
+script = ExtResource("behavior")
+Speed = 600.0
+Lifetime = 1.4
+HitRadius = 55.0
+VisualScale = 1
+Hit = SubResource("damage")
+Frames = ExtResource("frames")
+Animation = &"Role2Bullet2"

@@ -4,6 +4,8 @@ namespace Zaomeng;
 
 public partial class Monster : CharacterActor
 {
+    [Export] public bool IsBoss { get; set; }
+    [Export] public string DisplayName { get; set; } = "小怪";
     [Export] public int ExperienceReward { get; set; } = 1;
     [Export] public int SoulValuePerOrb { get; set; } = 1;
     [Export] public NodePath TargetPath { get; set; } = new("../Player");
@@ -17,6 +19,7 @@ public partial class Monster : CharacterActor
     public override void _Ready()
     {
         base._Ready();
+        AddToGroup("monsters");
         _target = GetNodeOrNull<CharacterActor>(TargetPath);
     }
 

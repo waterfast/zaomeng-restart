@@ -1,6 +1,7 @@
 using System;
 using Zaomeng.Items;
 using Zaomeng.Equipment;
+using Zaomeng.Skills;
 
 namespace Zaomeng.Character;
 
@@ -14,6 +15,8 @@ public static class CharacterStatCalculator
 		var result = new CharacterStats();
 		Add(result, character.BaseStats);
 		Add(result, character.PermanentBonuses);
+		// 每次从登记资源重算，不把学习效果累计写入基础或永久属性。
+
 
 		foreach (EquipmentSlot slot in Enum.GetValues<EquipmentSlot>())
 		{
@@ -22,6 +25,7 @@ public static class CharacterStatCalculator
 			catalog.ValidateEquipmentInstance(instance, slot);
 			Add(result, CalculateEquipment(instance, catalog));
 		}
+		SkillCatalogRegistry.Default.Find(character.Id)?.AddPassiveBonuses(character, result);
 		return result;
 	}
 
@@ -48,7 +52,8 @@ public static class CharacterStatCalculator
 		left.Luck == right.Luck && left.Toughness == right.Toughness &&
 		left.Accuracy == right.Accuracy && left.CriticalResistance == right.CriticalResistance &&
 		left.ArmorPenetration == right.ArmorPenetration &&
-		left.MagicPenetration == right.MagicPenetration;
+		left.MagicPenetration == right.MagicPenetration && left.HasteRating == right.HasteRating &&
+		left.SkillLevelBonus == right.SkillLevelBonus;
 
 	private static void Add(CharacterStats total, CharacterStats bonus)
 	{
@@ -68,5 +73,7 @@ public static class CharacterStatCalculator
 		total.CriticalResistance += bonus.CriticalResistance;
 		total.ArmorPenetration += bonus.ArmorPenetration;
 		total.MagicPenetration += bonus.MagicPenetration;
+		total.HasteRating += bonus.HasteRating;
+		total.SkillLevelBonus += bonus.SkillLevelBonus;
 	}
 }

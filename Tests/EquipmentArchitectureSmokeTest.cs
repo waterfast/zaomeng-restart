@@ -79,15 +79,15 @@ public partial class EquipmentArchitectureSmokeTest : Node
 			AddChild(backpack);
 			var registry = CharacterStatRegistry.CreateDefault();
 			using var presenter = new CharacterStatsPresenter(backpack, character, player, catalog, registry);
-			for (int i = 0; i < 5; i++) registry.Register(new($"extra_{i}", $"新增{i}", s => s.Attack));
+			for (int i = 0; i < 3; i++) registry.Register(new($"extra_{i}", $"新增{i}", s => s.Attack));
 			Check(presenter.PageCount == 3, "registered attributes automatically create a third page");
 			presenter.ShowPage(3);
-			Check(backpack.GetNode<Label>("background/infomation/hp/Hp_tt").Text == "新增4",
+			Check(backpack.GetNode<Label>("background/infomation/hp/Hp_tt").Text == "新增2",
 				"third page displays registered data");
-			registry.Register(new("extra_4", "替换", _ => 42));
+			registry.Register(new("extra_2", "替换", _ => 42));
 			Check(registry.Entries.Count == 21 && backpack.GetNode<Label>("background/infomation/hp").Text == "42",
 				"same ID replaces definition and refreshes display");
-			registry.Unregister("extra_4");
+			registry.Unregister("extra_2");
 			Check(presenter.PageCount == 2, "unregister clamps current page");
 			var tooltip = new LegacyItemTooltip(backpack);
 			Vector2 initialViewport = GetViewport().GetVisibleRect().Size;
@@ -97,8 +97,8 @@ public partial class EquipmentArchitectureSmokeTest : Node
 			Node2D tooltipRoot = backpack.GetNode<Node2D>("ItemTooltip");
 			const string path = "pro_wk/information/inf/";
 			Check(tooltipRoot.GetNode<Label>(path + "VBoxContainer2/eq_pz").Text == "品质：精良" &&
-				tooltipRoot.GetNode<Label>(path + "VBoxContainer3/eq_power").Text == "攻击：75" &&
-				!tooltipRoot.GetNode<Label>(path + "VBoxContainer3/eq_hp").Visible,
+				tooltipRoot.GetNode<Label>(path + "RegisteredStats/attack").Text == "攻击：75" &&
+				!tooltipRoot.HasNode(path + "RegisteredStats/health"),
 				"legacy tooltip shows metadata and hides zero attributes");
 			ColorRect background = tooltipRoot.GetNode<ColorRect>("ColorRect");
 			Vector2 bottom = background.GetGlobalTransformWithCanvas() * background.Size;

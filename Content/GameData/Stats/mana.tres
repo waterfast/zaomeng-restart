@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CharacterStatDefinition" format=3]
+[ext_resource type="Script" path="res://Scripts/Character/CharacterStatDefinition.cs" id="1"]
+[resource]
+script = ExtResource("1")
+Id = "mana"
+Field = 1
+NameKey = "STAT_MANA_NAME"
+DescriptionKey = "STAT_MANA_DESCRIPTION"
+Format = 2
+RatingConstant = 100

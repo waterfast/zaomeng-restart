@@ -1,0 +1,96 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://Assets/Art/Level/Export.png" id="2"]
+[ext_resource type="Script" path="res://Scripts/Level/LevelExit.cs" id="script"]
+
+[sub_resource type="AtlasTexture" id="3"]
+atlas = ExtResource( "2" )
+region = Rect2(1030, 0, 206, 186)
+
+[sub_resource type="AtlasTexture" id="4"]
+atlas = ExtResource( "2" )
+region = Rect2(1236, 0, 206, 186)
+
+[sub_resource type="AtlasTexture" id="5"]
+atlas = ExtResource( "2" )
+region = Rect2(1442, 0, 206, 186)
+
+[sub_resource type="AtlasTexture" id="6"]
+atlas = ExtResource( "2" )
+region = Rect2(1648, 0, 206, 186)
+
+[sub_resource type="AtlasTexture" id="7"]
+atlas = ExtResource( "2" )
+region = Rect2(0, 186, 206, 186)
+
+[sub_resource type="AtlasTexture" id="8"]
+atlas = ExtResource( "2" )
+region = Rect2(206, 186, 206, 186)
+
+[sub_resource type="AtlasTexture" id="9"]
+atlas = ExtResource( "2" )
+region = Rect2(0, 0, 206, 186)
+
+[sub_resource type="AtlasTexture" id="10"]
+atlas = ExtResource( "2" )
+region = Rect2(206, 0, 206, 186)
+
+[sub_resource type="AtlasTexture" id="11"]
+atlas = ExtResource( "2" )
+region = Rect2(412, 0, 206, 186)
+
+[sub_resource type="AtlasTexture" id="12"]
+atlas = ExtResource( "2" )
+region = Rect2(618, 0, 206, 186)
+
+[sub_resource type="AtlasTexture" id="13"]
+atlas = ExtResource( "2" )
+region = Rect2(824, 0, 206, 186)
+
+[sub_resource type="SpriteFrames" id="14"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource( "3" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "4" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "5" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "6" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "7" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "8" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "9" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "10" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "11" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "12" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "13" )
+}],
+"loop": true,
+"name": &"exit",
+"speed": 25.0
+}]
+
+[node name="LevelExit" type="AnimatedSprite2D"]
+script = ExtResource("script")
+sprite_frames = SubResource("14")
+animation = &"exit"
+autoplay = "exit"
+z_index = 8

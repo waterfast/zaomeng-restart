@@ -1,6 +1,7 @@
 using Godot;
 using Zaomeng.Character;
 using Zaomeng.Items;
+using Zaomeng.Equipment.Skills;
 using SaveCharacter = Zaomeng.Character.Character;
 
 namespace Zaomeng.Equipment;
@@ -14,6 +15,7 @@ public partial class EquipmentDefinition : ItemDefinition
 	[Export(PropertyHint.Range, "0,8,1")] public int GemSocketCount { get; set; }
 	[Export] public string RequiredCharacterId { get; set; } = "";
 	[Export] public int RequiredLevel { get; set; } = 1;
+	[Export] public EquipmentRarity Rarity { get; set; }
 	[Export] public string Quality { get; set; } = "";
 	[Export] public Color QualityColor { get; set; } = Colors.White;
 	[Export] public string OwnerCaption { get; set; } = "";
@@ -30,6 +32,9 @@ public partial class EquipmentDefinition : ItemDefinition
 	[Export] public float CriticalResistanceBonus { get; set; }
 	[Export] public float ArmorPenetrationBonus { get; set; }
 	[Export] public float MagicPenetrationBonus { get; set; }
+	[Export] public float HasteBonus { get; set; }
+	[Export] public float SkillLevelBonus { get; set; }
+	[Export] public Godot.Collections.Array<EquipmentSkillDefinition> GrantedSkills { get; set; } = new();
 
 	public virtual bool CanEquip(SaveCharacter character) => character.Level >= RequiredLevel &&
 		(RequiredCharacterId.Length == 0 || RequiredCharacterId == character.Id);
@@ -43,6 +48,6 @@ public partial class EquipmentDefinition : ItemDefinition
 		HealthRegeneration = HealthRegenerationBonus, ManaRegeneration = ManaRegenerationBonus,
 		LifeSteal = LifeStealBonus, Luck = LuckBonus, Toughness = ToughnessBonus,
 		CriticalResistance = CriticalResistanceBonus, ArmorPenetration = ArmorPenetrationBonus,
-		MagicPenetration = MagicPenetrationBonus
+		MagicPenetration = MagicPenetrationBonus, HasteRating = HasteBonus, SkillLevelBonus = SkillLevelBonus
 	};
 }

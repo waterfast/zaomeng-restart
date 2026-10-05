@@ -20,4 +20,6 @@ public sealed class CharacterStats
 	public float CriticalResistance { get; set; }
 	public float ArmorPenetration { get; set; }
 	public float MagicPenetration { get; set; }
+	public float HasteRating { get; set; }
+	public float SkillLevelBonus { get; set; }
 }

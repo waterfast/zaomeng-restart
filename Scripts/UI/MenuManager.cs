@@ -37,6 +37,12 @@ public partial class MenuManager : Node
 	{
 		if (input is InputEventKey { Echo: true })
 			return;
+		if (_activeMenu is not null && input is InputEventKey { Pressed: true, Keycode: Key.Escape })
+		{
+			CloseMenu();
+			GetViewport().SetInputAsHandled();
+			return;
+		}
 		foreach ((StringName action, CanvasItem menu) in _menus)
 		{
 			if (!input.IsActionPressed(action))

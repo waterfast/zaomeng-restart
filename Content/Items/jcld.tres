@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="EquipmentDefinition" format=3]
+
+[ext_resource type="Script" path="res://Scripts/Equipment/EquipmentDefinition.cs" id="1"]
+[ext_resource type="Texture2D" path="res://Assets/Art/BackPack/AllItems/jcld.png" id="2"]
+
+[resource]
+script = ExtResource("1")
+Id = "jcld"
+DisplayName = "家传铃铛"
+DescriptionKey = "ITEM_JCLD_DESCRIPTION"
+Quality = "精良"
+Rarity = 2
+OwnerCaption = "通用"
+Slot = 6
+MaxStack = 1
+Icon = ExtResource("2")
+QualityColor = Color(0.0, 0.541176, 1.0, 1)
+SellPrice = 80

@@ -13,7 +13,8 @@ public partial class ItemDefinition : Resource
 	[Export(PropertyHint.Range, "1,9999,1")] public int MaxStack { get; set; } = 1;
 	[Export] public Texture2D? Icon { get; set; }
 	[Export] public int SellPrice { get; set; }
-	[Export(PropertyHint.MultilineText)] public string Description { get; set; } = "";
+	[Export] public string DescriptionKey { get; set; } = "";
+	public string Description => DescriptionKey.Length == 0 ? "" : TranslationServer.Translate(DescriptionKey).ToString();
 	[Export] public int Attack { get; set; }
 	[Export] public int CriticalRating { get; set; }
 	[Export] public int Accuracy { get; set; }

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="EquipmentDefinition" format=3]
+
+[ext_resource type="Script" path="res://Scripts/Equipment/EquipmentDefinition.cs" id="1"]
+[ext_resource type="Texture2D" path="res://Assets/Art/BackPack/AllItems/dslj.png" id="2"]
+
+[resource]
+script = ExtResource("1")
+Id = "dslj"
+DisplayName = "地煞灵戒"
+DescriptionKey = "ITEM_DSLJ_DESCRIPTION"
+Quality = "优秀"
+Rarity = 1
+OwnerCaption = "通用"
+Slot = 2
+MaxStack = 1
+Icon = ExtResource("2")
+QualityColor = Color(0.0, 1.0, 0.0, 1)
+SellPrice = 40
+HealthBonus = 55
+ManaBonus = 35

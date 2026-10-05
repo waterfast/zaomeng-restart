@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="SkillDefinition" format=3]
+[ext_resource type="Script" path="res://Scripts/Combat/SkillDefinition.cs" id="skill"]
+[ext_resource type="Script" path="res://Scripts/Combat/HitEvent.cs" id="event"]
+[ext_resource type="Script" path="res://Scripts/Combat/HitDefinition.cs" id="hit"]
+[ext_resource type="Resource" path="res://Content/Skills/Growth/Wukong/zz.tres" id="growth"]
+
+[sub_resource type="Resource" id="damage"]
+script = ExtResource("hit")
+AttackMultiplier = 5.0
+MultiplierPerLevel = 0.5
+DamageType = 0
+Knockback = Vector2(570, 0)
+[sub_resource type="Resource" id="window"]
+script = ExtResource("event")
+StartFrame = 14
+EndFrame = 20
+Hit = SubResource("damage")
+[resource]
+script = ExtResource("skill")
+Growth = ExtResource("growth")
+Id = "zz"
+Animation = &"zz"
+FramesPerSecond = 30
+CooldownSeconds = 0.2
+Hits = Array[ExtResource("event")]([SubResource("window")])

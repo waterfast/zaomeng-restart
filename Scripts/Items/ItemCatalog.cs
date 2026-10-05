@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Godot;
 using Zaomeng.Inventory;
 using Zaomeng.Equipment;
+using Zaomeng.Equipment.Skills;
 
 namespace Zaomeng.Items;
 
@@ -41,6 +42,7 @@ public partial class ItemCatalog : Resource, IItemCatalog
 	public void Validate()
 	{
 		var ids = new HashSet<string>(StringComparer.Ordinal);
+		var skillsById = new Dictionary<string, EquipmentSkillDefinition>(StringComparer.Ordinal);
 		foreach (ItemDefinition? definition in Definitions)
 		{
 			if (definition is null)
@@ -69,11 +71,26 @@ public partial class ItemCatalog : Resource, IItemCatalog
 			if (definition.Category == ItemCategory.Equipment && definition is not EquipmentDefinition)
 				throw new InvalidOperationException($"装备 {definition.Id} 必须使用 EquipmentDefinition。");
 			if (definition is EquipmentDefinition equipment && (equipment.Category != ItemCategory.Equipment ||
-				equipment.MaxStack != 1 || equipment.GemSocketCount < 0 || equipment.GemSocketCount > 8))
+				equipment.MaxStack != 1 || equipment.GemSocketCount < 0 || equipment.GemSocketCount > 8 || !Enum.IsDefined(equipment.Rarity)))
 				throw new InvalidOperationException($"装备 {definition.Id} 的类型、堆叠数或宝石孔配置无效。");
 			if (definition is GemDefinition gem && (gem.Category != ItemCategory.Material ||
 				!Enum.IsDefined(gem.Attribute) || !float.IsFinite(gem.Bonus) || gem.Bonus < 0))
 				throw new InvalidOperationException($"宝石 {definition.Id} 的类型或属性配置无效。");
+			if (definition is EquipmentDefinition skillEquipment)
+			{
+				if (skillEquipment.GrantedSkills is null)
+					throw new InvalidOperationException($"装备 {definition.Id} 的授予技能列表为空。");
+				var grantedIds = new HashSet<string>(StringComparer.Ordinal);
+				foreach (EquipmentSkillDefinition skill in skillEquipment.GrantedSkills)
+				{
+					if (skill is null) throw new InvalidOperationException($"装备 {definition.Id} 包含空技能。");
+					skill.Validate();
+					if (!grantedIds.Add(skill.Id)) throw new InvalidOperationException($"装备 {definition.Id} 重复授予技能 {skill.Id}。");
+					if (skillsById.TryGetValue(skill.Id, out EquipmentSkillDefinition? existing) && existing != skill)
+						throw new InvalidOperationException($"装备技能 ID {skill.Id} 对应不同定义。");
+					skillsById[skill.Id] = skill;
+				}
+			}
 		}
 	}
 

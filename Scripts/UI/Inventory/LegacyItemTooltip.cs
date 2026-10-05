@@ -15,19 +15,11 @@ public sealed class LegacyItemTooltip
 	private readonly MarginContainer _layout;
 	private readonly ColorRect _background;
 	private readonly Label _sockets;
+	private readonly ItemDescriptionBinding _description;
 	private Rect2 _slotArea;
 	private int _revision;
-	private static readonly (string Node, string Caption, Func<CharacterStats, float> Read)[] StatRows =
-	[
-		("eq_hp", "生命", s => s.MaxHealth), ("eq_mp", "魔法", s => s.MaxMana),
-		("eq_power", "攻击", s => s.Attack), ("eq_def", "物防", s => s.PhysicalDefense),
-		("eq_mdef", "魔防", s => s.MagicDefense), ("eq_crit", "暴击", s => s.CriticalRating),
-		("eq_miss", "闪避", s => s.DodgeRating), ("eq_ehp", "回血", s => s.HealthRegeneration),
-		("eq_emp", "回魔", s => s.ManaRegeneration), ("eq_mz", "命中", s => s.Accuracy),
-		("eq_lucky", "幸运", s => s.Luck), ("eq_rx", "韧性", s => s.Toughness),
-		("eq_pj", "破甲", s => s.ArmorPenetration), ("eq_pm", "破魔", s => s.MagicPenetration),
-		("eq_xx", "吸血", s => s.LifeSteal), ("eq_bm", "暴免", s => s.CriticalResistance)
-	];
+	private readonly CharacterStatCatalog _statCatalog;
+	private readonly VBoxContainer _registeredStats;
 
 	public LegacyItemTooltip(Node2D parent)
 	{
@@ -37,8 +29,15 @@ public sealed class LegacyItemTooltip
 		_root.ZIndex = 100;
 		_root.Hide();
 		parent.AddChild(_root);
+		_statCatalog = GD.Load<CharacterStatCatalog>("res://Content/GameData/Stats/Registry.tres");
+		_registeredStats = new VBoxContainer { Name = "RegisteredStats", MouseFilter = Control.MouseFilterEnum.Ignore };
+		var statsParent = _root.GetNode<VBoxContainer>(InformationPath);
+		statsParent.AddChild(_registeredStats);
+		statsParent.MoveChild(_registeredStats, 2);
+		_root.GetNode<Control>($"{InformationPath}/VBoxContainer3").Hide();
 		_layout = _root.GetNode<MarginContainer>("pro_wk");
 		_background = _root.GetNode<ColorRect>("ColorRect");
+		_description = ItemDescriptionBinding.Attach(_root.GetNode<Label>($"{InformationPath}/VBoxContainer/eq_ms"));
 		_sockets = new Label { Name = "SocketSummary", AutowrapMode = TextServer.AutowrapMode.WordSmart };
 		var information = _root.GetNode<VBoxContainer>(InformationPath);
 		information.AddChild(_sockets);
@@ -91,15 +90,18 @@ public sealed class LegacyItemTooltip
 			? CharacterStatCalculator.CalculateEquipment(instance, catalog)
 			: equipment?.GetStatBonuses() ?? (item as GemDefinition)?.GetStatBonuses() ?? new CharacterStats
 			{ Attack = item.Attack, CriticalRating = item.CriticalRating, Accuracy = item.Accuracy };
-		foreach (var row in StatRows)
+		foreach (Node child in _registeredStats.GetChildren()) { _registeredStats.RemoveChild(child); child.QueueFree(); }
+		foreach (var definition in _statCatalog.Definitions)
 		{
-			float value = row.Read(stats);
-			string number = row.Node == "eq_xx" ? $"{CharacterStatRegistry.Number(value * 100)}%"
-				: CharacterStatRegistry.Number(value);
-			Set($"VBoxContainer3/{row.Node}", (item.Category == ItemCategory.Equipment || item is GemDefinition) && value != 0
-				? $"{row.Caption}：{number}" : "");
+			float value = definition.Read(stats);
+			if (value == 0 || (item.Category != ItemCategory.Equipment && item is not GemDefinition)) continue;
+			string number = definition.Format == StatDisplayFormat.Percentage ? $"{CharacterStatRegistry.Number(value * 100)}%" : CharacterStatRegistry.Number(value);
+			_registeredStats.AddChild(new Label { Name = definition.Id,
+				Text = $"{TranslationServer.Translate(definition.NameKey)}：{number}",
+				AutowrapMode = TextServer.AutowrapMode.WordSmart, MouseFilter = Control.MouseFilterEnum.Ignore });
 		}
-		Set("VBoxContainer/eq_ms", item.Description.Length == 0 ? "" : $"描述：{item.Description}");
+
+		_description.Show(item);
 		_sockets.Visible = instance is not null && instance.SocketedGemIds.Length > 0;
 		_sockets.Text = instance is null ? "" : "宝石孔：\n" + string.Join("\n", instance.SocketedGemIds.Select((id, index) =>
 			$"{index + 1}. " + (id.Length == 0 ? "空孔" : catalog is not null && catalog.TryGetDefinition(id, out ItemDefinition? gem)

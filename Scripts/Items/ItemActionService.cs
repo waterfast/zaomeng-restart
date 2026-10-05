@@ -103,6 +103,7 @@ public sealed class ItemActionService
 
 	internal ItemActionResult Execute(ItemActionRequest request)
 	{
+		if (request.ActionId == "sell_white_equipment") return new BulkEquipmentSale(_inventory, _catalog, _wallet).Execute();
 		if (!TryResolve(request.Target, out ItemActionContext? context))
 			return new(false, "该格子的物品已发生变化，请重新选择。");
 		ItemActionRule? rule = GetRules(context!).FirstOrDefault(rule => rule.Id == request.ActionId);

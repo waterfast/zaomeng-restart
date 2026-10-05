@@ -1,0 +1,174 @@
+[gd_resource type="SpriteFrames" format=3]
+
+[ext_resource type="Texture2D" path="res://Assets/Art/HeroPicture/Role2/Role2Skill_tjgl.png" id="8"]
+[sub_resource type="AtlasTexture" id="318"]
+atlas = ExtResource( "8" )
+region = Rect2(0, 0, 503, 298)
+
+[sub_resource type="AtlasTexture" id="319"]
+atlas = ExtResource( "8" )
+region = Rect2(1509, 298, 503, 298)
+
+[sub_resource type="AtlasTexture" id="320"]
+atlas = ExtResource( "8" )
+region = Rect2(1006, 894, 503, 298)
+
+[sub_resource type="AtlasTexture" id="321"]
+atlas = ExtResource( "8" )
+region = Rect2(503, 1192, 503, 298)
+
+[sub_resource type="AtlasTexture" id="322"]
+atlas = ExtResource( "8" )
+region = Rect2(1006, 1192, 503, 298)
+
+[sub_resource type="AtlasTexture" id="323"]
+atlas = ExtResource( "8" )
+region = Rect2(1509, 1192, 503, 298)
+
+[sub_resource type="AtlasTexture" id="324"]
+atlas = ExtResource( "8" )
+region = Rect2(0, 1490, 503, 298)
+
+[sub_resource type="AtlasTexture" id="325"]
+atlas = ExtResource( "8" )
+region = Rect2(503, 1490, 503, 298)
+
+[sub_resource type="AtlasTexture" id="326"]
+atlas = ExtResource( "8" )
+region = Rect2(503, 0, 503, 298)
+
+[sub_resource type="AtlasTexture" id="327"]
+atlas = ExtResource( "8" )
+region = Rect2(1006, 0, 503, 298)
+
+[sub_resource type="AtlasTexture" id="328"]
+atlas = ExtResource( "8" )
+region = Rect2(1509, 0, 503, 298)
+
+[sub_resource type="AtlasTexture" id="329"]
+atlas = ExtResource( "8" )
+region = Rect2(0, 298, 503, 298)
+
+[sub_resource type="AtlasTexture" id="330"]
+atlas = ExtResource( "8" )
+region = Rect2(503, 298, 503, 298)
+
+[sub_resource type="AtlasTexture" id="331"]
+atlas = ExtResource( "8" )
+region = Rect2(1006, 298, 503, 298)
+
+[sub_resource type="AtlasTexture" id="332"]
+atlas = ExtResource( "8" )
+region = Rect2(0, 596, 503, 298)
+
+[sub_resource type="AtlasTexture" id="333"]
+atlas = ExtResource( "8" )
+region = Rect2(503, 596, 503, 298)
+
+[sub_resource type="AtlasTexture" id="334"]
+atlas = ExtResource( "8" )
+region = Rect2(1006, 596, 503, 298)
+
+[sub_resource type="AtlasTexture" id="335"]
+atlas = ExtResource( "8" )
+region = Rect2(1509, 596, 503, 298)
+
+[sub_resource type="AtlasTexture" id="336"]
+atlas = ExtResource( "8" )
+region = Rect2(0, 894, 503, 298)
+
+[sub_resource type="AtlasTexture" id="337"]
+atlas = ExtResource( "8" )
+region = Rect2(503, 894, 503, 298)
+
+[sub_resource type="AtlasTexture" id="338"]
+atlas = ExtResource( "8" )
+region = Rect2(1509, 894, 503, 298)
+
+[sub_resource type="AtlasTexture" id="339"]
+atlas = ExtResource( "8" )
+region = Rect2(0, 1192, 503, 298)
+
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource( "318" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "319" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "320" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "321" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "322" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "323" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "324" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "325" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "326" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "327" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "328" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "329" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "330" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "331" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "332" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "333" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "334" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "335" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "336" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "337" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "338" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "339" )
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"tjgl",
+"speed": 18.0
+}]

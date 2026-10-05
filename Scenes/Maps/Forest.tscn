@@ -37,62 +37,12 @@ position = Vector2(2656, 1174)
 shape = SubResource("2")
 metadata/_edit_lock_ = true
 
-[node name="斜坡" parent="wall" unique_id=1291672301 instance=ExtResource("3")]
-position = Vector2(1178, 331)
-
-[node name="斜坡4" parent="wall" unique_id=1906778106 instance=ExtResource("3")]
-position = Vector2(1656, 337)
-
-[node name="斜坡5" parent="wall" unique_id=324473583 instance=ExtResource("3")]
-position = Vector2(4604, 337)
-
-[node name="斜坡2" type="StaticBody2D" parent="wall" unique_id=1761268876]
-position = Vector2(485, 4)
-collision_mask = 0
-metadata/_edit_lock_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="wall/斜坡2" unique_id=732703048]
-position = Vector2(1036, 371)
-rotation = 0.785398
-shape = SubResource("3")
-metadata/_edit_lock_ = true
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="wall/斜坡2" unique_id=1152338683]
-position = Vector2(1171.75, 333)
-shape = SubResource("4")
-metadata/_edit_lock_ = true
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="wall/斜坡2" unique_id=1475109658]
-position = Vector2(1307, 372)
-rotation = -0.785398
-shape = SubResource("5")
-metadata/_edit_lock_ = true
-
-[node name="斜坡3" type="StaticBody2D" parent="wall" unique_id=879804485]
-position = Vector2(3434, 4)
-collision_mask = 0
-metadata/_edit_lock_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="wall/斜坡3" unique_id=869565639]
-position = Vector2(1036, 371)
-rotation = 0.785398
-shape = SubResource("3")
-metadata/_edit_lock_ = true
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="wall/斜坡3" unique_id=1292904372]
-position = Vector2(1171.75, 333)
-shape = SubResource("4")
-metadata/_edit_lock_ = true
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="wall/斜坡3" unique_id=120432328]
-position = Vector2(1307, 372)
-rotation = -0.785398
-shape = SubResource("5")
-metadata/_edit_lock_ = true
-
 [node name="RightBoundary" type="CollisionShape2D" parent="wall" unique_id=759613749]
 position = Vector2(5568, -419.5)
 shape = SubResource("1")
+
+[node name="Terrain" type="CollisionPolygon2D" parent="wall"]
+polygon = PackedVector2Array(0, 392, 990, 392, 1076, 320, 1280, 320, 1370, 392, 1445, 392, 1554, 326, 1759, 326, 1850, 392, 4350, 392, 4474, 326, 4706, 326, 4802, 392, 5300, 392, 5300, 800, 0, 800)
 
 [node name="BackGround" type="ParallaxBackground" parent="." unique_id=274469609]
 

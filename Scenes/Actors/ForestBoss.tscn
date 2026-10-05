@@ -1,0 +1,39 @@
+[gd_scene format=3]
+[ext_resource type="PackedScene" path="res://Scenes/Actors/Monster3.tscn" id="actor"]
+[ext_resource type="Resource" path="res://Content/ForestBossAttack.tres" id="attack"]
+[ext_resource type="AnimationLibrary" path="res://Content/Monsters/ForestBossAnimations.tres" id="animations"]
+
+[sub_resource type="CapsuleShape2D" id="body"]
+radius = 32.0
+height = 100.0
+
+[node name="ForestBoss" instance=ExtResource("actor")]
+IsBoss = true
+DisplayName = "大猩猩"
+MaxHealth = 300.0
+Attack = 30.0
+Level = 5
+PhysicalDefense = 50.0
+MagicDefense = 80.0
+CriticalRating = 5.0
+DetectionRange = 1000.0
+AttackRange = 135.0
+ExperienceReward = 35
+SoulValuePerOrb = 10
+NormalCombo = Array[Resource]([ExtResource("attack")])
+
+[node name="BodyShape" parent="." index="0"]
+position = Vector2(0, -50)
+shape = SubResource("body")
+
+[node name="AnimationPlayer" parent="." index="3"]
+libraries/ = ExtResource("animations")
+
+[node name="Visual" parent="Facing" index="0"]
+position = Vector2(0, -58.5)
+
+[node name="HurtBox" parent="." index="2"]
+position = Vector2(0, -50)
+
+[node name="Shape" parent="HurtBox" index="0"]
+shape = SubResource("body")

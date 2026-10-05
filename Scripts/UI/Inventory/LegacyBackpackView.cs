@@ -35,6 +35,8 @@ public sealed class LegacyBackpackView : IDisposable
 	private readonly IDisposable _saveFailureConnection;
 	private readonly AcceptDialog _feedback;
 	private readonly GemSocketView _gemSockets;
+	private readonly BulkSaleView _bulkSale;
+	private readonly MagicWeaponView _magicWeapons;
 	private readonly ItemActionMenu _actionMenu;
 	private readonly IDisposable _itemActionConnection;
 	private readonly List<(Control Control, Control.GuiInputEventHandler Handler)> _activationHandlers = new();
@@ -81,6 +83,8 @@ public sealed class LegacyBackpackView : IDisposable
 		_root.AddChild(_feedback);
 		_gemSockets = new GemSocketView(root, adapter, character, catalog, events, ShowFeedback);
 		_actionMenu = new ItemActionMenu(root, events, ShowFeedback);
+		_bulkSale = new BulkSaleView(root, events, ShowFeedback);
+		_magicWeapons = new MagicWeaponView(root, adapter, catalog, character, events, ShowFeedback);
 		_itemActionConnection = events.ItemActionCompleted.Subscribe(Refresh);
 		_equipmentConnection = events.EquipmentChanged.Subscribe(OnEquipmentChanged);
 		_modificationConnection = events.EquipmentModified.Subscribe(change =>
@@ -166,6 +170,8 @@ public sealed class LegacyBackpackView : IDisposable
 	public void Dispose()
 	{
 		_gemSockets.Dispose();
+		_bulkSale.Dispose();
+		_magicWeapons.Dispose();
 		_actionMenu.Dispose();
 		_itemActionConnection.Dispose();
 		_equipmentConnection.Dispose();
@@ -194,7 +200,7 @@ public sealed class LegacyBackpackView : IDisposable
 	private void OnVisibilityChanged()
 	{
 		if (_root.Visible) Refresh();
-		else { _itemTooltip.Hide(); _actionMenu.Hide(); _gemSockets.Hide(); _feedback.Hide(); }
+		else { _itemTooltip.Hide(); _actionMenu.Hide(); _gemSockets.Hide(); _feedback.Hide(); _bulkSale.Hide(); _magicWeapons.Hide(); }
 	}
 
 	private void Refresh()
@@ -203,6 +209,7 @@ public sealed class LegacyBackpackView : IDisposable
 		_coinLabel.Text = _wallet.Souls.ToString();
 		_stats.Refresh();
 		RefreshEquipment();
+		_magicWeapons.Refresh();
 		RefreshItems();
 	}
 
@@ -341,6 +348,7 @@ public sealed class LegacyBackpackView : IDisposable
 		Action openMenu = () =>
 		{
 			_itemTooltip.Hide();
+			if (slot == EquipmentSlot.MagicWeapon) { _actionMenu.Hide(); _magicWeapons.Show(); return; }
 			if (_character.Equipment.Get(slot) is not EquipmentInstance instance) { _actionMenu.Hide(); return; }
 			Rect2 area = button.GetGlobalTransformWithCanvas() * new Rect2(Vector2.Zero, button.Size);
 			_actionMenu.Show(new(-1, instance.DefinitionId, instance.InstanceId, slot), area, caption: "已穿戴");

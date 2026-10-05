@@ -10,5 +10,5 @@ DisplayName = "2级强化石"
 Category = 1
 MaxStack = 99
 Icon = ExtResource("2")
-Description = "用于强化装备提升属性。"
+DescriptionKey = "ITEM_QHS_2_DESCRIPTION"
 SellPrice = 10

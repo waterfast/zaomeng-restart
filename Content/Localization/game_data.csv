@@ -1,0 +1,64 @@
+keys,en,zh_CN
+ITEM_DLHYS_DESCRIPTION,"Grants 600,000 souls when used.",使用后获得60万灵魂。
+ITEM_QHSBX_DESCRIPTION,Open to receive 3 to 4 enhancement stones of one randomly selected tier from 1 to 4.,打开后随机获得一种1～4级强化石，共3～4个。
+ITEM_XLHYS_DESCRIPTION,"Grants 150,000 souls when used.",使用后获得15万灵魂。
+ITEM_DSHL_DESCRIPTION,An ancestral bracer infused with the power of flame.,传承于家族的护腕，蕴藏着烈焰之力。
+ITEM_DSLJ_DESCRIPTION,"Gathering the essence of all things, these earrings reveal what lies ahead and behind through every sound.",聚万物之灵气，佩戴后来去通风，聆其音，知其前后，万物皆明。
+ITEM_DSYJ_DESCRIPTION,"Said to be the Long-Armed Ape's armor, stained with indelible blood and forgotten memories.",据说是通臂猿猴的战甲，染上了无法褪去的血迹和被遗忘的记忆。
+ITEM_JCBJ_DESCRIPTION,"An unassuming sword that holds a mysterious power, revealed only when the ancestral equipment is reunited.",看似普通的宝剑，蕴藏有神秘的力量，只有凑齐家传装备才能释放出这股力量。
+ITEM_JCLD_DESCRIPTION,"Forged from a complete set of ancestral equipment, it holds a mysterious power.",集齐家传装备后熔铸而成，拥有神秘的力量。
+ITEM_JCSZ_DESCRIPTION,"An unassuming bracelet that holds a mysterious power, revealed only when the ancestral equipment is reunited.",看似普通的手镯，蕴藏有神秘的力量，只有凑齐家传装备才能释放出这股力量。
+ITEM_QHS_1_DESCRIPTION,Used to enhance equipment and increase its attributes.,用于强化装备提升属性。
+ITEM_QHS_2_DESCRIPTION,Used to enhance equipment and increase its attributes.,用于强化装备提升属性。
+ITEM_QHS_3_DESCRIPTION,Used to enhance equipment and increase its attributes.,用于强化装备提升属性。
+ITEM_QHS_4_DESCRIPTION,Used to enhance equipment and increase its attributes.,用于强化装备提升属性。
+ITEM_PTXZF_DESCRIPTION,Clothing sewn from coarse cloth.,粗布缝制而成的衣物。
+ITEM_PTXZG_DESCRIPTION,An ordinary iron staff.,普通的铁棍
+ITEM_QLD_DESCRIPTION,"A blade said to be forged from the Azure Dragon's fang. Thunder follows every swing, like the dragon's roar.",传说由青龙的尖牙锻铸的大刀，挥舞间雷声贯耳，宛如青龙咆哮。
+ITEM_RYJGB_DESCRIPTION,"The sea-calming pillar of the Eastern Sea Dragon Palace, weighing thirteen thousand five hundred jin. Through calamity, it returns to the Great Sage.",东海龙宫之定海神针，一万三千五百斤，浩劫之际，元归齐天。
+ITEM_WHG_DESCRIPTION,"All things arise from causes and conditions; when their causes cease, they cease.",诸法因缘生，我说是因缘；因缘尽故灭，我作如是说。
+ITEM_YXXZG_DESCRIPTION,A weapon that looks quite serviceable.,一把看起来还不错的武器。
+EQUIPMENT_SKILLS_HEADING,Granted skills,装备技能
+SKILL_CRITICAL_RESOURCE_RECOVERY_NAME,Great Heavenly Immortal Art,大品天仙决
+SKILL_CRITICAL_RESOURCE_RECOVERY_DESCRIPTION,"Each critical hit that deals damage restores {0}% of maximum health and {1}% of maximum mana, up to their current limits.",每次造成暴击伤害时，恢复最大生命的 {0}% 和最大魔法的 {1}%，不超过当前上限。
+STAT_HEALTH_NAME,Health,生命
+STAT_HEALTH_DESCRIPTION,Health reaching zero causes death.,生命：角色的健康力，归0后角色死亡。
+STAT_MANA_NAME,Mana,魔法
+STAT_MANA_DESCRIPTION,Energy consumed by skills; insufficient mana prevents casting.,魔法：使用技能所需的能量，低于需求则无法释放技能。
+STAT_ATTACK_NAME,Attack,攻击
+STAT_ATTACK_DESCRIPTION,The base power used to calculate damage.,攻击：角色造成伤害的基本来源。
+STAT_LUCK_NAME,Luck,幸运
+STAT_LUCK_DESCRIPTION,Increases critical damage.,幸运：提升角色造成暴击时的暴击伤害。
+STAT_PHYSICAL_DEFENSE_NAME,Physical Defense,物防
+STAT_PHYSICAL_DEFENSE_DESCRIPTION,Reduces incoming physical damage.,物防：减免受到的物理伤害。
+STAT_MAGIC_DEFENSE_NAME,Magic Defense,魔防
+STAT_MAGIC_DEFENSE_DESCRIPTION,Reduces incoming magic damage.,魔防：减免受到的魔法伤害。
+STAT_CRITICAL_NAME,Critical,暴击
+STAT_CRITICAL_DESCRIPTION,Increases the chance to deal critical damage.,暴击：提升角色造成暴击伤害的几率。
+STAT_DODGE_NAME,Dodge,闪避
+STAT_DODGE_DESCRIPTION,Increases the chance to evade damage.,闪避：提升角色闪避伤害的几率。
+STAT_HEALTH_REGEN_NAME,Health Regeneration,回血
+STAT_HEALTH_REGEN_DESCRIPTION,Health restored each second.,回血：角色每秒恢复该数值的生命。
+STAT_MANA_REGEN_NAME,Mana Regeneration,回魔
+STAT_MANA_REGEN_DESCRIPTION,Mana restored each second.,回魔：角色每秒恢复该数值的魔法。
+STAT_ACCURACY_NAME,Accuracy,命中
+STAT_ACCURACY_DESCRIPTION,Subtracts from the target's dodge rating.,命中：与目标闪避以减法相抵扣。
+STAT_TOUGHNESS_NAME,Toughness,韧性
+STAT_TOUGHNESS_DESCRIPTION,Subtracts from the attacker's luck.,韧性：与攻击者幸运以减法相抵扣。
+STAT_LIFE_STEAL_NAME,Life Steal,吸血
+STAT_LIFE_STEAL_DESCRIPTION,Restores health as a fraction of final physical damage.,吸血：造成物理伤害时，按最终伤害比例恢复生命。
+STAT_ARMOR_PENETRATION_NAME,Armor Penetration,破甲
+STAT_ARMOR_PENETRATION_DESCRIPTION,Subtracts from the target's physical defense.,破甲：与目标物防以减法相抵扣。
+STAT_CRITICAL_RESISTANCE_NAME,Critical Resistance,暴免
+STAT_CRITICAL_RESISTANCE_DESCRIPTION,Subtracts from the attacker's critical rating.,暴免：与攻击者暴击以减法相抵扣。
+STAT_MAGIC_PENETRATION_NAME,Magic Penetration,破魔
+STAT_MAGIC_PENETRATION_DESCRIPTION,Subtracts from the target's magic defense.,破魔：与目标魔防以减法相抵扣。
+STAT_HASTE_NAME,Haste,极速
+STAT_HASTE_DESCRIPTION,Skill cooldown = base cooldown / (1 + Haste / 100). 100 Haste halves cooldowns.,极速：缩短技能冷却。实际冷却＝基础冷却÷(1＋极速/100)，100极速使冷却减半。
+STAT_SKILL_LEVEL_NAME,Skill Levels,技能等级
+STAT_SKILL_LEVEL_DESCRIPTION,"Raises effective levels of learned skills, capped at each skill's maximum. Does not unlock skills.",技能等级：提高所有已学技能的生效等级，不超过技能上限，不解锁未学习技能。
+ITEM_XYDXQ_DESCRIPTION,Legacy quest reward. Its use effect has not been migrated yet.,旧版任务奖励物品；使用效果尚未迁入。
+ITEM_MPYJ_DESCRIPTION,Legacy quest reward. Its use effect has not been migrated yet.,旧版任务奖励物品；使用效果尚未迁入。
+ITEM_BSD_1_DESCRIPTION,Legacy quest reward. Its use effect has not been migrated yet.,旧版任务奖励物品；使用效果尚未迁入。
+QUEST_GROWTH_1_NAME,Growth Gift I,成长礼包1
+QUEST_GROWTH_1_DESCRIPTION,Reach character level 10 to claim the growth gift.,角色达到10级即可领取成长礼包。

@@ -5,6 +5,8 @@ using Zaomeng.Equipment;
 using SaveCharacter = Zaomeng.Character.Character;
 using Zaomeng.Character;
 using Zaomeng.Items;
+using Zaomeng.Skills;
+using Zaomeng.Equipment.Skills;
 
 namespace Zaomeng;
 
@@ -34,6 +36,21 @@ public partial class Player : CharacterActor
 	private SaveCharacter? _characterData;
 	private ItemCatalog? _itemCatalog;
 	public CharacterStats? CalculatedStats { get; private set; }
+	private readonly EquipmentSkillRuntime _equipmentSkills = new();
+	public IReadOnlyList<EquipmentSkillDefinition> GrantedEquipmentSkills => _equipmentSkills.Skills;
+	public event Action<HitResult>? DamageDealt;
+	internal void NotifyHitDealt(CharacterActor target, HitResult hit)
+	{
+		DamageDealt?.Invoke(hit);
+		_equipmentSkills.OnHitDealt(this, target, hit);
+	}
+	public override void ResetForSpawn(Vector2 position)
+	{
+		base.ResetForSpawn(position);
+		GetNode<CanvasItem>("Facing/Visual/RoleBody").Show();
+		GetNode<CanvasItem>("Facing/Visual/RoleEquipment").Show();
+		if (GetNodeOrNull<AnimatedSprite2D>("Facing/Visual/Death") is { } death) { death.Stop(); death.Hide(); }
+	}
 	[Export] public float MaxMana { get; set; } = 50;
 	public float Mana { get; private set; }
 	public string CharacterId => _characterData?.Id ?? "role_1";
@@ -42,8 +59,12 @@ public partial class Player : CharacterActor
 	public long ExperienceToNextLevel => CharacterProgression.ExperienceToNextLevel(Level);
 	public event Action? ProgressionChanged;
 	public event Action<int>? SoulsCollected;
-	private readonly System.Collections.Generic.Dictionary<SkillDefinition, float> _skillCooldowns = new();
+	public event Action? CombatHitConfirmed;
+	internal void ConfirmCombatHit() => CombatHitConfirmed?.Invoke();
+	private readonly System.Collections.Generic.Dictionary<SkillDefinition, CooldownState> _skillCooldowns = new();
+	private readonly record struct CooldownState(float Remaining, float Duration, bool Pending = false);
 	private float _recoveryClock;
+	private SkillBehavior? _skillBehavior;
 
 	public override void _Ready()
 	{
@@ -65,18 +86,49 @@ public partial class Player : CharacterActor
 	}
 
 	public float GetSkillCooldown(SkillDefinition skill)
-		=> _skillCooldowns.TryGetValue(skill, out float remaining) ? remaining : 0;
+		=> _skillCooldowns.TryGetValue(skill, out CooldownState state) ? state.Remaining : 0;
+
+	public float GetSkillCooldownDuration(SkillDefinition skill) => _skillCooldowns.TryGetValue(skill, out CooldownState state) && (state.Remaining > 0 || state.Pending)
+		? state.Duration : SkillCooldownCalculator.Calculate(skill.CooldownSeconds, CalculatedStats?.HasteRating ?? 0);
+
+	public int EffectiveSkillLevel(string id)
+	{
+		var entry = SkillCatalogRegistry.Default.Find(CharacterId)?.Find(id);
+		return SkillLevelResolver.Effective(GetSkillLevelFromSave(id), CalculatedStats?.SkillLevelBonus ?? 0, entry?.MaximumLevel ?? 1);
+	}
 
 	public override bool TryUseSkill(SkillDefinition? skill)
 	{
-		if (skill is null || GetSkillCooldown(skill) > 0) return false;
+		if (skill is null || (_skillCooldowns.TryGetValue(skill, out var cooldown) && (cooldown.Pending || cooldown.Remaining > 0))) return false;
+		if (_characterData is not null && (GetSkillLevelFromSave(skill.Id) < 1 ||
+			SkillCatalogRegistry.Default.Get(CharacterId).Find(skill.Id)?.Action != skill)) return false;
 		int manaCost = Math.Max(0, skill.GetManaCost(GetSkillLevel(skill)));
 		if (Mana < manaCost || !base.TryUseSkill(skill)) return false;
-		// 动作校验成功后才扣蓝、开始冷却，失败按键不消耗资源。
+		// 动作校验成功后才扣蓝、快照冷却，失败按键不消耗资源。
 		TrySpendMana(manaCost);
-		_skillCooldowns[skill] = Mathf.Max(0, skill.CooldownSeconds);
+		float duration = SkillCooldownCalculator.Calculate(skill.CooldownSeconds, CalculatedStats?.HasteRating ?? 0);
+		_skillCooldowns[skill] = new(skill.StartCooldownOnImpact ? 0 : duration, duration, skill.StartCooldownOnImpact);
+		if (skill.LinkedCooldownSkill is { } linked)
+		{
+			float linkedDuration = SkillCooldownCalculator.Calculate(skill.LinkedCooldownSeconds, CalculatedStats?.HasteRating ?? 0);
+			_skillCooldowns[linked] = new(linkedDuration, linkedDuration);
+		}
+		if (IsInstanceValid(_skillBehavior)) _skillBehavior!.Stop();
+		_skillBehavior = null;
+		if (skill.BehaviorScene is { } behaviorScene)
+		{
+			_skillBehavior = behaviorScene.Instantiate<SkillBehavior>();
+			AddChild(_skillBehavior);
+			_skillBehavior.Begin(this, skill);
+		}
 		return true;
 	}
+	public void StartPendingSkillCooldown(SkillDefinition skill)
+	{
+		if (_skillCooldowns.TryGetValue(skill, out var state) && state.Pending)
+			_skillCooldowns[skill] = new(state.Duration, state.Duration);
+	}
+	private int GetSkillLevelFromSave(string id) => _characterData?.SkillLevels.GetValueOrDefault(id) ?? 0;
 
 	public void GainExperience(long amount)
 	{
@@ -89,6 +141,8 @@ public partial class Player : CharacterActor
 			_characterData.Experience = 0;
 			CharacterProgression.SyncBaseStats(_characterData);
 			RefreshCharacterStats();
+			Heal(MaxHealth);
+			RestoreMana(MaxMana);
 			CombatTextSpawner.ShowLevelUp(this);
 		}
 		ProgressionChanged?.Invoke();
@@ -113,6 +167,7 @@ public partial class Player : CharacterActor
 	{
 		if (_characterData is null || _itemCatalog is null) return;
 		CharacterStats stats = CharacterStatCalculator.Calculate(_characterData, _itemCatalog);
+		_equipmentSkills.Refresh(_characterData, _itemCatalog);
 		CalculatedStats = stats;
 		Level = _characterData.Level;
 		MaxHealth = stats.MaxHealth;
@@ -133,9 +188,7 @@ public partial class Player : CharacterActor
 		if (IsNodeReady()) RefreshHealthLimit();
 	}
 
-	protected override int GetSkillLevel(SkillDefinition skill)
-		=> _characterData?.SkillLevels.TryGetValue(skill.Id, out int level) == true
-			? Mathf.Max(1, level) : 1;
+	protected override int GetSkillLevel(SkillDefinition skill) => _characterData is null ? 1 : EffectiveSkillLevel(skill.Id);
 
 	public override void _PhysicsProcess(double delta)
 	{
@@ -152,9 +205,10 @@ public partial class Player : CharacterActor
 	{
 		foreach (SkillDefinition skill in new System.Collections.Generic.List<SkillDefinition>(_skillCooldowns.Keys))
 		{
-			float remaining = _skillCooldowns[skill] - delta;
+			if (_skillCooldowns[skill].Pending) continue;
+			float remaining = _skillCooldowns[skill].Remaining - delta;
 			if (remaining <= 0) _skillCooldowns.Remove(skill);
-			else _skillCooldowns[skill] = remaining;
+			else _skillCooldowns[skill] = _skillCooldowns[skill] with { Remaining = remaining };
 		}
 		if (IsDead) return;
 		_recoveryClock += delta;
@@ -180,7 +234,7 @@ public partial class Player : CharacterActor
 		if (Input.IsActionJustPressed("attack")) TryAttack();
 	}
 
-	private SkillDefinition? GetEquippedSkill(int slot) => slot switch
+	public SkillDefinition? GetEquippedSkill(int slot) => slot switch
 	{
 		0 => EquippedSkill1,
 		1 => EquippedSkill2,
@@ -189,6 +243,19 @@ public partial class Player : CharacterActor
 		4 => EquippedSkill5,
 		_ => null
 	};
+
+	public void SetEquippedSkill(int slot, SkillDefinition? skill)
+	{
+		switch (slot)
+		{
+			case 0: EquippedSkill1 = skill; break;
+			case 1: EquippedSkill2 = skill; break;
+			case 2: EquippedSkill3 = skill; break;
+			case 3: EquippedSkill4 = skill; break;
+			case 4: EquippedSkill5 = skill; break;
+			default: throw new ArgumentOutOfRangeException(nameof(slot));
+		}
+	}
 
 	protected override float ReadMovementAxis()
 		=> InputEnabled ? Input.GetAxis("move_left", "move_right") : 0;

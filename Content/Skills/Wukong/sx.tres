@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="SkillEntry" format=3]
+[ext_resource type="Script" path="res://Scripts/Combat/Skills/SkillEntry.cs" id="script"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Skill/SkillIcon/sx.png" id="icon"]
+[ext_resource type="Script" path="res://Scripts/Combat/Skills/PassiveSkillBonus.cs" id="bonus"]
+
+[ext_resource type="Resource" path="res://Content/Skills/Growth/Common/sx.tres" id="growth"]
+
+[sub_resource type="Resource" id="critical"]
+script = ExtResource("bonus")
+Stat = 0
+Values = PackedFloat32Array(4, 5.6, 7.2, 8.8, 10.4, 12, 13.6, 15.2, 16.8, 18.4)
+[sub_resource type="Resource" id="lifesteal"]
+script = ExtResource("bonus")
+Stat = 3
+Values = PackedFloat32Array(0.03, 0.033, 0.036, 0.039, 0.042, 0.045, 0.048, 0.051, 0.054, 0.057)
+
+[resource]
+script = ExtResource("script")
+Id = "sx"
+DisplayName = "嗜血"
+Description = "提高暴击属性和吸血。"
+Icon = ExtResource("icon")
+MaximumLevel = 10
+Growth = ExtResource("growth")
+PassiveBonuses = Array[ExtResource("bonus")]([SubResource("critical"), SubResource("lifesteal")])

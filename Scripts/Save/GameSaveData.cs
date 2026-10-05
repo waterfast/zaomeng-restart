@@ -11,8 +11,10 @@ public sealed class GameSaveData
 	public InventorySaveData Inventory { get; set; } = new();
 	public Wallet Wallet { get; set; } = new();
 	public List<Zaomeng.Character.Character> Characters { get; set; } = new();
+	public string CurrentCharacterId { get; set; } = "role_1";
 	// 新游戏只开放第一关，通关时更新解锁进度。
 	public int UnlockedLevel { get; set; } = 1;
+	public HashSet<string> ClaimedQuestIds { get; set; } = new();
 }
 
 public sealed class InventorySaveData

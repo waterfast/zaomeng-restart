@@ -24,6 +24,7 @@ public partial class BackpackView : Control
 	private Label _itemName = null!;
 	private Label _itemStats = null!;
 	private Label _itemDescription = null!;
+	private ItemDescriptionBinding _description = null!;
 	private TextureRect _detailIcon = null!;
 	private TextureButton _previousPage = null!;
 	private TextureButton _nextPage = null!;
@@ -45,6 +46,7 @@ public partial class BackpackView : Control
 		_itemName = GetNode<Label>("Detail/ItemName");
 		_itemStats = GetNode<Label>("Detail/ItemStats");
 		_itemDescription = GetNode<Label>("Detail/Description");
+		_description = ItemDescriptionBinding.Attach(_itemDescription);
 		_detailIcon = GetNode<TextureRect>("Detail/Icon");
 		_previousPage = GetNode<TextureButton>("InventoryPanel/PreviousPage");
 		_nextPage = GetNode<TextureButton>("InventoryPanel/NextPage");
@@ -163,7 +165,7 @@ public partial class BackpackView : Control
 		{
 			_itemName.Text = "选择一件物品";
 			_itemStats.Text = "";
-			_itemDescription.Text = "点击右侧格子查看物品信息。";
+			_description.Show(null);
 			_detailIcon.Texture = null;
 			return;
 		}
@@ -173,7 +175,7 @@ public partial class BackpackView : Control
 		_itemStats.Text = definition.Category == ItemCategory.Equipment
 			? $"攻击 +{definition.Attack}\n暴击值 +{definition.CriticalRating}\n命中值 +{definition.Accuracy}"
 			: $"数量 {entry.Count}";
-		_itemDescription.Text = definition.Description;
+		_description.Show(definition);
 		_detailIcon.Texture = definition.Icon;
 	}
 }

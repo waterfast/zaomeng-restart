@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SkillCatalogRegistry" format=3]
+[ext_resource type="Script" path="res://Scripts/Combat/Skills/SkillCatalogRegistry.cs" id="script"]
+[ext_resource type="Script" path="res://Scripts/Combat/Skills/SkillCatalog.cs" id="catalog_type"]
+[ext_resource type="Resource" path="res://Content/Skills/Wukong/Catalog.tres" id="wukong"]
+[ext_resource type="Resource" path="res://Content/Skills/Tangseng/Catalog.tres" id="tangseng"]
+
+
+[resource]
+script = ExtResource("script")
+Catalogs = Array[ExtResource("catalog_type")]([ExtResource("wukong"), ExtResource("tangseng")])

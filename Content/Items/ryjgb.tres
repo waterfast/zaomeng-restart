@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="EquipmentDefinition" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="EquipmentDefinition" load_steps=4 format=3]
 
 [ext_resource type="Script" path="res://Scripts/Equipment/EquipmentDefinition.cs" id="1"]
 [ext_resource type="Texture2D" path="res://Assets/Art/BackPack/AllItems/ryjgb.png" id="2"]
+[ext_resource type="Resource" path="res://Content/GameData/EquipmentSkills/critical_resource_recovery.tres" id="3"]
 
 [resource]
 script = ExtResource("1")
@@ -9,12 +10,14 @@ Id = "ryjgb"
 DisplayName = "如意金箍棒"
 MaxStack = 1
 Icon = ExtResource("2")
-Description = "东海龙宫之定海神针，一万三千五百斤，浩劫之际，元归齐天。"
+DescriptionKey = "ITEM_RYJGB_DESCRIPTION"
 Attack = 75
 CriticalRating = 6
 Accuracy = 6
 Quality = "精良"
+Rarity = 2
 QualityColor = Color(0.0, 0.5411764705882353, 1.0, 1)
 SellPrice = 80
 OwnerCaption = "悟空"
 RequiredCharacterId = "role_1"
+GrantedSkills = Array[Resource]([ExtResource("3")])

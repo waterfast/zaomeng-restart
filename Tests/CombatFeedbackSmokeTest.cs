@@ -65,9 +65,16 @@ public partial class CombatFeedbackSmokeTest : Node2D
 					"three original soul orbs spawn without immediate currency credit");
 				Check(!CombatResolver.Resolve(player, monster, lethal) && GetChildren().OfType<SoulPickup>().Count() == 3,
 					"dead monster cannot duplicate rewards");
-				monster.Animator.Seek(0.5, update: true);
-				Check(body.SelfModulate.A == 0, "death animation fades monster body");
+				// 各种怪物使用各自原版死亡时长，不能假定全部在0.5秒淡出完毕。
+				Animation deathAnimation = monster.Animator.GetAnimation(monster.Animator.CurrentAnimation);
+				monster.Animator.Seek(deathAnimation.Length, update: true);
+				if (deathAnimation.FindTrack("Facing/Visual/Body:self_modulate", Animation.TrackType.Value) >= 0)
+					Check(body.SelfModulate.A == 0, "configured death fade completes by animation end");
+				else
+					Check(body.Frame == body.SpriteFrames.GetFrameCount("death") - 1 && !monster.AttackBox.Active,
+						"original death pose reaches its final frame with attack disabled");
 				pool.Release(kind, monster);
+				Check(!monster.Visible && monster.ProcessMode == ProcessModeEnum.Disabled, "pool release hides every death presentation");
 				Monster reused = pool.Spawn(kind, player.GlobalPosition + new Vector2(150, 0));
 				reused.AiEnabled = false;
 				reused.SetPhysicsProcess(false);

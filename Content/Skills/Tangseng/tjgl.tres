@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SkillDefinition" format=3]
+[ext_resource type="Script" path="res://Scripts/Combat/SkillDefinition.cs" id="skill"]
+[ext_resource type="PackedScene" path="res://Content/Skills/Behaviors/HealingRain.tscn" id="behavior"]
+
+[ext_resource type="Resource" path="res://Content/Skills/Growth/Tangseng/tjgl.tres" id="growth"]
+
+[resource]
+script = ExtResource("skill")
+Growth = ExtResource("growth")
+Id = "tjgl"
+Animation = &"tjgl"
+FramesPerSecond = 10
+CooldownSeconds = 0.8
+BehaviorScene = ExtResource("behavior")

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="EquipmentSkillDefinition" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Equipment/Skills/EquipmentSkillDefinition.cs" id="1"]
+[ext_resource type="Script" path="res://Scripts/Equipment/Skills/CriticalResourceRecoveryEffect.cs" id="2"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Skill/Generated/immortal_art.png" id="icon"]
+
+[sub_resource type="Resource" id="Effect"]
+script = ExtResource("2")
+HealthFraction = 0.2
+ManaFraction = 0.2
+
+[resource]
+script = ExtResource("1")
+Id = "critical_resource_recovery"
+NameKey = "SKILL_CRITICAL_RESOURCE_RECOVERY_NAME"
+DescriptionKey = "SKILL_CRITICAL_RESOURCE_RECOVERY_DESCRIPTION"
+Icon = ExtResource("icon")
+MaximumLevel = 1
+Effect = SubResource("Effect")

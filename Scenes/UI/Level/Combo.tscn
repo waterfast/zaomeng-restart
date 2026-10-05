@@ -1,0 +1,89 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Texture2D" path="res://Assets/Art/AllNumber/LJ/lj_text.png" id="2"]
+
+[sub_resource type="ShaderMaterial" id="1"]
+
+[sub_resource type="Animation" id="2"]
+resource_name = "Combo!"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.8, 0.8), Vector2(0.6, 0.6)]
+}
+
+[sub_resource type="AnimationLibrary" id="3"]
+_data = {
+"Combo": SubResource( "2" )
+}
+
+[node name="Combo" type="Node2D"]
+modulate = Color(1, 1, 1, 0)
+scale = Vector2(0.8, 0.8)
+
+[node name="ComBoxFather" type="HBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 216.0
+offset_bottom = 98.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = -41
+alignment = 2
+
+[node name="ComboBox" type="HBoxContainer" parent="ComBoxFather"]
+z_index = 1
+material = SubResource( "1" )
+layout_mode = 2
+theme_override_constants/separation = -23
+
+[node name="ComboBoxText" type="HBoxContainer" parent="ComBoxFather"]
+layout_mode = 2
+theme_override_constants/separation = 11
+alignment = 2
+
+[node name="ComboBoxTextPic" type="TextureRect" parent="ComBoxFather/ComboBoxText"]
+layout_mode = 2
+texture = ExtResource( "2" )
+stretch_mode = 3
+
+[node name="ComboPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource( "3" )
+}

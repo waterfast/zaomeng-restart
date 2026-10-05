@@ -1,0 +1,182 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://Assets/Art/Task/637.png" id="2"]
+[ext_resource type="FontFile" path="res://Assets/Font/Aa文徵明琴赋小楷_mianfeiziti.com.ttf" id="3"]
+[ext_resource type="FontFile" path="res://Assets/Font/8_FZCuYuan-M03S.ttf" id="4"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Task/659.png" id="5"]
+[ext_resource type="FontFile" path="res://Assets/Font/华康宋体W3.ttc" id="6"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Task/665.png" id="7"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Task/660.png" id="8"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Task/664.png" id="9"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Task/650.png" id="10"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Task/648.png" id="11"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Task/643.png" id="12"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Task/645.png" id="13"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Task/638.png" id="14"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Task/640.png" id="15"]
+[ext_resource type="Texture2D" path="res://Assets/Art/MagicWeapon/220.png" id="16"]
+[ext_resource type="Texture2D" path="res://Assets/Art/MagicWeapon/222.png" id="17"]
+
+[node name="BasicTask" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -447.0
+offset_top = -239.0
+offset_right = 1357.0
+offset_bottom = 815.0
+color = Color(0, 0, 0, 0)
+metadata/_edit_lock_ = true
+
+[node name="BG" type="Sprite2D" parent="."]
+position = Vector2(471, 296)
+texture = ExtResource( "2" )
+metadata/_edit_lock_ = true
+
+[node name="ColorRect" type="ColorRect" parent="BG"]
+offset_left = -159.0
+offset_top = -203.0
+offset_right = 33.0
+offset_bottom = -168.0
+color = Color(0, 0, 0, 0)
+metadata/_edit_lock_ = true
+
+[node name="Title" type="Label" parent="BG/ColorRect"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 133.0
+offset_bottom = 34.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = ExtResource( "3" )
+theme_override_font_sizes/font_size = 18
+text = "活动任务完成："
+horizontal_alignment = 2
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Num" type="Label" parent="BG/ColorRect/Title"]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 4.0
+offset_right = 217.0
+offset_bottom = 26.0
+theme_override_fonts/font = ExtResource( "4" )
+theme_override_font_sizes/font_size = 14
+text = "（0/26）"
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="ms" type="Sprite2D" parent="BG"]
+position = Vector2(93, -104)
+texture = ExtResource( "5" )
+metadata/_edit_lock_ = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="BG/ms"]
+offset_left = -133.0
+offset_top = -31.0
+offset_right = 133.0
+offset_bottom = 41.0
+metadata/_edit_lock_ = true
+
+[node name="Text" type="Label" parent="BG/ms/ScrollContainer"]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 7
+theme_override_fonts/font = ExtResource( "6" )
+theme_override_font_sizes/font_size = 18
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="mstitle" type="Sprite2D" parent="BG/ms"]
+position = Vector2(-77, -43)
+texture = ExtResource( "7" )
+metadata/_edit_lock_ = true
+
+[node name="jl" type="Sprite2D" parent="BG"]
+position = Vector2(94, 30)
+texture = ExtResource( "8" )
+metadata/_edit_lock_ = true
+
+[node name="jltitle" type="Sprite2D" parent="BG/jl"]
+position = Vector2(-76, -70)
+texture = ExtResource( "9" )
+metadata/_edit_lock_ = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="BG/jl"]
+offset_left = -132.0
+offset_top = -58.0
+offset_right = 142.0
+offset_bottom = 66.0
+metadata/_edit_lock_ = true
+
+[node name="RewardList" type="GridContainer" parent="BG/jl/ScrollContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="lqjl" type="TextureButton" parent="BG"]
+offset_left = 17.0
+offset_top = 103.0
+offset_right = 158.0
+offset_bottom = 152.0
+disabled = true
+texture_normal = ExtResource( "10" )
+texture_pressed = ExtResource( "10" )
+texture_hover = ExtResource( "10" )
+texture_disabled = ExtResource( "11" )
+metadata/_edit_lock_ = true
+
+[node name="TaskType" type="HBoxContainer" parent="BG"]
+offset_left = -292.0
+offset_top = -163.0
+offset_right = -68.0
+offset_bottom = -119.0
+metadata/_edit_lock_ = true
+
+[node name="HdTask" type="TextureButton" parent="BG/TaskType"]
+layout_mode = 2
+texture_normal = ExtResource( "12" )
+texture_pressed = ExtResource( "12" )
+texture_hover = ExtResource( "13" )
+texture_disabled = ExtResource( "12" )
+
+[node name="RcTask" type="TextureButton" parent="BG/TaskType"]
+layout_mode = 2
+texture_normal = ExtResource( "14" )
+texture_pressed = ExtResource( "14" )
+texture_hover = ExtResource( "15" )
+texture_disabled = ExtResource( "14" )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="BG"]
+offset_left = -281.0
+offset_top = -116.0
+offset_right = -65.0
+offset_bottom = 153.0
+metadata/_edit_lock_ = true
+
+[node name="TaskList" type="VBoxContainer" parent="BG/ScrollContainer"]
+layout_mode = 2
+
+[node name="Close" type="TextureButton" parent="BG"]
+offset_left = 224.0
+offset_top = -213.0
+offset_right = 265.0
+offset_bottom = -172.0
+texture_normal = ExtResource( "16" )
+texture_pressed = ExtResource( "16" )
+texture_hover = ExtResource( "17" )
+texture_disabled = ExtResource( "16" )
+metadata/_edit_lock_ = true

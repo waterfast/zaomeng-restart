@@ -27,8 +27,7 @@ public static class GameSession
 		try
 		{
 			GameSaveData data = Manager.Load(slot);
-			Zaomeng.Character.Character? character = data.Characters.Find(entry => entry.Id == "role_1")
-				?? (data.Characters.Count > 0 ? data.Characters[0] : null);
+			Zaomeng.Character.Character? character = data.Characters.Find(entry => entry.Id == data.CurrentCharacterId);
 			if (character is null) return "无角色档案";
 			string name = string.IsNullOrWhiteSpace(character.Name) ? character.Id : character.Name;
 			return $"{name} Lv.{character.Level}";
@@ -63,12 +62,16 @@ public static class GameSession
 		Inventory = null;
 	}
 
-	public static void BeginNewGame(ItemCatalog catalog)
+	public static void BeginNewGame(ItemCatalog catalog, string characterId = "role_1")
 	{
 		if (Slot is < 1 or > 99) throw new InvalidOperationException("请先选择存档槽位。");
+		var role = Zaomeng.Skills.SkillCatalogRegistry.Default.Get(characterId);
 		Inventory = new InventoryService(70, catalog);
 		Data = InventorySaveMapper.Capture(Inventory);
-		Data.Characters.Add(new Zaomeng.Character.Character { Id = "role_1", Name = "孙悟空", Level = 1 });
+		Data.CurrentCharacterId = characterId;
+		var character = new Zaomeng.Character.Character { Id = characterId, Name = role.DisplayName, Level = 1 };
+		Zaomeng.Character.CharacterProgression.SyncBaseStats(character);
+		Data.Characters.Add(character);
 		Manager.Save(Slot, Data);
 	}
 

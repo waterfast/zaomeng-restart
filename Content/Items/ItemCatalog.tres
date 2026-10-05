@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ItemCatalog" load_steps=16 format=3]
+[gd_resource type="Resource" script_class="ItemCatalog" format=3]
 
 [ext_resource type="Script" path="res://Scripts/Items/ItemCatalog.cs" id="1"]
 [ext_resource type="Script" path="res://Scripts/Items/ItemDefinition.cs" id="definition_script"]
@@ -16,6 +16,27 @@
 [ext_resource type="Resource" path="res://Content/Items/Materials/qhs_3.tres" id="13"]
 [ext_resource type="Resource" path="res://Content/Items/Materials/qhs_4.tres" id="14"]
 
+
+
+
+
+
+
+
+
+[ext_resource type="Resource" path="res://Content/Items/ptxzf.tres" id="new_ptxzf"]
+[ext_resource type="Resource" path="res://Content/Items/dsyj.tres" id="new_dsyj"]
+[ext_resource type="Resource" path="res://Content/Items/dslj.tres" id="new_dslj"]
+[ext_resource type="Resource" path="res://Content/Items/jcsz.tres" id="new_jcsz"]
+[ext_resource type="Resource" path="res://Content/Items/dshl.tres" id="new_dshl"]
+[ext_resource type="Resource" path="res://Content/Items/jcld.tres" id="new_jcld"]
+
+[ext_resource type="Resource" path="res://Content/Items/Consumables/xydxq.tres" id="quest_xydxq"]
+
+[ext_resource type="Resource" path="res://Content/Items/Consumables/mpyj.tres" id="quest_mpyj"]
+
+[ext_resource type="Resource" path="res://Content/Items/Consumables/bsd_1.tres" id="quest_bsd_1"]
+
 [resource]
 script = ExtResource("1")
-Definitions = Array[ExtResource("definition_script")]([ExtResource("2"), ExtResource("3"), ExtResource("4"), ExtResource("5"), ExtResource("6"), ExtResource("7"), ExtResource("8"), ExtResource("9"), ExtResource("10"), ExtResource("11"), ExtResource("12"), ExtResource("13"), ExtResource("14")])
+Definitions = Array[ExtResource("definition_script")]([ExtResource("quest_xydxq"), ExtResource("quest_mpyj"), ExtResource("quest_bsd_1"), ExtResource("2"), ExtResource("3"), ExtResource("4"), ExtResource("5"), ExtResource("6"), ExtResource("7"), ExtResource("8"), ExtResource("9"), ExtResource("10"), ExtResource("11"), ExtResource("12"), ExtResource("13"), ExtResource("14"), ExtResource("new_ptxzf"), ExtResource("new_dsyj"), ExtResource("new_dslj"), ExtResource("new_jcsz"), ExtResource("new_dshl"), ExtResource("new_jcld")])

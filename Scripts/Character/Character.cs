@@ -19,6 +19,7 @@ public sealed class Character
 	public Dictionary<string, int> SkillLevels { get; set; } = new();
 	// 固定索引对应技能快捷键 1～5；空字符串表示空槽。
 	public List<string> EquippedSkillIds { get; set; } = new(["", "", "", "", ""]);
+	public List<long> SkillKeyCodes { get; set; } = new([89, 85, 73, 79, 76]);
 	public List<string> UnlockedTalentIds { get; set; } = new();
 
 	public void LearnSkill(string skillId, int level = 1)

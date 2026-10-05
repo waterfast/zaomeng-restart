@@ -125,7 +125,7 @@ pets_menu={
 
 [internationalization]
 
-locale/translations=PackedStringArray("res://Content/Localization/ui.en.translation", "res://Content/Localization/ui.zh_CN.translation")
+locale/translations=PackedStringArray("res://Content/Localization/ui.en.translation", "res://Content/Localization/ui.zh_CN.translation", "res://Content/Localization/game_data.en.translation", "res://Content/Localization/game_data.zh_CN.translation")
 locale/fallback="zh_CN"
 
 [layer_names]

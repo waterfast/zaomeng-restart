@@ -1,0 +1,11 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://Scripts/Combat/Skills/HealSkillBehavior.cs" id="behavior"]
+[ext_resource type="PackedScene" path="res://Content/Skills/Tangseng/HealingVisual.tscn" id="visual"]
+
+
+[node name="HealingRain" type="Node"]
+script = ExtResource("behavior")
+Delay = 0.7
+HealthRatio = 0.2
+MissingHealthMultiplier = 0.6
+VisualScene = ExtResource("visual")

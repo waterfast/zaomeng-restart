@@ -1,0 +1,8 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://Scripts/Combat/Skills/CloudFlightBehavior.cs" id="behavior"]
+
+
+[node name="CloudFlight" type="Node"]
+script = ExtResource("behavior")
+LiftSpeed = 430.0
+RiseKey = 87

@@ -36,6 +36,11 @@ public partial class CharacterActor : CharacterBody2D
 	public float Health { get; private set; }
 	public ActorState State { get; private set; }
 	public bool IsDead => State == ActorState.Dead;
+	public event System.Action<HitResult>? HitReceived;
+	public event System.Action<float>? HealingReceived;
+	public event System.Action? AttackDodged;
+	internal void ReportDodge() => AttackDodged?.Invoke();
+	public bool IsInvulnerable => State == ActorState.Attacking && _skillCast?.Definition.Invulnerable == true;
 	public int FacingDirection { get; private set; } = 1;
 	public CharacterMotor Motor { get; } = new();
 	public AnimationPlayer Animator { get; private set; } = null!;
@@ -63,6 +68,9 @@ public partial class CharacterActor : CharacterBody2D
 	public override void _Ready()
 	{
 		Health = MaxHealth;
+		// 沿斜坡吸附地面，避免下坡浮空；坡度上限按迁入关卡的真实地形设置。
+		FloorSnapLength = 8;
+		FloorMaxAngle = Mathf.DegToRad(55);
 		_facing = GetNode<Node2D>("Facing");
 		Animator = GetNode<AnimationPlayer>("AnimationPlayer");
 		AttackBox = GetNode<HitBox>("Facing/HitBox");
@@ -271,9 +279,10 @@ public partial class CharacterActor : CharacterBody2D
 
 	public void ReceiveHit(HitResult hit)
 	{
-		if (IsDead) return;
+		if (IsDead || IsInvulnerable) return;
 		CombatTextSpawner.ShowDamage(this, hit);
 		Health = Mathf.Max(0, Health - hit.Damage);
+		HitReceived?.Invoke(hit);
 		AttackBox.Active = false;
 		_skillCast?.Stop();
 		_skillCast = null;
@@ -288,7 +297,9 @@ public partial class CharacterActor : CharacterBody2D
 	public void Heal(float amount)
 	{
 		if (IsDead || amount <= 0) return;
+		float recovered = Mathf.Min(MaxHealth - Health, amount);
 		Health = Mathf.Min(MaxHealth, Health + amount);
+		if (recovered > 0) HealingReceived?.Invoke(recovered);
 	}
 
 	/// <summary>对象池再次启用角色时清理上一次战斗的瞬时状态。</summary>

@@ -17,4 +17,7 @@ public partial class HitDefinition : Resource
 	[Export] public bool CanCrit { get; set; } = true;
 	[Export] public Vector2 Knockback { get; set; } = new(60, 0);
 	[Export] public float Hitstun { get; set; } = 0.22f;
+	public float MinimumMultiplier(int level) => Mathf.Max(0, AttackMultiplier) + Mathf.Max(0, level - 1) * MultiplierPerLevel;
+	public float MaximumMultiplier(int level) => (AttackMultiplierMax <= 0 ? Mathf.Max(0, AttackMultiplier) :
+		Mathf.Max(AttackMultiplier, AttackMultiplierMax)) + Mathf.Max(0, level - 1) * MultiplierPerLevel;
 }

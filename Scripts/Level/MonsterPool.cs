@@ -9,7 +9,7 @@ public sealed class MonsterPool(Node parent)
 	private readonly Dictionary<int, Stack<Monster>> _available = new();
 	private static readonly string[] ScenePaths =
 	{
-		"", "res://Scenes/Actors/Monster.tscn", "res://Scenes/Actors/Monster2.tscn", "res://Scenes/Actors/Monster3.tscn"
+		"", "res://Scenes/Actors/Monster.tscn", "res://Scenes/Actors/Monster2.tscn", "res://Scenes/Actors/Monster3.tscn", "res://Scenes/Actors/ForestBoss.tscn"
 	};
 
 	public Monster Spawn(int kind, Vector2 position)

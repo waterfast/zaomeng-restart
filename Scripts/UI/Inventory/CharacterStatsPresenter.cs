@@ -47,6 +47,9 @@ public sealed class CharacterStatsPresenter : IDisposable
 		{
 			_values[i] = information.GetNode<Label>(NodeNames[i].Value);
 			_captions[i] = _values[i].GetNode<Label>(NodeNames[i].Caption);
+			// 名称在数值控件的矩形外，两者分别接收悬停，保证整项属性都能显示说明。
+			_values[i].MouseFilter = Control.MouseFilterEnum.Pass;
+			_captions[i].MouseFilter = Control.MouseFilterEnum.Pass;
 		}
 		_levelDigits = information.GetNode<HBoxContainer>("leve_background/Level_Show");
 		_firstLevelDigit = _levelDigits.GetNode<TextureRect>("Number_1");
@@ -72,6 +75,9 @@ public sealed class CharacterStatsPresenter : IDisposable
 			int index = (_page - 1) * NodeNames.Length + i;
 			CharacterStatRegistry.Entry? row = index < Registry.Entries.Count ? Registry.Entries[index] : null;
 			_captions[i].Text = row is null ? "" : TranslationServer.Translate(row.Caption).ToString();
+			string description = row is null ? "" : TranslationServer.Translate(row.Description).ToString();
+			_values[i].TooltipText = description;
+			_captions[i].TooltipText = description;
 			_values[i].Text = row is null ? "" : row.Format?.Invoke(row.Read(stats), _player)
 				?? CharacterStatRegistry.Number(row.Read(stats));
 		}

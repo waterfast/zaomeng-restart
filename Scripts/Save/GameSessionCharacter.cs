@@ -3,6 +3,7 @@ using System.Linq;
 using Zaomeng.Character;
 using Zaomeng.Inventory;
 using Zaomeng.Items;
+using Zaomeng.Skills;
 using SaveCharacter = Zaomeng.Character.Character;
 
 namespace Zaomeng.Save;
@@ -31,15 +32,13 @@ public static class GameSessionCharacter
 		foreach (SaveCharacter entry in data.Characters)
 			foreach (var (slot, instance) in entry.Equipment.Slots)
 				catalog.ValidateEquipmentInstance(instance, slot);
-		SaveCharacter? character = data.Characters.FirstOrDefault(entry => entry.Id == "role_1")
-			?? data.Characters.FirstOrDefault();
+		SaveCharacter? character = data.Characters.FirstOrDefault(entry => entry.Id == data.CurrentCharacterId);
 		bool updated = false;
 		if (character is null)
 		{
-			character = new SaveCharacter { Id = "role_1", Name = "孙悟空" };
-			data.Characters.Add(character);
-			updated = true;
+			throw new InvalidOperationException("存档的当前角色档案缺失。");
 		}
+		SkillCatalogRegistry.Default.Get(character.Id).ValidateCharacter(character);
 		// 基础属性由角色和等级推导，不把装备或宝石加成写回基础值。
 		updated |= CharacterProgression.SyncBaseStats(character);
 		if (updated)

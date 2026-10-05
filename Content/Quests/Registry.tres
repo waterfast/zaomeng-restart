@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="QuestCatalog" load_steps=3 format=3]
+[ext_resource type="Script" path="res://Scripts/Quests/QuestCatalog.cs" id="1"]
+[ext_resource type="Resource" path="res://Content/Quests/growth_gift_1.tres" id="2"]
+[resource]
+script = ExtResource("1")
+Definitions = Array[Resource]([ExtResource("2")])

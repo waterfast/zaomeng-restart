@@ -1,0 +1,9 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://Scripts/Combat/Skills/ProjectileSkillBehavior.cs" id="behavior"]
+[ext_resource type="PackedScene" path="res://Content/Skills/Tangseng/IceDragonProjectile.tscn" id="projectile"]
+
+
+[node name="IceDragon" type="Node"]
+script = ExtResource("behavior")
+Delay = 0.5
+ProjectileScene = ExtResource("projectile")

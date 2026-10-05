@@ -1,9 +1,12 @@
 [gd_resource type="Resource" script_class="SkillDefinition" format=3]
 
+[ext_resource type="PackedScene" path="res://Content/Skills/Behaviors/CloudFlight.tscn" id="behavior"]
 [ext_resource type="Script" path="res://Scripts/Combat/SkillDefinition.cs" id="skill"]
 [ext_resource type="Script" path="res://Scripts/Combat/HitEvent.cs" id="event"]
 [ext_resource type="Script" path="res://Scripts/Combat/HitDefinition.cs" id="hit"]
 [ext_resource type="Script" path="res://Scripts/Combat/ActionMotion.cs" id="motion"]
+
+[ext_resource type="Resource" path="res://Content/Skills/Growth/Wukong/jdy.tres" id="growth"]
 
 [sub_resource type="Resource" id="movement"]
 script = ExtResource("motion")
@@ -48,13 +51,15 @@ StartFrame = 8
 EndFrame = 9
 Hit = SubResource("hit_data")
 
+
+
 [resource]
 script = ExtResource("skill")
+Growth = ExtResource("growth")
 Id = "jdy"
 Animation = &"jdy"
 FramesPerSecond = 20
-BaseManaCost = 10
-ManaCostLinearGrowth = 8
-ManaCostQuadraticGrowth = 2
+CooldownSeconds = 0.4
 Motion = SubResource("movement")
 Hits = Array[ExtResource("event")]([SubResource("wave_1"), SubResource("wave_2"), SubResource("wave_3"), SubResource("wave_4"), SubResource("wave_5")])
+BehaviorScene = ExtResource("behavior")

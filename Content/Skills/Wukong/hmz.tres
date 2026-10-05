@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="SkillDefinition" format=3]
+[ext_resource type="PackedScene" path="res://Content/Skills/Behaviors/FireSlash.tscn" id="behavior"]
+[ext_resource type="Script" path="res://Scripts/Combat/SkillDefinition.cs" id="skill"]
+
+
+[ext_resource type="Resource" path="res://Content/Skills/Growth/Wukong/hmz.tres" id="growth"]
+
+[resource]
+script = ExtResource("skill")
+Growth = ExtResource("growth")
+Id = "hmz"
+Invulnerable = true
+Animation = &"hmz__"
+FramesPerSecond = 20
+CooldownSeconds = 0.8
+StartCooldownOnImpact = true
+BehaviorScene = ExtResource("behavior")

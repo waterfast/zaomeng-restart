@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CharacterStatDefinition" format=3]
+[ext_resource type="Script" path="res://Scripts/Character/CharacterStatDefinition.cs" id="1"]
+[resource]
+script = ExtResource("1")
+Id = "life_steal"
+Field = 12
+NameKey = "STAT_LIFE_STEAL_NAME"
+DescriptionKey = "STAT_LIFE_STEAL_DESCRIPTION"
+Format = 4
+RatingConstant = 100

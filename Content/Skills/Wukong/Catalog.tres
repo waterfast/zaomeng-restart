@@ -1,0 +1,111 @@
+[gd_resource type="Resource" script_class="SkillCatalog" format=3]
+[ext_resource type="Script" path="res://Scripts/Combat/Skills/SkillCatalog.cs" id="catalog"]
+[ext_resource type="Script" path="res://Scripts/Combat/Skills/SkillEntry.cs" id="entry"]
+[ext_resource type="PackedScene" path="res://Scenes/Actors/Player.tscn" id="actor"]
+[ext_resource type="Texture2D" path="res://Assets/Art/HeroPicture/RoleProperiesBox/swk.png" id="portrait"]
+[ext_resource type="Resource" path="res://Content/Skills/Wukong/slz.tres" id="action_slz"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Skill/SkillIcon/slz.png" id="icon_slz"]
+[ext_resource type="Resource" path="res://Content/Skills/Wukong/hytj.tres" id="action_hytj"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Skill/SkillIcon/hytj.png" id="icon_hytj"]
+[ext_resource type="Resource" path="res://Content/Skills/Wukong/lys.tres" id="action_lys"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Skill/SkillIcon/lys.png" id="icon_lys"]
+[ext_resource type="Resource" path="res://Content/Skills/Wukong/lyfb.tres" id="action_lyfb"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Skill/SkillIcon/lyfb.png" id="icon_lyfb"]
+[ext_resource type="Resource" path="res://Content/Skills/Wukong/hmz.tres" id="action_hmz"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Skill/SkillIcon/hmz.png" id="icon_hmz"]
+[ext_resource type="Resource" path="res://Content/Skills/Wukong/zz.tres" id="action_zz"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Skill/SkillIcon/zz.png" id="icon_zz"]
+[ext_resource type="Resource" path="res://Content/Skills/Wukong/qsez.tres" id="action_qsez"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Skill/SkillIcon/qsez.png" id="icon_qsez"]
+[ext_resource type="Resource" path="res://Content/Skills/Wukong/jdy.tres" id="action_jdy"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Skill/SkillIcon/jdy.png" id="icon_jdy"]
+[ext_resource type="Resource" path="res://Content/Skills/Wukong/hyjj.tres" id="action_hyjj"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Skill/SkillIcon/hyjj.png" id="icon_hyjj"]
+[ext_resource type="Resource" path="res://Content/Skills/Wukong/sx.tres" id="passive_sx"]
+[ext_resource type="Resource" path="res://Content/Skills/Common/kb.tres" id="passive_kb"]
+[ext_resource type="Resource" path="res://Content/Skills/Common/yh.tres" id="passive_yh"]
+[ext_resource type="Resource" path="res://Content/Skills/Common/hh.tres" id="passive_hh"]
+
+[sub_resource type="Resource" id="entry_slz"]
+script = ExtResource("entry")
+Id = "slz"
+DisplayName = "升龙斩"
+Description = "奋力一击，将敌人击飞至空中，造成魔法伤害。"
+Icon = ExtResource("icon_slz")
+MaximumLevel = 10
+Action = ExtResource("action_slz")
+[sub_resource type="Resource" id="entry_hytj"]
+script = ExtResource("entry")
+Id = "hytj"
+DisplayName = "火炎突击"
+Description = "短距离突刺，将敌人击退，并造成多段魔法伤害。"
+Icon = ExtResource("icon_hytj")
+MaximumLevel = 10
+Action = ExtResource("action_hytj")
+[sub_resource type="Resource" id="entry_lys"]
+script = ExtResource("entry")
+Id = "lys"
+DisplayName = "烈焰闪"
+Description = "以无法捕捉的速度快速冲刺，进入无法被命中状态并且造成多段伤害。"
+Icon = ExtResource("icon_lys")
+MaximumLevel = 10
+Action = ExtResource("action_lys")
+[sub_resource type="Resource" id="entry_lyfb"]
+script = ExtResource("entry")
+Id = "lyfb"
+DisplayName = "烈焰风暴"
+Description = "快速旋转，震开或吸引周边敌人，造成多段魔法伤害"
+Icon = ExtResource("icon_lyfb")
+MaximumLevel = 10
+Action = ExtResource("action_lyfb")
+[sub_resource type="Resource" id="entry_hmz"]
+script = ExtResource("entry")
+Id = "hmz"
+DisplayName = "火魔斩"
+Description = "冲向空中造成多段物理伤害，之后砸向地面造成魔法伤害，期间处于无法被命中状态。"
+Icon = ExtResource("icon_hmz")
+MaximumLevel = 10
+Action = ExtResource("action_hmz")
+[sub_resource type="Resource" id="entry_zz"]
+script = ExtResource("entry")
+Id = "zz"
+DisplayName = "重斩"
+Description = "蓄力后用力砸向地面造成伤害并且击退敌人。"
+Icon = ExtResource("icon_zz")
+MaximumLevel = 10
+Action = ExtResource("action_zz")
+[sub_resource type="Resource" id="entry_qsez"]
+script = ExtResource("entry")
+Id = "qsez"
+DisplayName = "七十二斩"
+Description = "向前冲刺并打击触碰到的敌人。"
+Icon = ExtResource("icon_qsez")
+MaximumLevel = 10
+Action = ExtResource("action_qsez")
+[sub_resource type="Resource" id="entry_jdy"]
+script = ExtResource("entry")
+Id = "jdy"
+DisplayName = "筋斗云"
+Description = "腾云驾雾，快速冲，按W可以向上飞行。"
+Icon = ExtResource("icon_jdy")
+MaximumLevel = 10
+Action = ExtResource("action_jdy")
+[sub_resource type="Resource" id="entry_hyjj"]
+script = ExtResource("entry")
+Id = "hyjj"
+DisplayName = "火眼金睛"
+Description = "眼睛变红，之后在当前面朝方向优先出现的敌人身上召唤六丁神火，造成多次伤害（目标死亡时立即消失）。"
+Icon = ExtResource("icon_hyjj")
+MaximumLevel = 10
+Action = ExtResource("action_hyjj")
+
+[resource]
+script = ExtResource("catalog")
+CharacterId = "role_1"
+DisplayName = "孙悟空"
+Description = "善用棍法，灵活多变。"
+Portrait = ExtResource("portrait")
+SelectionAnimation = &"Role_1"
+ActorScene = ExtResource("actor")
+ReservedKeys = PackedInt64Array(87)
+Skills = Array[ExtResource("entry")]([SubResource("entry_slz"), SubResource("entry_hytj"), SubResource("entry_lys"), SubResource("entry_lyfb"), SubResource("entry_hmz"), SubResource("entry_zz"), SubResource("entry_qsez"), SubResource("entry_jdy"), SubResource("entry_hyjj"), ExtResource("passive_sx"), ExtResource("passive_kb"), ExtResource("passive_yh"), ExtResource("passive_hh")])

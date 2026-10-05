@@ -27,6 +27,7 @@ public partial class PlayerResourcesSmokeTest : Node2D
 			Check(CharacterProgression.ExperienceToNextLevel(19) == 4000 &&
 				CharacterProgression.ExperienceToNextLevel(20) == 10000, "legacy experience boundary");
 			SkillDefinition skill = player.EquippedSkill2!;
+			character.LearnSkill(skill.Id);
 			Check(player.TryUseSkill(skill) && player.Mana == 15, "skill costs mana after starting");
 			Check(player.GetSkillCooldown(skill) > 0 && !player.TryUseSkill(skill) && player.Mana == 15,
 				"cooldown rejects repeat without charging");
@@ -60,7 +61,7 @@ public partial class PlayerResourcesSmokeTest : Node2D
 			player.GainExperience(11);
 			Check(player.Level == 2 && player.Experience == 0 && player.MaxMana == 65 && player.MaxHealth == 130,
 				"legacy level growth and clearing surplus experience");
-			Check(player.Health == 80 && player.Mana == 42, "level growth does not replenish resources");
+			Check(player.Health == player.MaxHealth && player.Mana == player.MaxMana, "level growth fully replenishes resources");
 			var monster = GD.Load<PackedScene>("res://Scenes/Actors/Monster.tscn").Instantiate<Monster>();
 			monster.AiEnabled = false;
 			AddChild(monster);
@@ -77,7 +78,7 @@ public partial class PlayerResourcesSmokeTest : Node2D
 			presenter.Bind(hud, player);
 			hud.AddChild(presenter);
 			Check(hud.GetNode<Sprite2D>("roleLayer/role_head").Texture is not null &&
-				hud.GetNode<Label>("roleLayer/role_hp_mp_exp/mp_bar/mp_text").Text == "42/65" &&
+				hud.GetNode<Label>("roleLayer/role_hp_mp_exp/mp_bar/mp_text").Text == "65/65" &&
 				hud.GetNode<Label>("roleLayer/role_hp_mp_exp/exp_bar/exp_text").Text == "5/160", "HUD displays player resources");
 			Check(notifications == 3, "progression notification once per reward");
 			character.Level = 54;

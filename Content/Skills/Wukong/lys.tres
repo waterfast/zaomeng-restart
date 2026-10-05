@@ -5,6 +5,10 @@
 [ext_resource type="Script" path="res://Scripts/Combat/HitDefinition.cs" id="hit"]
 [ext_resource type="Script" path="res://Scripts/Combat/ActionMotion.cs" id="motion"]
 
+[ext_resource type="Resource" path="res://Content/Skills/Growth/Wukong/lys.tres" id="growth"]
+
+[ext_resource type="Resource" path="res://Content/Skills/Wukong/hmz.tres" id="linked"]
+
 [sub_resource type="Resource" id="movement"]
 script = ExtResource("motion")
 Mode = 2
@@ -27,11 +31,12 @@ Hit = SubResource("hit_data")
 
 [resource]
 script = ExtResource("skill")
+Growth = ExtResource("growth")
 Id = "lys"
+Invulnerable = true
 Animation = &"lys"
-CooldownSeconds = 2.8
-BaseManaCost = 12
-ManaCostLinearGrowth = 4
-ManaCostQuadraticGrowth = 2
+CooldownSeconds = 0.4666667
+LinkedCooldownSkill = ExtResource("linked")
+LinkedCooldownSeconds = 0.6
 Motion = SubResource("movement")
 Hits = Array[ExtResource("event")]([SubResource("hit_window")])

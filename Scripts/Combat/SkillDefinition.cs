@@ -11,16 +11,14 @@ public partial class SkillDefinition : Resource
     [Export] public int FramesPerSecond { get; set; } = 30;
     // 旧版冷却和蓝耗作为静态策划数据保存；运行态由玩家管理。
     [Export] public float CooldownSeconds { get; set; }
-    [Export] public int BaseManaCost { get; set; }
-    [Export] public int ManaCostLinearGrowth { get; set; }
-    [Export] public int ManaCostQuadraticGrowth { get; set; }
-
-    public int GetManaCost(int level)
-    {
-        int extraLevels = Mathf.Max(0, level - 1);
-        return BaseManaCost + extraLevels * ManaCostLinearGrowth
-            + extraLevels * extraLevels * ManaCostQuadraticGrowth;
-    }
+    // 延迟冷却由行为触发；时长仍在施放时按极速快照。
+    [Export] public bool StartCooldownOnImpact { get; set; }
+    [Export] public SkillDefinition? LinkedCooldownSkill { get; set; }
+    [Export] public float LinkedCooldownSeconds { get; set; }
+    [Export] public Zaomeng.Skills.SkillGrowth Growth { get; set; } = new();
+    [Export] public bool Invulnerable { get; set; }
+    [Export] public PackedScene? BehaviorScene { get; set; }
+    public int GetManaCost(int level) => Growth.ManaCost(level);
 
     // 位移只描述角色本身，不影响特效场景和命中时间。
     [Export] public ActionMotion? Motion { get; set; }

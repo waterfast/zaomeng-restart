@@ -1,0 +1,43 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://Assets/Art/Task/668.png" id="1"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/BackPack/Box_1.tscn" id="3"]
+[ext_resource type="FontFile" path="res://Assets/Font/华康宋体W3.ttc" id="4"]
+
+[node name="TaskReward" type="TextureRect"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource( "1" )
+metadata/_edit_lock_ = true
+
+[node name="Items" parent="." instance=ExtResource( "3" )]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 9.0
+offset_right = 58.0
+offset_bottom = 59.0
+scale = Vector2(0.85, 0.85)
+metadata/_edit_lock_ = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 8.0
+offset_right = 133.0
+offset_bottom = 53.0
+
+[node name="title" type="Label" parent="ScrollContainer"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource( "4" )
+theme_override_font_sizes/font_size = 13
+vertical_alignment = 1
+autowrap_mode = 1
+metadata/_edit_lock_ = true

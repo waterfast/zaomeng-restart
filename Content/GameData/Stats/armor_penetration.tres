@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CharacterStatDefinition" format=3]
+[ext_resource type="Script" path="res://Scripts/Character/CharacterStatDefinition.cs" id="1"]
+[resource]
+script = ExtResource("1")
+Id = "armor_penetration"
+Field = 13
+NameKey = "STAT_ARMOR_PENETRATION_NAME"
+DescriptionKey = "STAT_ARMOR_PENETRATION_DESCRIPTION"
+Format = 0
+RatingConstant = 100

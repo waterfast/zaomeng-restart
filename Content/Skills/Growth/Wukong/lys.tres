@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SkillGrowth" format=3]
+[ext_resource type="Script" path="res://Scripts/Combat/Skills/SkillGrowth.cs" id="1"]
+[resource]
+script = ExtResource("1")
+InitialLearningCost = 700
+LearningCostPerLevel = 500
+InitialManaCost = 12
+ManaLinearGrowth = 4
+ManaQuadraticGrowth = 2

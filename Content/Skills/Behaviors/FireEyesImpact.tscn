@@ -1,0 +1,18 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://Scripts/Combat/Skills/FireEyesEffect.cs" id="behavior"]
+[ext_resource type="Script" path="res://Scripts/Combat/HitDefinition.cs" id="hit"]
+[ext_resource type="SpriteFrames" path="res://Content/Skills/Wukong/FireEyesFrames.tres" id="frames"]
+
+[sub_resource type="Resource" id="damage"]
+script = ExtResource("hit")
+AttackMultiplier = 0.8
+MultiplierPerLevel = 0.15
+DamageType = 1
+Knockback = Vector2(0, 0)
+
+[node name="FireEyesImpact" type="Node2D"]
+script = ExtResource("behavior")
+Frames = ExtResource("frames")
+Hit = SubResource("damage")
+HitCount = 3
+Interval = 1.1

@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="SkillCatalog" format=3]
+[ext_resource type="Script" path="res://Scripts/Combat/Skills/SkillCatalog.cs" id="catalog"]
+[ext_resource type="Script" path="res://Scripts/Combat/Skills/SkillEntry.cs" id="entry"]
+[ext_resource type="PackedScene" path="res://Scenes/Actors/Tangseng.tscn" id="actor"]
+[ext_resource type="Texture2D" path="res://Assets/Art/HeroPicture/RoleProperiesBox/tsz.png" id="portrait"]
+[ext_resource type="Resource" path="res://Content/Skills/Tangseng/blb.tres" id="action_blb"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Skill/SkillIcon/blb.png" id="icon_blb"]
+[ext_resource type="Resource" path="res://Content/Skills/Tangseng/tjgl.tres" id="action_tjgl"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Skill/SkillIcon/tjgl.png" id="icon_tjgl"]
+[ext_resource type="Resource" path="res://Content/Skills/Common/kb.tres" id="passive_kb"]
+[ext_resource type="Resource" path="res://Content/Skills/Common/yh.tres" id="passive_yh"]
+[ext_resource type="Resource" path="res://Content/Skills/Common/hh.tres" id="passive_hh"]
+
+[sub_resource type="Resource" id="entry_blb"]
+script = ExtResource("entry")
+Id = "blb"
+DisplayName = "冰龙波"
+Description = "短暂引导后释放冰龙冲击，造成魔法伤害并击退敌人。"
+Icon = ExtResource("icon_blb")
+MaximumLevel = 10
+Action = ExtResource("action_blb")
+[sub_resource type="Resource" id="entry_tjgl"]
+script = ExtResource("entry")
+Id = "tjgl"
+DisplayName = "天降甘露"
+Description = "短暂引导后恢复生命，已损失生命越多，治疗效果越高。"
+Icon = ExtResource("icon_tjgl")
+MaximumLevel = 10
+Action = ExtResource("action_tjgl")
+
+[resource]
+script = ExtResource("catalog")
+CharacterId = "role_2"
+DisplayName = "唐僧"
+Description = "试玩：冰龙波、天降甘露和三个通用被动，其余技能尚未迁入。"
+Portrait = ExtResource("portrait")
+SelectionAnimation = &"Role_2"
+ActorScene = ExtResource("actor")
+ReservedKeys = PackedInt64Array()
+Skills = Array[ExtResource("entry")]([SubResource("entry_blb"), SubResource("entry_tjgl"), ExtResource("passive_kb"), ExtResource("passive_yh"), ExtResource("passive_hh")])

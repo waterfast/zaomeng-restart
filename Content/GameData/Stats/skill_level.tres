@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CharacterStatDefinition" format=3]
+[ext_resource type="Script" path="res://Scripts/Character/CharacterStatDefinition.cs" id="1"]
+[resource]
+script = ExtResource("1")
+Id = "skill_level"
+Field = 17
+NameKey = "STAT_SKILL_LEVEL_NAME"
+DescriptionKey = "STAT_SKILL_LEVEL_DESCRIPTION"
+Format = 0
+RatingConstant = 100

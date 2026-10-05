@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="QuestDefinition" load_steps=7 format=3]
+[ext_resource type="Script" path="res://Scripts/Quests/QuestDefinition.cs" id="1"]
+[ext_resource type="Script" path="res://Scripts/Quests/QuestReward.cs" id="2"]
+[sub_resource type="Resource" id="a"]
+script = ExtResource("2")
+ItemId = "xydxq"
+Count = 2
+[sub_resource type="Resource" id="b"]
+script = ExtResource("2")
+ItemId = "mpyj"
+Count = 1
+[sub_resource type="Resource" id="c"]
+script = ExtResource("2")
+ItemId = "qhsbx"
+Count = 10
+[sub_resource type="Resource" id="d"]
+script = ExtResource("2")
+ItemId = "bsd_1"
+Count = 3
+[resource]
+script = ExtResource("1")
+Id = "growth_gift_1"
+NameKey = "QUEST_GROWTH_1_NAME"
+DescriptionKey = "QUEST_GROWTH_1_DESCRIPTION"
+RequiredLevel = 10
+Rewards = Array[Resource]([SubResource("a"), SubResource("b"), SubResource("c"), SubResource("d")])

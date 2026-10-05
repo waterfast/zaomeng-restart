@@ -201,7 +201,7 @@ public partial class ItemActionsSmokeTest : Node
 			Button worn = backpack.GetNode<Button>("background/infomation/equ_/HBoxContainer/wq");
 			worn.EmitSignal(BaseButton.SignalName.MouseEntered);
 			Check(worn.Icon == slot.Icon && worn.TooltipText.Length == 0 && backpack.GetNode<Node2D>("ItemTooltip").Visible &&
-				backpack.GetNode<Label>("ItemTooltip/pro_wk/information/inf/VBoxContainer3/eq_power").Text.Contains("75"),
+				backpack.GetNode<Label>("ItemTooltip/pro_wk/information/inf/RegisteredStats/attack").Text.Contains("75"),
 				"worn equipment has a grid background and the same detailed tooltip as inventory gear");
 			if (DisplayServer.GetName() != "headless")
 			{

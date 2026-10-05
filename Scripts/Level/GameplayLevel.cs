@@ -8,6 +8,7 @@ using Zaomeng.Equipment;
 using Zaomeng.Events;
 using Zaomeng.UI;
 using Zaomeng.UI.Inventory;
+using Zaomeng.Skills;
 using SaveCharacter = Zaomeng.Character.Character;
 
 namespace Zaomeng.Level;
@@ -34,16 +35,42 @@ public partial class GameplayLevel : Node2D
 	private readonly CapsuleShape2D _spawnClearance = new() { Radius = 18, Height = 60 };
 	private float _spawnClock;
 	private bool _transitioning;
+	private ForestEncounter? _forest;
+	private BossHud? _bossHud;
+	private bool _ending;
+	private bool _exitPending;
+	private float _exitDelay;
+	private LevelExit? _exit;
+	private float _endDelay;
+	private LevelResult? _result;
+	private LevelRunStatistics _statistics = null!;
+	private ComboHud _combo = null!;
+	private AnimatedSprite2D _advancePrompt = null!;
+	private readonly HashSet<Monster> _lootAwarded = new();
 
 	public override void _EnterTree()
 	{
 		(_character, _inventory) = GameSessionCharacter.Prepare(ItemCatalog);
-		GetNode<Player>("Player").BindCharacter(_character, ItemCatalog);
+		var role = SkillCatalogRegistry.Default.Get(_character.Id);
+		Player existing = GetNode<Player>("Player");
+		if (existing.SceneFilePath != role.ActorScene.ResourcePath)
+		{
+			Vector2 spawn = existing.Position;
+			RemoveChild(existing);
+			existing.Free();
+			var actor = role.ActorScene.Instantiate<Player>();
+			actor.Name = "Player";
+			actor.Position = spawn;
+			actor.BindCharacter(_character, ItemCatalog);
+			AddChild(actor);
+		}
+		else existing.BindCharacter(_character, ItemCatalog);
 	}
 
 	public override void _Ready()
 	{
 		_player = GetNode<Player>("Player");
+		_statistics = new LevelRunStatistics(_player);
 		_player.ProgressionChanged += SaveProgression;
 		_player.SoulsCollected += CollectSouls;
 		_equipmentBinding = new(_character, ItemCatalog, _inventory, Events,
@@ -59,18 +86,55 @@ public partial class GameplayLevel : Node2D
 		_backpackView.CloseRequested += menus.CloseMenu;
 		_status = GetNode<Label>("HUD/Status");
 		var oldHud = GetNode<Node2D>("OldHud");
+		var skills = new SkillLearningService(_character, GameSession.Data!.Wallet);
+		var skillRoot = GD.Load<PackedScene>("res://Scenes/UI/Skill/Learn_skill.tscn").Instantiate<Node2D>();
+		GetNode("HUD").AddChild(skillRoot);
+		menus.RegisterMenu("skills_menu", skillRoot);
+		var skillPanel = new LegacySkillPanel();
+		skillPanel.Bind(skillRoot, skills, () => GameSession.Save(_inventory), _player);
+		skillRoot.AddChild(skillPanel);
+		skillPanel.CloseRequested += menus.CloseMenu;
+		if (!InputMap.HasAction("pause_menu"))
+		{
+			InputMap.AddAction("pause_menu");
+			InputMap.ActionAddEvent("pause_menu", new InputEventKey { PhysicalKeycode = Key.Escape });
+		}
+		var settings = GD.Load<PackedScene>("res://Scenes/UI/Settings/SetMenu.tscn").Instantiate<Control>();
+		GetNode("HUD").AddChild(settings);
+		menus.RegisterMenu("pause_menu", settings);
+		var settingsPanel = new LegacySettingsPanel();
+		settingsPanel.Bind(settings, menus, () => GameSession.Save(_inventory));
+		settings.AddChild(settingsPanel);
 		var playerHud = new PlayerHud();
-		playerHud.Bind(oldHud, _player);
+		playerHud.Bind(oldHud, _player, skills);
 		oldHud.AddChild(playerHud);
 		menus.MenuStateChanged += isOpen =>
 		{
 			_status.Visible = !isOpen;
 			oldHud.GetNode<CanvasLayer>("roleLayer").Visible = !isOpen;
 		};
-		oldHud.GetNode<AnimatedSprite2D>("roleLayer/Gogo").Hide();
+		_advancePrompt = oldHud.GetNode<AnimatedSprite2D>("roleLayer/Gogo");
+		_advancePrompt.Hide();
+		var combo = new ComboHud();
+		_combo = combo;
+		combo.Bind(_player, oldHud.GetNode<CanvasLayer>("roleLayer"));
+		oldHud.AddChild(combo);
 		oldHud.GetNode<BaseButton>("roleLayer/role_menu/backpack").Pressed += () => menus.ToggleMenu("bag");
-		foreach (string name in new[] { "set", "skill", "magic_weapon", "pet" })
-			oldHud.GetNode<BaseButton>($"roleLayer/role_menu/{name}").Disabled = true;
+		oldHud.GetNode<BaseButton>("roleLayer/role_menu/set").Pressed += () => menus.ToggleMenu("pause_menu");
+		oldHud.GetNode<BaseButton>("roleLayer/role_menu/skill").Pressed += () => menus.ToggleMenu("skills_menu");
+		oldHud.GetNode<BaseButton>("roleLayer/role_menu/magic_weapon").Pressed += () => menus.ToggleMenu("bag");
+		oldHud.GetNode<BaseButton>("roleLayer/role_menu/pet").Disabled = true;
+		if (LevelNumber == 1)
+		{
+			_forest = new ForestEncounter();
+			_forest.Configure(this, _player, _pool);
+			_forest.MonsterDefeated += AwardLoot;
+			_forest.Cleared += () => { _exitPending = true; _exitDelay = 2; };
+			AddChild(_forest);
+			_bossHud = new BossHud();
+			_bossHud.Bind(oldHud.GetNode<CanvasLayer>("roleLayer"));
+			oldHud.AddChild(_bossHud);
+		}
 		if (Array.Exists(OS.GetCmdlineUserArgs(), value => value == "--level-bag-test"))
 			CallDeferred(MethodName.StartBagTest);
 	}
@@ -84,22 +148,56 @@ public partial class GameplayLevel : Node2D
 		_backpackView?.Dispose();
 		_inventoryAdapter?.Dispose();
 		_equipmentBinding?.Dispose();
+		_statistics?.Dispose();
+		GetTree().Paused = false;
 	}
 
 	public override void _Process(double delta)
 	{
 		if (_transitioning) return;
 		float step = (float)delta;
-		_camera.Position = new Vector2(Mathf.Clamp(_player.Position.X, 480, 4700), 280);
-		UpdateMonsters(step);
-		_status.Text = $"{LevelName}  {_player.Health:0}/{_player.MaxHealth:0}   小怪 {_active.Count}/{MaximumMonsters}"
-			+ (_player.IsDead ? "   按 R 重试" : "");
-		if (_player.Position.X > 4600 && !_player.IsDead) CompleteLevel();
+		UpdateCamera();
+		if (_ending) return;
+		_statistics.Tick(delta);
+		if (_player.IsDead) { BeginEnding(false); return; }
+		_advancePrompt.Visible = _forest?.NeedsAdvance == true && !_player.IsDead;
+		_advancePrompt.Position = new(GetViewport().GetVisibleRect().Size.X - 70, 259);
+		if (_forest is null) UpdateMonsters(step);
+		_bossHud?.Track(_forest?.Boss);
+		_status.Text = _forest?.Status ?? $"{LevelName}   小怪 {_active.Count}/{MaximumMonsters}";
+		if (_forest is null && _player.Position.X > 4600) BeginEnding(true);
+	}
+
+	private void UpdateCamera()
+	{
+		if (_forest is null)
+		{
+			_camera.Position = new(Mathf.Clamp(_player.Position.X, 480, 4700), 295);
+			return;
+		}
+		_camera.LimitRight = _forest.CameraRight;
+		_camera.LimitBottom = 590;
+		// 可视宽度会随窗口比例变化，不能把半屏宽度固定写成480。
+		float halfWidth = GetViewport().GetVisibleRect().Size.X / (2 * _camera.Zoom.X);
+		_camera.Position = new(Mathf.Clamp(_player.Position.X, halfWidth, _forest.CameraRight - halfWidth), 295);
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
-		if (_transitioning || _player.IsDead || _active.Count >= MaximumMonsters) return;
+		if (_exitPending && !_ending && !_player.IsDead)
+		{
+			_exitDelay -= (float)delta;
+			if (_exitDelay <= 0) OpenExit();
+		}
+		if (_ending)
+		{
+			_endDelay -= (float)delta;
+			// 死亡特效独立播放，不能只按身体动画结束时间截断墓碑下落。
+			if (_result is not null && _endDelay <= 0 && (_result.Victory ||
+				(!_player.Animator.IsPlaying() && !_player.GetNode<AnimatedSprite2D>("Facing/Visual/Death").IsPlaying()))) ShowSettlement();
+			return;
+		}
+		if (_forest is not null || _transitioning || _player.IsDead || _active.Count >= MaximumMonsters) return;
 		_spawnClock += (float)delta;
 		if (_spawnClock < SpawnInterval) return;
 		_spawnClock = 0;
@@ -128,6 +226,7 @@ public partial class GameplayLevel : Node2D
 				continue;
 			}
 			if (!monster.IsDead) continue;
+			if (_lootAwarded.Add(monster)) AwardLoot(monster);
 			float time = entry.Value.CorpseTime + delta;
 			if (time >= 1)
 			{
@@ -157,6 +256,7 @@ public partial class GameplayLevel : Node2D
 			float x = Mathf.Clamp(_player.Position.X + direction * (350 + GD.Randf() * 300), 250, 4450);
 			if (!TryFindSpawnPosition(x, out Vector2 position)) continue;
 			Monster monster = _pool.Spawn(kind, position);
+			_lootAwarded.Remove(monster);
 			_active[monster] = (kind, 0);
 			return;
 		}
@@ -193,20 +293,65 @@ public partial class GameplayLevel : Node2D
 		return space.IntersectShape(clearance, 1).Count == 0;
 	}
 
-	private void CompleteLevel()
+	private void BeginEnding(bool victory)
 	{
+		if (_ending || _transitioning) return;
+		victory &= !_player.IsDead;
+		_ending = true;
+		_endDelay = victory ? (_exit is null ? 2 : 0) : 0.25f;
+		_result = _statistics.Finish(victory, LevelName, _combo.MaximumCount);
+		_statistics.Dispose();
+		_player.InputEnabled = false;
+		var menus = GetNode<MenuManager>("MenuManager");
+		menus.CloseMenu();
+		menus.SetProcessInput(false);
+		_forest?.SetPhysicsProcess(false);
+		_advancePrompt.Hide();
+		foreach (Node node in GetTree().GetNodesInGroup("monsters"))
+			if (node is Monster monster) { monster.AiEnabled = false; monster.SetPhysicsProcess(false); }
+		if (victory) GameSession.CompleteLevel(LevelNumber, _inventory);
+		else GameSession.Save(_inventory);
+	}
+	private void OpenExit()
+	{
+		_exitPending = false;
+		_exit = GD.Load<PackedScene>("res://Scenes/LevelExit.tscn").Instantiate<LevelExit>();
+		_exit.Position = new(ForestEncounter.FinalBoundaryX - 120, 427);
+		_exit.Bind(_player);
+		_exit.Activated += () => BeginEnding(true);
+		AddChild(_exit);
+	}
+	private void ShowSettlement()
+	{
+		SetPhysicsProcess(false);
+		GetNode<Node2D>("OldHud").GetNode<CanvasLayer>("roleLayer").Hide();
+		_status.Hide();
+		var settlement = new LevelSettlement { Name = "Settlement" };
+		AddChild(settlement);
+		settlement.ShowResult(_result!);
+		settlement.ReturnRequested += () => Navigate(GameSession.FirstMap);
+		settlement.RetryRequested += () => Navigate(SceneFilePath);
+		GetTree().Paused = true;
+	}
+	private void Navigate(string path)
+	{
+		if (_transitioning) return;
 		_transitioning = true;
-		GameSession.CompleteLevel(LevelNumber, _inventory);
-		GetTree().ChangeSceneToFile(GameSession.FirstMap);
+		GetTree().Paused = false;
+		GetTree().ChangeSceneToFile(path);
 	}
 
-	public override void _UnhandledInput(InputEvent input)
+	private void AwardLoot(Monster monster)
 	{
-		if (_player.IsDead && input.IsActionPressed("restart"))
+		string[] pool = LevelNumber == 1 ? ["ptxzg", "ptxzf"] : ["ptxzg", "ptxzf", "dsyj", "dslj", "jcsz"];
+		if (monster.IsBoss)
 		{
-			GetTree().ReloadCurrentScene();
-			GetViewport().SetInputAsHandled();
+			foreach (string id in new[] { "dsyj", "dslj", "dshl" })
+				if (!_inventory.AddItem(id, 1)) _status.Text = "背包已满，无法领取 Boss 装备";
 		}
+		else if (GD.Randf() < 0.18f) _inventory.AddItem(pool[GD.RandRange(0, pool.Length - 1)], 1);
+		GameSession.Save(_inventory);
 	}
+
 
 }

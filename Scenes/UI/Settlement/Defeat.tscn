@@ -1,0 +1,42 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://Assets/Art/Level/Settlement/623.png" id="2"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Level/Settlement/622.png" id="3"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Level/Settlement/630.png" id="4"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Level/Settlement/632.png" id="5"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Level/Settlement/457.png" id="6"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Level/Settlement/459.png" id="7"]
+[ext_resource type="Texture2D" path="res://Assets/Art/MagicWeapon/149.png" id="8"]
+[ext_resource type="Texture2D" path="res://Assets/Art/MagicWeapon/145.png" id="9"]
+[ext_resource type="FontFile" path="res://Assets/Font/华康宋体W3.ttc" id="10"]
+[node name="defeat" type="Node2D"]
+process_mode = 3
+
+[node name="bg" type="Sprite2D" parent="."]
+position = Vector2(469, 294)
+texture = ExtResource( "2" )
+
+[node name="defeat" type="Sprite2D" parent="."]
+position = Vector2(470, 252)
+texture = ExtResource( "3" )
+
+[node name="return_map" type="TextureButton" parent="."]
+offset_left = 465.0
+offset_top = 361.0
+offset_right = 625.0
+offset_bottom = 420.0
+texture_normal = ExtResource( "4" )
+texture_pressed = ExtResource( "5" )
+texture_hover = ExtResource( "5" )
+texture_disabled = ExtResource( "4" )
+
+[node name="ReChallenge" type="TextureButton" parent="."]
+offset_left = 323.0
+offset_top = 363.0
+offset_right = 484.0
+offset_bottom = 423.0
+texture_normal = ExtResource( "6" )
+texture_pressed = ExtResource( "6" )
+texture_hover = ExtResource( "7" )
+texture_disabled = ExtResource( "6" )
+metadata/_edit_lock_ = true

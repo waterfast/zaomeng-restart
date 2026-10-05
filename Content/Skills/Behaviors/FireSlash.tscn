@@ -1,0 +1,32 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://Scripts/Combat/Skills/FireSlashBehavior.cs" id="behavior"]
+[ext_resource type="Script" path="res://Scripts/Combat/HitDefinition.cs" id="hit"]
+[ext_resource type="SpriteFrames" path="res://Content/Skills/Wukong/FireSlashFrames.tres" id="frames"]
+
+[sub_resource type="Resource" id="air"]
+script = ExtResource("hit")
+AttackMultiplier = 1.32
+AttackMultiplierMax = 1.4
+MultiplierPerLevel = 0.15
+Knockback = Vector2(60, -90)
+[sub_resource type="Resource" id="dive"]
+script = ExtResource("hit")
+AttackMultiplier = 1.32
+AttackMultiplierMax = 1.4
+MultiplierPerLevel = 0.15
+DamageType = 1
+Knockback = Vector2(660, 270)
+[sub_resource type="Resource" id="landing"]
+script = ExtResource("hit")
+AttackMultiplier = 4.5
+AttackMultiplierMax = 4.8
+MultiplierPerLevel = 0.5
+DamageType = 1
+Knockback = Vector2(90, -420)
+
+[node name="FireSlash" type="Node"]
+script = ExtResource("behavior")
+Frames = ExtResource("frames")
+AirHit = SubResource("air")
+DiveHit = SubResource("dive")
+LandingHit = SubResource("landing")

@@ -11,6 +11,9 @@ public static class SaveDataValidator
 	public static void Validate(GameSaveData data)
 	{
 		ArgumentNullException.ThrowIfNull(data);
+		if (data.ClaimedQuestIds is null) throw new InvalidDataException("任务领取状态无效。");
+		foreach (string id in data.ClaimedQuestIds)
+			if (string.IsNullOrWhiteSpace(id)) throw new InvalidDataException("任务领取标识不能为空。");
 		if (data.Version != GameSaveData.CurrentVersion)
 			throw new NotSupportedException($"存档版本 {data.Version} 不受支持，当前版本为 {GameSaveData.CurrentVersion}。");
 		if (data.Inventory is null || data.Inventory.Capacity <= 0 ||
@@ -43,6 +46,7 @@ public static class SaveDataValidator
 				character.Name is null || character.BaseStats is null ||
 				character.PermanentBonuses is null || character.Equipment is null ||
 				character.SkillLevels is null || character.EquippedSkillIds is null ||
+				character.SkillKeyCodes is null || character.SkillKeyCodes.Count != Zaomeng.Character.Character.SkillSlotCount ||
 				character.UnlockedTalentIds is null ||
 				character.EquippedSkillIds.Count != Zaomeng.Character.Character.SkillSlotCount ||
 				!HasFiniteStats(character.BaseStats) || !HasFiniteStats(character.PermanentBonuses))
@@ -60,6 +64,10 @@ public static class SaveDataValidator
 			foreach (string skillId in character.EquippedSkillIds)
 				if (skillId is null || (skillId.Length > 0 && !character.SkillLevels.ContainsKey(skillId)))
 					throw new InvalidDataException($"角色 {character.Id} 的技能快捷栏无效。");
+			var skillKeys = new HashSet<long>();
+			foreach (long key in character.SkillKeyCodes)
+				if (key is < 65 or > 90 || !skillKeys.Add(key) || "ADJKRCVBNH".Contains((char)key))
+					throw new InvalidDataException($"角色 {character.Id} 的技能按键配置无效。");
 			foreach (string talentId in character.UnlockedTalentIds)
 				if (string.IsNullOrWhiteSpace(talentId))
 					throw new InvalidDataException($"角色 {character.Id} 的天赋 ID 无效。");
@@ -80,5 +88,6 @@ public static class SaveDataValidator
 		float.IsFinite(stats.ManaRegeneration) && float.IsFinite(stats.LifeSteal) &&
 		float.IsFinite(stats.Luck) && float.IsFinite(stats.Toughness) &&
 		float.IsFinite(stats.Accuracy) && float.IsFinite(stats.CriticalResistance) &&
-		float.IsFinite(stats.ArmorPenetration) && float.IsFinite(stats.MagicPenetration);
+		float.IsFinite(stats.ArmorPenetration) && float.IsFinite(stats.MagicPenetration) &&
+		float.IsFinite(stats.HasteRating) && float.IsFinite(stats.SkillLevelBonus);
 }
