@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="EquipmentDefinition" format=3]
+
+[ext_resource type="Script" path="res://Scripts/Equipment/EquipmentDefinition.cs" id="1"]
+[ext_resource type="Texture2D" path="res://Assets/Art/BackPack/AllItems/jlxmc.png" id="2"]
+
+[resource]
+script = ExtResource("1")
+Id = "jlxmc"
+DisplayName = "卷帘降魔铲"
+DescriptionKey = "ITEM_JLXMC_DESCRIPTION"
+Quality = "精良"
+Rarity = 2
+OwnerCaption = "沙僧"
+Slot = 0
+MaxStack = 1
+Icon = ExtResource("2")
+QualityColor = Color(0, 0.5411765, 1, 1)
+SellPrice = 80
+RequiredCharacterId = "role_4"
+Attack = 80
+LuckBonus = 8

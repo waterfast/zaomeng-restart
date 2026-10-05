@@ -84,7 +84,7 @@ public sealed class LegacyBackpackView : IDisposable
 		_gemSockets = new GemSocketView(root, adapter, character, catalog, events, ShowFeedback);
 		_actionMenu = new ItemActionMenu(root, events, ShowFeedback);
 		_bulkSale = new BulkSaleView(root, events, ShowFeedback);
-		_magicWeapons = new MagicWeaponView(root, adapter, catalog, character, events, ShowFeedback);
+		_magicWeapons = new MagicWeaponView(root, catalog, character);
 		_itemActionConnection = events.ItemActionCompleted.Subscribe(Refresh);
 		_equipmentConnection = events.EquipmentChanged.Subscribe(OnEquipmentChanged);
 		_modificationConnection = events.EquipmentModified.Subscribe(change =>

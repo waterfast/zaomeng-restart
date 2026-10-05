@@ -3,8 +3,11 @@
 [ext_resource type="Script" path="res://Scripts/Equipment/EquipmentDefinition.cs" id="1"]
 [ext_resource type="Texture2D" path="res://Assets/Art/BackPack/AllItems/dshl.png" id="2"]
 
+[ext_resource type="Resource" path="res://Content/Items/Presentation/dshl.tres" id="presentation"]
+
 [resource]
 script = ExtResource("1")
+MagicWeaponPresentation = ExtResource("presentation")
 Id = "dshl"
 DisplayName = "地煞葫芦"
 DescriptionKey = "ITEM_DSHL_DESCRIPTION"

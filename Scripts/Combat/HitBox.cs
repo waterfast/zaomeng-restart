@@ -40,7 +40,7 @@ public partial class HitBox : Area2D
 			return;
 		var target = hurtBox.Actor;
 		if (_hitTargets.Contains(target.GetInstanceId())) return;
-		if (CombatResolver.Resolve(_actor, target, hit))
+		if (CombatResolver.Resolve(_actor, target, hit, sourceSkill: _actor.CurrentSkill))
 			_hitTargets.Add(target.GetInstanceId());
 	}
 }

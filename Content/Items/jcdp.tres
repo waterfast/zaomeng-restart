@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="EquipmentDefinition" format=3]
+
+[ext_resource type="Script" path="res://Scripts/Equipment/EquipmentDefinition.cs" id="1"]
+[ext_resource type="Texture2D" path="res://Assets/Art/BackPack/AllItems/jcdp.png" id="2"]
+
+[resource]
+script = ExtResource("1")
+Id = "jcdp"
+DisplayName = "九齿钉耙"
+DescriptionKey = "ITEM_JCDP_DESCRIPTION"
+Quality = "精良"
+Rarity = 2
+OwnerCaption = "八戒"
+Slot = 0
+MaxStack = 1
+Icon = ExtResource("2")
+QualityColor = Color(0, 0.5411765, 1, 1)
+SellPrice = 80
+RequiredCharacterId = "role_3"
+Attack = 62.5
+HealthRegenerationBonus = 2
+Accuracy = 6

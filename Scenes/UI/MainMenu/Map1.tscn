@@ -1,6 +1,6 @@
 [gd_scene load_steps=102 format=3]
 
-[ext_resource type="Script" path="res://Scripts/UI/MainMenu/Map1.cs" id="map_script"]
+[ext_resource type="Script" path="res://Scripts/UI/MainMenu/WorldMap.cs" id="map_script"]
 
 [ext_resource type="Texture2D" path="res://Assets/Art/game_pic/183.png" id="2"]
 [ext_resource type="Texture2D" path="res://Assets/Art/game_pic/level_choose/185.png" id="3"]
@@ -45,6 +45,8 @@
 [ext_resource type="Shader" path="res://Assets/Shaders/LevelButton.gdshader" id="42"]
 [ext_resource type="Texture2D" path="res://Assets/Art/Game_3/OtherMapButton/hj2.png" id="43"]
 [ext_resource type="Texture2D" path="res://Assets/Art/Game_3/OtherMapButton/hj1.png" id="44"]
+
+[ext_resource type="Resource" path="res://Content/Maps/Human.tres" id="world_map"]
 
 [sub_resource type="StyleBoxEmpty" id="1"]
 script = null
@@ -1067,6 +1069,7 @@ script = null
 [node name="Map_1" type="Node2D"]
 process_mode = 3
 script = ExtResource("map_script")
+Definition = ExtResource("world_map")
 
 [node name="background" type="Sprite2D" parent="."]
 position = Vector2(469, 296)
@@ -1425,4 +1428,3 @@ text = "轮回幻境"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_lock_ = true
-

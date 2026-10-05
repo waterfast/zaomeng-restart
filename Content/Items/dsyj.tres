@@ -3,8 +3,11 @@
 [ext_resource type="Script" path="res://Scripts/Equipment/EquipmentDefinition.cs" id="1"]
 [ext_resource type="Texture2D" path="res://Assets/Art/BackPack/AllItems/dsyj.png" id="2"]
 
+[ext_resource type="Resource" path="res://Content/GameData/EquipmentSkills/earth_fury.tres" id="skill"]
+
 [resource]
 script = ExtResource("1")
+GrantedSkills = Array[Resource]([ExtResource("skill")])
 Id = "dsyj"
 DisplayName = "地煞猿甲"
 DescriptionKey = "ITEM_DSYJ_DESCRIPTION"

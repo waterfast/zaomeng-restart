@@ -47,6 +47,7 @@ public partial class CharacterActor : CharacterBody2D
 	public HitBox AttackBox { get; private set; } = null!;
 	public HitDefinition? CurrentHit { get; private set; }
 	public int CurrentHitLevel { get; private set; } = 1;
+	public SkillDefinition? CurrentSkill => _skillCast?.Definition;
 	public int CurrentComboStage { get; private set; } = -1;
 	protected float MoveDirection;//移动方向
 	private Node2D _facing = null!;

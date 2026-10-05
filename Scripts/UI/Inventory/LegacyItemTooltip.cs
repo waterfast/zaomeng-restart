@@ -29,7 +29,7 @@ public sealed class LegacyItemTooltip
 		_root.ZIndex = 100;
 		_root.Hide();
 		parent.AddChild(_root);
-		_statCatalog = GD.Load<CharacterStatCatalog>("res://Content/GameData/Stats/Registry.tres");
+		_statCatalog = CharacterStatCatalog.Default;
 		_registeredStats = new VBoxContainer { Name = "RegisteredStats", MouseFilter = Control.MouseFilterEnum.Ignore };
 		var statsParent = _root.GetNode<VBoxContainer>(InformationPath);
 		statsParent.AddChild(_registeredStats);

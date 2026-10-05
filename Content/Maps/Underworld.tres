@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="WorldMapDefinition" format=3]
+[ext_resource type="Script" path="res://Scripts/UI/MainMenu/WorldMapDefinition.cs" id="1"]
+[ext_resource type="Resource" path="res://Content/Maps/Heaven.tres" id="next"]
+[resource]
+script = ExtResource("1")
+ScenePath = "res://Scenes/UI/MainMenu/Map2.tscn"
+SkillButton = NodePath("Learn_skill")
+SaveButton = NodePath("MemoryGame")
+MenuButton = NodePath("changetomain")
+ForwardButton = NodePath("Tianting/Changetott")
+NextMap = ExtResource("next")
+BackButton = NodePath("next")
+PreviousScenePath = "res://Scenes/UI/MainMenu/Map1.tscn"
+RequiredBossId = "bull_demon_king"
+LockedMessage = "击败牛魔王后才能进入地府。"
+AllowDevelopmentAccess = true

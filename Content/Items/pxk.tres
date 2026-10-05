@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="EquipmentDefinition" format=3]
+
+[ext_resource type="Script" path="res://Scripts/Equipment/EquipmentDefinition.cs" id="1"]
+[ext_resource type="Texture2D" path="res://Assets/Art/BackPack/AllItems/pxk.png" id="2"]
+
+[resource]
+script = ExtResource("1")
+Id = "pxk"
+DisplayName = "貔貅铠"
+DescriptionKey = "ITEM_PXK_DESCRIPTION"
+Quality = "优秀"
+Rarity = 1
+OwnerCaption = "八戒"
+Slot = 1
+MaxStack = 1
+Icon = ExtResource("2")
+QualityColor = Color(0, 1, 0, 1)
+SellPrice = 40
+RequiredCharacterId = "role_3"
+HealthBonus = 130
+PhysicalDefenseBonus = 7
+MagicDefenseBonus = 7

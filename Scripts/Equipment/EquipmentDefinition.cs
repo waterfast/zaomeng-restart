@@ -35,6 +35,7 @@ public partial class EquipmentDefinition : ItemDefinition
 	[Export] public float HasteBonus { get; set; }
 	[Export] public float SkillLevelBonus { get; set; }
 	[Export] public Godot.Collections.Array<EquipmentSkillDefinition> GrantedSkills { get; set; } = new();
+	[Export] public MagicWeaponPresentation? MagicWeaponPresentation { get; set; }
 
 	public virtual bool CanEquip(SaveCharacter character) => character.Level >= RequiredLevel &&
 		(RequiredCharacterId.Length == 0 || RequiredCharacterId == character.Id);

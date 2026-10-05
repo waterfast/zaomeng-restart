@@ -3,8 +3,11 @@
 [ext_resource type="Script" path="res://Scripts/Equipment/EquipmentDefinition.cs" id="1"]
 [ext_resource type="Texture2D" path="res://Assets/Art/BackPack/AllItems/jcld.png" id="2"]
 
+[ext_resource type="Resource" path="res://Content/Items/Presentation/jcld.tres" id="presentation"]
+
 [resource]
 script = ExtResource("1")
+MagicWeaponPresentation = ExtResource("presentation")
 Id = "jcld"
 DisplayName = "家传铃铛"
 DescriptionKey = "ITEM_JCLD_DESCRIPTION"

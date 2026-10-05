@@ -37,4 +37,15 @@ public sealed class EquipmentSkillRuntime
 	{
 		foreach (EquipmentSkillDefinition skill in _skills) skill.Effect.OnHitDealt(owner, target, hit);
 	}
+
+	public float ModifyOutgoingDamage(Player owner, CharacterActor target, SkillDefinition? sourceSkill, float damage)
+	{
+		foreach (EquipmentSkillDefinition skill in _skills)
+		{
+			damage = skill.Effect.ModifyOutgoingDamage(owner, target, sourceSkill, damage);
+			if (!float.IsFinite(damage) || damage < 0)
+				throw new InvalidOperationException($"装备技能 {skill.Id} 返回了无效伤害。");
+		}
+		return damage;
+	}
 }

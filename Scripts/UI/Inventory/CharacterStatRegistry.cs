@@ -34,7 +34,7 @@ public sealed class CharacterStatRegistry
 	}
 
 	public static CharacterStatRegistry CreateDefault() =>
-		Godot.GD.Load<CharacterStatCatalog>("res://Content/GameData/Stats/Registry.tres").CreateRegistry();
+		CharacterStatCatalog.Default.CreateRegistry();
 
 	public static string Number(float value) => value.ToString("0.##", CultureInfo.InvariantCulture);
 }

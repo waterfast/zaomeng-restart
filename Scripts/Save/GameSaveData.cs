@@ -15,6 +15,7 @@ public sealed class GameSaveData
 	// 新游戏只开放第一关，通关时更新解锁进度。
 	public int UnlockedLevel { get; set; } = 1;
 	public HashSet<string> ClaimedQuestIds { get; set; } = new();
+	public HashSet<string> DefeatedBossIds { get; set; } = new();
 }
 
 public sealed class InventorySaveData

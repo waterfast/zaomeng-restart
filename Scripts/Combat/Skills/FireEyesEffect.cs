@@ -14,7 +14,12 @@ public partial class FireEyesEffect : Node2D
 	private float _time;
 	private int _hits;
 	private int _level;
-	public void Configure(Player player, Monster target, int? level = null) { _player = player; _target = target; _level = level ?? player.CurrentHitLevel; }
+	private SkillDefinition? _sourceSkill;
+	public void Configure(Player player, Monster target, int? level = null, SkillDefinition? sourceSkill = null)
+	{
+		_player = player; _target = target; _level = level ?? player.CurrentHitLevel;
+		_sourceSkill = sourceSkill ?? player.CurrentSkill;
+	}
 	public override void _Ready()
 	{
 		_sprite = new AnimatedSprite2D { SpriteFrames = Frames };
@@ -31,7 +36,7 @@ public partial class FireEyesEffect : Node2D
 			_hits++;
 			_sprite.Play("hyjj");
 			_sprite.SetFrameAndProgress(0, 0);
-			CombatResolver.Resolve(_player, _target, Hit, _level);
+			CombatResolver.Resolve(_player, _target, Hit, _level, _sourceSkill);
 		}
 		if (_time >= HitCount * Interval) QueueFree();
 	}

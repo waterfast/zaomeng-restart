@@ -16,14 +16,6 @@
 [ext_resource type="Resource" path="res://Content/Items/Materials/qhs_3.tres" id="13"]
 [ext_resource type="Resource" path="res://Content/Items/Materials/qhs_4.tres" id="14"]
 
-
-
-
-
-
-
-
-
 [ext_resource type="Resource" path="res://Content/Items/ptxzf.tres" id="new_ptxzf"]
 [ext_resource type="Resource" path="res://Content/Items/dsyj.tres" id="new_dsyj"]
 [ext_resource type="Resource" path="res://Content/Items/dslj.tres" id="new_dslj"]
@@ -37,6 +29,76 @@
 
 [ext_resource type="Resource" path="res://Content/Items/Consumables/bsd_1.tres" id="quest_bsd_1"]
 
+[ext_resource type="Resource" path="res://Content/Items/xwj.tres" id="early_xwj"]
+
+[ext_resource type="Resource" path="res://Content/Items/ptsmz.tres" id="early_ptsmz"]
+
+[ext_resource type="Resource" path="res://Content/Items/dsqz.tres" id="early_dsqz"]
+
+[ext_resource type="Resource" path="res://Content/Items/bhz.tres" id="early_bhz"]
+
+[ext_resource type="Resource" path="res://Content/Items/jhcz.tres" id="early_jhcz"]
+
+[ext_resource type="Resource" path="res://Content/Items/ptjs.tres" id="early_ptjs"]
+
+[ext_resource type="Resource" path="res://Content/Items/bsp.tres" id="early_bsp"]
+
+[ext_resource type="Resource" path="res://Content/Items/jcjs.tres" id="early_jcjs"]
+
+[ext_resource type="Resource" path="res://Content/Items/qlp.tres" id="early_qlp"]
+
+[ext_resource type="Resource" path="res://Content/Items/ptdp.tres" id="early_ptdp"]
+
+[ext_resource type="Resource" path="res://Content/Items/wtp.tres" id="early_wtp"]
+
+[ext_resource type="Resource" path="res://Content/Items/jcjp.tres" id="early_jcjp"]
+
+[ext_resource type="Resource" path="res://Content/Items/zhp.tres" id="early_zhp"]
+
+[ext_resource type="Resource" path="res://Content/Items/jcdp.tres" id="early_jcdp"]
+
+[ext_resource type="Resource" path="res://Content/Items/ptcs.tres" id="early_ptcs"]
+
+[ext_resource type="Resource" path="res://Content/Items/dszy.tres" id="early_dszy"]
+
+[ext_resource type="Resource" path="res://Content/Items/pxk.tres" id="early_pxk"]
+
+[ext_resource type="Resource" path="res://Content/Items/ptyyc.tres" id="early_ptyyc"]
+
+[ext_resource type="Resource" path="res://Content/Items/jmc.tres" id="early_jmc"]
+
+[ext_resource type="Resource" path="res://Content/Items/jcmc.tres" id="early_jcmc"]
+
+[ext_resource type="Resource" path="res://Content/Items/hdc.tres" id="early_hdc"]
+
+[ext_resource type="Resource" path="res://Content/Items/jlxmc.tres" id="early_jlxmc"]
+
+[ext_resource type="Resource" path="res://Content/Items/ptcp.tres" id="early_ptcp"]
+
+[ext_resource type="Resource" path="res://Content/Items/dshp.tres" id="early_dshp"]
+
+[ext_resource type="Resource" path="res://Content/Items/bxp.tres" id="early_bxp"]
+
+[ext_resource type="Resource" path="res://Content/Items/pttq.tres" id="early_pttq"]
+
+[ext_resource type="Resource" path="res://Content/Items/dslq.tres" id="early_dslq"]
+
+[ext_resource type="Resource" path="res://Content/Items/twq.tres" id="early_twq"]
+
+[ext_resource type="Resource" path="res://Content/Items/qthbq.tres" id="early_qthbq"]
+
+[ext_resource type="Resource" path="res://Content/Items/ptcf.tres" id="early_ptcf"]
+
+[ext_resource type="Resource" path="res://Content/Items/zhj.tres" id="early_zhj"]
+
+[ext_resource type="Resource" path="res://Content/Items/jclj.tres" id="early_jclj"]
+
+[ext_resource type="Resource" path="res://Content/Items/ttj.tres" id="early_ttj"]
+
+[ext_resource type="Resource" path="res://Content/Items/zqj.tres" id="early_zqj"]
+
+[ext_resource type="Resource" path="res://Content/Items/qxsh.tres" id="early_qxsh"]
+
 [resource]
 script = ExtResource("1")
-Definitions = Array[ExtResource("definition_script")]([ExtResource("quest_xydxq"), ExtResource("quest_mpyj"), ExtResource("quest_bsd_1"), ExtResource("2"), ExtResource("3"), ExtResource("4"), ExtResource("5"), ExtResource("6"), ExtResource("7"), ExtResource("8"), ExtResource("9"), ExtResource("10"), ExtResource("11"), ExtResource("12"), ExtResource("13"), ExtResource("14"), ExtResource("new_ptxzf"), ExtResource("new_dsyj"), ExtResource("new_dslj"), ExtResource("new_jcsz"), ExtResource("new_dshl"), ExtResource("new_jcld")])
+Definitions = Array[ExtResource("definition_script")]([ExtResource("quest_xydxq"), ExtResource("quest_mpyj"), ExtResource("quest_bsd_1"), ExtResource("2"), ExtResource("3"), ExtResource("4"), ExtResource("5"), ExtResource("6"), ExtResource("7"), ExtResource("8"), ExtResource("9"), ExtResource("10"), ExtResource("11"), ExtResource("12"), ExtResource("13"), ExtResource("14"), ExtResource("new_ptxzf"), ExtResource("new_dsyj"), ExtResource("new_dslj"), ExtResource("new_jcsz"), ExtResource("new_dshl"), ExtResource("new_jcld"), ExtResource("early_xwj"), ExtResource("early_ptsmz"), ExtResource("early_dsqz"), ExtResource("early_bhz"), ExtResource("early_jhcz"), ExtResource("early_ptjs"), ExtResource("early_bsp"), ExtResource("early_jcjs"), ExtResource("early_qlp"), ExtResource("early_ptdp"), ExtResource("early_wtp"), ExtResource("early_jcjp"), ExtResource("early_zhp"), ExtResource("early_jcdp"), ExtResource("early_ptcs"), ExtResource("early_dszy"), ExtResource("early_pxk"), ExtResource("early_ptyyc"), ExtResource("early_jmc"), ExtResource("early_jcmc"), ExtResource("early_hdc"), ExtResource("early_jlxmc"), ExtResource("early_ptcp"), ExtResource("early_dshp"), ExtResource("early_bxp"), ExtResource("early_pttq"), ExtResource("early_dslq"), ExtResource("early_twq"), ExtResource("early_qthbq"), ExtResource("early_ptcf"), ExtResource("early_zhj"), ExtResource("early_jclj"), ExtResource("early_ttj"), ExtResource("early_zqj"), ExtResource("early_qxsh")])

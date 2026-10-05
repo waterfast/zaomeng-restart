@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="WorldMapDefinition" format=3]
+[ext_resource type="Script" path="res://Scripts/UI/MainMenu/WorldMapDefinition.cs" id="1"]
+[ext_resource type="Resource" path="res://Content/Maps/Underworld.tres" id="next"]
+[resource]
+script = ExtResource("1")
+ScenePath = "res://Scenes/UI/MainMenu/Map1.tscn"
+HasPlayableLevels = true
+SkillButton = NodePath("Skill_learn")
+QuestButton = NodePath("Task")
+SaveButton = NodePath("bc_game")
+MenuButton = NodePath("turn_mainmenu")
+ForwardButton = NodePath("next")
+NextMap = ExtResource("next")

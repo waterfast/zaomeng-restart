@@ -16,9 +16,14 @@ public partial class SkillProjectile : Node2D
 	private Player? _source;
 	private int _direction;
 	private int _level;
+	private SkillDefinition? _sourceSkill;
 	private float _elapsed;
 	private readonly HashSet<Monster> _hitTargets = new();
-	public void Configure(Player source, int? level = null) { _source = source; _direction = source.FacingDirection; _level = level ?? source.CurrentHitLevel; }
+	public void Configure(Player source, int? level = null, SkillDefinition? sourceSkill = null)
+	{
+		_source = source; _direction = source.FacingDirection; _level = level ?? source.CurrentHitLevel;
+		_sourceSkill = sourceSkill ?? source.CurrentSkill;
+	}
 	public override void _Ready()
 	{
 		if (_source is null)
@@ -50,7 +55,7 @@ public partial class SkillProjectile : Node2D
 		foreach (Node node in GetTree().GetNodesInGroup("monsters"))
 			if (node is Monster { Visible: true } monster && !monster.IsDead && !_hitTargets.Contains(monster) &&
 				Mathf.Abs(monster.GlobalPosition.X - GlobalPosition.X) <= HitRadius &&
-				Mathf.Abs(monster.GlobalPosition.Y - 35 - GlobalPosition.Y) <= 65 && CombatResolver.Resolve(_source, monster, Hit, _level))
+				Mathf.Abs(monster.GlobalPosition.Y - 35 - GlobalPosition.Y) <= 65 && CombatResolver.Resolve(_source, monster, Hit, _level, _sourceSkill))
 				_hitTargets.Add(monster);
 	}
 }

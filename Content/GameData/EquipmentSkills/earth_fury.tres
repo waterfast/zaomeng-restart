@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="EquipmentSkillDefinition" format=3]
+
+[ext_resource type="Script" path="res://Scripts/Equipment/Skills/EquipmentSkillDefinition.cs" id="skill"]
+[ext_resource type="Script" path="res://Scripts/Equipment/Skills/SkillDamageBonusEffect.cs" id="effect"]
+[ext_resource type="Resource" path="res://Content/Skills/Wukong/lyfb.tres" id="target"]
+
+[sub_resource type="Resource" id="bonus"]
+script = ExtResource("effect")
+TargetSkill = ExtResource("target")
+BonusFraction = 0.5
+
+[resource]
+script = ExtResource("skill")
+Id = "earth_fury"
+NameKey = "SKILL_EARTH_FURY_NAME"
+DescriptionKey = "SKILL_EARTH_FURY_DESCRIPTION"
+Effect = SubResource("bonus")

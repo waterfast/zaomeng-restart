@@ -1,96 +1,71 @@
 using System;
-using System.Linq;
 using Godot;
 using Zaomeng.Equipment;
-using Zaomeng.Events;
 using Zaomeng.Items;
 using SaveCharacter = Zaomeng.Character.Character;
 
 namespace Zaomeng.UI.Inventory;
 
-/// <summary>复用旧法宝列表，穿戴仍走统一装备请求，不持有第二份法宝状态。</summary>
+/// <summary>旧版法宝详情，仅展示当前装备；未实现的操作保留布局但禁用。</summary>
 public sealed class MagicWeaponView : IDisposable
 {
 	private readonly Node2D _root;
-	private readonly InventoryViewAdapter _inventory;
-	private readonly SaveCharacter _character;
-	private readonly GameplayEvents _events;
-	private readonly Action<string> _feedback;
+	private readonly Node2D _help;
 	private readonly Node2D _parent;
-	private readonly EquipmentDefinition[] _definitions;
-	private readonly Node2D[] _rows = new Node2D[3];
-	private int _page;
-	public MagicWeaponView(Node2D parent, InventoryViewAdapter inventory, ItemCatalog catalog,
-		SaveCharacter character, GameplayEvents events, Action<string> feedback)
+	private readonly SaveCharacter _character;
+	private readonly ItemCatalog _catalog;
+	private readonly Sprite2D _fallback;
+	public MagicWeaponView(Node2D parent, ItemCatalog catalog, SaveCharacter character)
 	{
-		_parent = parent; _inventory = inventory; _character = character; _events = events; _feedback = feedback;
-		_definitions = catalog.Definitions.OfType<EquipmentDefinition>().Where(item => item.Slot == EquipmentSlot.MagicWeapon).ToArray();
-		_root = GD.Load<PackedScene>("res://Scenes/UI/BackPack/Use_magic_weapon.tscn").Instantiate<Node2D>();
-		_root.Name = "MagicWeaponPanel"; _root.Position = new(490, 310); _root.ZIndex = 105;
+		_parent = parent; _catalog = catalog; _character = character;
+		_root = GD.Load<PackedScene>("res://Scenes/UI/BackPack/Magic_weapon_infor.tscn").Instantiate<Node2D>();
+		_root.Name = "MagicWeaponPanel"; _root.ZIndex = 105;
 		parent.AddChild(_root); _root.Hide();
-		_root.GetNode<Label>("BG/chooseSkill").Text = "选择法宝进行穿戴（法宝主动技能、五行与成长尚未迁入）";
 		_root.GetNode<BaseButton>("BG/Close").Pressed += Hide;
-		_root.GetNode<BaseButton>("BG/HBoxContainer/Last").Pressed += () => { _page--; Refresh(); };
-		_root.GetNode<BaseButton>("BG/HBoxContainer/Next").Pressed += () => { _page++; Refresh(); };
-		for (int i = 0; i < _rows.Length; i++)
-		{
-			int row = i;
-			_rows[i] = GD.Load<PackedScene>("res://Scenes/UI/BackPack/skill_select.tscn").Instantiate<Node2D>();
-			_rows[i].Position = new(0, -110 + i * 120);
-			_root.GetNode("BG").AddChild(_rows[i]);
-			_rows[i].GetNode<BaseButton>("BG/choose").Pressed += () => Choose(row);
-		}
+		foreach (string path in new[] { "BG/bg_2/up_level", "BG/szfb", "BG/wxxl", "BG/gjwx", "BG/czlxl" })
+			_root.GetNode<BaseButton>(path).Disabled = true;
+		_fallback = new Sprite2D { Position = _root.GetNode<Node2D>("BG/Icon").Position };
+		_root.GetNode("BG").AddChild(_fallback);
+		_help = GD.Load<PackedScene>("res://Scenes/UI/MagicWeapon/Magic_help.tscn").Instantiate<Node2D>();
+		_help.Name = "MagicWeaponHelp"; _help.ZIndex = 106;
+		parent.AddChild(_help); _help.Hide();
+		_help.GetNode<BaseButton>("BG/Close").Pressed += _help.Hide;
+		_root.GetNode<BaseButton>("BG/tips").Pressed += () => { Center(_help); _help.Show(); };
 	}
-	public void Show()
-	{
-		_root.Position = _parent.GetGlobalTransformWithCanvas().AffineInverse() * (_parent.GetViewportRect().Size / 2);
-		Refresh(); _root.Show();
-	}
-	public void Hide() => _root.Hide();
+	private void Center(Node2D panel) => panel.Position = _parent.GetGlobalTransformWithCanvas().AffineInverse() * (_parent.GetViewportRect().Size / 2);
+	public void Show() { Center(_root); Refresh(); _root.Show(); }
+	public void Hide() { _root.Hide(); _help.Hide(); }
 	public void Refresh()
 	{
-		int pages = Math.Max(1, (_definitions.Length + 2) / 3);
-		_page = Math.Clamp(_page, 0, pages - 1);
-		_root.GetNode<Label>("BG/HBoxContainer/PageInfor").Text = $"{_page + 1}/{pages}";
-		_root.GetNode<BaseButton>("BG/HBoxContainer/Last").Disabled = _page == 0;
-		_root.GetNode<BaseButton>("BG/HBoxContainer/Next").Disabled = _page == pages - 1;
-		for (int i = 0; i < 3; i++)
-		{
-			var row = _rows[i]; int index = _page * 3 + i;
-			row.Visible = index < _definitions.Length;
-			if (!row.Visible) continue;
-			var item = _definitions[index];
-			bool equipped = _character.Equipment.Get(EquipmentSlot.MagicWeapon)?.DefinitionId == item.Id;
-			bool owned = equipped || _inventory.GetEntries(ItemCategory.Equipment).Any(entry => entry.Definition.Id == item.Id);
-			var icon = row.GetNode<Sprite2D>("BG/SkillIcon"); icon.Texture = item.Icon;
-			if (item.Icon is not null) icon.Scale = new Vector2(56f / item.Icon.GetWidth(), 56f / item.Icon.GetHeight());
-			// 子标签无需随原图尺寸缩放，名称在右侧统一展示。
-			row.GetNode<Label>("BG/SkillIcon/Name_").Hide();
-			row.GetNode<Label>("BG/SkillName").Text = item.DisplayName;
-			row.GetNode<Label>("BG/SkillName/Level").Hide();
-			row.GetNode<Label>("BG/Skill_Infor").Text = item.Description;
-			row.GetNode<CanvasItem>("BG/isChoose").Visible = equipped;
-			row.GetNode<Label>("BG/NoHave").Text = owned ? "" : "未拥有";
-			row.GetNode<BaseButton>("BG/choose").Disabled = !owned;
-			row.GetNode<Label>("BG/choose/choose_").Text = equipped ? "卸下" : "穿戴";
-		}
+		EquipmentDefinition? item = null;
+		if (_character.Equipment.Get(EquipmentSlot.MagicWeapon) is { } instance &&
+			_catalog.TryGetDefinition(instance.DefinitionId, out ItemDefinition? definition)) item = definition as EquipmentDefinition;
+		MagicWeaponPresentation? presentation = item?.MagicWeaponPresentation;
+		_root.GetNode<Label>("BG/Name_").Text = item?.DisplayName ?? "未装备法宝";
+		foreach (string name in new[] { "m_level", "m_czl", "m_wx" }) SetStat(name, "—");
+		SetStat("m_Hp", Format(item?.HealthBonus)); SetStat("m_Mp", Format(item?.ManaBonus));
+		SetStat("m_Power", Format(item?.Attack)); SetStat("m_Def", Format(item?.PhysicalDefenseBonus));
+		SetStat("m_MDef", Format(item?.MagicDefenseBonus));
+		_root.GetNode<TextureProgressBar>("BG/bg_2/lh_bar").Value = 0;
+		_root.GetNode<Label>("BG/bg_2/lh_bar/lh_value").Text = "—";
+		_root.GetNode<Label>("BG/MagicWeaponSkillTitle").Text = presentation?.SkillName ?? "";
+		_root.GetNode<Label>("BG/ScrollContainer/VBoxContainer/MagicWeaponSkill").Text = presentation?.SkillDescription ?? "";
+		_root.GetNode<Label>("BG/ScrollContainer/VBoxContainer/PsTitle").Text = string.IsNullOrEmpty(presentation?.PassiveDescription) ? "" : "被动技能";
+		_root.GetNode<Label>("BG/ScrollContainer/VBoxContainer/MagicWeaponSkill2").Text = presentation?.PassiveDescription ?? "";
+		var skillIcon = _root.GetNode<Sprite2D>("BG/Icon_");
+		skillIcon.Texture = presentation?.SkillIcon; skillIcon.Visible = skillIcon.Texture is not null;
+		var animation = _root.GetNode<AnimationPlayer>("BG/IconPlayer");
+		animation.Stop();
+		var icon = _root.GetNode<AnimatedSprite2D>("BG/Icon");
+		icon.Stop(); icon.Hide();
+		icon.GetNode<CanvasItem>("Tooth").Hide();
+		_fallback.Hide();
+		if (presentation is not null && animation.HasAnimation(presentation.Animation))
+		{ icon.Show(); animation.Play(presentation.Animation); animation.Advance(0); }
+		else if (item?.Icon is { } texture)
+		{ _fallback.Texture = texture; _fallback.Scale = new Vector2(64f / texture.GetWidth(), 64f / texture.GetHeight()); _fallback.Show(); }
 	}
-	private void Choose(int row)
-	{
-		int index = _page * 3 + row;
-		if (index >= _definitions.Length) return;
-		var item = _definitions[index];
-		EquipmentResult result;
-		if (_character.Equipment.Get(EquipmentSlot.MagicWeapon) is { } current && current.DefinitionId == item.Id)
-			result = _events.EquipmentRequested.Send(new(EquipmentAction.Unequip, ExpectedInstanceId: current.InstanceId, Slot: EquipmentSlot.MagicWeapon), this);
-		else
-		{
-			var entry = _inventory.GetEntries(ItemCategory.Equipment).FirstOrDefault(value => value.Definition.Id == item.Id);
-			if (entry?.Equipment is null) { Refresh(); return; }
-			result = _events.EquipmentRequested.Send(new(EquipmentAction.Equip, entry.SlotIndex, entry.Equipment.InstanceId), this);
-		}
-		if (!result.Success) _feedback(result.Message);
-		Refresh();
-	}
-	public void Dispose() => _root.QueueFree();
+	private void SetStat(string name, string value) => _root.GetNode<Label>($"BG/bg_2/{name}").Text = value;
+	private static string Format(float? value) => value?.ToString("0.##") ?? "—";
+	public void Dispose() { _root.QueueFree(); _help.QueueFree(); }
 }

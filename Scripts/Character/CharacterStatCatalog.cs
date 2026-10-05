@@ -8,6 +8,9 @@ namespace Zaomeng.Character;
 [GlobalClass]
 public partial class CharacterStatCatalog : Resource
 {
+	private static CharacterStatCatalog? _default;
+	public static CharacterStatCatalog Default => _default ??= GD.Load<CharacterStatCatalog>("res://Content/GameData/Stats/Registry.tres")
+		?? throw new InvalidOperationException("属性展示目录缺失。");
 	[Export] public Godot.Collections.Array<CharacterStatDefinition> Definitions { get; set; } = new();
 	public CharacterStatRegistry CreateRegistry()
 	{

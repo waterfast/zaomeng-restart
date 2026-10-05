@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="EquipmentDefinition" format=3]
+
+[ext_resource type="Script" path="res://Scripts/Equipment/EquipmentDefinition.cs" id="1"]
+[ext_resource type="Texture2D" path="res://Assets/Art/BackPack/AllItems/ptdp.png" id="2"]
+
+[resource]
+script = ExtResource("1")
+Id = "ptdp"
+DisplayName = "普通的钉耙"
+DescriptionKey = "ITEM_PTDP_DESCRIPTION"
+Quality = "普通"
+Rarity = 0
+OwnerCaption = "八戒"
+Slot = 0
+MaxStack = 1
+Icon = ExtResource("2")
+QualityColor = Color(1, 1, 1, 1)
+SellPrice = 20
+RequiredCharacterId = "role_3"
+Attack = 6

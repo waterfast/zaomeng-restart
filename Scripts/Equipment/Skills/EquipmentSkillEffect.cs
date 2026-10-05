@@ -7,6 +7,7 @@ namespace Zaomeng.Equipment.Skills;
 public abstract partial class EquipmentSkillEffect : Resource
 {
 	public abstract void Validate();
-	public abstract void OnHitDealt(Player owner, CharacterActor target, HitResult hit);
+	public virtual float ModifyOutgoingDamage(Player owner, CharacterActor target, SkillDefinition? sourceSkill, float damage) => damage;
+	public virtual void OnHitDealt(Player owner, CharacterActor target, HitResult hit) { }
 	public virtual string FormatDescription(string template) => template;
 }

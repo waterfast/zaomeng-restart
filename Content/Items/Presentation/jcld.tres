@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="MagicWeaponPresentation" format=3]
+[ext_resource type="Script" path="res://Scripts/Equipment/MagicWeaponPresentation.cs" id="1"]
+[resource]
+script = ExtResource("1")
+Animation = &"jcld"
+PassiveDescription = ""

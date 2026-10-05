@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="MagicWeaponPresentation" format=3]
+[ext_resource type="Script" path="res://Scripts/Equipment/MagicWeaponPresentation.cs" id="1"]
+[ext_resource type="Texture2D" path="res://Assets/Art/MagicWeapon/Skill_Icon/dshl.png" id="2"]
+[resource]
+script = ExtResource("1")
+Animation = &"dshl"
+SkillName = "烈焰火柱"
+SkillDescription = "释放三道火柱，对范围内的敌人造成多段物理伤害（并令其灼烧）。"
+SkillIcon = ExtResource("2")

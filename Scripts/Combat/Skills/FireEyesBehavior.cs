@@ -41,7 +41,7 @@ public partial class FireEyesBehavior : SkillBehavior
 		}
 		if (target is null) return;
 		var fire = ImpactScene.Instantiate<FireEyesEffect>();
-		fire.Configure(Actor, target, Level);
+		fire.Configure(Actor, target, Level, Definition);
 		Actor.GetParent().AddChild(fire);
 	}
 }

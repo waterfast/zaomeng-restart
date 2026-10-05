@@ -11,6 +11,9 @@ public static class SaveDataValidator
 	public static void Validate(GameSaveData data)
 	{
 		ArgumentNullException.ThrowIfNull(data);
+		if (data.DefeatedBossIds is null) throw new InvalidDataException("首领击败状态无效。");
+		foreach (string id in data.DefeatedBossIds)
+			if (string.IsNullOrWhiteSpace(id)) throw new InvalidDataException("首领标识不能为空。");
 		if (data.ClaimedQuestIds is null) throw new InvalidDataException("任务领取状态无效。");
 		foreach (string id in data.ClaimedQuestIds)
 			if (string.IsNullOrWhiteSpace(id)) throw new InvalidDataException("任务领取标识不能为空。");

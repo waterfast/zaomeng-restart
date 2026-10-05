@@ -44,7 +44,7 @@ public static class SkillDetailsDescription
 		}
 		else
 		{
-			var catalog = GD.Load<CharacterStatCatalog>("res://Content/GameData/Stats/Registry.tres");
+			var catalog = CharacterStatCatalog.Default;
 			foreach (PassiveSkillBonus bonus in skill.PassiveBonuses)
 			{
 				CharacterStatField field = bonus.Stat switch

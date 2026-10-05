@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="EquipmentDefinition" format=3]
+
+[ext_resource type="Script" path="res://Scripts/Equipment/EquipmentDefinition.cs" id="1"]
+[ext_resource type="Texture2D" path="res://Assets/Art/BackPack/AllItems/ttj.png" id="2"]
+
+[resource]
+script = ExtResource("1")
+Id = "ttj"
+DisplayName = "饕餮甲"
+DescriptionKey = "ITEM_TTJ_DESCRIPTION"
+Quality = "优秀"
+Rarity = 1
+OwnerCaption = "白龙"
+Slot = 1
+MaxStack = 1
+Icon = ExtResource("2")
+QualityColor = Color(0, 1, 0, 1)
+SellPrice = 40
+RequiredCharacterId = "role_5"
+HealthBonus = 175
+PhysicalDefenseBonus = 5
+MagicDefenseBonus = 5

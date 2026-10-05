@@ -32,7 +32,7 @@ public partial class ProjectileSkillBehavior : SkillBehavior
 		if (_released || Elapsed < Delay) return;
 		_released = true;
 		var projectile = ProjectileScene.Instantiate<SkillProjectile>();
-		projectile.Configure(Actor, Level);
+		projectile.Configure(Actor, Level, Definition);
 		Actor.GetParent().AddChild(projectile);
 		projectile.GlobalPosition = Actor.GlobalPosition + new Vector2(SpawnOffset.X * Actor.FacingDirection, SpawnOffset.Y);
 	}

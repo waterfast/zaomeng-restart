@@ -39,6 +39,8 @@ public partial class Player : CharacterActor
 	private readonly EquipmentSkillRuntime _equipmentSkills = new();
 	public IReadOnlyList<EquipmentSkillDefinition> GrantedEquipmentSkills => _equipmentSkills.Skills;
 	public event Action<HitResult>? DamageDealt;
+	internal float ModifyOutgoingDamage(CharacterActor target, SkillDefinition? sourceSkill, float damage)
+		=> _equipmentSkills.ModifyOutgoingDamage(this, target, sourceSkill, damage);
 	internal void NotifyHitDealt(CharacterActor target, HitResult hit)
 	{
 		DamageDealt?.Invoke(hit);

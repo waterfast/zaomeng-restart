@@ -8,7 +8,8 @@ public readonly record struct HitResult(float Damage, Vector2 Knockback, float H
 public static class CombatResolver
 {
 	// 动作资源只保存倍率；角色属性与防御在真正命中时读取。
-	public static bool Resolve(CharacterActor attacker, CharacterActor target, HitDefinition hit, int? skillLevel = null)
+	public static bool Resolve(CharacterActor attacker, CharacterActor target, HitDefinition hit, int? skillLevel = null,
+		SkillDefinition? sourceSkill = null)
 	{
 		if (attacker == target || attacker.Team == target.Team || attacker.IsDead || target.IsDead || target.IsInvulnerable)
 			return false;
@@ -19,6 +20,8 @@ public static class CombatResolver
 		float multiplier = Mathf.IsEqualApprox(minimum, maximum)
 			? minimum : (float)GD.RandRange(minimum, maximum);
 		float power = Mathf.Max(0, attacker.Attack * multiplier + hit.FlatDamage);
+		if (attacker is Player damageOwner)
+			power = damageOwner.ModifyOutgoingDamage(target, sourceSkill, power);
 		LegacyDamageCalculator.Result result = LegacyDamageCalculator.Calculate(attacker, target,
 			power, hit.DamageType, hit.CanCrit, GD.Randf(), GD.Randf());
 		if (result.Missed)
