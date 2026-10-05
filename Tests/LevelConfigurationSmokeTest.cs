@@ -1,5 +1,8 @@
 using System;
+using System.Linq;
 using Godot;
+using Zaomeng.Character;
+using Zaomeng.Inventory;
 using Zaomeng.Items;
 using Zaomeng.Level;
 using Zaomeng.Save;
@@ -37,6 +40,24 @@ public partial class LevelConfigurationSmokeTest : Node
 			Check(panel.GetNode<Label>("ColorRect/TextureRect/Title").Text.Contains("魔化花果山"), "左侧应切换变体");
 			GameSession.SelectLevel(dark, 2);
 			Check(ReferenceEquals(GameSession.SelectedLevel, dark) && GameSession.SelectedSpawnSpeed == 2, "挑战选择应进入会话");
+			// 用内存会话检查地图按钮的真实接线，槽位 0 不写玩家存档。
+			var catalog = GD.Load<ItemCatalog>("res://Content/Items/ItemCatalog.tres");
+			var inventory = new InventoryService(70, catalog);
+			var save = InventorySaveMapper.Capture(inventory);
+			var hero = new Character { Id = "role_1", Name = "悟空" };
+			CharacterProgression.SyncBaseStats(hero);
+			save.Characters.Add(hero);
+			save.CurrentCharacterId = hero.Id;
+			typeof(GameSession).GetProperty("Slot")!.SetValue(null, 0);
+			typeof(GameSession).GetProperty("Data")!.SetValue(null, save);
+			typeof(GameSession).GetProperty("Inventory")!.SetValue(null, inventory);
+			var world = GD.Load<PackedScene>("res://Scenes/UI/MainMenu/Map1.tscn").Instantiate<WorldMap>();
+			AddChild(world);
+			var button = world.GetNode<TextureButton>("level_1");
+			Check(!button.Disabled, "花果山入口应可点击");
+			button.EmitSignal(BaseButton.SignalName.Pressed);
+			Check(world.GetChildren().OfType<CanvasLayer>().SelectMany(layer => layer.GetChildren())
+				.OfType<LevelPreviewPanel>().Any(), "点击花果山应打开关卡信息面板");
 			GD.Print("LevelConfigurationSmokeTest PASS");
 			GetTree().Quit();
 		}
