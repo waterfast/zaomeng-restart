@@ -1,0 +1,4 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://Tests/SixLevelShowcase.cs" id="test"]
+[node name="SixLevelShowcase" type="Node2D"]
+script = ExtResource("test")

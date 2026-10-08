@@ -1,0 +1,25 @@
+[gd_resource type="Resource" format=3 uid="uid://bglglve4lnr1f"]
+
+[ext_resource type="Script" uid="uid://m1ojqyfju0ak" path="res://Scripts/Combat/HitEvent.cs" id="event"]
+[ext_resource type="Script" uid="uid://c76o6v4o8ovjr" path="res://Scripts/Combat/HitDefinition.cs" id="hit"]
+[ext_resource type="Script" uid="uid://d4daj54a2ec00" path="res://Scripts/Combat/SkillDefinition.cs" id="skill"]
+
+[sub_resource type="Resource" id="hit"]
+script = ExtResource("hit")
+Knockback = Vector2(100, -100)
+Hitstun = 0.25
+
+[sub_resource type="Resource" id="window"]
+script = ExtResource("event")
+StartFrame = 12
+EndFrame = 28
+Hit = SubResource("hit")
+
+[resource]
+script = ExtResource("skill")
+Id = "gorilla_boss_strike"
+DisplayName = "普攻"
+Animation = &"hit1"
+FramesPerSecond = 60
+CooldownSeconds = 1.1
+Hits = Array[ExtResource("event")]([SubResource("window")])

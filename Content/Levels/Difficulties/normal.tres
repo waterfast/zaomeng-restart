@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="LevelDifficultyDefinition" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Level/LevelDifficultyDefinition.cs" id="script"]
+
+[resource]
+script = ExtResource("script")
+DisplayName = "普通"
+MonsterHealthMultiplier = 1
+MonsterAttackMultiplier = 1

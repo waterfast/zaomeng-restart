@@ -1,0 +1,10 @@
+[gd_resource type="Resource" format=3]
+[ext_resource type="Script" path="res://Scripts/Combat/Buffs/BuffDefinition.cs" id="buff"]
+[resource]
+script = ExtResource("buff")
+Id = "bleeding"
+DisplayName = "流血"
+Description = "流血"
+Duration = 5.0
+PulseInterval = 0.5
+DamagePerPulse = 20.0

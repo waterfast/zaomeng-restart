@@ -1,0 +1,42 @@
+[gd_scene format=3]
+[ext_resource type="PackedScene" path="res://Scenes/Actors/Monster.tscn" id="base"]
+[ext_resource type="SpriteFrames" path="res://Content/Monsters/Human/monster_19_frames.tres" id="frames"]
+[ext_resource type="AnimationLibrary" path="res://Content/Monsters/Human/monster_19_animations.tres" id="animations"]
+[ext_resource type="Script" path="res://Scripts/Actors/FlyingMonster.cs" id="flight"]
+
+[sub_resource type="CapsuleShape2D" id="body"]
+radius = 18.933333333333334
+height = 56.800000000000004
+
+[sub_resource type="RectangleShape2D" id="attack"]
+size = Vector2(180, 120)
+
+[node name="HumanMonster19" instance=ExtResource("base")]
+script = ExtResource("flight")
+Gravity = 0.0
+
+[node name="BodyShape" parent="." index="0"]
+position = Vector2(0, -28.400000000000002)
+shape = SubResource("body")
+
+[node name="Visual" parent="Facing" index="0"]
+position = Vector2(0, -25.5)
+
+[node name="Body" parent="Facing/Visual" index="0"]
+sprite_frames = ExtResource("frames")
+animation = &"Fly_wait"
+
+[node name="HitBox" parent="Facing" index="1"]
+position = Vector2(-75, -45)
+
+[node name="Shape" parent="Facing/HitBox" index="0"]
+shape = SubResource("attack")
+
+[node name="HurtBox" parent="." index="2"]
+position = Vector2(0, -28.400000000000002)
+
+[node name="Shape" parent="HurtBox" index="0"]
+shape = SubResource("body")
+
+[node name="AnimationPlayer" parent="." index="3"]
+libraries/ = ExtResource("animations")

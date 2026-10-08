@@ -3,9 +3,14 @@
 [ext_resource type="Script" path="res://Scripts/Equipment/EquipmentDefinition.cs" id="1"]
 [ext_resource type="Texture2D" path="res://Assets/Art/BackPack/AllItems/dslj.png" id="2"]
 
+[ext_resource type="Texture2D" path="res://Assets/Art/ItemIcon/dslj.png" id="ground_icon"]
+
+[ext_resource type="Resource" path="res://Content/GameData/EquipmentSkills/earth_spirit.tres" id="spirit"]
+
 [resource]
 script = ExtResource("1")
 Id = "dslj"
+GroundIcon = ExtResource("ground_icon")
 DisplayName = "地煞灵戒"
 DescriptionKey = "ITEM_DSLJ_DESCRIPTION"
 Quality = "优秀"
@@ -18,3 +23,5 @@ QualityColor = Color(0.0, 1.0, 0.0, 1)
 SellPrice = 40
 HealthBonus = 55
 ManaBonus = 35
+HasteBonus = 10.0
+GrantedSkills = Array[Resource]([ExtResource("spirit")])

@@ -1,0 +1,185 @@
+[gd_resource type="SpriteFrames" format=3]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster10/Bullet.png" id="4"]
+[sub_resource type="AtlasTexture" id="73"]
+atlas = ExtResource( "4" )
+region = Rect2(0, 164, 355, 41)
+
+[sub_resource type="AtlasTexture" id="72"]
+atlas = ExtResource( "4" )
+region = Rect2(1420, 123, 355, 41)
+
+[sub_resource type="AtlasTexture" id="68"]
+atlas = ExtResource( "4" )
+region = Rect2(0, 123, 355, 41)
+
+[sub_resource type="AtlasTexture" id="70"]
+atlas = ExtResource( "4" )
+region = Rect2(710, 123, 355, 41)
+
+[sub_resource type="AtlasTexture" id="55"]
+atlas = ExtResource( "4" )
+region = Rect2(710, 0, 355, 41)
+
+[sub_resource type="AtlasTexture" id="63"]
+atlas = ExtResource( "4" )
+region = Rect2(0, 82, 355, 41)
+
+[sub_resource type="AtlasTexture" id="56"]
+atlas = ExtResource( "4" )
+region = Rect2(1065, 0, 355, 41)
+
+[sub_resource type="AtlasTexture" id="77"]
+atlas = ExtResource( "4" )
+region = Rect2(1420, 164, 355, 41)
+
+[sub_resource type="AtlasTexture" id="57"]
+atlas = ExtResource( "4" )
+region = Rect2(1420, 0, 355, 41)
+
+[sub_resource type="AtlasTexture" id="60"]
+atlas = ExtResource( "4" )
+region = Rect2(710, 41, 355, 41)
+
+[sub_resource type="AtlasTexture" id="61"]
+atlas = ExtResource( "4" )
+region = Rect2(1065, 41, 355, 41)
+
+[sub_resource type="AtlasTexture" id="58"]
+atlas = ExtResource( "4" )
+region = Rect2(0, 41, 355, 41)
+
+[sub_resource type="AtlasTexture" id="75"]
+atlas = ExtResource( "4" )
+region = Rect2(710, 164, 355, 41)
+
+[sub_resource type="AtlasTexture" id="76"]
+atlas = ExtResource( "4" )
+region = Rect2(1065, 164, 355, 41)
+
+[sub_resource type="AtlasTexture" id="74"]
+atlas = ExtResource( "4" )
+region = Rect2(355, 164, 355, 41)
+
+[sub_resource type="AtlasTexture" id="71"]
+atlas = ExtResource( "4" )
+region = Rect2(1065, 123, 355, 41)
+
+[sub_resource type="AtlasTexture" id="65"]
+atlas = ExtResource( "4" )
+region = Rect2(710, 82, 355, 41)
+
+[sub_resource type="AtlasTexture" id="62"]
+atlas = ExtResource( "4" )
+region = Rect2(1420, 41, 355, 41)
+
+[sub_resource type="AtlasTexture" id="66"]
+atlas = ExtResource( "4" )
+region = Rect2(1065, 82, 355, 41)
+
+[sub_resource type="AtlasTexture" id="59"]
+atlas = ExtResource( "4" )
+region = Rect2(355, 41, 355, 41)
+
+[sub_resource type="AtlasTexture" id="53"]
+atlas = ExtResource( "4" )
+region = Rect2(0, 0, 355, 41)
+
+[sub_resource type="AtlasTexture" id="69"]
+atlas = ExtResource( "4" )
+region = Rect2(355, 123, 355, 41)
+
+[sub_resource type="AtlasTexture" id="67"]
+atlas = ExtResource( "4" )
+region = Rect2(1420, 82, 355, 41)
+
+[sub_resource type="AtlasTexture" id="54"]
+atlas = ExtResource( "4" )
+region = Rect2(355, 0, 355, 41)
+
+[sub_resource type="AtlasTexture" id="64"]
+atlas = ExtResource( "4" )
+region = Rect2(355, 82, 355, 41)
+
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource( "53" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "54" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "55" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "56" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "57" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "58" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "59" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "60" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "61" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "62" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "63" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "64" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "65" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "66" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "67" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "68" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "69" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "70" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "71" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "72" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "73" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "74" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "75" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "76" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "77" )
+}],
+"loop": false,
+"name": &"Knife",
+"speed": 25.0
+}]

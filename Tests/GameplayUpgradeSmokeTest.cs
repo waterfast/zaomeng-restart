@@ -36,7 +36,7 @@ public partial class GameplayUpgradeRunner : Node
 			PrepareTemporarySession();
 			GameplayLevel level = await EnterForest();
 			Player player = level.GetNode<Player>("Player");
-			ForestEncounter encounter = level.GetChildren().OfType<ForestEncounter>().Single();
+			WaveEncounter encounter = level.GetChildren().OfType<WaveEncounter>().Single();
 			encounter.SetPhysicsProcess(false);
 			player.InputEnabled = false;
 			Check(Enumerable.Range(0, 5).All(slot => player.GetEquippedSkill(slot) is null), "unlearned skills leave empty slots");
@@ -48,7 +48,7 @@ public partial class GameplayUpgradeRunner : Node
 			await CheckSettings(level);
 			level = await EnterForest();
 			player = level.GetNode<Player>("Player");
-			encounter = level.GetChildren().OfType<ForestEncounter>().Single();
+			encounter = level.GetChildren().OfType<WaveEncounter>().Single();
 			player.InputEnabled = false;
 			player.SetPhysicsProcess(false);
 			Engine.TimeScale = 20;
@@ -134,7 +134,7 @@ public partial class GameplayUpgradeRunner : Node
 			resultView.GetNode<BaseButton>("return_map").EmitSignal(BaseButton.SignalName.Pressed);
 			await ToSignal(GetTree(), SceneTree.SignalName.SceneChanged);
 			Check(bossSeen && advanceSeen && defeated == 44 && GetTree().CurrentScene.SceneFilePath == GameSession.FirstMap, "boss defeat completes level and returns to map");
-			Check(GameSession.Data!.UnlockedLevel == 2 && _inventory.GetItemCount("dshl") == 1 && _inventory.GetItemCount("dslj") >= 1, "completion unlocks water cave and awards equipment");
+			Check(GameSession.Data!.UnlockedLevel == 2 && _inventory.GetItemCount("dshl") == 0 && _inventory.GetItemCount("dslj") == 0, "completion unlocks water cave without invented boss equipment");
 			Check(GetTree().CurrentScene.GetNode<TextureButton>("level_2").Disabled == false, "map reflects unlocked level");
 			await Capture("map");
 			if (_capture)
@@ -151,6 +151,9 @@ public partial class GameplayUpgradeRunner : Node
 				}
 			}
 			GD.Print("GAMEPLAY UPGRADE SMOKE TEST PASSED");
+			// 与结算测试一致，在引擎退出前终结临时原生数组包装。
+			GC.Collect();
+			GC.WaitForPendingFinalizers();
 			GetTree().Quit();
 		}
 		catch (Exception error)
@@ -344,7 +347,9 @@ public partial class GameplayUpgradeRunner : Node
 		player.ResetForSpawn(new(1980, 502));
 		player.SetPhysicsProcess(false);
 		float health = player.Health;
-		Check(boss.TryAttack(), "boss starts original gorilla attack");
+		// 当前怪物模板把攻击登记为共享技能，场景不再配置旧普攻数组。
+		var bossTemplate = GD.Load<Zaomeng.Monsters.MonsterDefinition>("res://Content/Monsters/Templates/gorilla_boss.tres");
+		Check(boss.TryUseSkill(bossTemplate.Skills[0].Skill), "boss starts registered gorilla attack");
 		await ToSignal(GetTree().CreateTimer(0.6), SceneTreeTimer.SignalName.Timeout);
 		Check(player.Health < health, "gorilla attack hits at its configured AI range");
 		boss.QueueFree();
@@ -353,6 +358,12 @@ public partial class GameplayUpgradeRunner : Node
 	private async Task CheckSettings(GameplayLevel level)
 	{
 		MenuManager menu = level.GetNode<MenuManager>("MenuManager");
+		level.GetNode<BaseButton>("OldHud/roleLayer/role_menu/magic_weapon").EmitSignal(BaseButton.SignalName.Pressed);
+		var magic = level.GetNode<Node2D>("HUD/MagicWeaponPanel");
+		Check(magic.Visible && !level.GetNode<Node2D>("HUD/BackPack").Visible && GetTree().Paused,
+			"actual level magic button opens independent detail instead of bag");
+		magic.GetNode<BaseButton>("BG/Close").EmitSignal(BaseButton.SignalName.Pressed);
+		Check(!GetTree().Paused && !magic.Visible, "actual level magic close resumes gameplay");
 		menu.ToggleMenu("pause_menu");
 		Control settings = level.GetNode("HUD").GetChildren().OfType<Control>().Single(node => node.SceneFilePath.EndsWith("SetMenu.tscn"));
 		Check(GetTree().Paused && settings.Visible, "settings pause the level");

@@ -6,6 +6,7 @@ namespace Zaomeng.Inventory;
 /// <summary>背包的游戏侧接口。失败时不修改任何格子；索引从零开始。</summary>
 public interface IInventoryService
 {
+	/// <summary>当前已分配的格子数，添加物品时可增长，不是玩法上限。</summary>
 	int Capacity { get; }
 	IReadOnlyList<ItemStack?> Slots { get; }
 	event Action? Changed;

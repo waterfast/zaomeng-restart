@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" format=3]
+
+[ext_resource type="Texture2D" path="res://Assets/Art/Level/level_2/227.png" id="1_apg1i"]
+
+[resource]
+atlas = ExtResource("1_apg1i")
+region = Rect2(1800, 210, 64, 64)

@@ -3,9 +3,12 @@
 [ext_resource type="Script" path="res://Scripts/Equipment/EquipmentDefinition.cs" id="1"]
 [ext_resource type="Texture2D" path="res://Assets/Art/BackPack/AllItems/bxp.png" id="2"]
 
+[ext_resource type="Texture2D" path="res://Assets/Art/ItemIcon/bxp.png" id="ground_icon"]
+
 [resource]
 script = ExtResource("1")
 Id = "bxp"
+GroundIcon = ExtResource("ground_icon")
 DisplayName = "赑屃袍"
 DescriptionKey = "ITEM_BXP_DESCRIPTION"
 Quality = "优秀"

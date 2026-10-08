@@ -24,6 +24,6 @@ public partial class HealSkillBehavior : SkillBehavior
 		// 旧版递增的是基础治疗量中的常数项，先取整再乘缺血加成，并非最大生命比例。
 		float basic = Mathf.Floor(Actor.MaxHealth * HealthRatio + (Level + 1) * FlatHealingPerLevel);
 		Actor.Heal(Mathf.Floor(basic * (1 + MissingHealthMultiplier * missingRatio)));
-		if (VisualScene is { } scene) ActorEffectSpawner.SpawnInWorld(scene, Actor.GetParent(), Actor.GlobalPosition + new Vector2(0, -35), VisualLifetime);
+		if (VisualScene is { } scene) ActorEffectSpawner.SpawnInWorld(scene, Actor.GetParent(), Actor.GlobalPosition + new Vector2(0, -35), VisualLifetime, Parameters);
 	}
 }

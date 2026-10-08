@@ -1,0 +1,62 @@
+[gd_resource type="Resource" format=3]
+[ext_resource type="Script" path="res://Scripts/Monsters/MonsterDefinition.cs" id="def"]
+[ext_resource type="Script" path="res://Scripts/Monsters/MonsterSkillChoice.cs" id="choice"]
+[ext_resource type="PackedScene" path="res://Scenes/Actors/Human/Monster_11.tscn" id="actor"]
+[ext_resource type="Script" path="res://Scripts/Monsters/MonsterDropTable.cs" id="drops"]
+[ext_resource type="Script" path="res://Scripts/Monsters/MonsterDropEntry.cs" id="drop"]
+[ext_resource type="Resource" path="res://Content/Monsters/Human/monster_11_hit1.tres" id="s0"]
+[ext_resource type="Resource" path="res://Content/Monsters/Human/monster_11_kldw.tres" id="s1"]
+[ext_resource type="Resource" path="res://Content/Monsters/Human/monster_11_ysyb.tres" id="s2"]
+
+[ext_resource type="Resource" path="res://Content/Monsters/RecoveryDrops.tres" id="recovery"]
+[sub_resource type="Resource" id="choice0"]
+script = ExtResource("choice")
+Skill = ExtResource("s0")
+MaximumRange = 85.0
+MaximumHeightDifference = 200.0
+
+[sub_resource type="Resource" id="choice1"]
+script = ExtResource("choice")
+Skill = ExtResource("s1")
+MaximumRange = 250.0
+MaximumHeightDifference = 200.0
+
+[sub_resource type="Resource" id="choice2"]
+script = ExtResource("choice")
+Skill = ExtResource("s2")
+MaximumRange = 250.0
+MaximumHeightDifference = 200.0
+
+[sub_resource type="Resource" id="drop0"]
+script = ExtResource("drop")
+ItemId = "jcbj"
+
+[sub_resource type="Resource" id="drops"]
+script = ExtResource("drops")
+ChooseOne = true
+RollProbability = 0.5
+Entries = Array[Resource]([SubResource("drop0")])
+
+[resource]
+script = ExtResource("def")
+Id = "human_monster_11"
+DisplayName = "狮驼王"
+ActorScene = ExtResource("actor")
+IsBoss = true
+Health = 3500
+Attack = 30
+Level = 18
+PhysicalDefense = 60
+MagicDefense = 70
+CriticalRating = 10
+DodgeRating = 6
+Toughness = 0
+Accuracy = 0
+CriticalResistance = 0
+Experience = 100
+Souls = 30
+MoveSpeed = 120.0
+DetectionRange = 1200.0
+Skills = Array[Resource]([SubResource("choice2"), SubResource("choice1"), SubResource("choice0")])
+Drops = SubResource("drops")
+RecoveryDrops = ExtResource("recovery")

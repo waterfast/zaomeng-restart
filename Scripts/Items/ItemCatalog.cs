@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Godot;
 using Zaomeng.Inventory;
 using Zaomeng.Equipment;
-using Zaomeng.Equipment.Skills;
+using Zaomeng.Combat.Effects;
 
 namespace Zaomeng.Items;
 
@@ -42,7 +42,7 @@ public partial class ItemCatalog : Resource, IItemCatalog
 	public void Validate()
 	{
 		var ids = new HashSet<string>(StringComparer.Ordinal);
-		var skillsById = new Dictionary<string, EquipmentSkillDefinition>(StringComparer.Ordinal);
+		var skillsById = new Dictionary<string, PassiveSkillDefinition>(StringComparer.Ordinal);
 		foreach (ItemDefinition? definition in Definitions)
 		{
 			if (definition is null)
@@ -52,8 +52,18 @@ public partial class ItemCatalog : Resource, IItemCatalog
 			if (definition.MaxStack < 1)
 				throw new InvalidOperationException($"物品 {definition.Id} 的最大堆叠数必须大于零。");
 			if (definition.SellPrice < 0) throw new InvalidOperationException($"物品 {definition.Id} 的售价不能为负数。");
+			if (definition is RecoveryPickupDefinition recovery &&
+				(!float.IsFinite(recovery.HealthRatio) || recovery.HealthRatio < 0 || recovery.HealthRatio > 1 ||
+				 !float.IsFinite(recovery.ManaRatio) || recovery.ManaRatio < 0 || recovery.ManaRatio > 1 ||
+				 !float.IsFinite(recovery.LifetimeSeconds) || recovery.LifetimeSeconds <= 0))
+				throw new InvalidOperationException($"补给 {definition.Id} 的恢复比例或存在时间无效。");
 			if (definition is ConsumableDefinition consumable)
 			{
+				if (consumable.Effect == ConsumableEffect.ApplyBuff)
+				{
+					if (consumable.Buff is null || consumable.Buff.Duration <= 0) throw new InvalidOperationException($"食品 {definition.Id} 缺少定时 Buff。");
+					consumable.Buff.Validate();
+				}
 				if (consumable.Category != ItemCategory.Consumable || !Enum.IsDefined(consumable.Effect))
 					throw new InvalidOperationException($"消耗品 {definition.Id} 的类别或效果无效。");
 				if (consumable.Effect == ConsumableEffect.GrantSouls && consumable.SoulsGranted <= 0)
@@ -78,15 +88,21 @@ public partial class ItemCatalog : Resource, IItemCatalog
 				throw new InvalidOperationException($"宝石 {definition.Id} 的类型或属性配置无效。");
 			if (definition is EquipmentDefinition skillEquipment)
 			{
+				if (skillEquipment.MagicWeaponAbility is { } ability)
+				{
+					if (skillEquipment.Slot != EquipmentSlot.MagicWeapon)
+						throw new InvalidOperationException($"装备 {definition.Id} 的法宝主动必须属于法宝槽。");
+					ability.Validate();
+				}
 				if (skillEquipment.GrantedSkills is null)
 					throw new InvalidOperationException($"装备 {definition.Id} 的授予技能列表为空。");
 				var grantedIds = new HashSet<string>(StringComparer.Ordinal);
-				foreach (EquipmentSkillDefinition skill in skillEquipment.GrantedSkills)
+				foreach (PassiveSkillDefinition skill in skillEquipment.GrantedSkills)
 				{
 					if (skill is null) throw new InvalidOperationException($"装备 {definition.Id} 包含空技能。");
 					skill.Validate();
 					if (!grantedIds.Add(skill.Id)) throw new InvalidOperationException($"装备 {definition.Id} 重复授予技能 {skill.Id}。");
-					if (skillsById.TryGetValue(skill.Id, out EquipmentSkillDefinition? existing) && existing != skill)
+					if (skillsById.TryGetValue(skill.Id, out PassiveSkillDefinition? existing) && existing != skill)
 						throw new InvalidOperationException($"装备技能 ID {skill.Id} 对应不同定义。");
 					skillsById[skill.Id] = skill;
 				}

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="LevelDifficultyDefinition" format=3]
+
+[ext_resource type="Script" path="res://Scripts/Level/LevelDifficultyDefinition.cs" id="script"]
+
+[resource]
+script = ExtResource("script")
+DisplayName = "困难"
+MonsterHealthMultiplier = 5.0
+MonsterAttackMultiplier = 5.0
+MonsterDefenseMultiplier = 1.25
+MonsterLevelOverride = 20
+BossHealthMultiplier = 10.0
+BossAttackMultiplier = 3.0
+BossDefenseMultiplier = 1.5
+BossLevelOverride = 20
+RecommendedLevelOverride = 20

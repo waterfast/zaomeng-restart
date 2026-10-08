@@ -12,7 +12,7 @@ public partial class CloudFlightBehavior : SkillBehavior
 	protected override void OnTick(float delta)
 	{
 		Actor.Gravity = 0;
-		Actor.Velocity = new(Actor.Velocity.X, Input.IsPhysicalKeyPressed(RiseKey) ? -LiftSpeed : 0);
+		Actor.Velocity = new(Actor.Velocity.X, Input.IsPhysicalKeyPressed(RiseKey) ? -LiftSpeed * Parameters.MotionSpeed : 0);
 	}
 	protected override void OnStop() => Actor.Gravity = _gravity;
 }

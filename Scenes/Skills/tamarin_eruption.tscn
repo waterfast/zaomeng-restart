@@ -1,0 +1,50 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://Scripts/Combat/Skills/AreaAttackBehavior.cs" id="script"]
+[ext_resource type="SpriteFrames" path="res://Content/Monsters/TamarinEruptionFrames.tres" id="frames"]
+[ext_resource type="Script" path="res://Scripts/Combat/HitDefinition.cs" id="hit"]
+[ext_resource type="Script" path="res://Scripts/Combat/HitEvent.cs" id="window"]
+[sub_resource type="Resource" id="hit"]
+script = ExtResource("hit")
+AttackMultiplier = 1.3636363636363635
+DamageType = 1
+Knockback = Vector2(80, -180)
+[sub_resource type="Resource" id="w0"]
+script = ExtResource("window")
+StartFrame = 10
+EndFrame = 13
+Hit = SubResource("hit")
+[sub_resource type="Resource" id="w1"]
+script = ExtResource("window")
+StartFrame = 15
+EndFrame = 18
+Hit = SubResource("hit")
+[sub_resource type="Resource" id="w2"]
+script = ExtResource("window")
+StartFrame = 20
+EndFrame = 23
+Hit = SubResource("hit")
+[sub_resource type="Resource" id="w3"]
+script = ExtResource("window")
+StartFrame = 25
+EndFrame = 28
+Hit = SubResource("hit")
+[sub_resource type="Resource" id="w4"]
+script = ExtResource("window")
+StartFrame = 30
+EndFrame = 33
+Hit = SubResource("hit")
+[sub_resource type="Resource" id="w5"]
+script = ExtResource("window")
+StartFrame = 35
+EndFrame = 38
+Hit = SubResource("hit")
+[node name="AreaAttack" type="Node"]
+script = ExtResource("script")
+TargetEnemy = true
+Delay = 1
+Radius = 150.0
+Hits = Array[Resource]([SubResource("w0"), SubResource("w1"), SubResource("w2"), SubResource("w3"), SubResource("w4"), SubResource("w5")])
+Frames = ExtResource("frames")
+Animation = &"Monster5Bullet"
+VisualScale = Vector2(0.57, 0.7)
+VisualOffset = Vector2(0, -260)

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="MusicTrack" format=3]
+[ext_resource type="Script" path="res://Scripts/Audio/MusicTrack.cs" id="script"]
+[ext_resource type="AudioStream" path="res://Assets/Audio/MainSceneMusic/zmxy4bg.mp3" id="stream"]
+
+[resource]
+script = ExtResource("script")
+Id = "theme4"
+DisplayName = "造梦4 · 主题"
+Stream = ExtResource("stream")

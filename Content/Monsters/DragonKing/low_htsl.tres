@@ -1,0 +1,11 @@
+[gd_resource type="Resource" format=3]
+[ext_resource type="Script" path="res://Scripts/Combat/SkillDefinition.cs" id="skill"]
+[ext_resource type="PackedScene" path="res://Scenes/Skills/DragonKing/low_htsl.tscn" id="behavior"]
+[resource]
+script = ExtResource("skill")
+Id = "dragon_low_htsl"
+DisplayName = "洪涛水龙"
+Animation = &"htsl"
+FramesPerSecond = 60
+CooldownSeconds = 12
+BehaviorScene = ExtResource("behavior")

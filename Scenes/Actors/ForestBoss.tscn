@@ -17,7 +17,6 @@ PhysicalDefense = 50.0
 MagicDefense = 80.0
 CriticalRating = 5.0
 DetectionRange = 1000.0
-AttackRange = 135.0
 ExperienceReward = 35
 SoulValuePerOrb = 10
 NormalCombo = Array[Resource]([ExtResource("attack")])

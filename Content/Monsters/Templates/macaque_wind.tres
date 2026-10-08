@@ -1,0 +1,11 @@
+[gd_resource type="Resource" format=3]
+[ext_resource type="Script" path="res://Scripts/Combat/SkillDefinition.cs" id="skill"]
+[ext_resource type="PackedScene" path="res://Scenes/Skills/macaque_wind.tscn" id="behavior"]
+[resource]
+script = ExtResource("skill")
+Id = "macaque_wind"
+DisplayName = "回旋风弹"
+Animation = &"tfhx"
+FramesPerSecond = 60
+CooldownSeconds = 8.0
+BehaviorScene = ExtResource("behavior")

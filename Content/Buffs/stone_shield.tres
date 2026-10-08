@@ -1,0 +1,11 @@
+[gd_resource type="Resource" format=3]
+[ext_resource type="Script" path="res://Scripts/Combat/Buffs/BuffDefinition.cs" id="buff"]
+
+[resource]
+script = ExtResource("buff")
+Id = "stone_shield"
+DisplayName = "石像护盾"
+Description = "触碰红色弱点后护盾失效五秒。"
+Duration = 0.0
+DamageReduction = 1.0
+HealFlatPerPulse = 100.0

@@ -5,6 +5,7 @@ namespace Zaomeng.Skills;
 
 /// <summary>独立策划成长数据；UI、学习费用和施放蓝耗共用，不混入动作脚本。</summary>
 [GlobalClass]
+[Tool]
 public partial class SkillGrowth : Resource
 {
 	[Export] public int InitialLearningCost { get; set; } = 100;

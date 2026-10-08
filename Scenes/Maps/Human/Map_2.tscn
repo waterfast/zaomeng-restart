@@ -1,0 +1,178 @@
+[gd_scene format=3 uid="uid://lyxdr5w8vmpa"]
+
+[ext_resource type="PackedScene" path="res://Scenes/Maps/Stage.tscn" id="4"]
+[ext_resource type="Texture2D" uid="uid://ya4ne2xbh57x" path="res://Assets/Art/Level/Level_1/19_1.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://no3xvoapaanw" path="res://Assets/Art/Level/level_2/50.png" id="6"]
+[ext_resource type="PackedScene" path="res://Scenes/Maps/Human/River.tscn" id="7"]
+[ext_resource type="Texture2D" uid="uid://bgs1a20xi684n" path="res://Assets/Art/Level/level_2/227.png" id="8"]
+
+[ext_resource type="Script" path="res://Scripts/Level/HiddenWaterEntrance.cs" id="hidden_script"]
+[ext_resource type="Resource" path="res://Content/Levels/crystal_palace_low.tres" id="hidden_low"]
+[ext_resource type="Resource" path="res://Content/Levels/crystal_palace_high.tres" id="hidden_high"]
+
+[sub_resource type="RectangleShape2D" id="StartGround"]
+size = Vector2(354, 147)
+
+[sub_resource type="RectangleShape2D" id="FirstSlopeTop"]
+size = Vector2(204, 217)
+
+[sub_resource type="RectangleShape2D" id="GroundBeforePillar"]
+size = Vector2(1018, 147)
+
+[sub_resource type="RectangleShape2D" id="StonePillar"]
+size = Vector2(168, 260)
+
+[sub_resource type="RectangleShape2D" id="FirstWaterSurface"]
+size = Vector2(540, 84)
+
+[sub_resource type="RectangleShape2D" id="MiddleGround"]
+size = Vector2(698, 147)
+
+[sub_resource type="RectangleShape2D" id="SecondWaterSurface"]
+size = Vector2(322, 84)
+
+[sub_resource type="RectangleShape2D" id="GroundBeforeLastSlope"]
+size = Vector2(618, 147)
+
+[sub_resource type="RectangleShape2D" id="LastSlopeTop"]
+size = Vector2(202, 219)
+
+[sub_resource type="RectangleShape2D" id="EndGround"]
+size = Vector2(964, 147)
+
+[node name="HumanMap2" type="Node2D" unique_id=20734731]
+
+[node name="wall" type="StaticBody2D" parent="." unique_id=916499854]
+position = Vector2(0, 112)
+collision_mask = 0
+
+[node name="LeftBoundary" type="CollisionPolygon2D" parent="wall" unique_id=2064202183]
+polygon = PackedVector2Array(-100, -1000, 0, -1000, 0, 1000, -100, 1000)
+
+[node name="stage" parent="wall" unique_id=392927080 instance=ExtResource("4")]
+position = Vector2(1487, 256)
+metadata/_edit_lock_ = true
+
+[node name="stage2" parent="wall" unique_id=441008574 instance=ExtResource("4")]
+position = Vector2(1215, 253)
+metadata/_edit_lock_ = true
+
+[node name="stage3" parent="wall" unique_id=444473667 instance=ExtResource("4")]
+position = Vector2(2012, 156)
+metadata/_edit_lock_ = true
+
+[node name="stage4" parent="wall" unique_id=1977410564 instance=ExtResource("4")]
+position = Vector2(2177, 9)
+metadata/_edit_lock_ = true
+
+[node name="stage5" parent="wall" unique_id=969887569 instance=ExtResource("4")]
+position = Vector2(2344, 153)
+metadata/_edit_lock_ = true
+
+[node name="stage6" parent="wall" unique_id=1453417816 instance=ExtResource("4")]
+position = Vector2(3292, 244)
+metadata/_edit_lock_ = true
+
+[node name="StartGround" type="CollisionShape2D" parent="wall"]
+position = Vector2(177, 458.5)
+shape = SubResource("StartGround")
+
+[node name="FirstSlopeUp" type="CollisionPolygon2D" parent="wall"]
+polygon = PackedVector2Array(354, 385, 428, 315, 428, 532, 354, 532)
+
+[node name="FirstSlopeTop" type="CollisionShape2D" parent="wall"]
+position = Vector2(530, 423.5)
+shape = SubResource("FirstSlopeTop")
+
+[node name="FirstSlopeDown" type="CollisionPolygon2D" parent="wall"]
+polygon = PackedVector2Array(632, 315, 712, 385, 712, 532, 632, 532)
+
+[node name="GroundBeforePillar" type="CollisionShape2D" parent="wall"]
+position = Vector2(1221, 458.5)
+shape = SubResource("GroundBeforePillar")
+
+[node name="StonePillar" type="CollisionShape2D" parent="wall"]
+position = Vector2(1814, 402)
+shape = SubResource("StonePillar")
+
+[node name="FirstWaterSurface" type="CollisionShape2D" parent="wall"]
+position = Vector2(2168, 490)
+shape = SubResource("FirstWaterSurface")
+
+[node name="MiddleGround" type="CollisionShape2D" parent="wall"]
+position = Vector2(2787, 458.5)
+shape = SubResource("MiddleGround")
+
+[node name="SecondWaterSurface" type="CollisionShape2D" parent="wall"]
+position = Vector2(3297, 490)
+shape = SubResource("SecondWaterSurface")
+
+[node name="GroundBeforeLastSlope" type="CollisionShape2D" parent="wall"]
+position = Vector2(3767, 458.5)
+shape = SubResource("GroundBeforeLastSlope")
+
+[node name="LastSlopeUp" type="CollisionPolygon2D" parent="wall"]
+polygon = PackedVector2Array(4076, 385, 4154, 313, 4154, 532, 4076, 532)
+
+[node name="LastSlopeTop" type="CollisionShape2D" parent="wall"]
+position = Vector2(4255, 422.5)
+shape = SubResource("LastSlopeTop")
+
+[node name="LastSlopeDown" type="CollisionPolygon2D" parent="wall"]
+polygon = PackedVector2Array(4356, 313, 4436, 385, 4436, 532, 4356, 532)
+
+[node name="EndGround" type="CollisionShape2D" parent="wall"]
+position = Vector2(4918, 458.5)
+shape = SubResource("EndGround")
+
+[node name="BackGround" type="ParallaxBackground" parent="." unique_id=1231070921]
+
+[node name="End" type="ParallaxLayer" parent="BackGround" unique_id=632557527]
+motion_scale = Vector2(0, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="BackGround/End" unique_id=1759232490]
+position = Vector2(723, 244)
+texture = ExtResource("5")
+metadata/_edit_lock_ = true
+
+[node name="floor_2" type="ParallaxLayer" parent="BackGround" unique_id=822207329]
+
+[node name="front" type="ParallaxLayer" parent="BackGround" unique_id=867188979]
+
+[node name="50" type="Sprite2D" parent="BackGround/front" unique_id=616698719]
+position = Vector2(2339, 329)
+texture = ExtResource("6")
+metadata/_edit_lock_ = true
+
+[node name="floor" type="ParallaxLayer" parent="BackGround" unique_id=252166354]
+
+[node name="River" parent="BackGround/floor" unique_id=314978833 instance=ExtResource("7")]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1898.0
+offset_top = 560.0
+offset_right = 2438.0
+offset_bottom = 644.0
+metadata/_edit_lock_ = true
+
+[node name="River2" parent="BackGround/floor" unique_id=1574472052 instance=ExtResource("7")]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 3136.0
+offset_top = 560.0
+offset_right = 3458.0
+offset_bottom = 644.0
+metadata/_edit_lock_ = true
+
+[node name="227" type="Sprite2D" parent="BackGround/floor" unique_id=2007811344]
+position = Vector2(2360, 493)
+texture = ExtResource("8")
+metadata/_edit_lock_ = true
+
+[node name="HiddenWaterEntrance" type="Node" parent="."]
+script = ExtResource("hidden_script")
+SurfacePaths = Array[NodePath]([NodePath("../wall/FirstWaterSurface"), NodePath("../wall/SecondWaterSurface")])
+LowerLevel = ExtResource("hidden_low")
+UpperLevel = ExtResource("hidden_high")
+UpperLevelThreshold = 21
+DiveDepth = 95.0

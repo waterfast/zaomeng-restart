@@ -1,0 +1,70 @@
+[gd_resource type="SpriteFrames" format=3]
+
+[ext_resource type="Texture2D" path="res://Assets/Art/HeroPicture/Role2/Role2Skill_xbz.png" id="8"]
+[sub_resource type="AtlasTexture" id="98"]
+atlas = ExtResource( "8" )
+region = Rect2(57, 82, 95, 72)
+script = null
+
+[sub_resource type="AtlasTexture" id="99"]
+atlas = ExtResource( "8" )
+region = Rect2(201, 10, 119, 145)
+script = null
+
+[sub_resource type="AtlasTexture" id="100"]
+atlas = ExtResource( "8" )
+region = Rect2(355, 10, 133, 148)
+script = null
+
+[sub_resource type="AtlasTexture" id="101"]
+atlas = ExtResource( "8" )
+region = Rect2(523, 10, 133, 151)
+script = null
+
+[sub_resource type="AtlasTexture" id="102"]
+atlas = ExtResource( "8" )
+region = Rect2(691, 10, 133, 156)
+script = null
+
+[sub_resource type="AtlasTexture" id="103"]
+atlas = ExtResource( "8" )
+region = Rect2(859, 10, 132, 146)
+script = null
+
+[sub_resource type="AtlasTexture" id="104"]
+atlas = ExtResource( "8" )
+region = Rect2(1027, 10, 132, 145)
+script = null
+
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource( "98" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "98" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "99" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "100" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "101" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "102" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "103" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "104" )
+}],
+"loop": false,
+"name": &"Role2Bullet3",
+"speed": 15.0
+}]

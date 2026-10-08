@@ -1,0 +1,118 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://Assets/Art/Level/Level_4/246.png" id="3"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Level/Level_6/91.png" id="4"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Level/Level_6/241.png" id="5"]
+
+[ext_resource type="PackedScene" path="res://Scenes/Maps/GroundSpike.tscn" id="spike"]
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(5508, 151.5)
+
+[sub_resource type="RectangleShape2D" id="2"]
+size = Vector2(7, 1564)
+
+[sub_resource type="RectangleShape2D" id="3"]
+size = Vector2(1411.5, 1564)
+
+[sub_resource type="RectangleShape2D" id="4"]
+size = Vector2(243, 38.5)
+
+
+[sub_resource type="RectangleShape2D" id="boundary_rect_0"]
+size = Vector2(100.0, 2000.0)
+[node name="HumanMap6" type="Node2D"]
+
+[node name="wall" type="StaticBody2D" parent="."]
+position = Vector2(0, 112)
+collision_mask = 0
+
+[node name="BackGround" type="ParallaxBackground" parent="."]
+
+[node name="End" type="ParallaxLayer" parent="BackGround"]
+motion_scale = Vector2(0, 0)
+
+[node name="floor_2" type="ParallaxLayer" parent="BackGround"]
+[node name="floor" type="CollisionShape2D" parent="wall"]
+position = Vector2(2436, 474.75)
+shape = SubResource( "1" )
+metadata/_edit_lock_ = true
+
+[node name="246" type="Sprite2D" parent="BackGround/End"]
+position = Vector2(721, 244)
+texture = ExtResource( "3" )
+metadata/_edit_lock_ = true
+
+[node name="front" type="ParallaxLayer" parent="BackGround"]
+position = Vector2(2, 1)
+
+[node name="91" type="Sprite2D" parent="BackGround/front"]
+position = Vector2(2444, 295)
+texture = ExtResource( "4" )
+metadata/_edit_lock_ = true
+
+[node name="241" type="Sprite2D" parent="BackGround/floor_2"]
+position = Vector2(2368.75, 414)
+scale = Vector2(1.01776, 1)
+texture = ExtResource( "5" )
+metadata/_edit_lock_ = true
+
+
+[node name="LeftBoundary" type="CollisionShape2D" parent="wall"]
+position = Vector2(-50.0, 0.0)
+shape = SubResource("boundary_rect_0")
+
+[node name="Spike0" parent="." instance=ExtResource("spike")]
+position = Vector2(1350.0, 507)
+PhaseOffset = 0.0
+
+[node name="Spike1" parent="." instance=ExtResource("spike")]
+position = Vector2(1400.0, 507)
+PhaseOffset = 0.35
+
+[node name="Spike2" parent="." instance=ExtResource("spike")]
+position = Vector2(1450.0, 507)
+PhaseOffset = 0.7
+
+[node name="Spike3" parent="." instance=ExtResource("spike")]
+position = Vector2(1650.0, 507)
+PhaseOffset = 1.0499999999999998
+
+[node name="Spike4" parent="." instance=ExtResource("spike")]
+position = Vector2(1700.0, 507)
+PhaseOffset = 0.0
+
+[node name="Spike5" parent="." instance=ExtResource("spike")]
+position = Vector2(1750.0, 507)
+PhaseOffset = 0.35
+
+[node name="Spike6" parent="." instance=ExtResource("spike")]
+position = Vector2(1950.0, 507)
+PhaseOffset = 0.7
+
+[node name="Spike7" parent="." instance=ExtResource("spike")]
+position = Vector2(2000.0, 507)
+PhaseOffset = 1.0499999999999998
+
+[node name="Spike8" parent="." instance=ExtResource("spike")]
+position = Vector2(2050.0, 507)
+PhaseOffset = 0.0
+
+[node name="Spike9" parent="." instance=ExtResource("spike")]
+position = Vector2(3200.0, 507)
+PhaseOffset = 0.35
+
+[node name="Spike10" parent="." instance=ExtResource("spike")]
+position = Vector2(3250.0, 507)
+PhaseOffset = 0.7
+
+[node name="Spike11" parent="." instance=ExtResource("spike")]
+position = Vector2(3300.0, 507)
+PhaseOffset = 1.0499999999999998
+
+[node name="Spike12" parent="." instance=ExtResource("spike")]
+position = Vector2(3350.0, 507)
+PhaseOffset = 0.0
+
+[node name="Spike13" parent="." instance=ExtResource("spike")]
+position = Vector2(3400.0, 507)
+PhaseOffset = 0.35

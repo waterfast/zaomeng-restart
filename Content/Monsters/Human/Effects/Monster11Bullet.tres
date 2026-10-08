@@ -1,0 +1,136 @@
+[gd_resource type="SpriteFrames" format=3]
+[ext_resource type="Texture2D" path="res://Assets/Art/HeroPicture/Role3/Role3SpecialEffect9.png" id="31"]
+[sub_resource type="AtlasTexture" id="838"]
+atlas = ExtResource( "31" )
+region = Rect2(838, 0, 419, 295)
+
+[sub_resource type="AtlasTexture" id="844"]
+atlas = ExtResource( "31" )
+region = Rect2(0, 590, 419, 295)
+
+[sub_resource type="AtlasTexture" id="842"]
+atlas = ExtResource( "31" )
+region = Rect2(838, 295, 419, 295)
+
+[sub_resource type="AtlasTexture" id="839"]
+atlas = ExtResource( "31" )
+region = Rect2(1257, 0, 419, 295)
+
+[sub_resource type="AtlasTexture" id="829"]
+atlas = ExtResource( "31" )
+region = Rect2(419, 590, 419, 295)
+
+[sub_resource type="AtlasTexture" id="831"]
+atlas = ExtResource( "31" )
+region = Rect2(1257, 590, 419, 295)
+
+[sub_resource type="AtlasTexture" id="828"]
+atlas = ExtResource( "31" )
+region = Rect2(0, 0, 419, 295)
+
+[sub_resource type="AtlasTexture" id="835"]
+atlas = ExtResource( "31" )
+region = Rect2(1257, 885, 419, 295)
+
+[sub_resource type="AtlasTexture" id="837"]
+atlas = ExtResource( "31" )
+region = Rect2(419, 0, 419, 295)
+
+[sub_resource type="AtlasTexture" id="845"]
+atlas = ExtResource( "31" )
+region = Rect2(419, 1180, 419, 295)
+
+[sub_resource type="AtlasTexture" id="830"]
+atlas = ExtResource( "31" )
+region = Rect2(838, 590, 419, 295)
+
+[sub_resource type="AtlasTexture" id="833"]
+atlas = ExtResource( "31" )
+region = Rect2(419, 885, 419, 295)
+
+[sub_resource type="AtlasTexture" id="836"]
+atlas = ExtResource( "31" )
+region = Rect2(0, 1180, 419, 295)
+
+[sub_resource type="AtlasTexture" id="834"]
+atlas = ExtResource( "31" )
+region = Rect2(838, 885, 419, 295)
+
+[sub_resource type="AtlasTexture" id="832"]
+atlas = ExtResource( "31" )
+region = Rect2(0, 885, 419, 295)
+
+[sub_resource type="AtlasTexture" id="841"]
+atlas = ExtResource( "31" )
+region = Rect2(419, 295, 419, 295)
+
+[sub_resource type="AtlasTexture" id="843"]
+atlas = ExtResource( "31" )
+region = Rect2(1257, 295, 419, 295)
+
+[sub_resource type="AtlasTexture" id="840"]
+atlas = ExtResource( "31" )
+region = Rect2(0, 295, 419, 295)
+
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource( "828" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "829" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "830" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "831" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "832" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "833" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "834" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "835" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "836" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "837" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "838" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "839" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "840" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "841" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "842" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "843" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "844" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "845" )
+}],
+"loop": false,
+"name": &"Monster11Bullet",
+"speed": 15.0
+}]

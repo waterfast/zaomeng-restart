@@ -1,0 +1,27 @@
+[gd_resource type="Resource" format=3]
+[ext_resource type="Script" path="res://Scripts/Combat/SkillDefinition.cs" id="skill"]
+[ext_resource type="Script" path="res://Scripts/Combat/HitDefinition.cs" id="hit"]
+[ext_resource type="Script" path="res://Scripts/Combat/HitEvent.cs" id="window"]
+
+[ext_resource type="Resource" path="res://Content/Buffs/bleeding.tres" id="debuff"]
+[sub_resource type="Resource" id="hit"]
+script = ExtResource("hit")
+AppliedBuff = ExtResource("debuff")
+FlatDamage = 0.0
+AttackMultiplier = 4.083333333333333
+DamageType = 1
+Knockback = Vector2(100, -100)
+
+[sub_resource type="Resource" id="window"]
+script = ExtResource("window")
+StartFrame = 24
+EndFrame = 42
+Hit = SubResource("hit")
+
+[resource]
+script = ExtResource("skill")
+Id = "human_20_sxks"
+Animation = &"sxks_1"
+FramesPerSecond = 60
+CooldownSeconds = 7.0
+Hits = Array[Resource]([SubResource("window")])

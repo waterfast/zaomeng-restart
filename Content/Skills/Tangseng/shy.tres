@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SkillDefinition" format=3]
+[ext_resource type="Script" path="res://Scripts/Combat/SkillDefinition.cs" id="runtime"]
+[ext_resource type="Resource" path="res://Content/Skills/Growth/Tangseng/shy.tres" id="growth"]
+[ext_resource type="PackedScene" path="res://Content/Skills/Behaviors/shy.tscn" id="behavior"]
+[resource]
+script = ExtResource("runtime")
+Id = "shy"
+DisplayName = "水幻影"
+Animation = &"shy"
+FramesPerSecond = 10
+CooldownSeconds = 2.4
+Growth = ExtResource("growth")
+BehaviorScene = ExtResource("behavior")

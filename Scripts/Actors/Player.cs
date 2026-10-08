@@ -6,12 +6,15 @@ using SaveCharacter = Zaomeng.Character.Character;
 using Zaomeng.Character;
 using Zaomeng.Items;
 using Zaomeng.Skills;
-using Zaomeng.Equipment.Skills;
+using Zaomeng.Combat.Effects;
 
 namespace Zaomeng;
 
 public partial class Player : CharacterActor
 {
+	[Export] public Zaomeng.Combat.Buffs.BuffDefinition? WushuangBuff { get; set; }
+	public Zaomeng.Combat.Wushuang.WushuangRuntime Wushuang { get; }
+	public Player() => Wushuang = new(this);
 	private static readonly StringName[] SkillActions =
 	{
 		"skill_1", "skill_2", "skill_3", "skill_4", "skill_5"
@@ -35,20 +38,19 @@ public partial class Player : CharacterActor
 	private int _jumpsUsed;
 	private SaveCharacter? _characterData;
 	private ItemCatalog? _itemCatalog;
+	public MagicWeaponRuntime MagicWeapon { get; private set; } = null!;
 	public CharacterStats? CalculatedStats { get; private set; }
-	private readonly EquipmentSkillRuntime _equipmentSkills = new();
-	public IReadOnlyList<EquipmentSkillDefinition> GrantedEquipmentSkills => _equipmentSkills.Skills;
+	private IReadOnlyList<PassiveSkillDefinition> _grantedEquipmentSkills = Array.Empty<PassiveSkillDefinition>();
+	public IReadOnlyList<PassiveSkillDefinition> GrantedEquipmentSkills => _grantedEquipmentSkills;
 	public event Action<HitResult>? DamageDealt;
-	internal float ModifyOutgoingDamage(CharacterActor target, SkillDefinition? sourceSkill, float damage)
-		=> _equipmentSkills.ModifyOutgoingDamage(this, target, sourceSkill, damage);
 	internal void NotifyHitDealt(CharacterActor target, HitResult hit)
 	{
 		DamageDealt?.Invoke(hit);
-		_equipmentSkills.OnHitDealt(this, target, hit);
 	}
 	public override void ResetForSpawn(Vector2 position)
 	{
 		base.ResetForSpawn(position);
+		Wushuang.Reset();
 		GetNode<CanvasItem>("Facing/Visual/RoleBody").Show();
 		GetNode<CanvasItem>("Facing/Visual/RoleEquipment").Show();
 		if (GetNodeOrNull<AnimatedSprite2D>("Facing/Visual/Death") is { } death) { death.Stop(); death.Hide(); }
@@ -66,11 +68,13 @@ public partial class Player : CharacterActor
 	private readonly System.Collections.Generic.Dictionary<SkillDefinition, CooldownState> _skillCooldowns = new();
 	private readonly record struct CooldownState(float Remaining, float Duration, bool Pending = false);
 	private float _recoveryClock;
-	private SkillBehavior? _skillBehavior;
+
 
 	public override void _Ready()
 	{
 		base._Ready();
+		HitReceived += _ => { if (Health <= 0) Wushuang.Reset(); };
+		AddChild(new Zaomeng.Combat.Wushuang.WushuangAfterimages { Name = "WushuangAfterimages" });
 		Mana = MaxMana;
 	}
 
@@ -91,7 +95,7 @@ public partial class Player : CharacterActor
 		=> _skillCooldowns.TryGetValue(skill, out CooldownState state) ? state.Remaining : 0;
 
 	public float GetSkillCooldownDuration(SkillDefinition skill) => _skillCooldowns.TryGetValue(skill, out CooldownState state) && (state.Remaining > 0 || state.Pending)
-		? state.Duration : SkillCooldownCalculator.Calculate(skill.CooldownSeconds, CalculatedStats?.HasteRating ?? 0);
+		? state.Duration : SkillCooldownCalculator.Calculate(skill.CooldownSeconds, (CalculatedStats?.HasteRating ?? 0) + Buffs.HasteBonus);
 
 	public int EffectiveSkillLevel(string id)
 	{
@@ -108,24 +112,11 @@ public partial class Player : CharacterActor
 		if (Mana < manaCost || !base.TryUseSkill(skill)) return false;
 		// 动作校验成功后才扣蓝、快照冷却，失败按键不消耗资源。
 		TrySpendMana(manaCost);
-		float duration = SkillCooldownCalculator.Calculate(skill.CooldownSeconds, CalculatedStats?.HasteRating ?? 0);
+		float duration = SkillCooldownCalculator.Calculate(skill.CooldownSeconds, (CalculatedStats?.HasteRating ?? 0) + Buffs.HasteBonus);
 		_skillCooldowns[skill] = new(skill.StartCooldownOnImpact ? 0 : duration, duration, skill.StartCooldownOnImpact);
-		if (skill.LinkedCooldownSkill is { } linked)
-		{
-			float linkedDuration = SkillCooldownCalculator.Calculate(skill.LinkedCooldownSeconds, CalculatedStats?.HasteRating ?? 0);
-			_skillCooldowns[linked] = new(linkedDuration, linkedDuration);
-		}
-		if (IsInstanceValid(_skillBehavior)) _skillBehavior!.Stop();
-		_skillBehavior = null;
-		if (skill.BehaviorScene is { } behaviorScene)
-		{
-			_skillBehavior = behaviorScene.Instantiate<SkillBehavior>();
-			AddChild(_skillBehavior);
-			_skillBehavior.Begin(this, skill);
-		}
 		return true;
 	}
-	public void StartPendingSkillCooldown(SkillDefinition skill)
+	public override void StartPendingSkillCooldown(SkillDefinition skill)
 	{
 		if (_skillCooldowns.TryGetValue(skill, out var state) && state.Pending)
 			_skillCooldowns[skill] = new(state.Duration, state.Duration);
@@ -162,6 +153,13 @@ public partial class Player : CharacterActor
 	{
 		_characterData = character;
 		_itemCatalog = catalog;
+		if (MagicWeapon is null)
+		{
+			MagicWeapon = new MagicWeaponRuntime { Name = "MagicWeaponRuntime" };
+			MagicWeapon.Bind(this, character, catalog);
+			AddChild(MagicWeapon);
+		}
+		else MagicWeapon.Bind(this, character, catalog);
 		RefreshCharacterStats();
 	}
 
@@ -169,7 +167,9 @@ public partial class Player : CharacterActor
 	{
 		if (_characterData is null || _itemCatalog is null) return;
 		CharacterStats stats = CharacterStatCalculator.Calculate(_characterData, _itemCatalog);
-		_equipmentSkills.Refresh(_characterData, _itemCatalog);
+		var equipmentSkills = EquipmentPassiveSkills.Resolve(_characterData, _itemCatalog);
+		PassiveEffects.SetEquipment(equipmentSkills);
+		_grantedEquipmentSkills = equipmentSkills;
 		CalculatedStats = stats;
 		Level = _characterData.Level;
 		MaxHealth = stats.MaxHealth;
@@ -195,6 +195,7 @@ public partial class Player : CharacterActor
 	public override void _PhysicsProcess(double delta)
 	{
 		UpdateResources((float)delta);
+		Wushuang.Tick(delta);
 		if (IsOnFloor()) _jumpsUsed = 0;
 		if (InputEnabled) ReadCombatButtons();
 		bool wasOnFloor = IsOnFloor();
@@ -226,6 +227,7 @@ public partial class Player : CharacterActor
 	private void ReadCombatButtons()
 	{
 		// 读取动作名而非物理按键；以后重绑按键不用改角色代码。
+		if (Input.IsActionJustPressed("wushuang")) Wushuang.TryActivate();
 		for (int i = 0; i < SkillActions.Length; i++)
 		{
 			if (!Input.IsActionJustPressed(SkillActions[i])) continue;
@@ -262,11 +264,22 @@ public partial class Player : CharacterActor
 	protected override float ReadMovementAxis()
 		=> InputEnabled ? Input.GetAxis("move_left", "move_right") : 0;
 
+	public Func<bool>? TryDropThrough { get; set; }
+	public void RestoreEntranceVitals(float health, float mana)
+	{
+		RestoreEntranceHealth(health);
+		Mana = Mathf.Clamp(mana, 0, MaxMana);
+	}
+
 	protected override void ReadIntent(float delta)
 	{
 		if (!InputEnabled) return;
 		if (!Mathf.IsZeroApprox(MoveDirection)) Face(Mathf.Sign(MoveDirection));
-		if (Input.IsActionJustPressed("jump")) TryJump();
+		if (Input.IsActionJustPressed("jump"))
+		{
+			if (Input.IsActionPressed("move_down") && TryDropThrough?.Invoke() == true) return;
+			TryJump();
+		}
 	}
 
 	protected override StringName SelectAirAnimation()
@@ -278,6 +291,7 @@ public partial class Player : CharacterActor
 
 	public bool TryJump()
 	{
+		if (Buffs.PreventsActions) return false;
 		if (IsOnFloor()) _jumpsUsed = 0;
 		if (State != ActorState.Free || _jumpsUsed >= MaxJumps) return false;
 		bool isDoubleJump = _jumpsUsed == 1 && !IsOnFloor();

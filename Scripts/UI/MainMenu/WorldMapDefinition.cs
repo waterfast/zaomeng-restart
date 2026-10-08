@@ -11,6 +11,8 @@ public partial class WorldMapDefinition : Resource
 	[Export] public Godot.Collections.Array<LevelEntranceDefinition> LevelEntrances { get; set; } = new();
 	[Export] public NodePath SkillButton { get; set; } = "";
 	[Export] public NodePath QuestButton { get; set; } = "";
+	[Export] public NodePath ShopButton { get; set; } = "";
+	[Export] public NodePath AlchemyButton { get; set; } = "";
 	[Export] public NodePath SaveButton { get; set; } = "";
 	[Export] public NodePath MenuButton { get; set; } = "";
 	[Export] public NodePath ForwardButton { get; set; } = "";

@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="AudioCatalog" format=3]
+[ext_resource type="Script" path="res://Scripts/Audio/AudioCatalog.cs" id="script"]
+[ext_resource type="Resource" path="res://Content/Audio/theme1.tres" id="theme1"]
+[ext_resource type="Resource" path="res://Content/Audio/theme2.tres" id="theme2"]
+[ext_resource type="Resource" path="res://Content/Audio/theme3.tres" id="theme3"]
+[ext_resource type="Resource" path="res://Content/Audio/theme4.tres" id="theme4"]
+[ext_resource type="Resource" path="res://Content/Audio/10_bg4.tres" id="10_bg4"]
+[ext_resource type="Resource" path="res://Content/Audio/12_bg7.tres" id="12_bg7"]
+[ext_resource type="Resource" path="res://Content/Audio/17_bg6.tres" id="17_bg6"]
+[ext_resource type="Resource" path="res://Content/Audio/1_music.tres" id="1_music"]
+[ext_resource type="Resource" path="res://Content/Audio/21_bg3.tres" id="21_bg3"]
+[ext_resource type="Resource" path="res://Content/Audio/26_bg1.tres" id="26_bg1"]
+[ext_resource type="Resource" path="res://Content/Audio/2_bg4.tres" id="2_bg4"]
+[ext_resource type="Resource" path="res://Content/Audio/34_bg5.tres" id="34_bg5"]
+[ext_resource type="Resource" path="res://Content/Audio/4_bg2.tres" id="4_bg2"]
+[ext_resource type="Resource" path="res://Content/Audio/7_bg2.tres" id="7_bg2"]
+[ext_resource type="Resource" path="res://Content/Audio/9_bg3.tres" id="9_bg3"]
+[ext_resource type="Resource" path="res://Content/Audio/BGM_Normal.tres" id="BGM_Normal"]
+[ext_resource type="Resource" path="res://Content/Audio/BGM_ymj.tres" id="BGM_ymj"]
+[ext_resource type="Resource" path="res://Content/Audio/Floor1_3.tres" id="Floor1_3"]
+[ext_resource type="Resource" path="res://Content/Audio/Floor_7-10.tres" id="Floor_7-10"]
+[ext_resource type="Resource" path="res://Content/Audio/music_emsd.tres" id="music_emsd"]
+[ext_resource type="Resource" path="res://Content/Audio/music_jpy.tres" id="music_jpy"]
+[ext_resource type="Resource" path="res://Content/Audio/sdtw.tres" id="sdtw"]
+[ext_resource type="Resource" path="res://Content/Audio/szzw.tres" id="szzw"]
+[ext_resource type="Resource" path="res://Content/Audio/zhanchangbg.tres" id="zhanchangbg"]
+[ext_resource type="AudioStream" path="res://Assets/Audio/MainSceneMusic/2_SD_xz.mp3" id="click"]
+[ext_resource type="AudioStream" path="res://Assets/Audio/level/86_pickup.mp3" id="pickup"]
+[ext_resource type="AudioStream" path="res://Assets/Audio/level/13_Game_Victory.mp3" id="victory"]
+[ext_resource type="AudioStream" path="res://Assets/Audio/level/12_over.mp3" id="defeat"]
+
+[resource]
+script = ExtResource("script")
+Tracks = Array[Resource]([ExtResource("theme1"), ExtResource("theme2"), ExtResource("theme3"), ExtResource("theme4"), ExtResource("10_bg4"), ExtResource("12_bg7"), ExtResource("17_bg6"), ExtResource("1_music"), ExtResource("21_bg3"), ExtResource("26_bg1"), ExtResource("2_bg4"), ExtResource("34_bg5"), ExtResource("4_bg2"), ExtResource("7_bg2"), ExtResource("9_bg3"), ExtResource("BGM_Normal"), ExtResource("BGM_ymj"), ExtResource("Floor1_3"), ExtResource("Floor_7-10"), ExtResource("music_emsd"), ExtResource("music_jpy"), ExtResource("sdtw"), ExtResource("szzw"), ExtResource("zhanchangbg")])
+MenuDefault = ExtResource("theme1")
+Click = ExtResource("click")
+Pickup = ExtResource("pickup")
+Victory = ExtResource("victory")
+Defeat = ExtResource("defeat")

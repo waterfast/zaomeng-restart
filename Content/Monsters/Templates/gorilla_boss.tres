@@ -1,0 +1,30 @@
+[gd_resource type="Resource" format=3 uid="uid://cfa1d7hxutd24"]
+
+[ext_resource type="Script" uid="uid://ebyqgxav3bvs" path="res://Scripts/Monsters/MonsterSkillChoice.cs" id="choice"]
+[ext_resource type="Script" uid="uid://cr4hu7tsm7dkr" path="res://Scripts/Monsters/MonsterDefinition.cs" id="def"]
+[ext_resource type="PackedScene" path="res://Scenes/Actors/ForestBoss.tscn" id="scene"]
+[ext_resource type="Resource" uid="uid://bglglve4lnr1f" path="res://Content/Monsters/Templates/gorilla_boss_strike.tres" id="skill"]
+
+[ext_resource type="Resource" path="res://Content/Monsters/RecoveryDrops.tres" id="recovery"]
+[sub_resource type="Resource" id="choice"]
+script = ExtResource("choice")
+Skill = ExtResource("skill")
+MaximumRange = 135.0
+
+[resource]
+script = ExtResource("def")
+Id = "gorilla_boss"
+DisplayName = "大猩猩"
+ActorScene = ExtResource("scene")
+IsBoss = true
+Health = 300.0
+Attack = 65.0
+PhysicalDefense = 50.0
+MagicDefense = 80.0
+CriticalRating = 5.0
+MoveSpeed = 120.0
+DetectionRange = 1000.0
+Experience = 35
+Souls = 10
+Skills = Array[ExtResource("choice")]([SubResource("choice")])
+RecoveryDrops = ExtResource("recovery")

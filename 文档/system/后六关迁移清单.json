@@ -1,0 +1,785 @@
+{
+  "monsters": [
+    {
+      "number": 7,
+      "name": "蝙蝠",
+      "source_scene": "Scene/Monster/Monster_7.tscn",
+      "source_script": "Script/Monster/Monster_7.gd",
+      "drops": [
+        "ptxzg",
+        "ptxzf",
+        "ptsmz",
+        "ptjs"
+      ],
+      "removed_other_roles": [
+        "ptdp",
+        "ptcs",
+        "ptyyc",
+        "ptcp"
+      ],
+      "implemented": "旧帧动画、独立攻击配置；飞行小怪通过飞行演员实现"
+    },
+    {
+      "number": 8,
+      "name": "蝙蝠石像",
+      "source_scene": "Scene/Monster/Monster_8.tscn",
+      "source_script": "Script/Monster/Monster_8.gd",
+      "drops": [
+        "whg",
+        "bsp"
+      ],
+      "removed_other_roles": [
+        "wtp"
+      ],
+      "implemented": "石像召唤、护盾、红色弱点五秒失效"
+    },
+    {
+      "number": 9,
+      "name": "地鼠精",
+      "source_scene": "Scene/Monster/Monster_9.tscn",
+      "source_script": "Script/Monster/Monster_9.gd",
+      "drops": [
+        "ptxzg",
+        "ptxzf",
+        "ptsmz",
+        "ptjs"
+      ],
+      "removed_other_roles": [
+        "ptdp",
+        "ptcs",
+        "ptyyc",
+        "ptcp"
+      ],
+      "implemented": "旧帧动画、独立攻击配置"
+    },
+    {
+      "number": 10,
+      "name": "妖狮",
+      "source_scene": "Scene/Monster/Monster_10.tscn",
+      "source_script": "Script/Monster/Monster_10.gd",
+      "drops": [
+        "ptxzg",
+        "ptxzf",
+        "ptsmz",
+        "ptjs"
+      ],
+      "removed_other_roles": [
+        "ptdp",
+        "ptcs",
+        "ptyyc",
+        "ptcp"
+      ],
+      "implemented": "旧帧动画、独立攻击配置"
+    },
+    {
+      "number": 11,
+      "name": "狮驼王",
+      "source_scene": "Scene/Monster/Monster_11.tscn",
+      "source_script": "Script/Monster/Monster_11.gd",
+      "drops": [
+        "jcbj"
+      ],
+      "removed_other_roles": [
+        "jcjp",
+        "jcmc"
+      ],
+      "implemented": "毒弹、三段震地、毒与眩晕Buff"
+    },
+    {
+      "number": 12,
+      "name": "鹏魔王",
+      "source_scene": "Scene/Monster/Monster_12.tscn",
+      "source_script": "Script/Monster/Monster_12.gd",
+      "drops": [
+        "jcjs",
+        "jcsz"
+      ],
+      "removed_other_roles": [
+        "jclj"
+      ],
+      "implemented": "地面/飞行喷火、俯冲、灼烧、七秒化卵复生"
+    },
+    {
+      "number": 13,
+      "name": "机甲鹰",
+      "source_scene": "Scene/Monster/Monster_13.tscn",
+      "source_script": "Script/Monster/Monster_13.gd",
+      "drops": [
+        "ptxzg",
+        "ptxzf",
+        "ptsmz",
+        "ptjs"
+      ],
+      "removed_other_roles": [
+        "ptdp",
+        "ptcs",
+        "ptyyc",
+        "ptcp"
+      ],
+      "implemented": "旧帧动画、独立攻击配置；飞行小怪通过飞行演员实现"
+    },
+    {
+      "number": 14,
+      "name": "虾兵",
+      "source_scene": "Scene/Monster/Monster_14.tscn",
+      "source_script": "Script/Monster/Monster_14.gd",
+      "drops": [],
+      "removed_other_roles": [],
+      "implemented": "旧帧动画、独立攻击配置"
+    },
+    {
+      "number": 15,
+      "name": "蟹将",
+      "source_scene": "Scene/Monster/Monster_15.tscn",
+      "source_script": "Script/Monster/Monster_15.gd",
+      "drops": [],
+      "removed_other_roles": [],
+      "implemented": "旧帧动画、独立攻击配置"
+    },
+    {
+      "number": 16,
+      "name": "鱼将军",
+      "source_scene": "Scene/Monster/Monster_16.tscn",
+      "source_script": "Script/Monster/Monster_16.gd",
+      "drops": [],
+      "removed_other_roles": [],
+      "implemented": "旧帧动画、独立攻击配置"
+    },
+    {
+      "number": 17,
+      "name": "龟丞相",
+      "source_scene": "Scene/Monster/Monster_17.tscn",
+      "source_script": "Script/Monster/Monster_17.gd",
+      "drops": [
+        "xqzy"
+      ],
+      "removed_other_roles": [],
+      "implemented": "小怪/首领独立数值、旋风冲撞"
+    },
+    {
+      "number": 18,
+      "name": "蛟魔王",
+      "source_scene": "Scene/Monster/Monster_18.tscn",
+      "source_script": "Script/Monster/Monster_18.gd",
+      "drops": [
+        "xwj"
+      ],
+      "removed_other_roles": [
+        "bxp",
+        "pxk"
+      ],
+      "implemented": "弹体、五段地爪、减速与眩晕"
+    },
+    {
+      "number": 19,
+      "name": "鲨鱼",
+      "source_scene": "Scene/Monster/Monster_19.tscn",
+      "source_script": "Script/Monster/Monster_19.gd",
+      "drops": [],
+      "removed_other_roles": [],
+      "implemented": "旧帧动画、独立攻击配置；飞行小怪通过飞行演员实现"
+    },
+    {
+      "number": 20,
+      "name": "鲨魔王",
+      "source_scene": "Scene/Monster/Monster_20.tscn",
+      "source_script": "Script/Monster/Monster_20.gd",
+      "drops": [
+        "qlp",
+        "zqj"
+      ],
+      "removed_other_roles": [
+        "ttj"
+      ],
+      "implemented": "七成血量形态变化、伴生鲨鱼、血流与眩晕"
+    }
+  ],
+  "levels": [
+    {
+      "number": 4,
+      "waves": [
+        [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        [
+          7,
+          7,
+          7,
+          7,
+          7,
+          8
+        ]
+      ],
+      "spikes_x": [
+        350.0,
+        400.0,
+        450.0,
+        500.0,
+        550.0,
+        1500.0,
+        1550.0,
+        1600.0,
+        1650.0,
+        1800.0,
+        1850.0,
+        1900.0,
+        1950.0
+      ],
+      "source": "F:\\godot\\造梦八荒-(4.1)\\Script\\Level\\Level_4.gd"
+    },
+    {
+      "number": 5,
+      "waves": [
+        [
+          7,
+          7,
+          7,
+          7,
+          9,
+          9,
+          9,
+          9,
+          9
+        ],
+        [
+          7,
+          7,
+          7,
+          9,
+          9,
+          9,
+          10,
+          10,
+          10,
+          7,
+          7,
+          7,
+          7,
+          7,
+          9,
+          9,
+          10,
+          10,
+          10
+        ],
+        [
+          9,
+          9,
+          9,
+          9,
+          9,
+          10,
+          10,
+          10,
+          10,
+          10,
+          9,
+          9,
+          10,
+          10,
+          9,
+          9,
+          9,
+          10,
+          10,
+          9
+        ],
+        [
+          11
+        ]
+      ],
+      "spikes_x": [
+        1100.0,
+        1150.0,
+        1200.0,
+        1250.0,
+        1300.0,
+        1500.0,
+        1550.0,
+        1600.0,
+        1650.0,
+        1800.0,
+        1850.0,
+        1900.0,
+        1950.0,
+        3100.0,
+        3150.0,
+        3200.0,
+        3250.0,
+        3300.0,
+        3350.0,
+        3400.0,
+        3450.0,
+        3550.0,
+        3600.0,
+        3650.0,
+        3700.0,
+        3750.0,
+        3800.0,
+        3850.0
+      ],
+      "source": "F:\\godot\\造梦八荒-(4.1)\\Script\\Level\\Level_5.gd"
+    },
+    {
+      "number": 6,
+      "waves": [
+        [
+          13,
+          13,
+          13,
+          13,
+          9,
+          9,
+          9,
+          9,
+          9
+        ],
+        [
+          13,
+          13,
+          13,
+          9,
+          9,
+          9,
+          10,
+          10,
+          10,
+          10,
+          10,
+          13,
+          13,
+          13,
+          10,
+          10,
+          13,
+          13,
+          13
+        ],
+        [
+          13,
+          13,
+          9,
+          9,
+          9,
+          10,
+          10,
+          10,
+          13,
+          13,
+          10,
+          10,
+          10,
+          10,
+          10,
+          13,
+          13,
+          13,
+          13,
+          13
+        ],
+        [
+          12
+        ]
+      ],
+      "spikes_x": [
+        1350.0,
+        1400.0,
+        1450.0,
+        1650.0,
+        1700.0,
+        1750.0,
+        1950.0,
+        2000.0,
+        2050.0,
+        3200.0,
+        3250.0,
+        3300.0,
+        3350.0,
+        3400.0
+      ],
+      "source": "F:\\godot\\造梦八荒-(4.1)\\Script\\Level\\Level_6.gd"
+    },
+    {
+      "number": 7,
+      "waves": [
+        [
+          14,
+          14,
+          14,
+          14,
+          15,
+          15,
+          15,
+          15
+        ],
+        [
+          14,
+          14,
+          14,
+          15,
+          15,
+          15,
+          15,
+          14,
+          14,
+          14,
+          15,
+          15,
+          15,
+          14,
+          14,
+          14,
+          14,
+          15,
+          15,
+          15,
+          14,
+          14,
+          14
+        ],
+        [
+          14,
+          14,
+          14,
+          14,
+          14,
+          15,
+          15,
+          14,
+          14,
+          15,
+          15,
+          14,
+          15,
+          15,
+          14,
+          14,
+          15,
+          15,
+          14,
+          15,
+          15
+        ],
+        [
+          17
+        ]
+      ],
+      "spikes_x": [],
+      "source": "F:\\godot\\造梦八荒-(4.1)\\Script\\Level\\Level_7.gd"
+    },
+    {
+      "number": 8,
+      "waves": [
+        [
+          16,
+          16,
+          14,
+          14,
+          15,
+          15,
+          15,
+          15
+        ],
+        [
+          14,
+          14,
+          16,
+          15,
+          15,
+          16,
+          15,
+          14,
+          16,
+          14,
+          16,
+          15,
+          15,
+          14,
+          16,
+          14,
+          16,
+          14,
+          16,
+          15,
+          15,
+          14,
+          16,
+          14
+        ],
+        [
+          14,
+          14,
+          16,
+          16,
+          16,
+          15,
+          16,
+          14,
+          16,
+          15,
+          16,
+          14,
+          16,
+          17,
+          16,
+          14,
+          16,
+          15,
+          15,
+          14,
+          16,
+          14
+        ],
+        [
+          18
+        ]
+      ],
+      "spikes_x": [],
+      "source": "F:\\godot\\造梦八荒-(4.1)\\Script\\Level\\Level_8.gd"
+    },
+    {
+      "number": 9,
+      "waves": [
+        [
+          16,
+          16,
+          14,
+          15,
+          14,
+          15,
+          14,
+          15,
+          14,
+          15,
+          14,
+          15
+        ],
+        [
+          14,
+          15,
+          14,
+          15,
+          14,
+          15,
+          14,
+          15,
+          14,
+          15,
+          17,
+          16,
+          17,
+          16,
+          17,
+          16,
+          17,
+          16,
+          17,
+          16
+        ],
+        [
+          14,
+          15,
+          14,
+          15,
+          14,
+          15,
+          14,
+          15,
+          14,
+          15,
+          17,
+          16,
+          17,
+          16,
+          17,
+          16,
+          17,
+          16,
+          17,
+          16
+        ],
+        [
+          20
+        ]
+      ],
+      "spikes_x": [],
+      "source": "F:\\godot\\造梦八荒-(4.1)\\Script\\Level\\Level_9.gd"
+    }
+  ],
+  "equipment_policy": "所有现有地图掉落只保留悟空、唐僧或通用；物品目录暂不删除其他职业资源。",
+  "additional_filtered_tables": [
+    {
+      "resource": "Content\\Monsters\\DragonKing\\high.tres",
+      "item": "jcdp"
+    },
+    {
+      "resource": "Content\\Monsters\\DragonKing\\high.tres",
+      "item": "jlxmc"
+    },
+    {
+      "resource": "Content\\Monsters\\DragonKing\\high.tres",
+      "item": "qthbq"
+    },
+    {
+      "resource": "Content\\Monsters\\DragonKing\\low.tres",
+      "item": "hdc"
+    },
+    {
+      "resource": "Content\\Monsters\\DragonKing\\low.tres",
+      "item": "zhp"
+    },
+    {
+      "resource": "Content\\Monsters\\DragonKing\\low.tres",
+      "item": "twq"
+    },
+    {
+      "resource": "Content\\Monsters\\Templates\\dark_gorilla.tres",
+      "item": "ptdp"
+    },
+    {
+      "resource": "Content\\Monsters\\Templates\\dark_gorilla.tres",
+      "item": "ptcs"
+    },
+    {
+      "resource": "Content\\Monsters\\Templates\\dark_gorilla.tres",
+      "item": "ptyyc"
+    },
+    {
+      "resource": "Content\\Monsters\\Templates\\dark_gorilla.tres",
+      "item": "ptcp"
+    },
+    {
+      "resource": "Content\\Monsters\\Templates\\demon_monkey.tres",
+      "item": "ptdp"
+    },
+    {
+      "resource": "Content\\Monsters\\Templates\\demon_monkey.tres",
+      "item": "ptcs"
+    },
+    {
+      "resource": "Content\\Monsters\\Templates\\demon_monkey.tres",
+      "item": "ptyyc"
+    },
+    {
+      "resource": "Content\\Monsters\\Templates\\demon_monkey.tres",
+      "item": "ptcp"
+    },
+    {
+      "resource": "Content\\Monsters\\Templates\\gorilla.tres",
+      "item": "ptdp"
+    },
+    {
+      "resource": "Content\\Monsters\\Templates\\gorilla.tres",
+      "item": "ptcs"
+    },
+    {
+      "resource": "Content\\Monsters\\Templates\\gorilla.tres",
+      "item": "ptyyc"
+    },
+    {
+      "resource": "Content\\Monsters\\Templates\\gorilla.tres",
+      "item": "ptcp"
+    },
+    {
+      "resource": "Content\\Monsters\\Templates\\macaque_king.tres",
+      "item": "dszy"
+    },
+    {
+      "resource": "Content\\Monsters\\Templates\\macaque_king.tres",
+      "item": "dslq"
+    },
+    {
+      "resource": "Content\\Monsters\\Templates\\macaque_king.tres",
+      "item": "dshp"
+    },
+    {
+      "resource": "Content\\Monsters\\Templates\\monkey.tres",
+      "item": "ptdp"
+    },
+    {
+      "resource": "Content\\Monsters\\Templates\\monkey.tres",
+      "item": "ptcs"
+    },
+    {
+      "resource": "Content\\Monsters\\Templates\\monkey.tres",
+      "item": "ptyyc"
+    },
+    {
+      "resource": "Content\\Monsters\\Templates\\monkey.tres",
+      "item": "ptcp"
+    },
+    {
+      "resource": "Content\\Monsters\\Templates\\monkey.tres",
+      "item": "pttq"
+    },
+    {
+      "resource": "Content\\Monsters\\Templates\\monkey.tres",
+      "item": "ptcf"
+    },
+    {
+      "resource": "Content\\Monsters\\Templates\\tamarin_king.tres",
+      "item": "jmc"
+    },
+    {
+      "resource": "Content\\Monsters\\Templates\\tamarin_king.tres",
+      "item": "zhj"
+    }
+  ],
+  "verification": [
+    "六关四波次与最终首领配置",
+    "Buff刷新去重与装备穿脱",
+    "食品无玩家不消耗",
+    "烈焰风暴四段与打断",
+    "地刺实际矩形区域与周期",
+    "石像护盾与鹏魔王化卵池复用",
+    "六关连续移动清场门禁出口与解锁",
+    "六关原生渲染首领脚点"
+  ],
+  "limits": [
+    "地形巡检通过伤害清场隔离路线验证，不代表低等级角色平衡通关。",
+    "飞行冲撞重新实现为锁定位置俯冲，未复制旧版四次瞬移冲撞。",
+    "石像弱点固定在首领前方，未复制旧版随机位置弱点。",
+    "节日食品只接入通用接口，未配置具体节日数值。"
+  ]
+}

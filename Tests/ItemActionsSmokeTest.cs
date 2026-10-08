@@ -125,13 +125,14 @@ public partial class ItemActionsSmokeTest : Node
 		var chest = new ItemActionTarget(0, "qhsbx");
 		Check(events.ItemActionRequested.GetOptions(chest).Select(option => option.Id).SequenceEqual(["open", "sell"]),
 			"migrated chest exposes open and sell");
-		Check(!events.ItemActionRequested.Send(new("open", chest)).Success && inventory.GetItemCount("qhsbx") == 2 && saves == 0,
-			"a full bag cannot swallow a chest when rewards have no room");
-		Check(events.ItemActionRequested.Send(new("sell", chest)).Success && inventory.GetItemCount("qhsbx") == 1 && wallet.Souls == 207,
+		Check(events.ItemActionRequested.Send(new("open", chest)).Success && inventory.GetItemCount("qhsbx") == 1 && saves == 1
+			&& inventory.Capacity > 1, "opening a chest grows the bag to hold all rewards");
+		Check(events.ItemActionRequested.Send(new("sell", chest)).Success && inventory.GetItemCount("qhsbx") == 0 && wallet.Souls == 207,
 			"selling a stackable chest consumes exactly one and uses the original price");
-		Check(events.ItemActionRequested.Send(new("open", chest)).Success && inventory.GetItemCount("qhsbx") == 0 &&
-			inventory.Slots[0]!.ItemId.StartsWith("qhs_") && inventory.Slots[0]!.Count is 3 or 4 && saves == 2,
-			"the last chest frees its slot and grants one kind of 3 to 4 original strengthening stones");
+		inventory.AddItem("qhsbx", 1);
+		Check(events.ItemActionRequested.Send(new("open", chest)).Success && inventory.GetItemCount("qhsbx") == 0 && saves == 3
+			&& inventory.Slots.Where(s => s?.ItemId.StartsWith("qhs_") == true).Sum(s => s!.Count) is >= 6 and <= 8,
+			"each chest grants 3 to 4 original strengthening stones without losing earlier rewards");
 		inventory.RestoreSlots([null]);
 		inventory.AddItem("xlhys", 2);
 		var potion = new ItemActionTarget(0, "xlhys");

@@ -3,9 +3,12 @@
 [ext_resource type="Script" path="res://Scripts/Equipment/EquipmentDefinition.cs" id="1"]
 [ext_resource type="Texture2D" path="res://Assets/Art/BackPack/AllItems/dsqz.png" id="2"]
 
+[ext_resource type="Texture2D" path="res://Assets/Art/ItemIcon/dsqz.png" id="ground_icon"]
+
 [resource]
 script = ExtResource("1")
 Id = "dsqz"
+GroundIcon = ExtResource("ground_icon")
 DisplayName = "地煞权杖"
 DescriptionKey = "ITEM_DSQZ_DESCRIPTION"
 Quality = "优秀"

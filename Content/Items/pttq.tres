@@ -3,9 +3,12 @@
 [ext_resource type="Script" path="res://Scripts/Equipment/EquipmentDefinition.cs" id="1"]
 [ext_resource type="Texture2D" path="res://Assets/Art/BackPack/AllItems/pttq.png" id="2"]
 
+[ext_resource type="Texture2D" path="res://Assets/Art/ItemIcon/pttq.png" id="ground_icon"]
+
 [resource]
 script = ExtResource("1")
 Id = "pttq"
+GroundIcon = ExtResource("ground_icon")
 DisplayName = "普通的铁枪"
 DescriptionKey = "ITEM_PTTQ_DESCRIPTION"
 Quality = "普通"

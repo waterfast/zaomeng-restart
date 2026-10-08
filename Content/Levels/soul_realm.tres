@@ -1,0 +1,77 @@
+[gd_resource type="Resource" format=3]
+[ext_resource type="Resource" path="res://Content/Audio/1_music.tres" id="music"]
+
+[ext_resource type="Script" path="res://Scripts/Level/LevelDefinition.cs" id="def"]
+[ext_resource type="Script" path="res://Scripts/Level/WaveEncounterDefinition.cs" id="enc"]
+[ext_resource type="Script" path="res://Scripts/Level/WaveDefinition.cs" id="wave"]
+[ext_resource type="PackedScene" path="res://Scenes/Maps/Human/SoulRealm.tscn" id="map"]
+[ext_resource type="Resource" path="res://Content/Levels/Difficulties/normal.tres" id="normal"]
+[ext_resource type="Resource" path="res://Content/Levels/Difficulties/hard.tres" id="hard"]
+[ext_resource type="Resource" path="res://Content/Monsters/Templates/monkey.tres" id="monkey"]
+[ext_resource type="Resource" path="res://Content/Monsters/Templates/gorilla.tres" id="gorilla"]
+[ext_resource type="Resource" path="res://Content/Monsters/Templates/macaque_king.tres" id="boss"]
+[ext_resource type="Texture2D" path="res://Assets/Art/LevelInfoBg/hgs.png" id="bg"]
+[ext_resource type="Script" path="res://Scripts/Level/LevelMonsterPreview.cs" id="preview"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/MonsterHead/xh.png" id="icon1"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/MonsterHead/dxx.png" id="icon2"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/MonsterHead/mhw.png" id="icon3"]
+[sub_resource type="Resource" id="w1"]
+script = ExtResource("wave")
+Monsters = Array[Resource]([ExtResource("monkey"), ExtResource("monkey"), ExtResource("monkey"), ExtResource("monkey")])
+EntranceX = 0.0
+SpawnRange = Vector2(300, 550)
+GateX = 1120.0
+CameraRight = 1153
+SpawnRayTop = 350.0
+[sub_resource type="Resource" id="w2"]
+script = ExtResource("wave")
+Monsters = Array[Resource]([ExtResource("gorilla"), ExtResource("gorilla"), ExtResource("monkey"), ExtResource("gorilla")])
+EntranceX = 1140.0
+SpawnRange = Vector2(1480, 1650)
+GateX = 2490.0
+CameraRight = 2523
+SpawnRayTop = 350.0
+[sub_resource type="Resource" id="w3"]
+script = ExtResource("wave")
+Monsters = Array[Resource]([ExtResource("boss")])
+EntranceX = 2500.0
+SpawnRange = Vector2(3140, 3280)
+GateX = 3520.0
+CameraRight = 3553
+SpawnRayTop = 350.0
+ReleaseGateOnClear = false
+[sub_resource type="Resource" id="encounter"]
+script = ExtResource("enc")
+Waves = Array[Resource]([SubResource("w1"), SubResource("w2"), SubResource("w3")])
+[sub_resource type="Resource" id="m1"]
+script = ExtResource("preview")
+DisplayName = "小猴子"
+Icon = ExtResource("icon1")
+[sub_resource type="Resource" id="m2"]
+script = ExtResource("preview")
+DisplayName = "大猩猩"
+Icon = ExtResource("icon2")
+[sub_resource type="Resource" id="m3"]
+script = ExtResource("preview")
+DisplayName = "猕猴王"
+Icon = ExtResource("icon3")
+IsBoss = true
+[resource]
+script = ExtResource("def")
+Music = ExtResource("music")
+Id = "soul_realm"
+DisplayName = "幻境碎岛"
+Description = "灵魂幻境原创试玩：跨越水池桥台与石阶，击败守关猕猴王。"
+ProgressLevel = 1
+AdvancesCampaign = false
+RecommendedLevel = 10
+LevelScenePath = "res://Scenes/Level/SoulRealm.tscn"
+MapScene = ExtResource("map")
+Difficulties = Array[Resource]([ExtResource("normal"), ExtResource("hard")])
+PlayerSpawn = Vector2(160, 448)
+CameraRight = 3553
+CameraBottom = 650
+ExitPosition = Vector2(3380, 450)
+WaveEncounter = SubResource("encounter")
+PreviewBackground = ExtResource("bg")
+Monsters = Array[Resource]([SubResource("m1"), SubResource("m2"), SubResource("m3")])

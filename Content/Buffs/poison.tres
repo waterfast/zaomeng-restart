@@ -1,0 +1,9 @@
+[gd_resource type="Resource" format=3]
+[ext_resource type="Script" path="res://Scripts/Combat/Buffs/BuffDefinition.cs" id="buff"]
+[resource]
+script = ExtResource("buff")
+Id = "poison"
+DisplayName = "中毒"
+Description = "中毒"
+Duration = 18.0
+DamagePerPulse = 15.0

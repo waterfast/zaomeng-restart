@@ -62,5 +62,6 @@ public static class SaveDataEditor
 			saved.Add(stack is null ? null : new ItemStackSaveData
 				{ ItemId = stack.ItemId, Count = stack.Count, Equipment = stack.Equipment });
 		data.Slots = saved;
+		data.Capacity = saved.Count;
 	}
 }

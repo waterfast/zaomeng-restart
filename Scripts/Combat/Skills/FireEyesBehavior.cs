@@ -21,7 +21,8 @@ public partial class FireEyesBehavior : SkillBehavior
 		try
 		{
 			Require(effect is FireEyesEffect { Hit: not null, Frames: not null } fire && fire.Frames.HasAnimation("hyjj") &&
-				fire.HitCount > 0 && float.IsFinite(fire.Interval) && fire.Interval > 0, "火眼效果缺少命中或动画配置。");
+				fire.HitCount > 0 && float.IsFinite(fire.Interval) && fire.Interval > 0 && fire.HitTimes.Length > 0 &&
+				System.Array.TrueForAll(fire.HitTimes, time => float.IsFinite(time) && time >= 0 && time < fire.Interval), "火眼效果缺少命中或动画配置。");
 		}
 		finally { effect.Free(); }
 	}
@@ -29,11 +30,11 @@ public partial class FireEyesBehavior : SkillBehavior
 	{
 		if (_released || Elapsed < Delay) return;
 		_released = true;
-		Monster? target = null;
-		float distance = Range;
-		foreach (Node node in Actor.GetTree().GetNodesInGroup("monsters"))
+		CharacterActor? target = null;
+		float distance = Range * Parameters.Range;
+		foreach (Node node in Actor.GetTree().GetNodesInGroup("combat_actors"))
 		{
-			if (node is not Monster monster || monster.IsDead || !monster.Visible) continue;
+			if (node is not CharacterActor monster || monster.Team == Actor.Team || monster.IsDead || !monster.Visible) continue;
 			float offset = (monster.GlobalPosition.X - Actor.GlobalPosition.X) * Actor.FacingDirection;
 			if (offset < 0 || offset >= distance) continue;
 			distance = offset;
@@ -41,7 +42,7 @@ public partial class FireEyesBehavior : SkillBehavior
 		}
 		if (target is null) return;
 		var fire = ImpactScene.Instantiate<FireEyesEffect>();
-		fire.Configure(Actor, target, Level, Definition);
+		fire.Configure(Actor, target, Level, Definition, Parameters);
 		Actor.GetParent().AddChild(fire);
 	}
 }

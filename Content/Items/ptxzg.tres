@@ -1,11 +1,14 @@
-[gd_resource type="Resource" script_class="EquipmentDefinition" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="EquipmentDefinition" format=3]
 
 [ext_resource type="Script" path="res://Scripts/Equipment/EquipmentDefinition.cs" id="1"]
 [ext_resource type="Texture2D" path="res://Assets/Art/BackPack/AllItems/ptxzg.png" id="2"]
 
+[ext_resource type="Texture2D" path="res://Assets/Art/ItemIcon/ptxzg.png" id="ground_icon"]
+
 [resource]
 script = ExtResource("1")
 Id = "ptxzg"
+GroundIcon = ExtResource("ground_icon")
 DisplayName = "普通的行者棍"
 MaxStack = 1
 Icon = ExtResource("2")

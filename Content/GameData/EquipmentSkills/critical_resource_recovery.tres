@@ -1,8 +1,8 @@
-[gd_resource type="Resource" script_class="EquipmentSkillDefinition" load_steps=5 format=3]
+[gd_resource type="Resource" format=3 uid="uid://dhu6bqwsd7gbl"]
 
-[ext_resource type="Script" path="res://Scripts/Equipment/Skills/EquipmentSkillDefinition.cs" id="1"]
-[ext_resource type="Script" path="res://Scripts/Equipment/Skills/CriticalResourceRecoveryEffect.cs" id="2"]
-[ext_resource type="Texture2D" path="res://Assets/Art/Skill/Generated/immortal_art.png" id="icon"]
+[ext_resource type="Script" uid="uid://46jy6j7pdupg" path="res://Scripts/Combat/Effects/PassiveSkillDefinition.cs" id="1"]
+[ext_resource type="Script" uid="uid://cp56pdvsjpu5b" path="res://Scripts/Combat/Effects/CriticalResourceRecoveryEffect.cs" id="2"]
+[ext_resource type="Texture2D" uid="uid://deoygp2crtcr5" path="res://Assets/Art/Skill/Generated/immortal_art.png" id="icon"]
 
 [sub_resource type="Resource" id="Effect"]
 script = ExtResource("2")
@@ -15,5 +15,4 @@ Id = "critical_resource_recovery"
 NameKey = "SKILL_CRITICAL_RESOURCE_RECOVERY_NAME"
 DescriptionKey = "SKILL_CRITICAL_RESOURCE_RECOVERY_DESCRIPTION"
 Icon = ExtResource("icon")
-MaximumLevel = 1
 Effect = SubResource("Effect")

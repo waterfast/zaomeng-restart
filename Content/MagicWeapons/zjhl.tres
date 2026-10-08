@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="MagicWeaponAbility" format=3]
+[ext_resource type="Script" path="res://Scripts/Equipment/MagicWeaponAbility.cs" id="ability"]
+[ext_resource type="Script" path="res://Scripts/Combat/SkillDefinition.cs" id="action"]
+[ext_resource type="Script" path="res://Scripts/Combat/Skills/SkillGrowth.cs" id="growth"]
+[ext_resource type="Resource" path="res://Content/MagicWeapons/zjhl_burst.tres" id="burst"]
+
+[ext_resource type="Resource" path="res://Content/Combat/WushuangGains/15_20.tres" id="wushuang_gain"]
+
+[sub_resource type="Resource" id="growth"]
+script = ExtResource("growth")
+InitialManaCost = 62
+[sub_resource type="Resource" id="action"]
+script = ExtResource("action")
+WushuangGain = ExtResource("wushuang_gain")
+Id = "magic_zjhl"
+Growth = SubResource("growth")
+CooldownSeconds = 17
+
+[resource]
+script = ExtResource("ability")
+Action = SubResource("action")
+Burst = ExtResource("burst")

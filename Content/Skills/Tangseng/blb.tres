@@ -1,14 +1,20 @@
 [gd_resource type="Resource" script_class="SkillDefinition" format=3]
+[ext_resource type="AudioStream" path="res://Assets/Audio/Hero/58_Role2_hit1.mp3" id="sound"]
+
 [ext_resource type="Script" path="res://Scripts/Combat/SkillDefinition.cs" id="skill"]
 [ext_resource type="PackedScene" path="res://Content/Skills/Behaviors/IceDragon.tscn" id="behavior"]
 
 [ext_resource type="Resource" path="res://Content/Skills/Growth/Tangseng/blb.tres" id="growth"]
 
+[ext_resource type="Resource" path="res://Content/Combat/WushuangGains/15_18.tres" id="wushuang_gain"]
+
 [resource]
 script = ExtResource("skill")
+WushuangGain = ExtResource("wushuang_gain")
+Sound = ExtResource("sound")
 Growth = ExtResource("growth")
 Id = "blb"
 Animation = &"blb"
 FramesPerSecond = 10
-CooldownSeconds = 0.4
+CooldownSeconds = 2.4
 BehaviorScene = ExtResource("behavior")

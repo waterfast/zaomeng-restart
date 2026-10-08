@@ -1,55 +1,39 @@
 using System;
 using Godot;
 using Zaomeng.Save;
+using Zaomeng.Settings;
 
 namespace Zaomeng.UI;
 
-public static class GameAudioSettings
-{
-	private const string Path = "user://audio_settings.cfg";
-	private static readonly ConfigFile Config = new();
-	public static bool MusicEnabled { get; private set; } = true;
-	public static bool EffectsEnabled { get; private set; } = true;
-	public static void Load()
-	{
-		Config.Load(Path);
-		MusicEnabled = Config.GetValue("audio", "music", true).AsBool();
-		EffectsEnabled = Config.GetValue("audio", "effects", true).AsBool();
-		Apply();
-	}
-	public static void Toggle(bool music)
-	{
-		if (music) MusicEnabled = !MusicEnabled; else EffectsEnabled = !EffectsEnabled;
-		Config.SetValue("audio", "music", MusicEnabled);
-		Config.SetValue("audio", "effects", EffectsEnabled);
-		Config.Save(Path);
-		Apply();
-	}
-	private static void Apply()
-	{
-		int music = AudioServer.GetBusIndex("Music");
-		int effects = AudioServer.GetBusIndex("Effects");
-		if (music >= 0) AudioServer.SetBusMute(music, !MusicEnabled);
-		if (effects >= 0) AudioServer.SetBusMute(effects, !EffectsEnabled);
-	}
-}
-
-/// <summary>旧局内设置的继续、保存返回和音乐按钮。</summary>
+/// <summary>暂停菜单保留继续和返回操作，详细偏好共用主菜单设置。</summary>
 public partial class LegacySettingsPanel : Node
 {
 	public void Bind(Control root, MenuManager menus, Action save)
 	{
-		GameAudioSettings.Load();
 		root.GetNode<BaseButton>("bg/close").Pressed += menus.CloseMenu;
 		root.GetNode<BaseButton>("bg/box/continue_game").Pressed += menus.CloseMenu;
 		root.GetNode<BaseButton>("bg/box/continue_game2").Pressed += () => Return(GameSession.FirstMap);
 		root.GetNode<BaseButton>("bg/box/continue_game4").Pressed += () => Return("res://Scenes/UI/MainMenu/MainMenu.tscn");
-		var music = root.GetNode<Button>("bg/box/BGMControl");
+		var settings = root.GetNode<Button>("bg/box/BGMControl");
+		settings.Text = "音乐 / 游戏设置";
 		var effects = root.GetNode<Button>("bg/box/RoleOrMonsterControl");
-		void Refresh() { music.Text = GameAudioSettings.MusicEnabled ? "关闭音乐" : "打开音乐"; effects.Text = GameAudioSettings.EffectsEnabled ? "关闭音效" : "打开音效"; }
-		music.Pressed += () => { GameAudioSettings.Toggle(true); Refresh(); };
-		effects.Pressed += () => { GameAudioSettings.Toggle(false); Refresh(); };
+		void Refresh() => effects.Text = GameSettings.IsEnabled(GameOption.Effects) ? "关闭音效" : "打开音效";
+		effects.Pressed += () => { GameSettings.SetEnabled(GameOption.Effects, !GameSettings.IsEnabled(GameOption.Effects)); Refresh(); };
 		Refresh();
+		settings.Pressed += () =>
+		{
+			if (root.HasNode("FullSettingsLayer")) return;
+			// 完整设置接管 Escape，关掉后再恢复暂停菜单的快捷键。
+			menus.SetProcessInput(false);
+			var layer = new CanvasLayer { Name = "FullSettingsLayer", Layer = 30, ProcessMode = ProcessModeEnum.Always };
+			root.AddChild(layer);
+			var blocker = new ColorRect { Color = new Color(0, 0, 0, 0.6f), MouseFilter = Control.MouseFilterEnum.Stop };
+			layer.AddChild(blocker);
+			blocker.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.FullRect);
+			var panel = GD.Load<PackedScene>("res://Scenes/UI/Settings/GameSet.tscn").Instantiate<Node2D>();
+			panel.TreeExited += () => { layer.QueueFree(); menus.SetProcessInput(true); Refresh(); };
+			layer.AddChild(panel);
+		};
 		void Return(string scene)
 		{
 			save();

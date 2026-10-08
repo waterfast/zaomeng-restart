@@ -1,0 +1,11 @@
+[gd_resource type="Resource" format=3]
+[ext_resource type="Script" path="res://Scripts/Items/RecoveryPickupDefinition.cs" id="def"]
+[ext_resource type="Texture2D" path="res://Assets/Art/ItemIcon/peach.png" id="icon"]
+[resource]
+script = ExtResource("def")
+Id = "peach"
+DisplayName = "桃子"
+Icon = ExtResource("icon")
+GroundIcon = ExtResource("icon")
+HealthRatio = 0.45
+ManaRatio = 0

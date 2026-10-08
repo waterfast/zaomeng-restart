@@ -3,9 +3,12 @@
 [ext_resource type="Script" path="res://Scripts/Equipment/EquipmentDefinition.cs" id="1"]
 [ext_resource type="Texture2D" path="res://Assets/Art/BackPack/AllItems/wtp.png" id="2"]
 
+[ext_resource type="Texture2D" path="res://Assets/Art/ItemIcon/wtp.png" id="ground_icon"]
+
 [resource]
 script = ExtResource("1")
 Id = "wtp"
+GroundIcon = ExtResource("ground_icon")
 DisplayName = "胃土耙"
 DescriptionKey = "ITEM_WTP_DESCRIPTION"
 Quality = "优秀"

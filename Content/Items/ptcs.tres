@@ -3,9 +3,12 @@
 [ext_resource type="Script" path="res://Scripts/Equipment/EquipmentDefinition.cs" id="1"]
 [ext_resource type="Texture2D" path="res://Assets/Art/BackPack/AllItems/ptcs.png" id="2"]
 
+[ext_resource type="Texture2D" path="res://Assets/Art/ItemIcon/ptcs.png" id="ground_icon"]
+
 [resource]
 script = ExtResource("1")
 Id = "ptcs"
+GroundIcon = ExtResource("ground_icon")
 DisplayName = "普通的长衫"
 DescriptionKey = "ITEM_PTCS_DESCRIPTION"
 Quality = "普通"

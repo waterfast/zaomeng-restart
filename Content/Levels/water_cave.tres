@@ -1,36 +1,97 @@
-[gd_resource type="Resource" script_class="LevelDefinition" format=3]
+[gd_resource type="Resource" format=3]
+[ext_resource type="Resource" path="res://Content/Audio/1_music.tres" id="music"]
+
 [ext_resource type="Script" path="res://Scripts/Level/LevelDefinition.cs" id="def"]
-[ext_resource type="Script" path="res://Scripts/Level/LevelMonsterPreview.cs" id="monster"]
-[ext_resource type="PackedScene" path="res://Scenes/Maps/WaterCave.tscn" id="map"]
+[ext_resource type="Script" path="res://Scripts/Level/WaveEncounterDefinition.cs" id="enc"]
+[ext_resource type="Script" path="res://Scripts/Level/WaveDefinition.cs" id="wave"]
+[ext_resource type="PackedScene" path="res://Scenes/Maps/Human/Map_2.tscn" id="map"]
+[ext_resource type="Resource" path="res://Content/Levels/Difficulties/normal.tres" id="normal"]
+[ext_resource type="Resource" path="res://Content/Levels/Difficulties/hard.tres" id="hard"]
+[ext_resource type="Resource" path="res://Content/Monsters/Templates/monkey.tres" id="monkey"]
+[ext_resource type="Resource" path="res://Content/Monsters/Templates/demon_monkey.tres" id="demon_monkey"]
+[ext_resource type="Resource" path="res://Content/Monsters/Templates/gorilla.tres" id="gorilla"]
+[ext_resource type="Resource" path="res://Content/Monsters/Templates/macaque_king.tres" id="macaque_king"]
+[ext_resource type="Script" path="res://Scripts/Level/LevelMonsterPreview.cs" id="preview"]
 [ext_resource type="Texture2D" path="res://Assets/Art/LevelInfoBg/hgs.png" id="bg"]
-[ext_resource type="Texture2D" path="res://Assets/Art/Monster/MonsterHead/xh.png" id="xh"]
-[ext_resource type="Texture2D" path="res://Assets/Art/Monster/MonsterHead/yh.png" id="yh"]
-[ext_resource type="Texture2D" path="res://Assets/Art/Monster/MonsterHead/dxx.png" id="dxx"]
-[sub_resource type="Resource" id="m1"]
-script = ExtResource("monster")
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/MonsterHead/xh.png" id="icon0"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/MonsterHead/yh.png" id="icon1"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/MonsterHead/dxx.png" id="icon2"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/MonsterHead/mhw.png" id="icon3"]
+[sub_resource type="Resource" id="w0"]
+script = ExtResource("wave")
+Monsters = Array[Resource]([ExtResource("monkey"), ExtResource("monkey"), ExtResource("monkey"), ExtResource("monkey"), ExtResource("monkey"), ExtResource("monkey"), ExtResource("monkey"), ExtResource("monkey")])
+EntranceX = 0.0
+SpawnRange = Vector2(450, 900)
+GateX = 1090.0
+CameraRight = 1123
+SpawnRayTop = -200.0
+SpawnRayBottom = 900.0
+[sub_resource type="Resource" id="w1"]
+script = ExtResource("wave")
+Monsters = Array[Resource]([ExtResource("demon_monkey"), ExtResource("demon_monkey"), ExtResource("demon_monkey"), ExtResource("demon_monkey"), ExtResource("demon_monkey"), ExtResource("demon_monkey"), ExtResource("demon_monkey"), ExtResource("gorilla"), ExtResource("gorilla"), ExtResource("gorilla"), ExtResource("gorilla"), ExtResource("gorilla"), ExtResource("gorilla"), ExtResource("gorilla"), ExtResource("demon_monkey"), ExtResource("demon_monkey")])
+EntranceX = 1100.0
+SpawnRange = Vector2(1200, 1800)
+GateX = 2230.0
+CameraRight = 2263
+SpawnRayTop = -200.0
+SpawnRayBottom = 900.0
+[sub_resource type="Resource" id="w2"]
+script = ExtResource("wave")
+Monsters = Array[Resource]([ExtResource("demon_monkey"), ExtResource("demon_monkey"), ExtResource("demon_monkey"), ExtResource("demon_monkey"), ExtResource("demon_monkey"), ExtResource("demon_monkey"), ExtResource("gorilla"), ExtResource("gorilla"), ExtResource("gorilla"), ExtResource("gorilla"), ExtResource("gorilla"), ExtResource("gorilla"), ExtResource("gorilla"), ExtResource("gorilla")])
+EntranceX = 2240.0
+SpawnRange = Vector2(2460, 3050)
+GateX = 3500.0
+CameraRight = 3533
+SpawnRayTop = -200.0
+SpawnRayBottom = 900.0
+[sub_resource type="Resource" id="w3"]
+script = ExtResource("wave")
+Monsters = Array[Resource]([ExtResource("macaque_king")])
+EntranceX = 3510.0
+SpawnRange = Vector2(3650, 3910)
+GateX = 4030.0
+CameraRight = 4063
+SpawnRayTop = -200.0
+SpawnRayBottom = 900.0
+ReleaseGateOnClear = false
+[sub_resource type="Resource" id="encounter"]
+script = ExtResource("enc")
+Waves = Array[Resource]([SubResource("w0"), SubResource("w1"), SubResource("w2"), SubResource("w3")])
+[sub_resource type="Resource" id="preview0"]
+script = ExtResource("preview")
 DisplayName = "小猴子"
-Icon = ExtResource("xh")
-
-[sub_resource type="Resource" id="m2"]
-script = ExtResource("monster")
+Icon = ExtResource("icon0")
+IsBoss = false
+[sub_resource type="Resource" id="preview1"]
+script = ExtResource("preview")
 DisplayName = "妖猴"
-Icon = ExtResource("yh")
-
-[sub_resource type="Resource" id="m3"]
-script = ExtResource("monster")
-DisplayName = "巨猿"
-Icon = ExtResource("dxx")
-
+Icon = ExtResource("icon1")
+IsBoss = false
+[sub_resource type="Resource" id="preview2"]
+script = ExtResource("preview")
+DisplayName = "大猩猩"
+Icon = ExtResource("icon2")
+IsBoss = false
+[sub_resource type="Resource" id="preview3"]
+script = ExtResource("preview")
+DisplayName = "猕猴王"
+Icon = ExtResource("icon3")
+IsBoss = true
 [resource]
 script = ExtResource("def")
+Music = ExtResource("music")
 Id = "water_cave"
 DisplayName = "水帘洞"
-Difficulty = "普通"
-Description = "当前为游走刷怪，Boss 尚未配置"
+Description = "三波小怪后挑战猕猴王"
 RecommendedLevel = 10
 ProgressLevel = 2
 LevelScenePath = "res://Scenes/Level/Level_2.tscn"
 MapScene = ExtResource("map")
+Difficulties = Array[Resource]([ExtResource("normal"), ExtResource("hard")])
+PlayerSpawn = Vector2(380, 450)
+CameraRight = 4063
+CameraBottom = 650
+ExitPosition = Vector2(3900, 497)
+WaveEncounter = SubResource("encounter")
 PreviewBackground = ExtResource("bg")
-Monsters = Array[Resource]([SubResource("m1"), SubResource("m2"), SubResource("m3")])
-CommonDropIds = PackedStringArray("ptxzg", "ptxzf", "dsyj", "dslj", "jcsz")
+Monsters = Array[Resource]([SubResource("preview0"), SubResource("preview1"), SubResource("preview2"), SubResource("preview3")])

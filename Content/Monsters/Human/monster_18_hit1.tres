@@ -1,0 +1,25 @@
+[gd_resource type="Resource" format=3]
+[ext_resource type="Script" path="res://Scripts/Combat/SkillDefinition.cs" id="skill"]
+[ext_resource type="Script" path="res://Scripts/Combat/HitDefinition.cs" id="hit"]
+[ext_resource type="Script" path="res://Scripts/Combat/HitEvent.cs" id="window"]
+
+[sub_resource type="Resource" id="hit"]
+script = ExtResource("hit")
+FlatDamage = 0.0
+AttackMultiplier = 5.5
+DamageType = 0
+Knockback = Vector2(100, -100)
+
+[sub_resource type="Resource" id="window"]
+script = ExtResource("window")
+StartFrame = 18
+EndFrame = 42
+Hit = SubResource("hit")
+
+[resource]
+script = ExtResource("skill")
+Id = "human_18_hit1"
+Animation = &"hit1"
+FramesPerSecond = 60
+CooldownSeconds = 1.5
+Hits = Array[Resource]([SubResource("window")])

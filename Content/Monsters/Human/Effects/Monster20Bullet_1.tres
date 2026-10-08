@@ -1,0 +1,94 @@
+[gd_resource type="SpriteFrames" format=3]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster_20/Bullet_2.png" id="121"]
+[sub_resource type="AtlasTexture" id="1927"]
+atlas = ExtResource( "121" )
+region = Rect2(0, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="1920"]
+atlas = ExtResource( "121" )
+region = Rect2(0, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="1917"]
+atlas = ExtResource( "121" )
+region = Rect2(384, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="1924"]
+atlas = ExtResource( "121" )
+region = Rect2(768, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="1918"]
+atlas = ExtResource( "121" )
+region = Rect2(576, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="1923"]
+atlas = ExtResource( "121" )
+region = Rect2(576, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="1925"]
+atlas = ExtResource( "121" )
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="1919"]
+atlas = ExtResource( "121" )
+region = Rect2(768, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="1922"]
+atlas = ExtResource( "121" )
+region = Rect2(384, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="1928"]
+atlas = ExtResource( "121" )
+region = Rect2(192, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="1921"]
+atlas = ExtResource( "121" )
+region = Rect2(192, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="1926"]
+atlas = ExtResource( "121" )
+region = Rect2(768, 0, 192, 192)
+
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource( "1917" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "1918" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "1919" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "1920" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "1921" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "1922" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "1923" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "1924" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "1925" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "1926" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "1927" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "1928" )
+}],
+"loop": false,
+"name": &"Monster20Bullet_1",
+"speed": 20.0
+}]

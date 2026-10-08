@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="PassiveSkillDefinition" format=3]
+[ext_resource type="Script" path="res://Scripts/Combat/Effects/PassiveSkillDefinition.cs" id="skill"]
+[ext_resource type="Script" path="res://Scripts/Combat/Effects/SkillParameterEffect.cs" id="effect"]
+[ext_resource type="Script" path="res://Scripts/Combat/Effects/HealthRatioCondition.cs" id="condition"]
+[ext_resource type="Script" path="res://Scripts/Combat/Effects/AttackParameterModifiers.cs" id="parameters"]
+[sub_resource type="Resource" id="condition"]
+script = ExtResource("condition")
+BelowRatio = 0.2
+[sub_resource type="Resource" id="parameters"]
+script = ExtResource("parameters")
+DamageMultiplier = 2.0
+AttackSpeedMultiplier = 1.5
+RangeMultiplier = 1.5
+VisualScaleMultiplier = 1.5
+[sub_resource type="Resource" id="effect"]
+script = ExtResource("effect")
+Condition = SubResource("condition")
+Modifiers = SubResource("parameters")
+[resource]
+script = ExtResource("skill")
+Id = "wind_sage"
+NameKey = "SKILL_WIND_SAGE_NAME"
+DescriptionKey = "SKILL_WIND_SAGE_DESCRIPTION"
+Effect = SubResource("effect")

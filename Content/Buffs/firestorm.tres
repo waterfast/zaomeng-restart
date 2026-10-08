@@ -1,0 +1,26 @@
+[gd_resource type="Resource" format=3]
+[ext_resource type="Script" path="res://Scripts/Combat/Buffs/BuffDefinition.cs" id="buff"]
+[ext_resource type="Script" path="res://Scripts/Combat/HitDefinition.cs" id="hit"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Skill/SkillIcon/lyfb.png" id="icon"]
+
+[sub_resource type="Resource" id="hit"]
+
+script = ExtResource("hit")
+AttackMultiplier = 1.1
+AttackMultiplierMax = 1.1
+MultiplierPerLevel = 0.2
+DamageType = 1
+Knockback = Vector2(270, -75)
+
+
+[resource]
+script = ExtResource("buff")
+Id = "firestorm"
+DisplayName = "烈焰风暴"
+Description = "施法期间对周围敌人造成四次魔法伤害，打断时结束。"
+Icon = ExtResource("icon")
+Duration = 0.31
+PulseInterval = 0.1
+PulseImmediately = true
+PulseRadius = 170.0
+PulseHit = SubResource("hit")

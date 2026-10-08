@@ -94,3 +94,4 @@ sprite_frames = SubResource("14")
 animation = &"exit"
 autoplay = "exit"
 z_index = 8
+offset = Vector2(0, -87)

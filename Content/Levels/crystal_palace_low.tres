@@ -1,0 +1,39 @@
+[gd_resource type="Resource" format=3]
+[ext_resource type="Script" path="res://Scripts/Level/LevelDefinition.cs" id="def"]
+[ext_resource type="Script" path="res://Scripts/Level/WaveDefinition.cs" id="wave"]
+[ext_resource type="Script" path="res://Scripts/Level/WaveEncounterDefinition.cs" id="enc"]
+[ext_resource type="Resource" path="res://Content/Monsters/DragonKing/low.tres" id="boss"]
+[ext_resource type="PackedScene" path="res://Scenes/Maps/CrystalPalace.tscn" id="map"]
+[ext_resource type="Resource" path="res://Content/Levels/Difficulties/normal.tres" id="normal"]
+[ext_resource type="Resource" path="res://Content/Levels/Difficulties/hard.tres" id="hard"]
+[ext_resource type="Resource" path="res://Content/Audio/10_bg4.tres" id="music"]
+[sub_resource type="Resource" id="wave"]
+script = ExtResource("wave")
+Monsters = Array[Resource]([ExtResource("boss")])
+EntranceX = 0.0
+SpawnRange = Vector2(850,850)
+GateX = 980.0
+CameraRight = 1000
+SpawnInterval = 3.0
+SpawnRayTop = -200.0
+SpawnRayBottom = 650.0
+ReleaseGateOnClear = false
+[sub_resource type="Resource" id="encounter"]
+script = ExtResource("enc")
+Waves = Array[Resource]([SubResource("wave")])
+[resource]
+script = ExtResource("def")
+Music = ExtResource("music")
+Id = "crystal_palace_low"
+DisplayName = "水晶宫"
+Description = "水帘洞水面下的隐藏龙王关卡"
+ProgressLevel = 2
+AdvancesCampaign = false
+LevelScenePath = "res://Scenes/Level/CrystalPalace_low.tscn"
+MapScene = ExtResource("map")
+Difficulties = Array[Resource]([ExtResource("normal"),ExtResource("hard")])
+PlayerSpawn = Vector2(200,474)
+CameraRight = 1000
+CameraBottom = 650
+ExitPosition = Vector2(768,478)
+WaveEncounter = SubResource("encounter")

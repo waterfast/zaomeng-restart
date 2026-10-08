@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ShopCatalog" format=3]
+[ext_resource type="Script" path="res://Scripts/Shop/ShopCatalog.cs" id="script"]
+[ext_resource type="Resource" path="res://GameData/Shop/qhs_1.tres" id="offer1"]
+[ext_resource type="Resource" path="res://GameData/Shop/qhs_2.tres" id="offer2"]
+[ext_resource type="Resource" path="res://GameData/Shop/qhs_3.tres" id="offer3"]
+[ext_resource type="Resource" path="res://GameData/Shop/qhs_4.tres" id="offer4"]
+[resource]
+script = ExtResource("script")
+Offers = Array[Resource]([ExtResource("offer1"), ExtResource("offer2"), ExtResource("offer3"), ExtResource("offer4")])

@@ -1,4 +1,4 @@
-[gd_resource type="AnimationLibrary" format=3]
+[gd_resource type="AnimationLibrary" format=3 uid="uid://dmoe0g7g2qybs"]
 
 [sub_resource type="Animation" id="anim_death"]
 length = 1.2
@@ -281,12 +281,11 @@ tracks/3/keys = {
 "values": [Vector2(13.5, 4)]
 }
 
-
 [resource]
 _data = {
-"death": SubResource("anim_death"),
-"hit1": SubResource("anim_hit1"),
-"hurt": SubResource("anim_hurt"),
-"wait": SubResource("anim_wait"),
-"walk": SubResource("anim_walk")
+&"death": SubResource("anim_death"),
+&"hit1": SubResource("anim_hit1"),
+&"hurt": SubResource("anim_hurt"),
+&"wait": SubResource("anim_wait"),
+&"walk": SubResource("anim_walk")
 }

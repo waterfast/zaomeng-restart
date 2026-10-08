@@ -1,0 +1,13 @@
+[gd_resource type="SpriteFrames" format=3]
+[ext_resource type="Texture2D" path="res://Assets/Art/Bullet/Monster14Bullet.png" id="3"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource( "3" )
+}],
+"loop": false,
+"name": &"Monster14Bullet",
+"speed": 5.0
+}]

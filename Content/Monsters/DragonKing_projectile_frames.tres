@@ -1,0 +1,17 @@
+[gd_resource type="SpriteFrames" format=3]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster6/Bullet_2.png" id="11"]
+[sub_resource type="AtlasTexture" id="59"]
+atlas = ExtResource( "11" )
+region = Rect2(202, 0, 101, 100)
+
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource( "59" )
+}],
+"loop": false,
+"name": &"Monster6Bullet",
+"speed": 10
+}]

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" format=3]
+[ext_resource type="Script" path="res://Scripts/Combat/Buffs/BuffDefinition.cs" id="buff"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Buffs/earth_spirit.png" id="icon"]
+
+[resource]
+script = ExtResource("buff")
+Id = "earth_spirit"
+DisplayName = "地煞之灵"
+Description = "怪物灵魂和经验奖励提高20%。"
+Icon = ExtResource("icon")
+Duration = 0.0
+ExperienceBonus = 0.2
+SoulBonus = 0.2

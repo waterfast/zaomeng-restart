@@ -1,0 +1,51 @@
+[gd_resource type="Resource" format=3]
+[ext_resource type="Script" path="res://Scripts/Monsters/MonsterDefinition.cs" id="def"]
+[ext_resource type="Script" path="res://Scripts/Monsters/MonsterSkillChoice.cs" id="choice"]
+[ext_resource type="PackedScene" path="res://Scenes/Actors/Human/Monster_19.tscn" id="actor"]
+[ext_resource type="Script" path="res://Scripts/Monsters/MonsterDropTable.cs" id="drops"]
+[ext_resource type="Script" path="res://Scripts/Monsters/MonsterDropEntry.cs" id="drop"]
+[ext_resource type="Resource" path="res://Content/Monsters/Human/monster_19_slj.tres" id="s0"]
+[ext_resource type="Resource" path="res://Content/Monsters/Human/monster_19_sytx.tres" id="s1"]
+
+[ext_resource type="Resource" path="res://Content/Monsters/RecoveryDrops.tres" id="recovery"]
+[sub_resource type="Resource" id="choice0"]
+script = ExtResource("choice")
+Skill = ExtResource("s0")
+MaximumRange = 250.0
+MaximumHeightDifference = 200.0
+
+[sub_resource type="Resource" id="choice1"]
+script = ExtResource("choice")
+Skill = ExtResource("s1")
+MaximumRange = 250.0
+MaximumHeightDifference = 200.0
+
+[sub_resource type="Resource" id="drops"]
+script = ExtResource("drops")
+ChooseOne = true
+RollProbability = 0.00
+Entries = Array[Resource]([])
+
+[resource]
+script = ExtResource("def")
+Id = "human_monster_19"
+DisplayName = "鲨鱼"
+ActorScene = ExtResource("actor")
+IsBoss = false
+Health = 1000000
+Attack = 10
+Level = 100
+PhysicalDefense = 100
+MagicDefense = 150
+CriticalRating = 15
+DodgeRating = 5
+Toughness = 0
+Accuracy = 0
+CriticalResistance = 0
+Experience = 500
+Souls = 200
+MoveSpeed = 120.0
+DetectionRange = 1200.0
+Skills = Array[Resource]([SubResource("choice1"), SubResource("choice0")])
+Drops = SubResource("drops")
+RecoveryDrops = ExtResource("recovery")

@@ -1,10 +1,15 @@
 [gd_resource type="Resource" script_class="AttackStep" format=3]
 
+[ext_resource type="AudioStream" path="res://Assets/Audio/Hero/38_Role1_hit5.mp3" id="sound"]
+
 [ext_resource type="Script" path="res://Scripts/Combat/AttackStep.cs" id="step"]
 [ext_resource type="Script" path="res://Scripts/Combat/HitDefinition.cs" id="hit"]
 
+[ext_resource type="Resource" path="res://Content/Combat/WushuangGains/3_5.tres" id="wushuang_gain"]
+
 [sub_resource type="Resource" id="hit_data"]
 script = ExtResource("hit")
+WushuangGain = ExtResource("wushuang_gain")
 AttackMultiplier = 1.2
 AttackMultiplierMax = 1.4
 Knockback = Vector2(180, -75)
@@ -12,5 +17,6 @@ Hitstun = 0.35
 
 [resource]
 script = ExtResource("step")
+Sound = ExtResource("sound")
 Animation = &"hit4"
 Hit = SubResource("hit_data")

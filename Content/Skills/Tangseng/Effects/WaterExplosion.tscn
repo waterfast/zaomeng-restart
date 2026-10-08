@@ -1,0 +1,309 @@
+[gd_scene format=3]
+[ext_resource type="Texture2D" path="res://Assets/Art/HeroPicture/Role2/Role2Skill_smb2.png" id="9"]
+[ext_resource type="Script" path="res://Scripts/Combat/Skills/AnimatedSkillEffect.cs" id="runtime"]
+[ext_resource type="Script" path="res://Scripts/Combat/HitDefinition.cs" id="hit"]
+[sub_resource type="AtlasTexture" id="105"]
+atlas = ExtResource( "9" )
+region = Rect2(0, 0, 287, 452)
+
+[sub_resource type="AtlasTexture" id="106"]
+atlas = ExtResource( "9" )
+region = Rect2(287, 904, 287, 452)
+
+[sub_resource type="AtlasTexture" id="107"]
+atlas = ExtResource( "9" )
+region = Rect2(574, 904, 287, 452)
+
+[sub_resource type="AtlasTexture" id="108"]
+atlas = ExtResource( "9" )
+region = Rect2(861, 904, 287, 452)
+
+[sub_resource type="AtlasTexture" id="109"]
+atlas = ExtResource( "9" )
+region = Rect2(1148, 904, 287, 452)
+
+[sub_resource type="AtlasTexture" id="110"]
+atlas = ExtResource( "9" )
+region = Rect2(1435, 904, 287, 452)
+
+[sub_resource type="AtlasTexture" id="111"]
+atlas = ExtResource( "9" )
+region = Rect2(1722, 904, 287, 452)
+
+[sub_resource type="AtlasTexture" id="112"]
+atlas = ExtResource( "9" )
+region = Rect2(0, 1356, 287, 452)
+
+[sub_resource type="AtlasTexture" id="113"]
+atlas = ExtResource( "9" )
+region = Rect2(287, 0, 287, 452)
+
+[sub_resource type="AtlasTexture" id="114"]
+atlas = ExtResource( "9" )
+region = Rect2(574, 0, 287, 452)
+
+[sub_resource type="AtlasTexture" id="115"]
+atlas = ExtResource( "9" )
+region = Rect2(861, 0, 287, 452)
+
+[sub_resource type="AtlasTexture" id="116"]
+atlas = ExtResource( "9" )
+region = Rect2(1148, 0, 287, 452)
+
+[sub_resource type="AtlasTexture" id="117"]
+atlas = ExtResource( "9" )
+region = Rect2(1435, 0, 287, 452)
+
+[sub_resource type="AtlasTexture" id="118"]
+atlas = ExtResource( "9" )
+region = Rect2(1722, 0, 287, 452)
+
+[sub_resource type="AtlasTexture" id="119"]
+atlas = ExtResource( "9" )
+region = Rect2(0, 452, 287, 452)
+
+[sub_resource type="AtlasTexture" id="120"]
+atlas = ExtResource( "9" )
+region = Rect2(287, 452, 287, 452)
+
+[sub_resource type="AtlasTexture" id="121"]
+atlas = ExtResource( "9" )
+region = Rect2(574, 452, 287, 452)
+
+[sub_resource type="AtlasTexture" id="122"]
+atlas = ExtResource( "9" )
+region = Rect2(861, 452, 287, 452)
+
+[sub_resource type="AtlasTexture" id="123"]
+atlas = ExtResource( "9" )
+region = Rect2(1148, 452, 287, 452)
+
+[sub_resource type="AtlasTexture" id="124"]
+atlas = ExtResource( "9" )
+region = Rect2(1435, 452, 287, 452)
+
+[sub_resource type="AtlasTexture" id="125"]
+atlas = ExtResource( "9" )
+region = Rect2(1722, 452, 287, 452)
+
+[sub_resource type="AtlasTexture" id="126"]
+atlas = ExtResource( "9" )
+region = Rect2(0, 904, 287, 452)
+
+[sub_resource type="SpriteFrames" id="675"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource( "105" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "106" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "107" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "108" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "109" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "110" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "111" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "112" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "113" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "114" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "115" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "116" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "117" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "118" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "119" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "120" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "121" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "122" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "123" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "124" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "125" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "126" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "126" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "126" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "126" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "126" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "126" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "126" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "126" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "126" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "126" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "126" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "126" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "126" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "126" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "126" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "126" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "126" )
+}],
+"loop": false,
+"name": &"Role2Bullet4",
+"speed": 25.0
+}]
+[sub_resource type="Resource" id="damage"]
+script = ExtResource("hit")
+DamageType = 1
+Knockback = Vector2(90, -60)
+AttackMultiplier = 7.6
+MultiplierPerLevel = 0.6
+[sub_resource type="Animation" id="clip"]
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual/BulletPlayer:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28, 0.32, 0.36, 0.4, 0.44, 0.48, 0.52, 0.56, 0.6, 0.64, 0.68, 0.72, 0.76, 0.8, 0.84, 0.88, 0.92, 0.96, 1, 1.04, 1.08, 1.12, 1.16, 1.2, 1.24, 1.28, 1.32, 1.36, 1.4, 1.44, 1.48),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visual/BulletPlayer:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Role2Bullet4"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visual/BulletPlayer:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Visual/BulletPlayer:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Visual/BulletPlayer:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Visual/BulletPlayer:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+[sub_resource type="AnimationLibrary" id="library"]
+_data = {"effect": SubResource("clip")}
+[node name="Effect" type="Node2D"]
+script = ExtResource("runtime")
+Lifetime = 1.5
+Hit = SubResource("damage")
+Radius = 180
+VerticalRadius = 250
+HitTimes = PackedFloat32Array(0.4)
+[node name="Visual" type="Node2D" parent="."]
+[node name="BulletPlayer" type="AnimatedSprite2D" parent="Visual"]
+sprite_frames = SubResource( "675" )
+animation = &"Role2Bullet4"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries/ = SubResource("library")

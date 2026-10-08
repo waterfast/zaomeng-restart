@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ShopOffer" format=3]
+[ext_resource type="Script" path="res://Scripts/Shop/ShopOffer.cs" id="script"]
+[ext_resource type="Resource" path="res://Content/Items/Materials/qhs_1.tres" id="item"]
+[resource]
+script = ExtResource("script")
+Item = ExtResource("item")
+Currency = 0
+UnitPrice = 4000

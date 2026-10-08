@@ -1,0 +1,23 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://Scripts/Combat/Skills/SkillProjectile.cs" id="projectile"]
+[ext_resource type="Script" path="res://Scripts/Combat/HitDefinition.cs" id="hit"]
+[ext_resource type="SpriteFrames" path="res://Content/Monsters/Human/Effects/Monster14Bullet.tres" id="frames"]
+
+[sub_resource type="Resource" id="hit"]
+
+script = ExtResource("hit")
+FlatDamage = 0.0
+AttackMultiplier = 3.0
+DamageType = 2
+Knockback = Vector2(100, -100)
+
+
+[node name="Projectile" type="Node2D"]
+script = ExtResource("projectile")
+Frames = ExtResource("frames")
+Animation = &"Monster14Bullet"
+Hit = SubResource("hit")
+Speed = 600.0
+Lifetime = 2.5
+HitRadius = 40.0
+VerticalHitRadius = 80.0

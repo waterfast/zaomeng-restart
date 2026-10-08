@@ -1,4 +1,6 @@
 [gd_resource type="Resource" script_class="LevelDefinition" format=3]
+[ext_resource type="Resource" path="res://Content/Audio/1_music.tres" id="music"]
+
 [ext_resource type="Script" path="res://Scripts/Level/LevelDefinition.cs" id="def"]
 [ext_resource type="Script" path="res://Scripts/Level/WaveEncounterDefinition.cs" id="enc"]
 [ext_resource type="Script" path="res://Scripts/Level/WaveDefinition.cs" id="wave"]
@@ -8,9 +10,17 @@
 [ext_resource type="Texture2D" path="res://Assets/Art/Monster/MonsterHead/xh.png" id="xh"]
 [ext_resource type="Texture2D" path="res://Assets/Art/Monster/MonsterHead/yh.png" id="yh"]
 [ext_resource type="Texture2D" path="res://Assets/Art/Monster/MonsterHead/dxx.png" id="dxx"]
+[ext_resource type="Resource" path="res://Content/Levels/Difficulties/normal.tres" id="normal"]
+[ext_resource type="Resource" path="res://Content/Levels/Difficulties/forest_hard.tres" id="hard"]
+
+[ext_resource type="Resource" path="res://Content/Monsters/Templates/monkey.tres" id="template1"]
+[ext_resource type="Resource" path="res://Content/Monsters/Templates/demon_monkey.tres" id="template2"]
+[ext_resource type="Resource" path="res://Content/Monsters/Templates/gorilla.tres" id="template3"]
+[ext_resource type="Resource" path="res://Content/Monsters/Templates/gorilla_boss.tres" id="template4"]
+
 [sub_resource type="Resource" id="w1"]
 script = ExtResource("wave")
-MonsterKinds = PackedInt32Array(1, 1, 1, 1, 1, 1, 1, 1, 1)
+Monsters = Array[Resource]([ExtResource("template1"), ExtResource("template1"), ExtResource("template1"), ExtResource("template1"), ExtResource("template1"), ExtResource("template1"), ExtResource("template1"), ExtResource("template1"), ExtResource("template1")])
 EntranceX = 0
 SpawnRange = Vector2(450, 900)
 GateX = 1668
@@ -18,7 +28,7 @@ CameraRight = 1701
 
 [sub_resource type="Resource" id="w2"]
 script = ExtResource("wave")
-MonsterKinds = PackedInt32Array(2, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 2, 2, 2)
+Monsters = Array[Resource]([ExtResource("template2"), ExtResource("template2"), ExtResource("template2"), ExtResource("template1"), ExtResource("template1"), ExtResource("template2"), ExtResource("template2"), ExtResource("template1"), ExtResource("template1"), ExtResource("template2"), ExtResource("template2"), ExtResource("template2"), ExtResource("template2"), ExtResource("template2")])
 EntranceX = 1700
 SpawnRange = Vector2(2000, 2490)
 GateX = 2730
@@ -26,7 +36,7 @@ CameraRight = 2763
 
 [sub_resource type="Resource" id="w3"]
 script = ExtResource("wave")
-MonsterKinds = PackedInt32Array(2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2)
+Monsters = Array[Resource]([ExtResource("template2"), ExtResource("template2"), ExtResource("template2"), ExtResource("template2"), ExtResource("template2"), ExtResource("template2"), ExtResource("template2"), ExtResource("template2"), ExtResource("template2"), ExtResource("template2"), ExtResource("template2"), ExtResource("template2"), ExtResource("template2"), ExtResource("template2"), ExtResource("template2")])
 EntranceX = 2760
 SpawnRange = Vector2(2880, 3320)
 GateX = 3570
@@ -34,15 +44,16 @@ CameraRight = 3603
 
 [sub_resource type="Resource" id="w4"]
 script = ExtResource("wave")
-MonsterKinds = PackedInt32Array(2, 2, 2, 2, 2)
+Monsters = Array[Resource]([ExtResource("template2"), ExtResource("template2"), ExtResource("template2"), ExtResource("template2"), ExtResource("template2")])
 EntranceX = 3610
 SpawnRange = Vector2(3720, 3940)
+ReleaseGateOnClear = false
 GateX = 4007
 CameraRight = 4040
 
 [sub_resource type="Resource" id="w5"]
 script = ExtResource("wave")
-MonsterKinds = PackedInt32Array(4)
+Monsters = Array[Resource]([ExtResource("template4")])
 EntranceX = 3610
 SpawnRange = Vector2(3780, 3930)
 GateX = 0
@@ -51,8 +62,7 @@ CameraRight = 4040
 [sub_resource type="Resource" id="encounter"]
 script = ExtResource("enc")
 Waves = Array[Resource]([SubResource("w1"), SubResource("w2"), SubResource("w3"), SubResource("w4"), SubResource("w5")])
-FinalBoundaryX = 4000.0
-ExitPosition = Vector2(3880, 427)
+
 
 [sub_resource type="Resource" id="m1"]
 script = ExtResource("monster")
@@ -74,9 +84,12 @@ IsBoss = true
 
 [resource]
 script = ExtResource("def")
+Music = ExtResource("music")
+ExitPosition = Vector2(3880, 504)
+CameraBottom = 590
 Id = "forest"
 DisplayName = "花果山"
-Difficulty = "普通"
+Difficulties = Array[Resource]([ExtResource("normal"), ExtResource("hard")])
 Description = "四波妖猴后挑战大猩猩"
 RecommendedLevel = 5
 ProgressLevel = 1
@@ -84,6 +97,4 @@ LevelScenePath = "res://Scenes/Level/Level_1.tscn"
 MapScene = ExtResource("map")
 PreviewBackground = ExtResource("bg")
 Monsters = Array[Resource]([SubResource("m1"), SubResource("m2"), SubResource("m3")])
-CommonDropIds = PackedStringArray("ptxzg", "ptxzf")
-BossDropIds = PackedStringArray("dsyj", "dslj", "dshl")
 WaveEncounter = SubResource("encounter")

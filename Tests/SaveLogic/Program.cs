@@ -41,8 +41,9 @@ try
 	Check(SaveDataEditor.AddItem(data.Inventory, catalog, "herb", 5), "save editor adds item through inventory rules");
 	Check(data.Inventory.Slots[0]?.Count == 2 && data.Inventory.Slots[1]?.Count == 10,
 		"save editor fills existing stack before empty slot");
-	Check(!SaveDataEditor.AddItem(data.Inventory, catalog, "sword", 1),
-		"save editor rejects addition when no slot remains");
+	Check(SaveDataEditor.AddItem(data.Inventory, catalog, "sword", 100) && data.Inventory.Capacity > 70
+		&& data.Inventory.Slots.Count == data.Inventory.Capacity,
+		"save editor grows the bag and updates the persisted allocation size");
 	Check(!SaveDataEditor.AddItem(data.Inventory, catalog, "missing", 1),
 		"save editor rejects unknown item");
 	Check(!SaveDataEditor.RemoveItem(data.Inventory, catalog, "herb", 13),
@@ -60,6 +61,8 @@ try
 		"persistent inventory restores without a scene snapshot");
 	Check(restoredInventory.Slots[2]!.Equipment!.InstanceId == sword.InstanceId,
 		"inventory save and editor retain equipment identity");
+	Check(restoredInventory.Capacity == data.Inventory.Capacity && restoredInventory.GetItemCount("sword") == 101,
+		"growing inventory restores all equipment beyond the initial allocation");
 	GameSaveData captured = InventorySaveMapper.Capture(restoredInventory, data);
 	Check(ReferenceEquals(captured, data) && captured.Inventory.Slots[1]?.Count == 7,
 		"inventory capture keeps character and wallet data");
@@ -89,6 +92,9 @@ try
 	data.UnlockedLevel = 2;
 	Check(serializer.Deserialize(serializer.Serialize(data)).UnlockedLevel == 2,
 		"unlocked level survives save round trip");
+	data.UnlockedLevel = 11;
+	Check(serializer.Deserialize(serializer.Serialize(data)).UnlockedLevel == 11,
+		"human campaign progress is not restricted to the original three levels");
 	data.UnlockedLevel = 1;
 	wukong.EquippedSkillIds[0] = "unknown";
 	Expect<InvalidDataException>(() => serializer.Serialize(data));

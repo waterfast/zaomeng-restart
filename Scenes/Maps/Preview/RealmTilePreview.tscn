@@ -1,0 +1,67 @@
+[gd_scene format=4]
+
+[ext_resource type="FontFile" path="res://Assets/Font/HYZhuZiMeiXinTiW.ttf" id="1_skuwv"]
+[ext_resource type="TileSet" path="res://Content/Terrain/RealmTileSet.tres" id="2_hle2l"]
+
+[node name="RealmTilePreview" type="Node2D" unique_id=585793776]
+
+[node name="@Polygon2D@2" type="Polygon2D" parent="." unique_id=1815386827]
+color = Color(0.11, 0.12, 0.2, 1)
+polygon = PackedVector2Array(0, 0, 1600, 0, 1600, 900, 0, 900)
+
+[node name="@Label@3" type="Label" parent="." unique_id=958962666]
+offset_left = 48.0
+offset_top = 32.0
+offset_right = 48.0
+offset_bottom = 32.0
+theme_override_fonts/font = ExtResource("1_skuwv")
+theme_override_font_sizes/font_size = 24
+text = "幻境地形瓦片 · 每格 64 × 64"
+
+[node name="@Label@4" type="Label" parent="." unique_id=2128683202]
+offset_left = 64.0
+offset_top = 104.0
+offset_right = 64.0
+offset_bottom = 104.0
+theme_override_fonts/font = ExtResource("1_skuwv")
+theme_override_font_sizes/font_size = 24
+text = "草地（实体）"
+
+[node name="@Label@5" type="Label" parent="." unique_id=879069926]
+offset_left = 350.0
+offset_top = 104.0
+offset_right = 350.0
+offset_bottom = 104.0
+theme_override_fonts/font = ExtResource("1_skuwv")
+theme_override_font_sizes/font_size = 24
+text = "岩石（实体）"
+
+[node name="@Label@6" type="Label" parent="." unique_id=1506327829]
+offset_left = 620.0
+offset_top = 104.0
+offset_right = 620.0
+offset_bottom = 104.0
+theme_override_fonts/font = ExtResource("1_skuwv")
+theme_override_font_sizes/font_size = 24
+text = "水体 + 动态水面（无实体）"
+
+[node name="TileSamples" type="TileMapLayer" parent="." unique_id=1197645587]
+position = Vector2(64, 160)
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAACAAAAAQAAAAAAAAAEAAAAAgAAAAAAAAAEAAEAAgAAAAAAAAAFAAAAAgAAAAAAAAAFAAEAAgAAAAAAAAAGAAAAAgAAAAAAAAAGAAEAAgAAAAAAAAA=")
+tile_set = ExtResource("2_hle2l")
+
+[node name="WaterSurface" type="TileMapLayer" parent="." unique_id=1365842165]
+position = Vector2(64, 160)
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAAEAAAAAwAAAAAAAAAFAAAAAwAAAAAAAAAGAAAAAwAAAAAAAAA=")
+tile_set = ExtResource("2_hle2l")
+
+[node name="@Label@7" type="Label" parent="." unique_id=943912621]
+offset_left = 64.0
+offset_top = 460.0
+offset_right = 64.0
+offset_bottom = 460.0
+theme_override_fonts/font = ExtResource("1_skuwv")
+theme_override_font_sizes/font_size = 24
+text = "Ground 铺草地与岩石；Water 铺水体；WaterSurface 只铺最上沿。"

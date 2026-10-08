@@ -38,7 +38,7 @@ public partial class ContentSystemsSmokeTest : Node2D
 			var player = GD.Load<PackedScene>("res://Scenes/Actors/Player.tscn").Instantiate<Player>();
 			player.InputEnabled = false; player.BindCharacter(character, items); AddChild(player); player.SetPhysicsProcess(false);
 			var action = learning.Catalog.Find("slz")!.Action!;
-			Check(action.GetManaCost(4) == 37 && Near(action.CooldownSeconds, 0.4f), "growth resource supplies old mana formula and cooldown converted to seconds");
+			Check(action.GetManaCost(4) == 37 && Near(action.CooldownSeconds, 2.4f), "growth resource supplies old mana formula and new base cooldown in seconds");
 			Check(player.EffectiveSkillLevel("slz") == 4 && player.EffectiveSkillLevel("hytj") == 0, "level bonus only applies to learned skills");
 			float mana = player.Mana;
 			Check(player.TryUseSkill(action) && Near(player.Mana, mana - action.GetManaCost(4)), "cast charges effective-level mana");
@@ -57,8 +57,8 @@ public partial class ContentSystemsSmokeTest : Node2D
 			cooldownPlayer.InputEnabled = false; cooldownPlayer.BindCharacter(character, items); AddChild(cooldownPlayer); cooldownPlayer.SetPhysicsProcess(false);
 			var dash = learning.Catalog.Find("lys")!.Action!;
 			var slash = learning.Catalog.Find("hmz")!.Action!;
-			Check(Near(dash.CooldownSeconds, 2.8f / 6) && dash.LinkedCooldownSkill == slash && Near(dash.LinkedCooldownSeconds, 0.6f), "dash uses executable old values and registered linked cooldown");
-			Check(cooldownPlayer.TryUseSkill(dash) && Near(cooldownPlayer.GetSkillCooldown(slash), 0.2f), "dash starts linked cooldown using haste");
+			Check(Near(dash.CooldownSeconds, 2.8f) && Near(slash.CooldownSeconds, 4.8f), "dash and slash register independent base cooldowns in seconds");
+			Check(cooldownPlayer.TryUseSkill(dash) && Near(cooldownPlayer.GetSkillCooldown(slash), 0), "dash does not start fire slash cooldown");
 			cooldownPlayer.ResetForSpawn(Vector2.Zero);
 			updateResources.Invoke(cooldownPlayer, new object[] { 1f });
 			Check(cooldownPlayer.TryUseSkill(slash) && Near(cooldownPlayer.GetSkillCooldown(slash), 0), "fire slash defers its countdown");
@@ -83,11 +83,21 @@ public partial class ContentSystemsSmokeTest : Node2D
 			using var binding = new GameplayEquipmentBinding(character, items, inventory, events, player.RefreshCharacterStats, () => saves++, wallet);
 			using var adapter = new InventoryViewAdapter(inventory, items);
 			var backpack = GD.Load<PackedScene>("res://Scenes/UI/BackPack/BackPack.tscn").Instantiate<Node2D>(); AddChild(backpack);
-			var view = new LegacyBackpackView(backpack, adapter, items, character, wallet, player, () => saves++, events);
+			using var magicView = new Zaomeng.UI.Inventory.MagicWeaponView(this, items, character, events);
+			magicView.CloseRequested += magicView.Hide;
+			var view = new LegacyBackpackView(backpack, adapter, items, character, wallet, player, () => saves++, events, magicView.Show);
 			backpack.GetNode<BaseButton>("background/infomation/second").EmitSignal(BaseButton.SignalName.Pressed);
 			Check(backpack.GetNode<Label>("background/infomation/crit/Crit_tt").Text == "极速" && backpack.GetNode<Label>("background/infomation/crit").TooltipText.Contains("冷却"), "second stat page shows haste and hover explanation");
 			await Capture("attributes");
 			var grid = backpack.GetNode<GridContainer>("Main_Backpack/MarginContainer/VBoxContainer/MarginContainer/Sc_Box/Gd_Box");
+			Check(grid.Columns == 5 && grid.GetChildCount() == 25, "backpack shows five rows and five columns per page");
+			var initialSlots = inventory.Slots;
+			Check(inventory.AddItem("ptxzg", 100) && inventory.Capacity > 70, "bag grows beyond seventy equipment slots");
+			var nextPage = backpack.GetNode<BaseButton>("Main_Backpack/ChangePage/NextPage");
+			for (int page = 0; page < 4; page++) nextPage.EmitSignal(BaseButton.SignalName.Pressed);
+			Check(backpack.GetNode<Label>("Main_Backpack/ChangePage/CurrentPageText").Text == "5/5"
+				&& nextPage.Disabled && !grid.GetChild<Button>(0).Disabled, "grown inventory displays the final page through existing page controls");
+			inventory.RestoreSlots(initialSlots);
 			grid.GetChildren().OfType<Button>().ElementAt(1).EmitSignal(Control.SignalName.MouseEntered);
 			await Capture("equipment-skill");
 			grid.GetChildren().OfType<Button>().ElementAt(1).EmitSignal(Control.SignalName.MouseExited);
@@ -110,7 +120,7 @@ public partial class ContentSystemsSmokeTest : Node2D
 				"socketed white equipment is preserved by bulk sale");
 			backpack.GetNode<BaseButton>("background/infomation/equ_/VBoxContainer/fb").EmitSignal(BaseButton.SignalName.Pressed);
 			await Capture("magic-weapons");
-			var magic = backpack.GetNode<Node2D>("MagicWeaponPanel");
+			var magic = magicView.Root;
 			Check(magic.SceneFilePath.EndsWith("Magic_weapon_infor.tscn") && magic.GetNode<Label>("BG/Name_").Text == "未装备法宝", "magic slot opens original detail panel with empty state");
 			int gourdSlot = Enumerable.Range(0, inventory.Capacity).First(index => inventory.Slots[index]?.ItemId == "dshl");
 			Check(events.EquipmentRequested.Send(new(EquipmentAction.Equip, gourdSlot, inventory.Slots[gourdSlot]!.Equipment!.InstanceId), this).Success, "gourd equips through existing backpack request");
@@ -119,8 +129,8 @@ public partial class ContentSystemsSmokeTest : Node2D
 			Check(magic.GetNode<BaseButton>("BG/bg_2/up_level").Disabled && magic.GetNode<BaseButton>("BG/szfb").Disabled && magic.GetNode<Label>("BG/bg_2/m_czl").Text == "—", "unimplemented magic operations disabled without fake growth values");
 			await Capture("magic-detail");
 			magic.GetNode<BaseButton>("BG/tips").EmitSignal(BaseButton.SignalName.Pressed);
-			Check(backpack.GetNode<Node2D>("MagicWeaponHelp").Visible, "original magic help opens");
-			backpack.GetNode<BaseButton>("MagicWeaponHelp/BG/Close").EmitSignal(BaseButton.SignalName.Pressed);
+			Check(GetNode<Node2D>("MagicWeaponHelp").Visible, "original magic help opens");
+			GetNode<BaseButton>("MagicWeaponHelp/BG/Close").EmitSignal(BaseButton.SignalName.Pressed);
 			magic.Hide(); backpack.Hide();
 			var skillRoot = GD.Load<PackedScene>("res://Scenes/UI/Skill/Learn_skill.tscn").Instantiate<Node2D>(); AddChild(skillRoot);
 			var skills = new LegacySkillPanel(); skills.Bind(skillRoot, learning, () => {}, player); skillRoot.AddChild(skills);
@@ -160,7 +170,8 @@ public partial class ContentSystemsSmokeTest : Node2D
 			Check(serializer.Deserialize(serializer.Serialize(InventorySaveMapper.Capture(inventory, data))).ClaimedQuestIds.Contains("growth_gift_1"), "claim survives save serialization");
 			var full = new InventoryService(1, items); full.AddItem("ryjgb", 1);
 			var blocked = new QuestService(questCatalog, character, new(), full, items);
-			Check(!blocked.Claim(new("growth_gift_1")).Success && !blocked.IsClaimed(questCatalog.Definitions[0]) && full.Slots[0]!.ItemId == "ryjgb", "full backpack cannot partially claim rewards");
+			Check(blocked.Claim(new("growth_gift_1")).Success && blocked.IsClaimed(questCatalog.Definitions[0])
+				&& full.Slots[0]!.ItemId == "ryjgb" && full.Capacity > 1, "quest rewards grow the bag and preserve existing equipment");
 			character.Level = 1;
 			Check(!blocked.Claim(new("growth_gift_1")).Success, "quest rechecks level condition");
 			character.Level = 10;

@@ -1,0 +1,10 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://Tests/BossAnimationShowcase.cs" id="test"]
+[ext_resource type="Resource" path="res://Content/Monsters/Templates/gorilla_boss.tres" id="gorilla"]
+[ext_resource type="Resource" path="res://Content/Monsters/Templates/macaque_king.tres" id="macaque"]
+[ext_resource type="Resource" path="res://Content/Monsters/Templates/tamarin_king.tres" id="tamarin"]
+[ext_resource type="Resource" path="res://Content/Monsters/DragonKing/low.tres" id="dragon_low"]
+[ext_resource type="Resource" path="res://Content/Monsters/DragonKing/high.tres" id="dragon_high"]
+[node name="BossAnimationShowcase" type="Node2D"]
+script = ExtResource("test")
+Bosses = Array[Resource]([ExtResource("gorilla"), ExtResource("macaque"), ExtResource("tamarin"), ExtResource("dragon_low"), ExtResource("dragon_high")])

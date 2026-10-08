@@ -1,0 +1,6 @@
+[gd_scene format=3]
+[ext_resource type="PackedScene" path="res://Scenes/Level/GameplayLevel.tscn" id="runtime"]
+[ext_resource type="Resource" path="res://Content/Levels/human_6.tres" id="definition"]
+[node name="Level_6" instance=ExtResource("runtime")]
+LevelNumber = 6
+DefaultDefinition = ExtResource("definition")

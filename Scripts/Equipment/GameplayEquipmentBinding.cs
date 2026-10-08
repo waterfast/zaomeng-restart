@@ -24,12 +24,12 @@ public sealed class GameplayEquipmentBinding : IDisposable
 	private bool _executing;
 
 	public GameplayEquipmentBinding(SaveCharacter character, ItemCatalog catalog,
-		InventoryService inventory, GameplayEvents events, Action refreshStats, Action save, Wallet wallet)
+		InventoryService inventory, GameplayEvents events, Action refreshStats, Action save, Wallet wallet, Func<Player?>? activePlayer = null)
 	{
 		events.Validate();
 		_equipment = new(character, catalog, inventory);
 		_gems = new(character, catalog, inventory);
-		ItemActions = new(inventory, catalog, character, wallet, _equipment);
+		ItemActions = new(inventory, catalog, character, wallet, _equipment, activePlayer);
 		_inventory = inventory;
 		_events = events;
 		_refreshStats = refreshStats;

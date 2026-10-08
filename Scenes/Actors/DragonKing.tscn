@@ -1,0 +1,29 @@
+[gd_scene format=3]
+[ext_resource type="PackedScene" path="res://Scenes/Actors/Monster.tscn" id="base"]
+[ext_resource type="SpriteFrames" path="res://Content/Monsters/DragonKingFrames.tres" id="frames"]
+[ext_resource type="SpriteFrames" path="res://Content/Monsters/DragonKingCastFrames.tres" id="cast"]
+[ext_resource type="AnimationLibrary" path="res://Content/Monsters/DragonKingAnimations.tres" id="animations"]
+
+[sub_resource type="CapsuleShape2D" id="body"]
+radius = 25.0
+height = 130.0
+[node name="DragonKing" instance=ExtResource("base")]
+IsBoss = true
+[node name="BodyShape" parent="." index="0"]
+position = Vector2(0, -65)
+shape = SubResource("body")
+[node name="Visual" parent="Facing" index="0"]
+position = Vector2(0, -72.5)
+[node name="Body" parent="Facing/Visual" index="0"]
+sprite_frames = ExtResource("frames")
+animation = &"wait"
+[node name="Cast" type="AnimatedSprite2D" parent="Facing/Visual" index="1"]
+visible = false
+sprite_frames = ExtResource("cast")
+animation = &"empty"
+[node name="HurtBox" parent="." index="2"]
+position = Vector2(0, -65)
+[node name="Shape" parent="HurtBox" index="0"]
+shape = SubResource("body")
+[node name="AnimationPlayer" parent="." index="3"]
+libraries/ = ExtResource("animations")

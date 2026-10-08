@@ -98,8 +98,8 @@ public partial class EquipmentInstanceSmokeTest : Node
 			"socketing into equipped gear updates live attributes");
 		inventory.AddItem("material", 2);
 		int savesBeforeFailure = saves, modificationsBeforeFailure = modifications;
-		Check(Remove(second.InstanceId, 0, "attack_gem").Error == EquipmentError.InventoryFull,
-			"full backpack rejects gem removal without deleting the gem");
+		Check(Remove(second.InstanceId, 0, "health_gem").Error == EquipmentError.GemChanged,
+			"stale gem removal is rejected without deleting the gem");
 		Check(stats.Attack == 18 && character.Equipment.Get(EquipmentSlot.Weapon)!.SocketedGemIds[0] == "attack_gem" &&
 			saves == savesBeforeFailure && modifications == modificationsBeforeFailure,
 			"failed gem transaction does not alter stats, equipment, save, or notifications");
@@ -113,12 +113,13 @@ public partial class EquipmentInstanceSmokeTest : Node
 			"unowned equipment cannot be modified");
 		Check(Remove(second.InstanceId, 0, "health_gem").Error == EquipmentError.GemChanged,
 			"stale expected gem cannot remove another gem");
-		inventory.RemoveItem("material", 1);
 		Check(Remove(second.InstanceId, 0, "attack_gem").Success && stats.Attack == 13 && inventory.GetItemCount("attack_gem") == 1,
-			"gem removal returns the gem and removes its live bonuses");
-		inventory.RemoveItem("material", 1);
+			"gem removal grows the full initial bag and removes its live bonuses");
+		Check(inventory.Capacity > 3 && inventory.GetItemCount("material") == 2, "gem removal preserves existing materials");
+		inventory.RemoveItem("material", 2);
 		inventory.AddItem("health_gem", 1);
-		Check(Socket(first.InstanceId, 1, 2, "health_gem").Success && stats.MaxHealth == 80,
+		int healthGemSlot = Enumerable.Range(0, inventory.Capacity).First(i => inventory.Slots[i]?.ItemId == "health_gem");
+		Check(Socket(first.InstanceId, 1, healthGemSlot, "health_gem").Success && stats.MaxHealth == 80,
 			"two sockets are independent and backpack equipment does not grant bonuses");
 
 		var serializer = new JsonSaveSerializer();

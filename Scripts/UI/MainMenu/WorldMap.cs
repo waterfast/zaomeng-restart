@@ -22,6 +22,7 @@ public partial class WorldMap : Node2D
 
 	public override void _Ready()
 	{
+		Zaomeng.Audio.AudioManager.Instance?.EnterMenu();
 		var catalog = GD.Load<ItemCatalog>("res://Content/Items/ItemCatalog.tres");
 		var (character, inventory) = GameSessionCharacter.Prepare(catalog);
 		_inventory = inventory;
@@ -56,6 +57,7 @@ public partial class WorldMap : Node2D
 		quests.Bind(questRoot, questService, _quests, catalog);
 		quests.CloseRequested += menus.CloseMenu;
 		BindButton(Definition.QuestButton, () => menus.ToggleMenu("quests_menu"));
+		BindTownPanels(layer, menus, catalog, character.Name);
 		if (Definition.HasPlayableLevels)
 		{
 			foreach (LevelEntranceDefinition entrance in Definition.LevelEntrances)
@@ -78,7 +80,7 @@ public partial class WorldMap : Node2D
 		BindButton(Definition.BackButton, () => ChangeMap(Definition.PreviousScenePath));
 		BindButton(Definition.HomeButton, () => ChangeMap("res://Scenes/UI/MainMenu/Map1.tscn"));
 		var feedback = new MapButtonFeedback();
-		feedback.Bind(this, Definition.HasPlayableLevels ? Mathf.Clamp(GameSession.Data!.UnlockedLevel, 1, 3) : 0);
+		feedback.Bind(this, Definition.HasPlayableLevels ? GameSession.Data!.UnlockedLevel : 0);
 		AddChild(feedback);
 	}
 
@@ -88,6 +90,37 @@ public partial class WorldMap : Node2D
 		var button = GetNode<BaseButton>(path);
 		button.Disabled = false;
 		button.Pressed += action;
+	}
+
+	private void BindTownPanels(CanvasLayer layer, MenuManager menus, ItemCatalog catalog, string characterName)
+	{
+		if (!Definition.ShopButton.IsEmpty)
+		{
+			var root = GD.Load<PackedScene>("res://Scenes/UI/Shop/SHOP.tscn").Instantiate<Node2D>();
+			layer.AddChild(root);
+			if (!InputMap.HasAction("shop_menu")) InputMap.AddAction("shop_menu");
+			menus.RegisterMenu("shop_menu", root);
+			var panel = new Zaomeng.UI.Shop.LegacyShopPanel();
+			root.AddChild(panel);
+			var offers = GD.Load<Zaomeng.Shop.ShopCatalog>("res://GameData/Shop/Registry.tres");
+			var wallet = GameSession.Data!.Wallet;
+			panel.Bind(root, new Zaomeng.Shop.ShopService(offers, catalog, _inventory, wallet), wallet,
+				characterName, () => GameSession.Save(_inventory));
+			panel.CloseRequested += menus.CloseMenu;
+			BindButton(Definition.ShopButton, () => menus.ToggleMenu("shop_menu"));
+		}
+		if (!Definition.AlchemyButton.IsEmpty)
+		{
+			var root = GD.Load<PackedScene>("res://Scenes/UI/LDL/ldl.tscn").Instantiate<Node2D>();
+			layer.AddChild(root);
+			if (!InputMap.HasAction("alchemy_menu")) InputMap.AddAction("alchemy_menu");
+			menus.RegisterMenu("alchemy_menu", root);
+			var panel = new Zaomeng.UI.Alchemy.LegacyAlchemyPanel();
+			root.AddChild(panel);
+			panel.Bind(root, _inventory, catalog, GameSession.Data!.Wallet);
+			panel.CloseRequested += menus.CloseMenu;
+			BindButton(Definition.AlchemyButton, () => menus.ToggleMenu("alchemy_menu"));
+		}
 	}
 	private bool TrySave()
 	{
@@ -122,10 +155,14 @@ public partial class WorldMap : Node2D
 		_preview = null;
 	}
 
-	private void EnterLevel(LevelDefinition level, float spawnSpeed)
+	private void EnterLevel(LevelDefinition level, float spawnSpeed, LevelDifficultyDefinition difficulty)
 	{
 		if (level.ProgressLevel > GameSession.Data!.UnlockedLevel) return;
-		try { GameSession.SelectLevel(level, spawnSpeed); }
+		try
+		{
+			level.Validate(GD.Load<ItemCatalog>("res://Content/Items/ItemCatalog.tres"));
+			GameSession.SelectLevel(level, spawnSpeed, difficulty);
+		}
 		catch (System.Exception error) { ShowFeedback(error.Message); return; }
 		Error result = GetTree().ChangeSceneToFile(level.LevelScenePath);
 		if (result != Error.Ok) ShowFeedback($"进入关卡失败：{result}");

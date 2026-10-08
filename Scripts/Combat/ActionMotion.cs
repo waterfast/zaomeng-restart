@@ -11,6 +11,7 @@ public enum ActionMotionMode
 
 /// <summary>一次普攻或技能的水平位移配置；帧号从 0 开始，结束帧不包含在区间内。</summary>
 [GlobalClass]
+[Tool]
 public partial class ActionMotion : Resource
 {
 	[Export] public ActionMotionMode Mode { get; set; } = ActionMotionMode.Stop;

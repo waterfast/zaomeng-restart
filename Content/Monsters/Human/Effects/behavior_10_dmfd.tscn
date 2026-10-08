@@ -1,0 +1,9 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://Scripts/Combat/Skills/ProjectileSkillBehavior.cs" id="behavior"]
+[ext_resource type="PackedScene" path="res://Content/Monsters/Human/Effects/projectile_10_dmfd.tscn" id="projectile"]
+
+[node name="ProjectileAttack" type="Node"]
+script = ExtResource("behavior")
+ProjectileScene = ExtResource("projectile")
+SpawnOffset = Vector2(60, -40)
+ReleaseTimes = PackedFloat32Array(0.3)

@@ -1,0 +1,23 @@
+[gd_resource type="Resource" format=3]
+[ext_resource type="Resource" path="res://Content/Audio/10_bg4.tres" id="music"]
+
+[ext_resource type="Script" path="res://Scripts/Level/LevelDefinition.cs" id="def"]
+[ext_resource type="PackedScene" path="res://Scenes/Maps/Human/Map_10.tscn" id="map"]
+[ext_resource type="Resource" path="res://Content/Levels/Difficulties/normal.tres" id="normal"]
+[ext_resource type="Resource" path="res://Content/Levels/Difficulties/hard.tres" id="hard"]
+
+[resource]
+script = ExtResource("def")
+Music = ExtResource("music")
+Id = "human_10"
+DisplayName = "牛魔谷"
+Description = "地图试玩：原版地形与背景已迁入，本关怪物与 Boss 尚未迁入"
+ProgressLevel = 10
+LevelScenePath = "res://Scenes/Level/Level_10.tscn"
+MapScene = ExtResource("map")
+MapOnly = true
+Difficulties = Array[Resource]([ExtResource("normal"), ExtResource("hard")])
+PlayerSpawn = Vector2(380, 501.0)
+CameraRight = 1926
+CameraBottom = 650
+ExitPosition = Vector2(1726.0, 428.0)

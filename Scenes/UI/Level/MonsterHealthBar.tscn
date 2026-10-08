@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://Scripts/UI/MonsterHealthBar.cs" id="script"]
+[ext_resource type="Texture2D" path="res://Assets/Art/blood/BloodEmpty.png" id="fill"]
+[ext_resource type="Texture2D" path="res://Assets/Art/blood/wk.png" id="frame"]
+
+[ext_resource type="Shader" path="res://Shaders/MonsterHealthBarOutline.gdshader" id="outline"]
+
+[sub_resource type="ShaderMaterial" id="frame_outline"]
+shader = ExtResource("outline")
+shader_parameter/line_color = Color(0, 0, 0, 1)
+shader_parameter/line_thickness = 1.408
+
+[node name="MonsterHealthBar" type="Node2D"]
+position = Vector2(-30, -90)
+scale = Vector2(0.35, 0.15)
+script = ExtResource("script")
+
+[node name="blood_bar" type="TextureProgressBar" parent="."]
+offset_right = 70.0
+offset_bottom = 8.0
+scale = Vector2(2.28, 4)
+mouse_filter = 2
+max_value = 1.0
+step = 0.0
+value = 1.0
+nine_patch_stretch = true
+texture_progress = ExtResource("fill")
+tint_under = Color(1, 1, 1, 0.223529)
+tint_progress = Color(1, 0, 0, 1)
+
+[node name="blood_bar2" type="TextureProgressBar" parent="blood_bar"]
+show_behind_parent = true
+offset_right = 70.0
+offset_bottom = 8.0
+mouse_filter = 2
+max_value = 1.0
+step = 0.0
+value = 1.0
+nine_patch_stretch = true
+texture_progress = ExtResource("fill")
+tint_progress = Color(0.454902, 0, 0, 1)
+
+[node name="Wk" type="Sprite2D" parent="."]
+material = SubResource("frame_outline")
+position = Vector2(80, 16.6667)
+scale = Vector2(1.05171, 1.33333)
+texture = ExtResource("frame")

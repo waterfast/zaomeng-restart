@@ -1,0 +1,57 @@
+[gd_resource type="Resource" format=3 uid="uid://o3gp1t78f76n"]
+
+[ext_resource type="PackedScene" path="res://Scenes/Actors/TamarinKing.tscn" id="actor"]
+[ext_resource type="Script" uid="uid://ebyqgxav3bvs" path="res://Scripts/Monsters/MonsterSkillChoice.cs" id="choice"]
+[ext_resource type="Script" uid="uid://cr4hu7tsm7dkr" path="res://Scripts/Monsters/MonsterDefinition.cs" id="def"]
+[ext_resource type="Script" uid="uid://biwjd8duphott" path="res://Scripts/Monsters/MonsterDropEntry.cs" id="drop"]
+[ext_resource type="Script" uid="uid://cqeji80788sgk" path="res://Scripts/Monsters/MonsterDropTable.cs" id="drops"]
+[ext_resource type="Resource" path="res://Content/Monsters/Templates/tamarin_eruption.tres" id="s0"]
+[ext_resource type="Resource" uid="uid://crj83a5e2nyl4" path="res://Content/Monsters/Templates/tamarin_strike.tres" id="s1"]
+
+[ext_resource type="Resource" path="res://Content/Monsters/RecoveryDrops.tres" id="recovery"]
+[sub_resource type="Resource" id="d0"]
+script = ExtResource("drop")
+ItemId = "dsqz"
+
+[sub_resource type="Resource" id="d1"]
+script = ExtResource("drop")
+ItemId = "dsyj"
+
+
+
+[sub_resource type="Resource" id="drops"]
+script = ExtResource("drops")
+Entries = Array[ExtResource("drop")]([SubResource("d0"), SubResource("d1")])
+RollProbability = 0.5
+ChooseOne = true
+
+[sub_resource type="Resource" id="c0"]
+script = ExtResource("choice")
+Skill = ExtResource("s0")
+MaximumRange = 900.0
+MaximumHeightDifference = 140.0
+
+[sub_resource type="Resource" id="c1"]
+script = ExtResource("choice")
+Skill = ExtResource("s1")
+MaximumRange = 180.0
+MaximumHeightDifference = 140.0
+
+[resource]
+script = ExtResource("def")
+Id = "tamarin_king"
+DisplayName = "禺狨王"
+ActorScene = ExtResource("actor")
+IsBoss = true
+Health = 1200.0
+Attack = 55.0
+Level = 13
+PhysicalDefense = 50.0
+MagicDefense = 80.0
+MoveSpeed = 165.0
+DetectionRange = 1000.0
+Experience = 80
+Souls = 30
+Skills = Array[ExtResource("choice")]([SubResource("c0"), SubResource("c1")])
+Drops = SubResource("drops")
+RecoveryDrops = ExtResource("recovery")

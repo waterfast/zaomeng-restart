@@ -1,0 +1,9 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://Scripts/Combat/Skills/SummonSkillBehavior.cs" id="behavior"]
+[ext_resource type="Resource" path="res://Content/Monsters/Human/monster_7.tres" id="bat"]
+
+[node name="SummonBats" type="Node"]
+script = ExtResource("behavior")
+SummonedMonster = ExtResource("bat")
+Delay = 0.4
+Count = 4

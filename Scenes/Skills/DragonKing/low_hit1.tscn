@@ -1,0 +1,8 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://Scripts/Combat/Skills/ProjectileSkillBehavior.cs" id="script"]
+[ext_resource type="PackedScene" path="res://Scenes/Skills/DragonKing/low_projectile.tscn" id="projectile"]
+[node name="DragonShot" type="Node"]
+script = ExtResource("script")
+ProjectileScene = ExtResource("projectile")
+ReleaseTimes = PackedFloat32Array(0.4)
+SpawnOffset = Vector2(100, -65)

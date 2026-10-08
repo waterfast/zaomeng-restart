@@ -13,9 +13,9 @@ namespace Zaomeng.UI.Inventory;
 /// <summary>给搬运的旧背包场景绑定新数据，保留其原节点、贴图和布局。</summary>
 public sealed class LegacyBackpackView : IDisposable
 {
-	private const int SlotsPerPage = 35;
-	// 空格贴图原色偏灰；统一暖色调，填充和空格共用同一底图与颜色。
-	private static readonly Color SlotBackgroundTint = new(1.22f, 1.12f, 0.78f);
+	private const int SlotsPerPage = 25;
+	// 使用原物品图自带的格子底色，避免差分抠图误删物品细节。
+	private static readonly Color SlotBackgroundTint = Colors.White;
 	private static readonly ItemCategory[] Categories =
 		[ItemCategory.Equipment, ItemCategory.Material, ItemCategory.Consumable];
 	private static readonly string GridPath =
@@ -36,7 +36,7 @@ public sealed class LegacyBackpackView : IDisposable
 	private readonly AcceptDialog _feedback;
 	private readonly GemSocketView _gemSockets;
 	private readonly BulkSaleView _bulkSale;
-	private readonly MagicWeaponView _magicWeapons;
+	private readonly Action? _openMagicWeapon;
 	private readonly ItemActionMenu _actionMenu;
 	private readonly IDisposable _itemActionConnection;
 	private readonly List<(Control Control, Control.GuiInputEventHandler Handler)> _activationHandlers = new();
@@ -69,6 +69,7 @@ public sealed class LegacyBackpackView : IDisposable
 	public LegacyBackpackView(Node2D root, InventoryViewAdapter adapter, ItemCatalog catalog,
 		SaveCharacter character, Wallet wallet, Player player, Action saveChanges,
 		GameplayEvents events,
+		Action? openMagicWeapon = null,
 		CharacterStatRegistry? statRegistry = null)
 	{
 		_root = root;
@@ -84,7 +85,7 @@ public sealed class LegacyBackpackView : IDisposable
 		_gemSockets = new GemSocketView(root, adapter, character, catalog, events, ShowFeedback);
 		_actionMenu = new ItemActionMenu(root, events, ShowFeedback);
 		_bulkSale = new BulkSaleView(root, events, ShowFeedback);
-		_magicWeapons = new MagicWeaponView(root, catalog, character);
+		_openMagicWeapon = openMagicWeapon;
 		_itemActionConnection = events.ItemActionCompleted.Subscribe(Refresh);
 		_equipmentConnection = events.EquipmentChanged.Subscribe(OnEquipmentChanged);
 		_modificationConnection = events.EquipmentModified.Subscribe(change =>
@@ -113,11 +114,6 @@ public sealed class LegacyBackpackView : IDisposable
 		];
 
 		GridContainer grid = root.GetNode<GridContainer>(GridPath);
-		var cutoutMaterial = new ShaderMaterial
-		{
-			Shader = GD.Load<Shader>("res://Shaders/BackpackIconCutout.gdshader")
-		};
-		cutoutMaterial.SetShaderParameter("empty_texture", _emptyIcon);
 		foreach (Node child in grid.GetChildren())
 		{
 			if (child is not Button button)
@@ -137,7 +133,7 @@ public sealed class LegacyBackpackView : IDisposable
 				Name = "ItemIcon",
 				MouseFilter = Control.MouseFilterEnum.Ignore,
 				StretchMode = TextureRect.StretchModeEnum.Scale,
-				Material = cutoutMaterial
+				ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize
 			};
 			button.AddChild(itemIcon);
 			itemIcon.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.FullRect);
@@ -171,7 +167,6 @@ public sealed class LegacyBackpackView : IDisposable
 	{
 		_gemSockets.Dispose();
 		_bulkSale.Dispose();
-		_magicWeapons.Dispose();
 		_actionMenu.Dispose();
 		_itemActionConnection.Dispose();
 		_equipmentConnection.Dispose();
@@ -200,7 +195,7 @@ public sealed class LegacyBackpackView : IDisposable
 	private void OnVisibilityChanged()
 	{
 		if (_root.Visible) Refresh();
-		else { _itemTooltip.Hide(); _actionMenu.Hide(); _gemSockets.Hide(); _feedback.Hide(); _bulkSale.Hide(); _magicWeapons.Hide(); }
+		else { _itemTooltip.Hide(); _actionMenu.Hide(); _gemSockets.Hide(); _feedback.Hide(); _bulkSale.Hide(); }
 	}
 
 	private void Refresh()
@@ -209,7 +204,6 @@ public sealed class LegacyBackpackView : IDisposable
 		_coinLabel.Text = _wallet.Souls.ToString();
 		_stats.Refresh();
 		RefreshEquipment();
-		_magicWeapons.Refresh();
 		RefreshItems();
 	}
 
@@ -348,7 +342,7 @@ public sealed class LegacyBackpackView : IDisposable
 		Action openMenu = () =>
 		{
 			_itemTooltip.Hide();
-			if (slot == EquipmentSlot.MagicWeapon) { _actionMenu.Hide(); _magicWeapons.Show(); return; }
+			if (slot == EquipmentSlot.MagicWeapon) { _actionMenu.Hide(); _openMagicWeapon?.Invoke(); return; }
 			if (_character.Equipment.Get(slot) is not EquipmentInstance instance) { _actionMenu.Hide(); return; }
 			Rect2 area = button.GetGlobalTransformWithCanvas() * new Rect2(Vector2.Zero, button.Size);
 			_actionMenu.Show(new(-1, instance.DefinitionId, instance.InstanceId, slot), area, caption: "已穿戴");

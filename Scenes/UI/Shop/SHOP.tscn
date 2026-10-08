@@ -1,0 +1,485 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://Assets/Art/Shop/17.png" id="2"]
+[ext_resource type="Texture2D" path="res://Assets/Art/show_text/502.png" id="3"]
+[ext_resource type="FontFile" path="res://Assets/Font/HYZhuZiMeiXinTiW.ttf" id="4"]
+[ext_resource type="FontFile" path="res://Assets/Font/Aa文徵明琴赋小楷_mianfeiziti.com.ttf" id="5"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Shop/56.png" id="6"]
+[ext_resource type="Texture2D" path="res://Assets/Art/MagicWeapon/149.png" id="7"]
+[ext_resource type="Texture2D" path="res://Assets/Art/MagicWeapon/145.png" id="8"]
+[ext_resource type="FontFile" path="res://Assets/Font/华康宋体W3.ttc" id="9"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Shop/shopTypeNopress.png" id="10"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Shop/shopTypeOnpress.png" id="11"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Shop/total.png" id="12"]
+[ext_resource type="Texture2D" path="res://Assets/Art/ItemIcon/dshl.png" id="13"]
+[ext_resource type="Texture2D" path="res://Assets/Art/ItemIcon/bsz.png" id="14"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Shop/clothes.png" id="15"]
+[ext_resource type="Texture2D" path="res://Assets/Art/ItemIcon/ttzy.png" id="16"]
+[ext_resource type="FontFile" path="res://Assets/Font/华康海报体W12 &amp; 华康海报体W12(P).ttc" id="17"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Shop/69.png" id="18"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Shop/71.png" id="19"]
+[ext_resource type="FontFile" path="res://Assets/Font/8_FZCuYuan-M03S.ttf" id="20"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Shop/74.png" id="21"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Shop/76.png" id="22"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Shop/51.png" id="23"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Shop/53.png" id="24"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Shop/46.png" id="25"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Skill/236.png" id="26"]
+
+[sub_resource type="StyleBoxTexture" id="1"]
+texture = ExtResource( "6" )
+texture_margin_left = 10.0
+texture_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="2"]
+texture = ExtResource( "6" )
+texture_margin_left = 10.0
+texture_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="3"]
+texture = ExtResource( "6" )
+texture_margin_left = 10.0
+texture_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxEmpty" id="4"]
+
+[sub_resource type="StyleBoxEmpty" id="5"]
+
+[sub_resource type="StyleBoxEmpty" id="6"]
+
+[sub_resource type="StyleBoxEmpty" id="7"]
+
+[sub_resource type="StyleBoxEmpty" id="8"]
+
+[sub_resource type="StyleBoxFlat" id="balance_background"]
+bg_color = Color(0.12, 0.075, 0.035, 0.92)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.65, 0.46, 0.2, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_left = 6
+corner_radius_bottom_right = 6
+
+[node name="SHOP" type="Node2D"]
+
+[node name="fengeceng" type="ColorRect" parent="."]
+offset_right = 940.0
+offset_bottom = 591.0
+color = Color(0, 0, 0, 0)
+metadata/_edit_lock_ = true
+
+[node name="BG" type="Sprite2D" parent="."]
+position = Vector2(470, 295)
+texture = ExtResource( "2" )
+metadata/_edit_lock_ = true
+
+[node name="BG2" type="Sprite2D" parent="BG"]
+position = Vector2(-5, 21)
+texture = ExtResource( "3" )
+metadata/_edit_lock_ = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="BG/BG2"]
+offset_left = 57.0
+offset_top = -213.0
+offset_right = 441.0
+offset_bottom = -178.0
+scale = Vector2(0.75, 0.8)
+theme_override_constants/separation = -17
+metadata/_edit_lock_ = true
+
+[node name="SS" type="Label" parent="BG/BG2/HBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource( "4" )
+theme_override_font_sizes/font_size = 25
+text = "搜索："
+vertical_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="BG/BG2/HBoxContainer2"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_placeholder_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/caret_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource( "5" )
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource( "1" )
+theme_override_styles/focus = SubResource( "2" )
+theme_override_styles/read_only = SubResource( "3" )
+placeholder_text = "输入要找的目标商品名（要准确）"
+caret_blink = true
+metadata/_edit_lock_ = true
+
+[node name="qd" type="TextureButton" parent="BG/BG2/HBoxContainer2"]
+layout_mode = 2
+texture_normal = ExtResource( "7" )
+texture_pressed = ExtResource( "7" )
+texture_hover = ExtResource( "8" )
+texture_disabled = ExtResource( "7" )
+stretch_mode = 3
+metadata/_edit_lock_ = true
+
+[node name="tt" type="Label" parent="BG/BG2/HBoxContainer2/qd"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 2.0
+offset_right = 88.0
+offset_bottom = 30.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 8
+theme_override_fonts/font = ExtResource( "9" )
+text = "确定"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="ShopTypeChange" type="HBoxContainer" parent="BG/BG2"]
+offset_left = -334.0
+offset_top = -220.0
+offset_right = 82.0
+offset_bottom = -180.0
+theme_override_constants/separation = -2
+metadata/_edit_lock_ = true
+
+[node name="Total" type="TextureButton" parent="BG/BG2/ShopTypeChange"]
+layout_mode = 2
+texture_normal = ExtResource( "10" )
+texture_pressed = ExtResource( "10" )
+texture_hover = ExtResource( "11" )
+texture_disabled = ExtResource( "10" )
+stretch_mode = 3
+
+[node name="Total" type="Sprite2D" parent="BG/BG2/ShopTypeChange/Total"]
+position = Vector2(17, 21)
+texture = ExtResource( "12" )
+metadata/_edit_lock_ = true
+
+[node name="Text_1" type="Label" parent="BG/BG2/ShopTypeChange/Total"]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 8.0
+offset_right = 72.0
+offset_bottom = 34.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 8
+theme_override_fonts/font = ExtResource( "9" )
+theme_override_font_sizes/font_size = 15
+text = "全 部"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="zb" type="TextureButton" parent="BG/BG2/ShopTypeChange"]
+layout_mode = 2
+texture_normal = ExtResource( "10" )
+texture_pressed = ExtResource( "10" )
+texture_hover = ExtResource( "11" )
+texture_disabled = ExtResource( "10" )
+stretch_mode = 3
+
+[node name="Total" type="Sprite2D" parent="BG/BG2/ShopTypeChange/zb"]
+position = Vector2(17, 21)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource( "13" )
+metadata/_edit_lock_ = true
+
+[node name="Text_1" type="Label" parent="BG/BG2/ShopTypeChange/zb"]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 8.0
+offset_right = 72.0
+offset_bottom = 34.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 9
+theme_override_fonts/font = ExtResource( "9" )
+theme_override_font_sizes/font_size = 15
+text = "装 备"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="dj" type="TextureButton" parent="BG/BG2/ShopTypeChange"]
+layout_mode = 2
+texture_normal = ExtResource( "10" )
+texture_pressed = ExtResource( "10" )
+texture_hover = ExtResource( "11" )
+texture_disabled = ExtResource( "10" )
+stretch_mode = 3
+
+[node name="Total" type="Sprite2D" parent="BG/BG2/ShopTypeChange/dj"]
+position = Vector2(17, 21)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource( "14" )
+metadata/_edit_lock_ = true
+
+[node name="Text_1" type="Label" parent="BG/BG2/ShopTypeChange/dj"]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 8.0
+offset_right = 72.0
+offset_bottom = 34.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 8
+theme_override_fonts/font = ExtResource( "9" )
+theme_override_font_sizes/font_size = 15
+text = "道 具"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="sz" type="TextureButton" parent="BG/BG2/ShopTypeChange"]
+layout_mode = 2
+texture_normal = ExtResource( "10" )
+texture_pressed = ExtResource( "10" )
+texture_hover = ExtResource( "11" )
+texture_disabled = ExtResource( "10" )
+stretch_mode = 3
+
+[node name="Total" type="Sprite2D" parent="BG/BG2/ShopTypeChange/sz"]
+position = Vector2(17, 21)
+texture = ExtResource( "15" )
+metadata/_edit_lock_ = true
+
+[node name="Text_1" type="Label" parent="BG/BG2/ShopTypeChange/sz"]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 8.0
+offset_right = 72.0
+offset_bottom = 34.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 8
+theme_override_fonts/font = ExtResource( "9" )
+theme_override_font_sizes/font_size = 15
+text = "时 装"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="cb" type="TextureButton" parent="BG/BG2/ShopTypeChange"]
+layout_mode = 2
+texture_normal = ExtResource( "10" )
+texture_pressed = ExtResource( "10" )
+texture_hover = ExtResource( "11" )
+texture_disabled = ExtResource( "10" )
+stretch_mode = 3
+
+[node name="Total" type="Sprite2D" parent="BG/BG2/ShopTypeChange/cb"]
+position = Vector2(19, 18)
+scale = Vector2(0.55, 0.55)
+texture = ExtResource( "16" )
+metadata/_edit_lock_ = true
+
+[node name="Text_1" type="Label" parent="BG/BG2/ShopTypeChange/cb"]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 8.0
+offset_right = 72.0
+offset_bottom = 34.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 8
+theme_override_fonts/font = ExtResource( "9" )
+theme_override_font_sizes/font_size = 15
+text = "翅 膀"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="bg_3" type="Sprite2D" parent="BG/BG2"]
+position = Vector2(160, 145)
+texture = ExtResource( "6" )
+
+[node name="Role" type="Label" parent="BG/BG2/bg_3"]
+offset_left = -163.0
+offset_top = -13.0
+offset_right = -7.0
+offset_bottom = 15.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = ExtResource( "17" )
+theme_override_font_sizes/font_size = 24
+text = "角色： 悟空"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BG/BG2"]
+offset_left = 181.0
+offset_top = 129.0
+offset_right = 317.0
+offset_bottom = 162.0
+metadata/_edit_lock_ = true
+
+[node name="last" type="TextureButton" parent="BG/BG2/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource( "18" )
+texture_pressed = ExtResource( "18" )
+texture_hover = ExtResource( "19" )
+texture_disabled = ExtResource( "18" )
+metadata/_edit_lock_ = true
+
+[node name="page" type="Label" parent="BG/BG2/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource( "20" )
+theme_override_font_sizes/font_size = 24
+text = "1/1"
+horizontal_alignment = 1
+vertical_alignment = 2
+metadata/_edit_lock_ = true
+
+[node name="next" type="TextureButton" parent="BG/BG2/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource( "21" )
+texture_pressed = ExtResource( "21" )
+texture_hover = ExtResource( "22" )
+texture_disabled = ExtResource( "21" )
+metadata/_edit_lock_ = true
+
+[node name="Charge" type="TextureButton" parent="BG/BG2"]
+offset_left = -308.0
+offset_top = 121.0
+offset_right = -169.0
+offset_bottom = 168.0
+texture_normal = ExtResource( "23" )
+texture_pressed = ExtResource( "23" )
+texture_hover = ExtResource( "24" )
+texture_disabled = ExtResource( "23" )
+
+[node name="46" type="Sprite2D" parent="BG/BG2/Charge"]
+show_behind_parent = true
+position = Vector2(104, 55)
+texture = ExtResource( "25" )
+metadata/_edit_lock_ = true
+
+[node name="Balances" type="Panel" parent="BG"]
+offset_left = 192.0
+offset_top = 202.0
+offset_right = 442.0
+offset_bottom = 282.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("balance_background")
+
+[node name="Souls" type="Label" parent="BG/Balances"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 6.0
+offset_right = 238.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 0.9, 0.55, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("20")
+theme_override_font_sizes/font_size = 22
+text = "灵魂：0"
+vertical_alignment = 1
+
+[node name="Coupons" type="Label" parent="BG/Balances"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 40.0
+offset_right = 238.0
+offset_bottom = 74.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 0.9, 0.55, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("20")
+theme_override_font_sizes/font_size = 22
+text = "点券：0"
+vertical_alignment = 1
+
+[node name="Close" type="Button" parent="BG"]
+offset_left = 384.0
+offset_top = -269.0
+offset_right = 447.0
+offset_bottom = -243.0
+theme_override_colors/font_hover_color = Color(1, 0.466667, 0, 1)
+theme_override_fonts/font = ExtResource( "17" )
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource( "4" )
+theme_override_styles/hover = SubResource( "5" )
+theme_override_styles/pressed = SubResource( "6" )
+theme_override_styles/disabled = SubResource( "7" )
+theme_override_styles/focus = SubResource( "8" )
+text = "返 回"
+metadata/_edit_lock_ = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 116.0
+offset_top = 533.0
+offset_right = 667.0
+offset_bottom = 587.0
+color = Color(0, 0, 0, 0.745098)
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_left = -4.0
+offset_top = 7.0
+offset_right = 577.0
+offset_bottom = 57.0
+theme_override_colors/font_color = Color(1, 0.584314, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 0.584314, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource( "9" )
+text = "提示：只有背包已满时再购买才会提示，如若购买时背包未满，但购买数量大于剩余背包格子，那么多余的物品将不会获得，灵魂将会扣除，请注意！！"
+autowrap_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = 225.0
+offset_top = 29.0
+offset_right = 776.0
+offset_bottom = 69.0
+color = Color(0, 0, 0, 0.745098)
+
+[node name="Label" type="Label" parent="ColorRect2"]
+layout_mode = 0
+offset_left = -4.0
+offset_top = -17.0
+offset_right = 577.0
+offset_bottom = 34.0
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource( "5" )
+text = "提示：此版本为单机版本，无法进行充值，请使用游戏货币“灵魂”进行商品的选购，切勿将游戏用于商业用途！！！"
+autowrap_mode = 1
+metadata/_edit_lock_ = true
+

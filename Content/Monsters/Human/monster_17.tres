@@ -1,0 +1,55 @@
+[gd_resource type="Resource" format=3]
+[ext_resource type="Script" path="res://Scripts/Monsters/MonsterDefinition.cs" id="def"]
+[ext_resource type="Script" path="res://Scripts/Monsters/MonsterSkillChoice.cs" id="choice"]
+[ext_resource type="PackedScene" path="res://Scenes/Actors/Human/Monster_17.tscn" id="actor"]
+[ext_resource type="Script" path="res://Scripts/Monsters/MonsterDropTable.cs" id="drops"]
+[ext_resource type="Script" path="res://Scripts/Monsters/MonsterDropEntry.cs" id="drop"]
+[ext_resource type="Resource" path="res://Content/Monsters/Human/monster_17_hit1.tres" id="s0"]
+[ext_resource type="Resource" path="res://Content/Monsters/Human/monster_17_xfj.tres" id="s1"]
+
+[ext_resource type="Resource" path="res://Content/Monsters/RecoveryDrops.tres" id="recovery"]
+[sub_resource type="Resource" id="choice0"]
+script = ExtResource("choice")
+Skill = ExtResource("s0")
+MaximumRange = 95.0
+MaximumHeightDifference = 200.0
+
+[sub_resource type="Resource" id="choice1"]
+script = ExtResource("choice")
+Skill = ExtResource("s1")
+MaximumRange = 250.0
+MaximumHeightDifference = 200.0
+
+[sub_resource type="Resource" id="drop0"]
+script = ExtResource("drop")
+ItemId = "xqzy"
+
+[sub_resource type="Resource" id="drops"]
+script = ExtResource("drops")
+ChooseOne = true
+RollProbability = 0.0
+Entries = Array[Resource]([SubResource("drop0")])
+
+[resource]
+script = ExtResource("def")
+Id = "human_monster_17"
+DisplayName = "龟丞相"
+ActorScene = ExtResource("actor")
+IsBoss = false
+Health = 800
+Attack = 10
+Level = 23
+PhysicalDefense = 80
+MagicDefense = 120
+CriticalRating = 5
+DodgeRating = 5
+Toughness = 0
+Accuracy = 1
+CriticalResistance = 0
+Experience = 50
+Souls = 15
+MoveSpeed = 90.0
+DetectionRange = 1200.0
+Skills = Array[Resource]([SubResource("choice1"), SubResource("choice0")])
+Drops = SubResource("drops")
+RecoveryDrops = ExtResource("recovery")

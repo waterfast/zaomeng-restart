@@ -1,0 +1,26 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://Scripts/Combat/Skills/SkillEffectSequenceBehavior.cs" id="runtime"]
+[ext_resource type="Script" path="res://Scripts/Combat/Skills/SkillEffectCue.cs" id="cue"]
+[ext_resource type="PackedScene" path="res://Content/Skills/Tangseng/Effects/ScriptureAura.tscn" id="scene0"]
+[ext_resource type="PackedScene" path="res://Content/Skills/Tangseng/Effects/ScriptureRing.tscn" id="scene1"]
+[sub_resource type="Resource" id="cue0"]
+script = ExtResource("cue")
+Time = 0
+Scene = ExtResource("scene0")
+Offset = Vector2(20, -15)
+Scale = Vector2(1, 1)
+FollowActor = true
+Mirror = true
+EndsWithCast = true
+[sub_resource type="Resource" id="cue1"]
+script = ExtResource("cue")
+Time = 0.3
+Scene = ExtResource("scene1")
+Offset = Vector2(0, -10)
+Scale = Vector2(1, 1)
+FollowActor = true
+Mirror = true
+EndsWithCast = false
+[node name="jhsj" type="Node"]
+script = ExtResource("runtime")
+Cues = Array[ExtResource("cue")]([SubResource("cue0"), SubResource("cue1")])

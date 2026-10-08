@@ -1,0 +1,11 @@
+[gd_resource type="Resource" format=3]
+[ext_resource type="Script" path="res://Scripts/Combat/SkillDefinition.cs" id="skill"]
+[ext_resource type="PackedScene" path="res://Scenes/Skills/tamarin_eruption.tscn" id="behavior"]
+[resource]
+script = ExtResource("skill")
+Id = "tamarin_eruption"
+DisplayName = "雷云爆发"
+Animation = &"yyzl"
+FramesPerSecond = 60
+CooldownSeconds = 15.0
+BehaviorScene = ExtResource("behavior")

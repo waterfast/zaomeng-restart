@@ -1,0 +1,37 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://Scripts/Combat/Skills/GroundAttackSequenceBehavior.cs" id="script"]
+[ext_resource type="Script" path="res://Scripts/Combat/HitEvent.cs" id="window"]
+[ext_resource type="SpriteFrames" path="res://Content/Monsters/DragonKing_Monster6Bullet3_frames.tres" id="frames"]
+[ext_resource type="Script" path="res://Scripts/Combat/HitDefinition.cs" id="hit"]
+[ext_resource type="Script" path="res://Scripts/Combat/Buffs/BuffDefinition.cs" id="buff"]
+[sub_resource type="Resource" id="buff"]
+script = ExtResource("buff")
+Id = "dragon_freeze_low"
+DisplayName = "冻结"
+Duration = 4.0
+PreventsActions = true
+MoveSpeedMultiplier = 0.0
+[sub_resource type="Resource" id="hit"]
+script = ExtResource("hit")
+FlatDamage = 100.0
+AttackMultiplier = 0.0
+DamageType = 1
+Knockback = Vector2(0.0, 0.0)
+Hitstun = 0.13
+AppliedBuff = SubResource("buff")
+[sub_resource type="Resource" id="window"]
+script = ExtResource("window")
+StartFrame = 0
+EndFrame = 40
+Hit = SubResource("hit")
+[node name="GroundSequence" type="Node"]
+script = ExtResource("script")
+StartTime = 0
+ReleaseTimes = PackedFloat32Array(1.2,1.2,1.2,1.2,1.2)
+Offsets = PackedVector2Array(-182,0,-91,0,0,0,91,0,182,0)
+Radius = 38.0
+Frames = ExtResource("frames")
+Animation = &"Monster6Bullet3"
+VisualOffset = Vector2(0,-70)
+VisualScale = Vector2(1,1)
+Hits = Array[Resource]([SubResource("window")])

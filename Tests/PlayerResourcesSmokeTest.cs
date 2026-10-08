@@ -97,6 +97,9 @@ public partial class PlayerResourcesSmokeTest : Node2D
 			await ToSignal(GetTree().CreateTimer(1.1), SceneTreeTimer.SignalName.Timeout);
 			foreach (Node child in GetChildren()) Check(!child.Name.ToString().StartsWith("CombatText"), "floating text lifetime");
 			GD.Print("PLAYER RESOURCES SMOKE TEST PASSED");
+			// 与玩法整合测试一致，在引擎关闭前终结临时原生数组包装。
+			GC.Collect();
+			GC.WaitForPendingFinalizers();
 			GetTree().Quit();
 		}
 		catch (Exception error)

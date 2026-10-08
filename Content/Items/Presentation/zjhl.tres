@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="MagicWeaponPresentation" format=3]
+[ext_resource type="Script" path="res://Scripts/Equipment/MagicWeaponPresentation.cs" id="script"]
+[ext_resource type="Texture2D" path="res://Assets/Art/MagicWeapon/Skill_Icon/zjhl.png" id="icon"]
+
+[resource]
+script = ExtResource("script")
+Animation = &"zjhl"
+SkillName = "伏妖神火"
+SkillDescription = "向前方释放火焰，造成多段物理伤害。基础版暂不附加灼烧。"
+SkillIcon = ExtResource("icon")

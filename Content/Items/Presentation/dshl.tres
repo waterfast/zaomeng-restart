@@ -5,5 +5,5 @@
 script = ExtResource("1")
 Animation = &"dshl"
 SkillName = "烈焰火柱"
-SkillDescription = "释放三道火柱，对范围内的敌人造成多段物理伤害（并令其灼烧）。"
+SkillDescription = "释放三道火柱，对范围内的敌人造成多段物理伤害。基础版暂不附加灼烧。"
 SkillIcon = ExtResource("2")

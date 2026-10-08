@@ -12,6 +12,7 @@ public partial class ItemDescriptionBinding : Node
 
 	public static ItemDescriptionBinding Attach(Label label)
 	{
+		label.AutowrapMode = TextServer.AutowrapMode.WordSmart;
 		var binding = new ItemDescriptionBinding { _label = label };
 		binding._skills = new EquipmentSkillListView { Name = "EquipmentSkills", MouseFilter = Control.MouseFilterEnum.Ignore };
 		label.GetParent().AddChild(binding._skills);

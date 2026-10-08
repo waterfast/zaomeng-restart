@@ -1,0 +1,38 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://Scripts/Combat/Skills/BurstSkillBehavior.cs" id="behavior"]
+[ext_resource type="Script" path="res://Scripts/Combat/Skills/BurstAttackDefinition.cs" id="burst"]
+[ext_resource type="Script" path="res://Scripts/Combat/HitDefinition.cs" id="hit"]
+[ext_resource type="Script" path="res://Scripts/Combat/HitEvent.cs" id="window"]
+[ext_resource type="SpriteFrames" path="res://Content/Monsters/Human/Effects/Monster11Bullet.tres" id="frames"]
+
+[ext_resource type="Resource" path="res://Content/Buffs/stunned.tres" id="debuff"]
+[sub_resource type="Resource" id="hit"]
+
+script = ExtResource("hit")
+AppliedBuff = ExtResource("debuff")
+FlatDamage = 0.0
+AttackMultiplier = 11.0
+DamageType = 1
+Knockback = Vector2(100, -100)
+
+
+[sub_resource type="Resource" id="window"]
+script = ExtResource("window")
+StartFrame = 0
+EndFrame = 18
+Hit = SubResource("hit")
+
+[sub_resource type="Resource" id="burst"]
+script = ExtResource("burst")
+Frames = ExtResource("frames")
+Animation = &"Monster11Bullet"
+Radius = 90.0
+Positions = PackedVector2Array(0, 0, -120, 0, 120, 0)
+ReleaseTimes = PackedFloat32Array(0.2, 0.8, 1.4)
+Scales = PackedFloat32Array(1, 1, 1)
+Hits = Array[Resource]([SubResource("window")])
+
+[node name="BurstAttack" type="Node"]
+script = ExtResource("behavior")
+Burst = SubResource("burst")
+TargetEnemy = false

@@ -1,0 +1,16 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://Scripts/Combat/Skills/SkillEffectSequenceBehavior.cs" id="runtime"]
+[ext_resource type="Script" path="res://Scripts/Combat/Skills/SkillEffectCue.cs" id="cue"]
+[ext_resource type="PackedScene" path="res://Content/Skills/Tangseng/Effects/WaterShadow.tscn" id="scene0"]
+[sub_resource type="Resource" id="cue0"]
+script = ExtResource("cue")
+Time = 0.1
+Scene = ExtResource("scene0")
+Offset = Vector2(0, 0)
+Scale = Vector2(1, 1)
+FollowActor = false
+Mirror = true
+EndsWithCast = false
+[node name="shy" type="Node"]
+script = ExtResource("runtime")
+Cues = Array[ExtResource("cue")]([SubResource("cue0")])

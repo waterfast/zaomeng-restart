@@ -1,0 +1,33 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://Scripts/Combat/Skills/GroundAttackSequenceBehavior.cs" id="script"]
+[ext_resource type="Script" path="res://Scripts/Combat/HitEvent.cs" id="window"]
+[ext_resource type="SpriteFrames" path="res://Content/Monsters/DragonKing_htsl_frames.tres" id="frames"]
+[ext_resource type="Script" path="res://Scripts/Combat/HitDefinition.cs" id="hit"]
+[sub_resource type="Resource" id="hit"]
+script = ExtResource("hit")
+FlatDamage = 90.0
+AttackMultiplier = 0.0
+DamageType = 1
+Knockback = Vector2(20.0, -250.0)
+Hitstun = 0.13
+[sub_resource type="Resource" id="window"]
+script = ExtResource("window")
+StartFrame = 3
+EndFrame = 38
+Hit = SubResource("hit")
+[sub_resource type="CanvasItemMaterial" id="additive"]
+blend_mode = 1
+[node name="GroundSequence" type="Node"]
+script = ExtResource("script")
+StartTime = 0.8
+ReleaseTimes = PackedFloat32Array(0)
+Offsets = PackedVector2Array(0,0)
+Radius = 70.0
+Frames = ExtResource("frames")
+Animation = &"htsl"
+VisualOffset = Vector2(0,-100)
+VisualScale = Vector2(1,1)
+Hits = Array[Resource]([SubResource("window")])
+TargetEnemy = true
+SampleTargetOnRelease = true
+VisualMaterial = SubResource("additive")

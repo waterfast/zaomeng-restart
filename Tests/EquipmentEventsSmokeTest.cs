@@ -124,8 +124,8 @@ public partial class EquipmentEventsSmokeTest : Node
 			GameSaveData saved = new JsonSaveSerializer().Deserialize(json);
 			Check(saved.Characters[0].Equipment.Get(EquipmentSlot.Weapon)?.DefinitionId == second.Id && saved.Inventory.Slots[0]?.ItemId == first.Id,
 				"save captures both sides of the swap without losing items");
-			Check(events.EquipmentRequested.Send(new(EquipmentAction.Unequip)).Error == EquipmentError.InventoryFull,
-				"unequip into a full inventory fails");
+			Check(events.EquipmentRequested.Send(new(EquipmentAction.Unequip, ExpectedInstanceId: "missing")).Error == EquipmentError.ItemChanged,
+				"stale unequip identity fails before changing the inventory");
 			Check(character.Equipment.Get(EquipmentSlot.Weapon)?.DefinitionId == second.Id && inventory.Slots[0]?.ItemId == first.Id && saves == 1,
 				"failed unequip preserves both states and does not save");
 			Check(events.EquipmentRequested.Send(new(EquipmentAction.Equip, 0, incomingInstanceId)).Error == EquipmentError.ItemChanged,
@@ -139,9 +139,10 @@ public partial class EquipmentEventsSmokeTest : Node
 		using (var nextBinding = new GameplayEquipmentBinding(character, catalog, inventory, events,
 			() => attack = CharacterStatCalculator.Calculate(character, catalog).Attack, () => saves++, new Wallet()))
 		{
-			inventory.RestoreSlots([null]);
 			Check(events.EquipmentRequested.Send(new(EquipmentAction.Unequip)).Success && attack == 3 && saves == 2,
-				"next gameplay can bind and successfully unequip");
+				"next gameplay can bind and unequip by growing the inventory");
+			Check(inventory.Capacity > 1 && inventory.Slots[0]?.ItemId == first.Id && inventory.Slots[1]?.ItemId == second.Id,
+				"unequip growth preserves both equipment instances");
 			Check(events.EquipmentRequested.Send(new(EquipmentAction.Unequip)).Success && saves == 2,
 				"empty unequip does not save twice");
 		}

@@ -1,0 +1,46 @@
+[gd_scene format=3]
+[ext_resource type="PackedScene" path="res://Scenes/Actors/Monster.tscn" id="base"]
+[ext_resource type="SpriteFrames" path="res://Content/Monsters/Human/monster_20_frames.tres" id="frames"]
+[ext_resource type="AnimationLibrary" path="res://Content/Monsters/Human/monster_20_animations.tres" id="animations"]
+
+[ext_resource type="Script" path="res://Scripts/Monsters/HealthPhaseMechanic.cs" id="phase_script"]
+[ext_resource type="Resource" path="res://Content/Monsters/Human/monster_19.tres" id="shark"]
+[sub_resource type="CapsuleShape2D" id="body"]
+radius = 19.46666666666667
+height = 58.400000000000006
+
+[sub_resource type="RectangleShape2D" id="attack"]
+size = Vector2(180, 120)
+
+[node name="HumanMonster20" instance=ExtResource("base")]
+
+[node name="BodyShape" parent="." index="0"]
+position = Vector2(0, -29.200000000000003)
+shape = SubResource("body")
+
+[node name="Visual" parent="Facing" index="0"]
+position = Vector2(0, -87.5)
+
+[node name="Body" parent="Facing/Visual" index="0"]
+sprite_frames = ExtResource("frames")
+animation = &"wait_1"
+
+[node name="HitBox" parent="Facing" index="1"]
+position = Vector2(-75, -45)
+
+[node name="Shape" parent="Facing/HitBox" index="0"]
+shape = SubResource("attack")
+
+[node name="HurtBox" parent="." index="2"]
+position = Vector2(0, -29.200000000000003)
+
+[node name="Shape" parent="HurtBox" index="0"]
+shape = SubResource("body")
+
+[node name="AnimationPlayer" parent="." index="3"]
+libraries/ = ExtResource("animations")
+
+[node name="HealthPhase" type="Node2D" parent="."]
+script = ExtResource("phase_script")
+
+LowPhaseSummon = ExtResource("shark")

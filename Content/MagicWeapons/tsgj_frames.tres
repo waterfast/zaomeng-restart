@@ -1,0 +1,205 @@
+[gd_resource type="SpriteFrames" format=3]
+
+[ext_resource type="Texture2D" path="res://Assets/Art/MagicWeapon/MagicWeapon2/Sword_Skill.png" id="11"]
+[sub_resource type="AtlasTexture" id="186"]
+atlas = ExtResource( "11" )
+region = Rect2(34, 10, 24, 193)
+script = null
+
+[sub_resource type="AtlasTexture" id="187"]
+atlas = ExtResource( "11" )
+region = Rect2(810, 52, 24, 216)
+script = null
+
+[sub_resource type="AtlasTexture" id="188"]
+atlas = ExtResource( "11" )
+region = Rect2(907, 95, 24, 237)
+script = null
+
+[sub_resource type="AtlasTexture" id="189"]
+atlas = ExtResource( "11" )
+region = Rect2(1004, 137, 24, 261)
+script = null
+
+[sub_resource type="AtlasTexture" id="190"]
+atlas = ExtResource( "11" )
+region = Rect2(1101, 180, 24, 282)
+script = null
+
+[sub_resource type="AtlasTexture" id="191"]
+atlas = ExtResource( "11" )
+region = Rect2(1198, 221, 24, 306)
+script = null
+
+[sub_resource type="AtlasTexture" id="192"]
+atlas = ExtResource( "11" )
+region = Rect2(1295, 264, 24, 328)
+script = null
+
+[sub_resource type="AtlasTexture" id="193"]
+atlas = ExtResource( "11" )
+region = Rect2(1392, 341, 24, 282)
+script = null
+
+[sub_resource type="AtlasTexture" id="194"]
+atlas = ExtResource( "11" )
+region = Rect2(1489, 417, 24, 237)
+script = null
+
+[sub_resource type="AtlasTexture" id="195"]
+atlas = ExtResource( "11" )
+region = Rect2(131, 493, 24, 193)
+script = null
+
+[sub_resource type="AtlasTexture" id="196"]
+atlas = ExtResource( "11" )
+region = Rect2(211, 493, 66, 197)
+script = null
+
+[sub_resource type="AtlasTexture" id="197"]
+atlas = ExtResource( "11" )
+region = Rect2(303, 493, 70, 197)
+script = null
+
+[sub_resource type="AtlasTexture" id="198"]
+atlas = ExtResource( "11" )
+region = Rect2(398, 493, 74, 197)
+script = null
+
+[sub_resource type="AtlasTexture" id="199"]
+atlas = ExtResource( "11" )
+region = Rect2(499, 493, 73, 197)
+script = null
+
+[sub_resource type="AtlasTexture" id="200"]
+atlas = ExtResource( "11" )
+region = Rect2(596, 493, 73, 197)
+script = null
+
+[sub_resource type="AtlasTexture" id="201"]
+atlas = ExtResource( "11" )
+region = Rect2(693, 493, 73, 197)
+script = null
+
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource( "186" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "186" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "187" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "187" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "188" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "188" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "189" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "189" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "190" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "190" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "191" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "191" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "192" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "192" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "193" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "193" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "194" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "194" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "195" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "195" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "196" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "196" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "197" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "197" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "198" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "198" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "199" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "199" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "200" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "200" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "201" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "201" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "201" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "201" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "201" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "201" )
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"SwordBullet",
+"speed": 25.0
+}]

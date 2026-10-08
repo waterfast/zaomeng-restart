@@ -1,0 +1,92 @@
+[
+  {
+    "number": 2,
+    "name": "水帘洞",
+    "source": "F:\\godot\\造梦八荒-(4.1)\\Scene\\Level\\Level_2.tscn",
+    "map": "Scenes/Maps/Human/Map_2.tscn",
+    "exit": [
+      4254.0,
+      509.0
+    ]
+  },
+  {
+    "number": 3,
+    "name": "桃花源",
+    "source": "F:\\godot\\造梦八荒-(4.1)\\Scene\\Level\\Level_3.tscn",
+    "map": "Scenes/Maps/Human/Map_3.tscn",
+    "exit": [
+      4485.0,
+      515.0
+    ]
+  },
+  {
+    "number": 4,
+    "name": "蝙蝠窟",
+    "source": "F:\\godot\\造梦八荒-(4.1)\\Scene\\Level\\Level_4.tscn",
+    "map": "Scenes/Maps/Human/Map_4.tscn",
+    "exit": [
+      4330.0,
+      507.0
+    ]
+  },
+  {
+    "number": 5,
+    "name": "七星洞",
+    "source": "F:\\godot\\造梦八荒-(4.1)\\Scene\\Level\\Level_5.tscn",
+    "map": "Scenes/Maps/Human/Map_5.tscn",
+    "exit": [
+      4307.0,
+      514.5
+    ]
+  },
+  {
+    "number": 6,
+    "name": "迦楼罗之穴",
+    "source": "F:\\godot\\造梦八荒-(4.1)\\Scene\\Level\\Level_6.tscn",
+    "map": "Scenes/Maps/Human/Map_6.tscn",
+    "exit": [
+      4524.0,
+      511.0
+    ]
+  },
+  {
+    "number": 7,
+    "name": "浅岸",
+    "source": "F:\\godot\\造梦八荒-(4.1)\\Scene\\Level\\Level_7.tscn",
+    "map": "Scenes/Maps/Human/Map_7.tscn",
+    "exit": [
+      4378.0,
+      516.0
+    ]
+  },
+  {
+    "number": 8,
+    "name": "东海",
+    "source": "F:\\godot\\造梦八荒-(4.1)\\Scene\\Level\\Level_8.tscn",
+    "map": "Scenes/Maps/Human/Map_8.tscn",
+    "exit": [
+      4315.0,
+      511.0
+    ]
+  },
+  {
+    "number": 9,
+    "name": "鲨之涡流",
+    "source": "F:\\godot\\造梦八荒-(4.1)\\Scene\\Level\\Level_9.tscn",
+    "map": "Scenes/Maps/Human/Map_9.tscn",
+    "exit": [
+      4371.0,
+      511.0
+    ]
+  },
+  {
+    "number": 10,
+    "name": "牛魔谷",
+    "source": "F:\\godot\\造梦八荒-(4.1)\\Scene\\Level\\Level_10.tscn",
+    "map": "Scenes/Maps/Human/Map_10.tscn",
+    "exit": [
+      1726.0,
+      505.0
+    ]
+  }
+]

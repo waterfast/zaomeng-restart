@@ -1,0 +1,189 @@
+[gd_resource type="SpriteFrames" format=3]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster_18/Bullet/1.png" id="72"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster_18/Bullet/2.png" id="73"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster_18/Bullet/3.png" id="74"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster_18/Bullet/4.png" id="75"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster_18/Bullet/5.png" id="76"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster_18/Bullet/6.png" id="77"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster_18/Bullet/7.png" id="78"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster_18/Bullet/8.png" id="79"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster_18/Bullet/9.png" id="80"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster_18/Bullet/10.png" id="81"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster_18/Bullet/11.png" id="82"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster_18/Bullet/12.png" id="83"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster_18/Bullet/13.png" id="84"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster_18/Bullet/14.png" id="85"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster_18/Bullet/15.png" id="86"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster_18/Bullet/16.png" id="87"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster_18/Bullet/17.png" id="88"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster_18/Bullet/18.png" id="89"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster_18/Bullet/19.png" id="90"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster_18/Bullet/20.png" id="91"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster_18/Bullet/21.png" id="92"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster_18/Bullet/22.png" id="93"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster_18/Bullet/23.png" id="94"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster_18/Bullet/24.png" id="95"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster_18/Bullet/25.png" id="96"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster_18/Bullet/26.png" id="97"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster_18/Bullet/27.png" id="98"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster_18/Bullet/28.png" id="99"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster_18/Bullet/29.png" id="100"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster_18/Bullet/30.png" id="101"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster_18/Bullet/31.png" id="102"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster_18/Bullet/32.png" id="103"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster_18/Bullet/33.png" id="104"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster_18/Bullet/34.png" id="105"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster_18/Bullet/35.png" id="106"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster_18/Bullet/36.png" id="107"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster_18/Bullet/37.png" id="108"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster_18/Bullet/38.png" id="109"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster_18/Bullet/39.png" id="110"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster_18/Bullet/40.png" id="111"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster_18/Bullet/41.png" id="112"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster_18/Bullet/42.png" id="113"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster_18/Bullet/43.png" id="114"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster_18/Bullet/44.png" id="115"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster_18/Bullet/45.png" id="116"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource( "72" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "73" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "74" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "75" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "76" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "77" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "78" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "79" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "80" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "81" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "82" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "83" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "84" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "85" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "86" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "87" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "88" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "89" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "90" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "91" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "92" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "93" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "94" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "95" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "96" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "97" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "98" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "99" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "100" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "101" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "102" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "103" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "104" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "105" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "106" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "107" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "108" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "109" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "110" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "111" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "112" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "113" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "114" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "115" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "116" )
+}],
+"loop": false,
+"name": &"Monster18Bullet_2",
+"speed": 25.0
+}]

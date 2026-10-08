@@ -1,0 +1,25 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://Scripts/Combat/Skills/SkillProjectile.cs" id="projectile"]
+[ext_resource type="Script" path="res://Scripts/Combat/HitDefinition.cs" id="hit"]
+[ext_resource type="SpriteFrames" path="res://Content/Monsters/Human/Effects/PoisionBullet.tres" id="frames"]
+
+[ext_resource type="Resource" path="res://Content/Buffs/poison.tres" id="debuff"]
+[sub_resource type="Resource" id="hit"]
+
+script = ExtResource("hit")
+AppliedBuff = ExtResource("debuff")
+FlatDamage = 0.0
+AttackMultiplier = 0.16666666666666666
+DamageType = 2
+Knockback = Vector2(100, -100)
+
+
+[node name="Projectile" type="Node2D"]
+script = ExtResource("projectile")
+Frames = ExtResource("frames")
+Animation = &"PoisionBullet"
+Hit = SubResource("hit")
+Speed = 450.0
+Lifetime = 2.5
+HitRadius = 40.0
+VerticalHitRadius = 80.0

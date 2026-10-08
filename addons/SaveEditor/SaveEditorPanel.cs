@@ -27,6 +27,9 @@ public partial class SaveEditorPanel : VBoxContainer
 	private int _selectedCharacterIndex = -1;
 	private bool _updatingJson;
 	private bool _jsonDirty;
+	private EditorFileSystem? _fileSystem;
+	private bool _catalogReloadPending;
+	private bool _resourcesImporting;
 
 	private SpinBox _slot = null!;
 	private OptionButton _existingSaves = null!;
@@ -56,10 +59,58 @@ public partial class SaveEditorPanel : VBoxContainer
 		CustomMinimumSize = new Vector2(440, 390);
 		SizeFlagsHorizontal = SizeFlags.ExpandFill;
 		BuildUi();
-		LoadCatalog();
 		RefreshSaveList();
-		if (_catalog is not null)
-			SetStatus("选择槽位后读取存档；新建只在内存中创建，点击保存才写入文件。");
+		SetStatus("选择槽位后读取存档；新建只在内存中创建，点击保存才写入文件。");
+		if (Engine.IsEditorHint())
+		{
+			_fileSystem = EditorInterface.Singleton.GetResourceFilesystem();
+			_fileSystem.FilesystemChanged += RequestCatalogReload;
+			_fileSystem.ResourcesReimporting += OnResourcesReimporting;
+			_fileSystem.ResourcesReimported += OnResourcesReimported;
+			// 插件初始化早于首轮导入；等编辑器开始处理帧且扫描结束后再读取依赖。
+			RequestCatalogReload();
+		}
+		else LoadCatalog();
+	}
+
+	public override void _Process(double delta)
+	{
+		if (!_catalogReloadPending || _resourcesImporting || _fileSystem?.IsScanning() == true) return;
+		_catalogReloadPending = false;
+		SetProcess(false);
+		LoadCatalog();
+	}
+
+	public override void _ExitTree()
+	{
+		if (_fileSystem is not null)
+		{
+			_fileSystem.FilesystemChanged -= RequestCatalogReload;
+			_fileSystem.ResourcesReimporting -= OnResourcesReimporting;
+			_fileSystem.ResourcesReimported -= OnResourcesReimported;
+		}
+		_fileSystem = null;
+	}
+
+	private void OnResourcesReimporting(string[] paths) => _resourcesImporting = true;
+
+	private void OnResourcesReimported(string[] paths)
+	{
+		_resourcesImporting = false;
+		RequestCatalogReload();
+	}
+
+	private void RequestCatalogReload()
+	{
+		_catalogReloadPending = true;
+		SetProcess(true);
+	}
+
+	private void Refresh()
+	{
+		if (_fileSystem is not null) RequestCatalogReload();
+		else LoadCatalog();
+		RefreshSaveList();
 	}
 
 	private void BuildUi()
@@ -69,7 +120,7 @@ public partial class SaveEditorPanel : VBoxContainer
 		_existingSaves = new OptionButton { SizeFlagsHorizontal = SizeFlags.ExpandFill };
 		_existingSaves.ItemSelected += OnExistingSaveSelected;
 		existingRow.AddChild(_existingSaves);
-		AddButton(existingRow, "刷新", RefreshSaveList);
+		AddButton(existingRow, "刷新", Refresh);
 
 		var selectionRow = AddRow(this);
 		AddLabel(selectionRow, "槽位");
@@ -81,8 +132,8 @@ public partial class SaveEditorPanel : VBoxContainer
 		_format.AddItem("加密 DAT");
 		_format.ItemSelected += _ => OnFormatSelected();
 		selectionRow.AddChild(_format);
-		AddLabel(selectionRow, "新建容量");
-		_newCapacity = AddSpin(selectionRow, 1, 999, 70);
+		AddLabel(selectionRow, "初始格子");
+		_newCapacity = AddSpin(selectionRow, 1, 999, 25);
 		_newCapacity.CustomMinimumSize = new Vector2(70, 0);
 		var actionRow = AddRow(this);
 		AddButton(actionRow, "读取", LoadSave);
@@ -184,23 +235,33 @@ public partial class SaveEditorPanel : VBoxContainer
 
 	private void LoadCatalog()
 	{
-		_catalog = ResourceLoader.Load<ItemCatalog>("res://Content/Items/ItemCatalog.tres");
-		if (_catalog is null)
+		string selectedId = _item.Selected >= 0 && _item.Selected < _definitions.Count
+			? _definitions[_item.Selected].Id : "";
+		try
 		{
-			SetStatus("无法加载物品目录 Content/Items/ItemCatalog.tres。");
-			return;
+			// 更新外部修改的资源及依赖，避免长期复用首次加载失败或过期的缓存。
+			var catalog = ResourceLoader.Load<ItemCatalog>("res://Content/Items/ItemCatalog.tres",
+				cacheMode: ResourceLoader.CacheMode.ReplaceDeep)
+				?? throw new InvalidOperationException("无法加载 Content/Items/ItemCatalog.tres。");
+			catalog.Validate();
+			_catalog = catalog;
+			_definitions.Clear();
+			_item.Clear();
+			foreach (ItemDefinition definition in catalog.Definitions)
+			{
+				_definitions.Add(definition);
+				_item.AddItem($"{definition.DisplayName} ({definition.Id})");
+				if (definition.Id == selectedId) _item.Select(_definitions.Count - 1);
+			}
+			if (_status.Text.StartsWith("物品目录加载失败", StringComparison.Ordinal))
+				SetStatus("物品目录已重新加载。可以继续编辑存档。");
 		}
-		try { _catalog.Validate(); }
 		catch (Exception error)
 		{
 			_catalog = null;
-			SetStatus("物品目录无效：" + error.Message);
-			return;
-		}
-		foreach (ItemDefinition definition in _catalog.Definitions)
-		{
-			_definitions.Add(definition);
-			_item.AddItem($"{definition.DisplayName} ({definition.Id})");
+			_definitions.Clear();
+			_item.Clear();
+			SetStatus("物品目录加载失败：" + error.Message + " 修正资源后点击刷新重试。");
 		}
 	}
 
@@ -371,6 +432,7 @@ public partial class SaveEditorPanel : VBoxContainer
 		if (_catalog is null) throw new InvalidOperationException("没有可用的物品目录。");
 		var selected = _inventory.GetSelectedItems();
 		if (selected.Length == 0) throw new InvalidOperationException("请先选择一个背包槽位。");
+		CommitBasicFields();
 		SaveDataEditor.ClearSlot(_data!.Inventory, _catalog, selected[0]);
 		RefreshInventory();
 		RefreshJson();
@@ -398,6 +460,7 @@ public partial class SaveEditorPanel : VBoxContainer
 		if (_data is null) return;
 		try
 		{
+			EnsureJsonApplied();
 			CommitCharacterFields();
 			_selectedCharacterIndex = (int)index;
 			ShowCharacterFields();
@@ -423,9 +486,11 @@ public partial class SaveEditorPanel : VBoxContainer
 	private void CommitBasicFields()
 	{
 		EnsureLoaded();
-		_data!.Wallet.Souls = ParseNonnegativeLong(_souls, "灵魂");
-		_data.Wallet.Coupons = ParseNonnegativeLong(_coupons, "点券");
+		long souls = ParseNonnegativeLong(_souls, "灵魂");
+		long coupons = ParseNonnegativeLong(_coupons, "点券");
 		CommitCharacterFields();
+		_data!.Wallet.Souls = souls;
+		_data.Wallet.Coupons = coupons;
 	}
 
 	private void SyncBasicFieldsToJson()
@@ -442,9 +507,10 @@ public partial class SaveEditorPanel : VBoxContainer
 	{
 		if (_data is null || _selectedCharacterIndex < 0 || _selectedCharacterIndex >= _data.Characters.Count) return;
 		SaveCharacter character = _data.Characters[_selectedCharacterIndex];
+		long experience = ParseNonnegativeLong(_experience, "经验");
 		character.Name = _characterName.Text;
 		character.Level = (int)_level.Value;
-		character.Experience = ParseNonnegativeLong(_experience, "经验");
+		character.Experience = experience;
 	}
 
 	private void RefreshAll()

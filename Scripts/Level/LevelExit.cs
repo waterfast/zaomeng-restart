@@ -9,22 +9,11 @@ public partial class LevelExit : AnimatedSprite2D
 	[Export] public float InteractionRadius { get; set; } = 85;
 	public event Action? Activated;
 	private Player _player = null!;
-	private Label _prompt = null!;
 	private bool _activated;
 	public void Bind(Player player) => _player = player;
 	public bool CanActivate => !_activated && !GetTree().Paused && IsInstanceValid(_player) &&
 		!_player.IsDead && _player.InputEnabled &&
-		GlobalPosition.DistanceTo(_player.GlobalPosition + new Vector2(0, -45)) <= InteractionRadius;
-	public override void _Ready()
-	{
-		_prompt = new Label { Position = new(-140, -130), Size = new(280, 36), HorizontalAlignment = HorizontalAlignment.Center };
-		_prompt.AddThemeFontOverride("font", GD.Load<FontFile>("res://Assets/Font/Aa文徵明琴赋小楷_mianfeiziti.com.ttf"));
-		_prompt.AddThemeFontSizeOverride("font_size", 24);
-		_prompt.AddThemeConstantOverride("outline_size", 4);
-		_prompt.AddThemeColorOverride("font_outline_color", Colors.Black);
-		AddChild(_prompt);
-	}
-	public override void _Process(double delta) => _prompt.Text = CanActivate ? "按 W 结算" : "靠近光圈，按 W 结算";
+		GlobalPosition.DistanceTo(_player.GlobalPosition) <= InteractionRadius;
 	public override void _Input(InputEvent input)
 	{
 		if (input is not InputEventKey { Pressed: true, Echo: false } key ||

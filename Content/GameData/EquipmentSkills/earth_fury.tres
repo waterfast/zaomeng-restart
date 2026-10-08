@@ -1,13 +1,20 @@
-[gd_resource type="Resource" script_class="EquipmentSkillDefinition" format=3]
+[gd_resource type="Resource" script_class="PassiveSkillDefinition" format=3]
 
-[ext_resource type="Script" path="res://Scripts/Equipment/Skills/EquipmentSkillDefinition.cs" id="skill"]
-[ext_resource type="Script" path="res://Scripts/Equipment/Skills/SkillDamageBonusEffect.cs" id="effect"]
+[ext_resource type="Script" path="res://Scripts/Combat/Effects/PassiveSkillDefinition.cs" id="skill"]
+[ext_resource type="Script" path="res://Scripts/Combat/Effects/SkillParameterEffect.cs" id="effect"]
 [ext_resource type="Resource" path="res://Content/Skills/Wukong/lyfb.tres" id="target"]
+
+[ext_resource type="Script" path="res://Scripts/Combat/Effects/AttackParameterModifiers.cs" id="modifiers"]
+
+[sub_resource type="Resource" id="parameters"]
+script = ExtResource("modifiers")
+DamageMultiplier = 1.5
 
 [sub_resource type="Resource" id="bonus"]
 script = ExtResource("effect")
-TargetSkill = ExtResource("target")
-BonusFraction = 0.5
+TargetSkills = Array[Resource]([ExtResource("target")])
+AffectsNormalAttacks = false
+Modifiers = SubResource("parameters")
 
 [resource]
 script = ExtResource("skill")

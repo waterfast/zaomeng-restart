@@ -1,0 +1,43 @@
+[gd_resource type="TileSet" format=3]
+
+[ext_resource type="Texture2D" path="res://Content/Terrain/GrassStoneTexture.tres" id="1_xlvqt"]
+[ext_resource type="Texture2D" path="res://Content/Terrain/RockTexture.tres" id="2_vjf4d"]
+[ext_resource type="Texture2D" path="res://Content/Terrain/WaterTexture.tres" id="3_cv56b"]
+[ext_resource type="Texture2D" path="res://Content/Terrain/WaterSurfaceTexture.tres" id="4_ex8k6"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ddc3a"]
+texture = ExtResource("1_xlvqt")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -30, 32, -30, 32, 32, -32, 32)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vxyas"]
+texture = ExtResource("2_vjf4d")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_drmwe"]
+texture = ExtResource("3_cv56b")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vrmti"]
+texture = ExtResource("4_ex8k6")
+texture_region_size = Vector2i(64, 64)
+0:0/animation_columns = 4
+0:0/animation_speed = 5.0
+0:0/animation_frame_0/duration = 1.0
+0:0/animation_frame_1/duration = 1.0
+0:0/animation_frame_2/duration = 1.0
+0:0/animation_frame_3/duration = 1.0
+0:0/0 = 0
+
+[resource]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 0
+sources/0 = SubResource("TileSetAtlasSource_ddc3a")
+sources/1 = SubResource("TileSetAtlasSource_vxyas")
+sources/2 = SubResource("TileSetAtlasSource_drmwe")
+sources/3 = SubResource("TileSetAtlasSource_vrmti")

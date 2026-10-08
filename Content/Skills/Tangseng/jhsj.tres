@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="SkillDefinition" format=3]
+[ext_resource type="Script" path="res://Scripts/Combat/SkillDefinition.cs" id="script"]
+[ext_resource type="Resource" path="res://Content/Skills/Growth/Tangseng/jhsj.tres" id="growth"]
+[ext_resource type="PackedScene" path="res://Content/Skills/Behaviors/jhsj.tscn" id="behavior"]
+
+[ext_resource type="Resource" path="res://Content/Combat/WushuangGains/10_15.tres" id="wushuang_gain"]
+
+[resource]
+script = ExtResource("script")
+WushuangGain = ExtResource("wushuang_gain")
+Id = "jhsj"
+DisplayName = "九环圣经"
+Animation = &"jhsj"
+FramesPerSecond = 10
+CooldownSeconds = 2.4
+Growth = ExtResource("growth")
+BehaviorScene = ExtResource("behavior")

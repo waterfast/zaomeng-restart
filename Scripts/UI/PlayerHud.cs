@@ -1,5 +1,6 @@
 using Godot;
 using Zaomeng.Skills;
+using Zaomeng.Settings;
 
 namespace Zaomeng.UI;
 
@@ -10,6 +11,8 @@ public partial class PlayerHud : Node
 	private TextureProgressBar _health = null!;
 	private TextureProgressBar _mana = null!;
 	private TextureProgressBar _experience = null!;
+	private TextureProgressBar _wushuang = null!;
+	private AnimatedSprite2D _wushuangReady = null!;
 	private Label _healthText = null!;
 	private Label _manaText = null!;
 	private Label _experienceText = null!;
@@ -24,6 +27,13 @@ public partial class PlayerHud : Node
 	{
 		_player = player;
 		_skills = skills;
+		_wushuang = hud.GetNode<TextureProgressBar>("roleLayer/role_menu/ws_wk/ws_effect");
+		_wushuangReady = hud.GetNode<AnimatedSprite2D>("roleLayer/role_menu/max_ws");
+		_wushuang.MaxValue = Zaomeng.Combat.Wushuang.WushuangRuntime.Maximum;
+		var buffs = new BuffBar { Name = "ActiveBuffs", MouseFilter = Control.MouseFilterEnum.Pass };
+		buffs.Bind(player);
+		// 使用原场景角色框下方的 Buff_box，位置随 HUD 一起调整。
+		hud.GetNode<HBoxContainer>("roleLayer/role_hp_mp_exp/Buff_box").AddChild(buffs);
 		string[] keys = ["Y", "U", "I", "O", "L"];
 		for (int i = 0; i < keys.Length; i++)
 		{
@@ -49,11 +59,15 @@ public partial class PlayerHud : Node
 		Refresh();
 	}
 
-	public override void _Process(double delta) => Refresh();
+	private double _frameDelta;
+	public override void _Process(double delta) { _frameDelta = delta; Refresh(); }
 
 	private void Refresh()
 	{
 		if (_player is null) return;
+		_wushuang.Value = _player.Wushuang.Value;
+		_wushuangReady.Visible = _player.Wushuang.IsReady;
+		_wushuang.TooltipText = $"无双 {_player.Wushuang.Value}/100 · 空格开启";
 		for (int i = 0; i < _skillIcons.Length; i++)
 		{
 			SkillDefinition? skill = _player.GetEquippedSkill(i);
@@ -84,9 +98,10 @@ public partial class PlayerHud : Node
 		_manaRecovery.Text = !_player.IsDead && _player.Mana < _player.MaxMana && manaRecovery > 0 ? $"+{manaRecovery:0.##}/s" : "";
 	}
 
-	private static void SetBar(TextureProgressBar bar, double value, double maximum)
+	private void SetBar(TextureProgressBar bar, double value, double maximum)
 	{
 		bar.MaxValue = maximum > 0 ? maximum : 1;
-		bar.Value = value;
+		bar.Value = _frameDelta > 0 && GameSettings.IsEnabled(GameOption.SmoothHealthBars)
+			? Mathf.Lerp((float)bar.Value, (float)value, 1 - Mathf.Exp(-12 * (float)_frameDelta)) : value;
 	}
 }

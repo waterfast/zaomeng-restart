@@ -39,8 +39,6 @@ public static class SkillDetailsDescription
 				}
 				finally { behavior.Free(); }
 			}
-			if (action.LinkedCooldownSkill is not null)
-				lines.Add($"同时触发关联技能冷却：{SkillCooldownCalculator.Calculate(action.LinkedCooldownSeconds, haste):0.###}秒");
 		}
 		else
 		{

@@ -3,9 +3,12 @@
 [ext_resource type="Script" path="res://Scripts/Equipment/EquipmentDefinition.cs" id="1"]
 [ext_resource type="Texture2D" path="res://Assets/Art/BackPack/AllItems/jlxmc.png" id="2"]
 
+[ext_resource type="Texture2D" path="res://Assets/Art/ItemIcon/jlxmc.png" id="ground_icon"]
+
 [resource]
 script = ExtResource("1")
 Id = "jlxmc"
+GroundIcon = ExtResource("ground_icon")
 DisplayName = "卷帘降魔铲"
 DescriptionKey = "ITEM_JLXMC_DESCRIPTION"
 Quality = "精良"

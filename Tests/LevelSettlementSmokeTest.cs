@@ -30,7 +30,7 @@ public partial class SettlementTestRunner : Node
 				Prepare(role);
 				GameplayLevel level = await Enter();
 				Player player = level.GetNode<Player>("Player");
-				ForestEncounter forest = level.GetChildren().OfType<ForestEncounter>().Single();
+				WaveEncounter forest = level.GetChildren().OfType<WaveEncounter>().Single();
 				forest.SetPhysicsProcess(false);
 				if (role == "role_1")
 				{
@@ -49,7 +49,7 @@ public partial class SettlementTestRunner : Node
 				}
 				if (role == "role_1")
 				{
-					typeof(ForestEncounter).GetProperty("Wave")!.SetValue(forest, 5);
+					typeof(WaveEncounter).GetProperty("Wave")!.SetValue(forest, 5);
 					foreach (CollisionShape2D gate in level.GetNode("WaveGates").GetChildren()) gate.SetDeferred(CollisionShape2D.PropertyName.Disabled, true);
 					var finalGate = (CollisionShape2D)level.GetNode("WaveGates").GetChild(3);
 					finalGate.SetDeferred(CollisionShape2D.PropertyName.Disabled, false);
@@ -89,7 +89,7 @@ public partial class SettlementTestRunner : Node
 				level = (GameplayLevel)GetTree().CurrentScene;
 				player = level.GetNode<Player>("Player");
 				Check(!GetTree().Paused && !player.IsDead && player.Health == player.MaxHealth && player.Mana == player.MaxMana && !level.HasNode("Settlement"), "retry creates fresh run and restores resources");
-				level.GetChildren().OfType<ForestEncounter>().Single().SetPhysicsProcess(false);
+				level.GetChildren().OfType<WaveEncounter>().Single().SetPhysicsProcess(false);
 				player.ReceiveHit(new HitResult(10000, Vector2.Zero, 0, DamageType.True));
 				for (int frame = 0; frame < 420 && !level.HasNode("Settlement"); frame++) await ToSignal(GetTree(), SceneTree.SignalName.PhysicsFrame);
 				view = level.GetNode<LevelSettlement>("Settlement").GetChildren().OfType<Node2D>().Single();
@@ -100,6 +100,9 @@ public partial class SettlementTestRunner : Node
 			GD.Print("LEVEL SETTLEMENT SMOKE TEST PASSED");
 			GetTree().CurrentScene.QueueFree();
 			await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+			// 测试枚举产生的原生数组包装需在引擎存活时终结，避免退出后再调用原生释放。
+			GC.Collect();
+			GC.WaitForPendingFinalizers();
 			GetTree().Quit();
 		}
 		catch (Exception error) { GetTree().Paused = false; GD.PushError(error.ToString()); GetTree().Quit(1); }

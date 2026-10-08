@@ -1,0 +1,67 @@
+[gd_resource type="Resource" format=3]
+[ext_resource type="Script" path="res://Scripts/Monsters/MonsterDefinition.cs" id="def"]
+[ext_resource type="Script" path="res://Scripts/Monsters/MonsterSkillChoice.cs" id="choice"]
+[ext_resource type="Script" path="res://Scripts/Monsters/MonsterDropTable.cs" id="table"]
+[ext_resource type="Script" path="res://Scripts/Monsters/MonsterDropEntry.cs" id="entry"]
+[ext_resource type="PackedScene" path="res://Scenes/Actors/DragonKing.tscn" id="actor"]
+[ext_resource type="Resource" path="res://Content/Monsters/DragonKing/high_htsl.tres" id="s0"]
+[ext_resource type="Resource" path="res://Content/Monsters/DragonKing/high_qnbx.tres" id="s1"]
+[ext_resource type="Resource" path="res://Content/Monsters/DragonKing/high_qnhb.tres" id="s2"]
+[ext_resource type="Resource" path="res://Content/Monsters/DragonKing/high_hit1.tres" id="s3"]
+[sub_resource type="Resource" id="choice0"]
+script = ExtResource("choice")
+Skill = ExtResource("s0")
+MaximumRange = 600.0
+MaximumHeightDifference = 200.0
+[sub_resource type="Resource" id="choice1"]
+script = ExtResource("choice")
+Skill = ExtResource("s1")
+MaximumRange = 600.0
+MaximumHeightDifference = 200.0
+[sub_resource type="Resource" id="choice2"]
+script = ExtResource("choice")
+Skill = ExtResource("s2")
+MaximumRange = 600.0
+MaximumHeightDifference = 200.0
+[sub_resource type="Resource" id="choice3"]
+script = ExtResource("choice")
+Skill = ExtResource("s3")
+MaximumRange = 160.0
+MaximumHeightDifference = 200.0
+[sub_resource type="Resource" id="drop0"]
+script = ExtResource("entry")
+ItemId = "ryjgb"
+
+[sub_resource type="Resource" id="drop2"]
+script = ExtResource("entry")
+ItemId = "jhcz"
+[sub_resource type="Resource" id="drop3"]
+script = ExtResource("entry")
+ItemId = "qxsh"
+
+
+[sub_resource type="Resource" id="drops"]
+script = ExtResource("table")
+ChooseOne = true
+RollProbability = 0.4
+Entries = Array[Resource]([SubResource("drop0"), SubResource("drop2"), SubResource("drop3")])
+[resource]
+script = ExtResource("def")
+Id = "dragon_king_high"
+DisplayName = "龙王·高"
+ActorScene = ExtResource("actor")
+IsBoss = true
+Health = 15000
+Attack = 15
+Level = 27
+PhysicalDefense = 110
+MagicDefense = 160
+CriticalRating = 5
+Luck = 15
+Accuracy = 10
+Experience = 200
+Souls = 200
+MoveSpeed = 110.0
+DetectionRange = 600.0
+Skills = Array[Resource]([SubResource("choice0"), SubResource("choice1"), SubResource("choice2"), SubResource("choice3")])
+Drops = SubResource("drops")

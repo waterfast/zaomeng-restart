@@ -1,0 +1,122 @@
+[gd_resource type="SpriteFrames" format=3]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster_18/Bullet_2.png" id="71"]
+[sub_resource type="AtlasTexture" id="1733"]
+atlas = ExtResource( "71" )
+region = Rect2(992, 214, 496, 214)
+
+[sub_resource type="AtlasTexture" id="1731"]
+atlas = ExtResource( "71" )
+region = Rect2(0, 214, 496, 214)
+
+[sub_resource type="AtlasTexture" id="1735"]
+atlas = ExtResource( "71" )
+region = Rect2(1488, 642, 496, 214)
+
+[sub_resource type="AtlasTexture" id="1726"]
+atlas = ExtResource( "71" )
+region = Rect2(496, 642, 496, 214)
+
+[sub_resource type="AtlasTexture" id="1721"]
+atlas = ExtResource( "71" )
+region = Rect2(0, 0, 496, 214)
+
+[sub_resource type="AtlasTexture" id="1727"]
+atlas = ExtResource( "71" )
+region = Rect2(992, 642, 496, 214)
+
+[sub_resource type="AtlasTexture" id="1734"]
+atlas = ExtResource( "71" )
+region = Rect2(0, 428, 496, 214)
+
+[sub_resource type="AtlasTexture" id="1720"]
+atlas = ExtResource( "71" )
+region = Rect2(496, 428, 496, 214)
+
+[sub_resource type="AtlasTexture" id="1723"]
+atlas = ExtResource( "71" )
+region = Rect2(992, 428, 496, 214)
+
+[sub_resource type="AtlasTexture" id="1730"]
+atlas = ExtResource( "71" )
+region = Rect2(1488, 0, 496, 214)
+
+[sub_resource type="AtlasTexture" id="1728"]
+atlas = ExtResource( "71" )
+region = Rect2(496, 0, 496, 214)
+
+[sub_resource type="AtlasTexture" id="1732"]
+atlas = ExtResource( "71" )
+region = Rect2(496, 214, 496, 214)
+
+[sub_resource type="AtlasTexture" id="1724"]
+atlas = ExtResource( "71" )
+region = Rect2(1488, 428, 496, 214)
+
+[sub_resource type="AtlasTexture" id="1725"]
+atlas = ExtResource( "71" )
+region = Rect2(0, 642, 496, 214)
+
+[sub_resource type="AtlasTexture" id="1722"]
+atlas = ExtResource( "71" )
+region = Rect2(1488, 214, 496, 214)
+
+[sub_resource type="AtlasTexture" id="1729"]
+atlas = ExtResource( "71" )
+region = Rect2(992, 0, 496, 214)
+
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource( "1720" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "1721" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "1722" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "1723" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "1724" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "1725" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "1726" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "1727" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "1728" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "1729" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "1730" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "1731" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "1732" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "1733" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "1734" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "1735" )
+}],
+"loop": false,
+"name": &"Monster18Bullet_1",
+"speed": 25.0
+}]

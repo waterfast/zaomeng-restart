@@ -1,0 +1,53 @@
+[gd_scene format=3]
+[ext_resource type="PackedScene" path="res://Scenes/Actors/Monster.tscn" id="base"]
+[ext_resource type="SpriteFrames" path="res://Content/Monsters/MacaqueKingFrames.tres" id="frames"]
+[ext_resource type="AnimationLibrary" path="res://Content/Monsters/MacaqueKingAnimations.tres" id="animations"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster4/M4Bullet_1.png" id="wind"]
+[sub_resource type="CapsuleShape2D" id="body"]
+radius = 28.0
+height = 112.0
+[sub_resource type="RectangleShape2D" id="attack"]
+size = Vector2(180, 110)
+[node name="MacaqueKing" instance=ExtResource("base")]
+IsBoss = true
+NormalCombo = Array[Resource]([])
+AttackVisualScaleRoots = Array[NodePath]([NodePath("Facing/Visual/QuakeScale"), NodePath("Facing/Visual/WindCharge/Modifier")])
+[node name="BodyShape" parent="." index="0"]
+position = Vector2(0, -56.0)
+shape = SubResource("body")
+[node name="Visual" parent="Facing" index="0"]
+position = Vector2(0, -68.5)
+[node name="Body" parent="Facing/Visual" index="0"]
+sprite_frames = ExtResource("frames")
+animation = &"wait"
+[node name="HitBox" parent="Facing" index="1"]
+position = Vector2(0, 0)
+[node name="Shape" parent="Facing/HitBox" index="0"]
+position = Vector2(-81, -46.5)
+shape = SubResource("attack")
+[node name="HurtBox" parent="." index="2"]
+position = Vector2(0, -56.0)
+[node name="Shape" parent="HurtBox" index="0"]
+shape = SubResource("body")
+[node name="AnimationPlayer" parent="." index="3"]
+libraries/ = ExtResource("animations")
+
+[node name="QuakeScale" type="Node2D" parent="Facing/Visual"]
+position = Vector2(0, 68.5)
+
+[node name="Quake" type="Sprite2D" parent="Facing/Visual/QuakeScale"]
+position = Vector2(0, -68.5)
+visible = false
+hframes = 5
+vframes = 2
+
+[node name="WindCharge" type="Node2D" parent="Facing/Visual"]
+
+[node name="Modifier" type="Node2D" parent="Facing/Visual/WindCharge"]
+
+[node name="Visual" type="Sprite2D" parent="Facing/Visual/WindCharge/Modifier"]
+position = Vector2(0, -36)
+visible = false
+texture = ExtResource("wind")
+hframes = 4
+frame = 1

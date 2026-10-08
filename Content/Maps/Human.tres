@@ -7,6 +7,22 @@
 [ext_resource type="Resource" path="res://Content/Levels/water_cave.tres" id="water_cave"]
 [ext_resource type="Resource" path="res://Content/Levels/peach_garden.tres" id="peach_garden"]
 
+[ext_resource type="Resource" path="res://Content/Levels/human_4.tres" id="level4"]
+
+[ext_resource type="Resource" path="res://Content/Levels/human_5.tres" id="level5"]
+
+[ext_resource type="Resource" path="res://Content/Levels/human_6.tres" id="level6"]
+
+[ext_resource type="Resource" path="res://Content/Levels/human_7.tres" id="level7"]
+
+[ext_resource type="Resource" path="res://Content/Levels/human_8.tres" id="level8"]
+
+[ext_resource type="Resource" path="res://Content/Levels/human_9.tres" id="level9"]
+
+[ext_resource type="Resource" path="res://Content/Levels/human_10.tres" id="level10"]
+
+[ext_resource type="Resource" path="res://Content/Levels/soul_realm.tres" id="realm"]
+
 [sub_resource type="Resource" id="entry1"]
 script = ExtResource("entrance")
 ButtonPath = NodePath("level_1")
@@ -22,13 +38,55 @@ script = ExtResource("entrance")
 ButtonPath = NodePath("level_3")
 Levels = Array[Resource]([ExtResource("peach_garden")])
 
+[sub_resource type="Resource" id="entry4"]
+script = ExtResource("entrance")
+ButtonPath = NodePath("level_4")
+Levels = Array[Resource]([ExtResource("level4")])
+
+[sub_resource type="Resource" id="entry5"]
+script = ExtResource("entrance")
+ButtonPath = NodePath("level_5")
+Levels = Array[Resource]([ExtResource("level5")])
+
+[sub_resource type="Resource" id="entry6"]
+script = ExtResource("entrance")
+ButtonPath = NodePath("level_6")
+Levels = Array[Resource]([ExtResource("level6")])
+
+[sub_resource type="Resource" id="entry7"]
+script = ExtResource("entrance")
+ButtonPath = NodePath("level_7")
+Levels = Array[Resource]([ExtResource("level7")])
+
+[sub_resource type="Resource" id="entry8"]
+script = ExtResource("entrance")
+ButtonPath = NodePath("level_8")
+Levels = Array[Resource]([ExtResource("level8")])
+
+[sub_resource type="Resource" id="entry9"]
+script = ExtResource("entrance")
+ButtonPath = NodePath("Node2D2/Node2D/level_9")
+Levels = Array[Resource]([ExtResource("level9")])
+
+[sub_resource type="Resource" id="entry10"]
+script = ExtResource("entrance")
+ButtonPath = NodePath("level_10")
+Levels = Array[Resource]([ExtResource("level10")])
+
+[sub_resource type="Resource" id="realm_entry"]
+script = ExtResource("entrance")
+ButtonPath = NodePath("level_lhhj")
+Levels = Array[Resource]([ExtResource("realm")])
+
 [resource]
 script = ExtResource("1")
 ScenePath = "res://Scenes/UI/MainMenu/Map1.tscn"
 HasPlayableLevels = true
-LevelEntrances = Array[Resource]([SubResource("entry1"), SubResource("entry2"), SubResource("entry3")])
+LevelEntrances = Array[Resource]([SubResource("entry1"), SubResource("entry2"), SubResource("entry3"), SubResource("entry4"), SubResource("entry5"), SubResource("entry6"), SubResource("entry7"), SubResource("entry8"), SubResource("entry9"), SubResource("entry10"), SubResource("realm_entry")])
 SkillButton = NodePath("Skill_learn")
 QuestButton = NodePath("Task")
+ShopButton = NodePath("Shop")
+AlchemyButton = NodePath("ldl")
 SaveButton = NodePath("bc_game")
 MenuButton = NodePath("turn_mainmenu")
 ForwardButton = NodePath("next")

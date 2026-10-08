@@ -20,14 +20,34 @@ public static class GameSession
 	public static GameSaveData? Data { get; private set; }
 	public static InventoryService? Inventory { get; private set; }
 	public static LevelDefinition? SelectedLevel { get; private set; }
+	public static LevelDifficultyDefinition? SelectedDifficulty { get; private set; }
 	public static float SelectedSpawnSpeed { get; private set; } = 1;
+	private static (string Destination, float Health, float Mana)? _entranceVitals;
+	public static void SetEntranceVitals(string destination, float health, float mana)
+		=> _entranceVitals = (destination, health, mana);
+	public static void ClearEntranceVitals() => _entranceVitals = null;
+	public static (float Health, float Mana)? TakeEntranceVitals(string destination)
+	{
+		var vitals = _entranceVitals;
+		_entranceVitals = null;
+		return vitals is { } value && value.Destination == destination ? (value.Health, value.Mana) : null;
+	}
+	public static void ClearLevelSelection()
+	{
+		SelectedLevel = null;
+		SelectedDifficulty = null;
+		SelectedSpawnSpeed = 1;
+		ClearEntranceVitals();
+	}
 
-	public static void SelectLevel(LevelDefinition level, float spawnSpeed)
+	public static void SelectLevel(LevelDefinition level, float spawnSpeed, LevelDifficultyDefinition difficulty)
 	{
 		if (string.IsNullOrWhiteSpace(level.LevelScenePath) || !ResourceLoader.Exists(level.LevelScenePath) ||
-			level.MapScene is null || level.ProgressLevel < 1 || spawnSpeed <= 0)
+			level.MapScene is null || level.ProgressLevel < 1 || !float.IsFinite(spawnSpeed) || spawnSpeed <= 0
+			|| !difficulty.IsValid || !level.Difficulties.Contains(difficulty))
 			throw new ArgumentException("关卡缺少场景、地图或有效的出怪配置。");
 		SelectedLevel = level;
+		SelectedDifficulty = difficulty;
 		SelectedSpawnSpeed = spawnSpeed;
 	}
 
@@ -56,32 +76,37 @@ public static class GameSession
 			Data = null;
 			Inventory = null;
 			SelectedLevel = null;
+		SelectedDifficulty = null;
 		}
 		return deleted;
 	}
 
 	public static void SelectNewSlot(int slot)
 	{
+		ClearEntranceVitals();
 		Slot = slot;
 		Data = null;
 		Inventory = null;
 		SelectedLevel = null;
+		SelectedDifficulty = null;
 	}
 
 	public static void Load(int slot)
 	{
+		ClearEntranceVitals();
 		GameSaveData data = Manager.Load(slot);
 		Slot = slot;
 		Data = data;
 		Inventory = null;
 		SelectedLevel = null;
+		SelectedDifficulty = null;
 	}
 
 	public static void BeginNewGame(ItemCatalog catalog, string characterId = "role_1")
 	{
 		if (Slot is < 1 or > 99) throw new InvalidOperationException("请先选择存档槽位。");
 		var role = Zaomeng.Skills.SkillCatalogRegistry.Default.Get(characterId);
-		Inventory = new InventoryService(70, catalog);
+		Inventory = new InventoryService(25, catalog);
 		Data = InventorySaveMapper.Capture(Inventory);
 		Data.CurrentCharacterId = characterId;
 		var character = new Zaomeng.Character.Character { Id = characterId, Name = role.DisplayName, Level = 1 };
@@ -93,7 +118,7 @@ public static class GameSession
 	public static InventoryService PrepareInventory(ItemCatalog catalog)
 	{
 		if (Inventory != null) return Inventory;
-		Inventory = new InventoryService(Data?.Inventory.Capacity ?? 70, catalog);
+		Inventory = new InventoryService(Data?.Inventory.Capacity ?? 25, catalog);
 		if (Data is not null) InventorySaveMapper.Restore(Data, Inventory);
 		return Inventory;
 	}
@@ -107,7 +132,7 @@ public static class GameSession
 
 	public static void CompleteLevel(int levelNumber, InventoryService inventory)
 	{
-		if (levelNumber is < 1 or > 3) throw new ArgumentOutOfRangeException(nameof(levelNumber));
+		if (levelNumber < 1) throw new ArgumentOutOfRangeException(nameof(levelNumber));
 		if (Data is null) throw new InvalidOperationException("没有正在使用的存档。");
 		Data.UnlockedLevel = Math.Max(Data.UnlockedLevel, levelNumber + 1);
 		Save(inventory);

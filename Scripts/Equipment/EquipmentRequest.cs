@@ -9,7 +9,7 @@ public sealed record EquipmentRequest(EquipmentAction Action, int InventorySlot 
 public enum EquipmentError
 {
 	None, ServiceUnavailable, Busy, InvalidSlot, ItemChanged, NotEquipment,
-	LevelTooLow, WrongCharacter, InventoryFull, InstanceMissing, InvalidSocket,
+	LevelTooLow, WrongCharacter, InstanceMissing, InvalidSocket,
 	SocketOccupied, GemChanged, NotGem, EmptySocket
 }
 

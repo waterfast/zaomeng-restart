@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="BurstAttackDefinition" format=3]
+[ext_resource type="Script" path="res://Scripts/Combat/Skills/BurstAttackDefinition.cs" id="burst"]
+[ext_resource type="Script" path="res://Scripts/Combat/HitDefinition.cs" id="hit"]
+[ext_resource type="Script" path="res://Scripts/Combat/HitEvent.cs" id="window"]
+[ext_resource type="SpriteFrames" path="res://Content/MagicWeapons/zjhl_frames.tres" id="frames"]
+[sub_resource type="Resource" id="hit"]
+script = ExtResource("hit")
+AttackMultiplier = 0.13
+AttackMultiplierMax = 0.17
+MultiplierPerLevel = 0
+FlatDamage = 0
+DamageType = 0
+Knockback = Vector2(30, -30)
+[sub_resource type="Resource" id="w0"]
+script = ExtResource("window")
+StartFrame = 2
+EndFrame = 5
+Hit = SubResource("hit")
+[sub_resource type="Resource" id="w1"]
+script = ExtResource("window")
+StartFrame = 6
+EndFrame = 9
+Hit = SubResource("hit")
+[sub_resource type="Resource" id="w2"]
+script = ExtResource("window")
+StartFrame = 10
+EndFrame = 13
+Hit = SubResource("hit")
+
+[resource]
+script = ExtResource("burst")
+Frames = ExtResource("frames")
+Animation = &"PurpleGlodCucurbitBullet"
+Radius = 110
+Positions = PackedVector2Array(110, -30)
+ReleaseTimes = PackedFloat32Array(0.2)
+Scales = PackedFloat32Array(1)
+Hits = Array[ExtResource("window")]([SubResource("w0"), SubResource("w1"), SubResource("w2")])

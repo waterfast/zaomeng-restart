@@ -1,0 +1,66 @@
+[gd_resource type="Resource" format=3]
+[ext_resource type="Script" path="res://Scripts/Monsters/MonsterDefinition.cs" id="def"]
+[ext_resource type="Script" path="res://Scripts/Monsters/MonsterSkillChoice.cs" id="choice"]
+[ext_resource type="PackedScene" path="res://Scenes/Actors/Monster.tscn" id="scene"]
+[ext_resource type="Resource" path="res://Content/Monsters/Templates/monkey_strike.tres" id="skill"]
+[ext_resource type="Script" path="res://Scripts/Monsters/MonsterDropTable.cs" id="drops"]
+[ext_resource type="Script" path="res://Scripts/Monsters/MonsterDropEntry.cs" id="drop"]
+
+[ext_resource type="Resource" path="res://Content/Monsters/RecoveryDrops.tres" id="recovery"]
+[sub_resource type="Resource" id="choice"]
+script = ExtResource("choice")
+Skill = ExtResource("skill")
+MaximumRange = 58.0
+
+
+[sub_resource type="Resource" id="drop0"]
+script = ExtResource("drop")
+ItemId = "ptxzg"
+Probability = 1.0
+
+[sub_resource type="Resource" id="drop1"]
+script = ExtResource("drop")
+ItemId = "ptxzf"
+Probability = 1.0
+
+[sub_resource type="Resource" id="drop2"]
+script = ExtResource("drop")
+ItemId = "ptsmz"
+Probability = 1.0
+
+[sub_resource type="Resource" id="drop3"]
+script = ExtResource("drop")
+ItemId = "ptjs"
+Probability = 1.0
+
+
+
+
+
+
+
+[sub_resource type="Resource" id="drops"]
+script = ExtResource("drops")
+RollProbability = 0.22
+ChooseOne = true
+Entries = Array[Resource]([SubResource("drop0"), SubResource("drop1"), SubResource("drop2"), SubResource("drop3")])
+
+[resource]
+script = ExtResource("def")
+Id = "monkey"
+DisplayName = "小猴子"
+ActorScene = ExtResource("scene")
+IsBoss = false
+Health = 60.0
+Attack = 10.0
+Level = 5
+PhysicalDefense = 50.0
+MagicDefense = 80.0
+CriticalRating = 0.0
+MoveSpeed = 85.0
+DetectionRange = 1000.0
+Experience = 1
+Souls = 1
+Skills = Array[Resource]([SubResource("choice")])
+Drops = SubResource("drops")
+RecoveryDrops = ExtResource("recovery")

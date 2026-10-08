@@ -1,4 +1,6 @@
 [gd_scene format=3]
+[ext_resource type="Resource" path="res://Content/Audio/TangsengSounds.tres" id="sounds"]
+
 [ext_resource type="PackedScene" path="res://Scenes/Actors/Player.tscn" id="player"]
 [ext_resource type="AnimationLibrary" path="res://Content/Skills/Tangseng/Animations.tres" id="animations"]
 [ext_resource type="Resource" path="res://Content/Attacks/Tangseng/hit1.tres" id="attack"]
@@ -6,7 +8,11 @@
 [ext_resource type="Texture2D" path="res://Assets/Art/HeroPicture/Role2AllEquipment/Role_2_Eq_Empty.png" id="equipment"]
 [ext_resource type="SpriteFrames" path="res://Content/Skills/Tangseng/DeathFrames.tres" id="death"]
 
+[ext_resource type="Resource" path="res://Content/Combat/Wushuang.tres" id="wushuang_buff"]
+
 [node name="Tangseng" instance=ExtResource("player")]
+WushuangBuff = ExtResource("wushuang_buff")
+SoundProfile = ExtResource("sounds")
 EquippedSkill1 = null
 EquippedSkill2 = null
 EquippedSkill3 = null

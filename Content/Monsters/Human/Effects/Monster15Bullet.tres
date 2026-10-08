@@ -1,0 +1,115 @@
+[gd_resource type="SpriteFrames" format=3]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster_8/wait/1.png" id="70"]
+[sub_resource type="AtlasTexture" id="1709"]
+atlas = ExtResource( "70" )
+region = Rect2(768, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="1711"]
+atlas = ExtResource( "70" )
+region = Rect2(192, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="1713"]
+atlas = ExtResource( "70" )
+region = Rect2(576, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="1710"]
+atlas = ExtResource( "70" )
+region = Rect2(0, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="1708"]
+atlas = ExtResource( "70" )
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="1714"]
+atlas = ExtResource( "70" )
+region = Rect2(768, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="1715"]
+atlas = ExtResource( "70" )
+region = Rect2(0, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="1718"]
+atlas = ExtResource( "70" )
+region = Rect2(576, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="1719"]
+atlas = ExtResource( "70" )
+region = Rect2(768, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="1706"]
+atlas = ExtResource( "70" )
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="1707"]
+atlas = ExtResource( "70" )
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="1705"]
+atlas = ExtResource( "70" )
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="1717"]
+atlas = ExtResource( "70" )
+region = Rect2(384, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="1712"]
+atlas = ExtResource( "70" )
+region = Rect2(384, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="1716"]
+atlas = ExtResource( "70" )
+region = Rect2(192, 384, 192, 192)
+
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource( "1705" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "1706" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "1707" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "1708" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "1709" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "1710" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "1711" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "1712" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "1713" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "1714" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "1715" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "1716" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "1717" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "1718" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "1719" )
+}],
+"loop": false,
+"name": &"Monster15Bullet",
+"speed": 25.0
+}]

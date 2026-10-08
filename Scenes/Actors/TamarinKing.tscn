@@ -1,0 +1,39 @@
+[gd_scene format=3]
+[ext_resource type="PackedScene" path="res://Scenes/Actors/Monster.tscn" id="base"]
+[ext_resource type="SpriteFrames" path="res://Content/Monsters/TamarinKingFrames.tres" id="frames"]
+[ext_resource type="AnimationLibrary" path="res://Content/Monsters/TamarinKingAnimations.tres" id="animations"]
+[ext_resource type="SpriteFrames" path="res://Content/Monsters/TamarinCastFrames.tres" id="cast"]
+[sub_resource type="CapsuleShape2D" id="body"]
+radius = 25.0
+height = 90.0
+[sub_resource type="CapsuleShape2D" id="attack"]
+radius = 63.0
+height = 232.0
+[node name="TamarinKing" instance=ExtResource("base")]
+IsBoss = true
+NormalCombo = Array[Resource]([])
+[node name="BodyShape" parent="." index="0"]
+position = Vector2(0, -45.0)
+shape = SubResource("body")
+[node name="Visual" parent="Facing" index="0"]
+position = Vector2(0, -50)
+[node name="Body" parent="Facing/Visual" index="0"]
+sprite_frames = ExtResource("frames")
+animation = &"wait"
+[node name="HitBox" parent="Facing" index="1"]
+position = Vector2(0, 0)
+[node name="Shape" parent="Facing/HitBox" index="0"]
+position = Vector2(-96, -96)
+shape = SubResource("attack")
+[node name="HurtBox" parent="." index="2"]
+position = Vector2(0, -45.0)
+[node name="Shape" parent="HurtBox" index="0"]
+shape = SubResource("body")
+[node name="AnimationPlayer" parent="." index="3"]
+libraries/ = ExtResource("animations")
+
+[node name="Cast" type="AnimatedSprite2D" parent="Facing/Visual"]
+visible = false
+show_behind_parent = true
+sprite_frames = ExtResource("cast")
+animation = &"Empty"

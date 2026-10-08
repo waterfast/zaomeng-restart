@@ -1,15 +1,21 @@
 [gd_resource type="Resource" script_class="AttackStep" format=3]
+[ext_resource type="AudioStream" path="res://Assets/Audio/Hero/58_Role2_hit1.mp3" id="sound"]
+
 [ext_resource type="Script" path="res://Scripts/Combat/AttackStep.cs" id="step"]
 [ext_resource type="Script" path="res://Scripts/Combat/HitDefinition.cs" id="hit"]
 [ext_resource type="PackedScene" path="res://Content/Skills/Tangseng/NormalProjectile.tscn" id="projectile"]
 
+[ext_resource type="Resource" path="res://Content/Combat/WushuangGains/2_4.tres" id="wushuang_gain"]
+
 [sub_resource type="Resource" id="damage"]
 script = ExtResource("hit")
+WushuangGain = ExtResource("wushuang_gain")
 AttackMultiplier = 0.26
 DamageType = 1
 
 [resource]
 script = ExtResource("step")
+Sound = ExtResource("sound")
 Animation = &"hit1"
 FramesPerSecond = 10
 Hit = SubResource("damage")

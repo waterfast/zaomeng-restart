@@ -1,0 +1,65 @@
+[gd_resource type="Resource" format=3 uid="uid://ipykwpf6ostx"]
+
+[ext_resource type="PackedScene" path="res://Scenes/Actors/MacaqueKing.tscn" id="actor"]
+[ext_resource type="Script" uid="uid://ebyqgxav3bvs" path="res://Scripts/Monsters/MonsterSkillChoice.cs" id="choice"]
+[ext_resource type="Script" uid="uid://cr4hu7tsm7dkr" path="res://Scripts/Monsters/MonsterDefinition.cs" id="def"]
+[ext_resource type="Script" uid="uid://biwjd8duphott" path="res://Scripts/Monsters/MonsterDropEntry.cs" id="drop"]
+[ext_resource type="Script" uid="uid://cqeji80788sgk" path="res://Scripts/Monsters/MonsterDropTable.cs" id="drops"]
+[ext_resource type="Resource" path="res://Content/Monsters/Templates/macaque_wind.tres" id="s0"]
+[ext_resource type="Resource" uid="uid://7tk2qrlyypbk" path="res://Content/Monsters/Templates/macaque_quake.tres" id="s1"]
+[ext_resource type="Resource" uid="uid://ch0w1j85hw34f" path="res://Content/Monsters/Templates/macaque_strike.tres" id="s2"]
+
+[ext_resource type="Resource" path="res://Content/GameData/PassiveSkills/wind_sage.tres" id="passive"]
+
+[ext_resource type="Resource" path="res://Content/Monsters/RecoveryDrops.tres" id="recovery"]
+
+
+
+[sub_resource type="Resource" id="d3"]
+script = ExtResource("drop")
+ItemId = "dslj"
+
+[sub_resource type="Resource" id="drops"]
+script = ExtResource("drops")
+Entries = Array[ExtResource("drop")]([SubResource("d3")])
+RollProbability = 0.5
+ChooseOne = true
+
+[sub_resource type="Resource" id="c0"]
+script = ExtResource("choice")
+Skill = ExtResource("s0")
+MaximumRange = 350.0
+MaximumHeightDifference = 140.0
+
+[sub_resource type="Resource" id="c1"]
+script = ExtResource("choice")
+Skill = ExtResource("s1")
+MaximumRange = 180.0
+MaximumHeightDifference = 140.0
+
+[sub_resource type="Resource" id="c2"]
+script = ExtResource("choice")
+Skill = ExtResource("s2")
+MaximumRange = 115.0
+MaximumHeightDifference = 140.0
+
+[resource]
+script = ExtResource("def")
+Id = "macaque_king"
+PassiveSkills = Array[Resource]([ExtResource("passive")])
+DisplayName = "猕猴王"
+ActorScene = ExtResource("actor")
+IsBoss = true
+Health = 600.0
+Attack = 55.0
+Level = 10
+PhysicalDefense = 50.0
+MagicDefense = 80.0
+CriticalRating = 5.0
+MoveSpeed = 135.0
+DetectionRange = 1000.0
+Experience = 50
+Souls = 20
+Skills = Array[ExtResource("choice")]([SubResource("c0"), SubResource("c1"), SubResource("c2")])
+Drops = SubResource("drops")
+RecoveryDrops = ExtResource("recovery")

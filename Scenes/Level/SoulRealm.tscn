@@ -1,0 +1,6 @@
+[gd_scene format=3]
+[ext_resource type="PackedScene" path="res://Scenes/Level/GameplayLevel.tscn" id="runtime"]
+[ext_resource type="Resource" path="res://Content/Levels/soul_realm.tres" id="definition"]
+[node name="SoulRealm" instance=ExtResource("runtime")]
+LevelNumber = 1
+DefaultDefinition = ExtResource("definition")

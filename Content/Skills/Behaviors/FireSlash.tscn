@@ -3,6 +3,11 @@
 [ext_resource type="Script" path="res://Scripts/Combat/HitDefinition.cs" id="hit"]
 [ext_resource type="SpriteFrames" path="res://Content/Skills/Wukong/FireSlashFrames.tres" id="frames"]
 
+[ext_resource type="AudioStream" path="res://Assets/Audio/Hero/36_Role1_hit10_2.mp3" id="air_sound"]
+[ext_resource type="AudioStream" path="res://Assets/Audio/Hero/37_Role1_hit10_4.mp3" id="landing_sound"]
+
+[ext_resource type="Resource" path="res://Content/Combat/WushuangGains/10_15.tres" id="wushuang_gain"]
+
 [sub_resource type="Resource" id="air"]
 script = ExtResource("hit")
 AttackMultiplier = 1.32
@@ -18,6 +23,7 @@ DamageType = 1
 Knockback = Vector2(660, 270)
 [sub_resource type="Resource" id="landing"]
 script = ExtResource("hit")
+WushuangGain = ExtResource("wushuang_gain")
 AttackMultiplier = 4.5
 AttackMultiplierMax = 4.8
 MultiplierPerLevel = 0.5
@@ -26,6 +32,8 @@ Knockback = Vector2(90, -420)
 
 [node name="FireSlash" type="Node"]
 script = ExtResource("behavior")
+AirSound = ExtResource("air_sound")
+LandingSound = ExtResource("landing_sound")
 Frames = ExtResource("frames")
 AirHit = SubResource("air")
 DiveHit = SubResource("dive")

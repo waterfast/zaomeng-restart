@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Godot;
 using Zaomeng.Equipment;
-using Zaomeng.Equipment.Skills;
+using Zaomeng.Combat.Effects;
 using Zaomeng.Events;
 using Zaomeng.Inventory;
 using Zaomeng.Items;
@@ -79,7 +79,7 @@ public partial class EarlyContentMigrationSmokeTest : Node2D
 			Check(events.EquipmentRequested.Send(new(EquipmentAction.Unequip, Slot: EquipmentSlot.Armor)).Success, "real request removes earth armor");
 			before = target.Health; CombatResolver.Resolve(player, target, storm.Hits[0].Hit!, 1, storm);
 			Check(Near(before - target.Health, baseDamage) && player.GrantedEquipmentSkills.Count == 0, "unequip removes storm damage bonus immediately");
-			new SkillDamageBonusEffect { TargetSkill = storm, BonusFraction = 0.5f }.Validate();
+			new SkillParameterEffect { TargetSkills = [storm], AffectsNormalAttacks = false, Modifiers = new() { DamageMultiplier = 1.5f } }.Validate();
 			player.QueueFree(); target.QueueFree();
 			await VerifyMaps(catalog);
 			GD.Print("EARLY CONTENT MIGRATION SMOKE TEST PASSED");

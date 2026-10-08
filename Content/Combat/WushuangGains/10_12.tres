@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="WushuangGain" format=3]
+[ext_resource type="Script" path="res://Scripts/Combat/Wushuang/WushuangGain.cs" id="gain"]
+[resource]
+script = ExtResource("gain")
+Minimum = 10
+Maximum = 12

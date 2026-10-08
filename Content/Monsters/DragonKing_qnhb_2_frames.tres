@@ -1,0 +1,73 @@
+[gd_resource type="SpriteFrames" format=3]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster6/Bullet_1.png" id="216"]
+[sub_resource type="AtlasTexture" id="3455"]
+atlas = ExtResource( "216" )
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="3456"]
+atlas = ExtResource( "216" )
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="3457"]
+atlas = ExtResource( "216" )
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="3458"]
+atlas = ExtResource( "216" )
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="3459"]
+atlas = ExtResource( "216" )
+region = Rect2(768, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="3460"]
+atlas = ExtResource( "216" )
+region = Rect2(0, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="3461"]
+atlas = ExtResource( "216" )
+region = Rect2(192, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="3462"]
+atlas = ExtResource( "216" )
+region = Rect2(384, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="3463"]
+atlas = ExtResource( "216" )
+region = Rect2(576, 192, 192, 192)
+
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource( "3455" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "3456" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "3457" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "3458" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "3459" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "3460" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "3461" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "3462" )
+}, {
+"duration": 1.0,
+"texture": SubResource( "3463" )
+}],
+"loop": false,
+"name": &"qnhb_2",
+"speed": 16.8
+}]

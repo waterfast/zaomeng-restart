@@ -1,4 +1,6 @@
 [gd_resource type="Resource" script_class="SkillDefinition" format=3]
+[ext_resource type="AudioStream" path="res://Assets/Audio/Hero/57_Role2_hit8.mp3" id="sound"]
+
 [ext_resource type="Script" path="res://Scripts/Combat/SkillDefinition.cs" id="skill"]
 [ext_resource type="PackedScene" path="res://Content/Skills/Behaviors/HealingRain.tscn" id="behavior"]
 
@@ -6,9 +8,10 @@
 
 [resource]
 script = ExtResource("skill")
+Sound = ExtResource("sound")
 Growth = ExtResource("growth")
 Id = "tjgl"
 Animation = &"tjgl"
 FramesPerSecond = 10
-CooldownSeconds = 0.8
+CooldownSeconds = 4.8
 BehaviorScene = ExtResource("behavior")

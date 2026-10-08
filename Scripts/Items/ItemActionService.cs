@@ -39,7 +39,7 @@ public sealed class ItemActionService
 	private readonly ItemActionRule[] _equippedActions;
 
 	public ItemActionService(InventoryService inventory, ItemCatalog catalog, SaveCharacter character,
-		Wallet wallet, EquipmentService equipment)
+		Wallet wallet, EquipmentService equipment, Func<Player?>? activePlayer = null)
 	{
 		_inventory = inventory;
 		_catalog = catalog;
@@ -51,7 +51,7 @@ public sealed class ItemActionService
 				ExpectedInstanceId: context.Target.InstanceId, Slot: context.Target.EquippedSlot!.Value));
 			return new(result.Success, result.Message, result.Change is not null, result.Change);
 		})];
-		var consumables = new ConsumableService(inventory, catalog, wallet);
+		var consumables = new ConsumableService(inventory, catalog, wallet, activePlayer);
 		RegisterCategory(ItemCategory.Consumable,
 			new("use", "使用", consumables.Execute, consumables.Check),
 			new("sell", "出售", Sell, CheckSell));

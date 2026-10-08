@@ -1,0 +1,104 @@
+[gd_resource type="Resource" format=3 uid="uid://7tk2qrlyypbk"]
+
+[ext_resource type="Script" uid="uid://m1ojqyfju0ak" path="res://Scripts/Combat/HitEvent.cs" id="event"]
+[ext_resource type="Script" uid="uid://c76o6v4o8ovjr" path="res://Scripts/Combat/HitDefinition.cs" id="hit"]
+[ext_resource type="Script" uid="uid://d4daj54a2ec00" path="res://Scripts/Combat/SkillDefinition.cs" id="skill"]
+
+[sub_resource type="Resource" id="hit"]
+script = ExtResource("hit")
+AttackMultiplier = 1.4545454545
+DamageType = 1
+Knockback = Vector2(45, -270)
+
+[sub_resource type="Resource" id="w0"]
+script = ExtResource("event")
+StartFrame = 4
+EndFrame = 12
+Hit = SubResource("hit")
+
+[sub_resource type="Resource" id="w1"]
+script = ExtResource("event")
+StartFrame = 16
+EndFrame = 24
+Hit = SubResource("hit")
+
+[sub_resource type="Resource" id="w2"]
+script = ExtResource("event")
+StartFrame = 28
+EndFrame = 36
+Hit = SubResource("hit")
+
+[sub_resource type="Resource" id="w3"]
+script = ExtResource("event")
+StartFrame = 40
+EndFrame = 48
+Hit = SubResource("hit")
+
+[sub_resource type="Resource" id="w4"]
+script = ExtResource("event")
+StartFrame = 52
+EndFrame = 60
+Hit = SubResource("hit")
+
+[sub_resource type="Resource" id="w5"]
+script = ExtResource("event")
+StartFrame = 64
+EndFrame = 72
+Hit = SubResource("hit")
+
+[sub_resource type="Resource" id="w6"]
+script = ExtResource("event")
+StartFrame = 76
+EndFrame = 84
+Hit = SubResource("hit")
+
+[sub_resource type="Resource" id="w7"]
+script = ExtResource("event")
+StartFrame = 88
+EndFrame = 96
+Hit = SubResource("hit")
+
+[sub_resource type="Resource" id="w8"]
+script = ExtResource("event")
+StartFrame = 100
+EndFrame = 108
+Hit = SubResource("hit")
+
+[sub_resource type="Resource" id="w9"]
+script = ExtResource("event")
+StartFrame = 112
+EndFrame = 120
+Hit = SubResource("hit")
+
+[sub_resource type="Resource" id="w10"]
+script = ExtResource("event")
+StartFrame = 124
+EndFrame = 132
+Hit = SubResource("hit")
+
+[sub_resource type="Resource" id="w11"]
+script = ExtResource("event")
+StartFrame = 136
+EndFrame = 144
+Hit = SubResource("hit")
+
+[sub_resource type="Resource" id="w12"]
+script = ExtResource("event")
+StartFrame = 148
+EndFrame = 156
+Hit = SubResource("hit")
+
+[sub_resource type="Resource" id="w13"]
+script = ExtResource("event")
+StartFrame = 160
+EndFrame = 168
+Hit = SubResource("hit")
+
+[resource]
+script = ExtResource("skill")
+Id = "macaque_quake"
+DisplayName = "连续震击"
+Animation = &"jfkx"
+FramesPerSecond = 60
+CooldownSeconds = 11.0
+Hits = Array[ExtResource("event")]([SubResource("w0"), SubResource("w1"), SubResource("w2"), SubResource("w3"), SubResource("w4"), SubResource("w5"), SubResource("w6"), SubResource("w7"), SubResource("w8"), SubResource("w9"), SubResource("w10"), SubResource("w11"), SubResource("w12"), SubResource("w13")])

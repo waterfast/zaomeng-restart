@@ -8,7 +8,7 @@ namespace Zaomeng.Inventory;
 public sealed class InventoryService : IInventoryService
 {
 	private readonly IItemCatalog _catalog;
-	private readonly ItemStack?[] _slots;
+	private ItemStack?[] _slots;
 
 	public InventoryService(int capacity, IItemCatalog catalog)
 	{
@@ -38,7 +38,7 @@ public sealed class InventoryService : IInventoryService
 		if (outgoing is not null)
 		{
 			int target = Array.FindIndex(next, stack => stack is null);
-			if (target < 0) return false;
+			if (target < 0) { target = next.Length; GrowSlots(ref next, 1); }
 			next[target] = new ItemStack(outgoing.DefinitionId, 1, outgoing);
 		}
 		CommitSlots(next, commitLoadout);
@@ -50,11 +50,11 @@ public sealed class InventoryService : IInventoryService
 	{
 		ItemStack?[] next = CreateValidatedSnapshot(slots);
 		commitLoadout();
-		Array.Copy(next, _slots, Capacity);
+		_slots = next;
 		PublishChanged();
 	}
 
-	internal bool TryAddStackable(ItemStack?[] slots, string itemId)
+	internal bool TryAddStackable(ref ItemStack?[] slots, string itemId)
 	{
 		if (!TryGetMaxStack(itemId, out int maxStack) || _catalog.TryGetEquipmentSocketCount(itemId, out _)) return false;
 		long total = 0;
@@ -62,7 +62,7 @@ public sealed class InventoryService : IInventoryService
 		if (total >= int.MaxValue) return false;
 		int target = Array.FindIndex(slots, stack => stack?.ItemId == itemId && stack.Count < maxStack);
 		if (target < 0) target = Array.FindIndex(slots, stack => stack is null);
-		if (target < 0) return false;
+		if (target < 0) { target = slots.Length; GrowSlots(ref slots, 1); }
 		slots[target] = new ItemStack(itemId, (slots[target]?.Count ?? 0) + 1);
 		return true;
 	}
@@ -82,7 +82,7 @@ public sealed class InventoryService : IInventoryService
 	public void RestoreSlots(IReadOnlyList<ItemStack?> slots)
 	{
 		ItemStack?[] restored = CreateValidatedSnapshot(slots);
-		Array.Copy(restored, _slots, Capacity);
+		_slots = restored;
 		PublishChanged();
 	}
 
@@ -92,10 +92,10 @@ public sealed class InventoryService : IInventoryService
 	private ItemStack?[] CreateValidatedSnapshot(IReadOnlyList<ItemStack?> slots)
 	{
 		ArgumentNullException.ThrowIfNull(slots);
-		if (slots.Count != Capacity)
-			throw new ArgumentException("存档槽位数与背包容量不一致。", nameof(slots));
+		if (slots.Count <= 0)
+			throw new ArgumentException("背包快照至少需要一个格子。", nameof(slots));
 
-		var restored = new ItemStack?[Capacity];
+		var restored = new ItemStack?[slots.Count];
 		var totals = new Dictionary<string, long>(StringComparer.Ordinal);
 		var instanceIds = new HashSet<string>(StringComparer.Ordinal);
 		for (int i = 0; i < slots.Count; i++)
@@ -146,33 +146,42 @@ public sealed class InventoryService : IInventoryService
 			else if (stack.ItemId == itemId)
 				available += Math.Max(0, maxStack - stack.Count);
 		}
+		var next = (ItemStack?[])_slots.Clone();
 		if (available < amount)
-			return false;
+			GrowSlots(ref next, checked((int)(((long)amount - available + maxStack - 1) / maxStack)));
 
 		int remaining = amount;
-		for (int i = 0; i < _slots.Length && remaining > 0; i++)
+		for (int i = 0; i < next.Length && remaining > 0; i++)
 		{
-			ItemStack? stack = _slots[i];
+			ItemStack? stack = next[i];
 			if (stack is null || stack.ItemId != itemId)
 				continue;
 			int added = Math.Min(remaining, maxStack - stack.Count);
 			if (added > 0)
 			{
-				_slots[i] = stack with { Count = stack.Count + added };
+				next[i] = stack with { Count = stack.Count + added };
 				remaining -= added;
 			}
 		}
-		for (int i = 0; i < _slots.Length && remaining > 0; i++)
+		for (int i = 0; i < next.Length && remaining > 0; i++)
 		{
-			if (_slots[i] is not null)
+			if (next[i] is not null)
 				continue;
 			int added = Math.Min(remaining, maxStack);
-			_slots[i] = new ItemStack(itemId, added,
+			next[i] = new ItemStack(itemId, added,
 				isEquipment ? EquipmentInstance.Create(itemId, socketCount) : null);
 			remaining -= added;
 		}
+		_slots = next;
 		PublishChanged();
 		return true;
+	}
+
+	private static void GrowSlots(ref ItemStack?[] slots, int requiredAdditionalSlots)
+	{
+		// 按需分配小批空格子，不把可分配大小作为玩法容量上限。
+		int growth = Math.Max(25, requiredAdditionalSlots);
+		Array.Resize(ref slots, checked(slots.Length + growth));
 	}
 
 	public bool RemoveItem(string itemId, int amount)

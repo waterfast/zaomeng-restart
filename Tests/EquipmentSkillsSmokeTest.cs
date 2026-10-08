@@ -1,7 +1,8 @@
 using System;
+using System.Linq;
 using Godot;
 using Zaomeng.Equipment;
-using Zaomeng.Equipment.Skills;
+using Zaomeng.Combat.Effects;
 using Zaomeng.Events;
 using Zaomeng.Inventory;
 using Zaomeng.Items;
@@ -21,6 +22,8 @@ public partial class EquipmentSkillsSmokeTest : Node2D
 			TranslationServer.SetLocale("zh_CN");
 			ItemCatalog catalog = GD.Load<ItemCatalog>("res://Content/Items/ItemCatalog.tres");
 			catalog.Validate();
+			var skills = GD.Load<Zaomeng.Skills.SkillCatalog>("res://Content/Skills/Wukong/Catalog.tres");
+			Check(skills.Skills.All(skill => skill.Id != "dptxj"), "大品天仙决只由装备授予，不登记可学习主动技能");
 			catalog.TryGetDefinition("ryjgb", out ItemDefinition? item);
 			var weapon = (EquipmentDefinition)item!;
 			Check(weapon.GrantedSkills.Count == 1 && weapon.Description.Contains("定海神针"), "game data and Chinese lore load");
@@ -89,7 +92,7 @@ public partial class EquipmentSkillsSmokeTest : Node2D
 			character.Equipment.Set(EquipmentSlot.Accessory, EquipmentInstance.Create(accessory.Id, 0));
 			player.RefreshCharacterStats();
 			Check(player.GrantedEquipmentSkills.Count == 1, "shared skill granted by multiple equipment is deduplicated");
-			var secondSkill = new EquipmentSkillDefinition { Id = "test_second_skill", NameKey = weapon.GrantedSkills[0].NameKey,
+			var secondSkill = new PassiveSkillDefinition { Id = "test_second_skill", NameKey = weapon.GrantedSkills[0].NameKey,
 				DescriptionKey = weapon.GrantedSkills[0].DescriptionKey, Effect = new CriticalResourceRecoveryEffect { HealthFraction = 0.1f, ManaFraction = 0 } };
 			accessory.GrantedSkills.Add(secondSkill);
 			player.RefreshCharacterStats();
@@ -101,7 +104,7 @@ public partial class EquipmentSkillsSmokeTest : Node2D
 			Check(Near(player.Health, 1000) && Near(player.Mana, 500), "distinct equipped skills both execute on the same critical hit");
 			var preview = new EquipmentSkillListView();
 			preview.ShowSkills(accessory);
-			Check(preview.GetChildCount() == 2 && secondSkill.MaximumLevel == 1, "all equipment skills have their own icon rows and default level cap one");
+			Check(preview.GetChildren().OfType<VBoxContainer>().Count() == 2 && secondSkill.MaximumLevel == 1, "all equipment skills have their own icon rows and default level cap one");
 			preview.Free();
 			accessory.GrantedSkills.Remove(secondSkill);
 			character.Equipment.Set(EquipmentSlot.Accessory, null);
@@ -153,7 +156,7 @@ public partial class EquipmentSkillsSmokeTest : Node2D
 			accessory.GrantedSkills.Add(weapon.GrantedSkills[0]);
 			CheckThrows(catalog.Validate, "duplicate skill on one equipment rejected");
 			accessory.GrantedSkills.RemoveAt(1);
-			accessory.GrantedSkills[0] = new EquipmentSkillDefinition { Id = weapon.GrantedSkills[0].Id, NameKey = "TEST_NAME", DescriptionKey = "TEST_DESCRIPTION", Effect = new CriticalResourceRecoveryEffect() };
+			accessory.GrantedSkills[0] = new PassiveSkillDefinition { Id = weapon.GrantedSkills[0].Id, NameKey = "TEST_NAME", DescriptionKey = "TEST_DESCRIPTION", Effect = new CriticalResourceRecoveryEffect() };
 			CheckThrows(catalog.Validate, "different definitions with same skill ID rejected");
 			player.ReceiveHit(new HitResult(player.MaxHealth + 1, Vector2.Zero, 0));
 			float manaAtDeath = player.Mana;

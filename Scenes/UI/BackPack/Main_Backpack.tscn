@@ -195,6 +195,8 @@ theme_override_constants/margin_left = -3
 
 [node name="Sc_Box" type="ScrollContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 0
 
 [node name="Gd_Box" type="GridContainer" parent="MarginContainer/VBoxContainer/MarginContainer/Sc_Box"]
 layout_mode = 2
@@ -275,36 +277,6 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="box_25" parent="MarginContainer/VBoxContainer/MarginContainer/Sc_Box/Gd_Box" instance=ExtResource( "6" )]
-layout_mode = 2
-
-[node name="box_26" parent="MarginContainer/VBoxContainer/MarginContainer/Sc_Box/Gd_Box" instance=ExtResource( "6" )]
-layout_mode = 2
-
-[node name="box_27" parent="MarginContainer/VBoxContainer/MarginContainer/Sc_Box/Gd_Box" instance=ExtResource( "6" )]
-layout_mode = 2
-
-[node name="box_28" parent="MarginContainer/VBoxContainer/MarginContainer/Sc_Box/Gd_Box" instance=ExtResource( "6" )]
-layout_mode = 2
-
-[node name="box_29" parent="MarginContainer/VBoxContainer/MarginContainer/Sc_Box/Gd_Box" instance=ExtResource( "6" )]
-layout_mode = 2
-
-[node name="box_30" parent="MarginContainer/VBoxContainer/MarginContainer/Sc_Box/Gd_Box" instance=ExtResource( "6" )]
-layout_mode = 2
-
-[node name="box_31" parent="MarginContainer/VBoxContainer/MarginContainer/Sc_Box/Gd_Box" instance=ExtResource( "6" )]
-layout_mode = 2
-
-[node name="box_32" parent="MarginContainer/VBoxContainer/MarginContainer/Sc_Box/Gd_Box" instance=ExtResource( "6" )]
-layout_mode = 2
-
-[node name="box_33" parent="MarginContainer/VBoxContainer/MarginContainer/Sc_Box/Gd_Box" instance=ExtResource( "6" )]
-layout_mode = 2
-
-[node name="box_34" parent="MarginContainer/VBoxContainer/MarginContainer/Sc_Box/Gd_Box" instance=ExtResource( "6" )]
-layout_mode = 2
-
-[node name="box_35" parent="MarginContainer/VBoxContainer/MarginContainer/Sc_Box/Gd_Box" instance=ExtResource( "6" )]
 layout_mode = 2
 
 [node name="ChangePage" type="HBoxContainer" parent="."]

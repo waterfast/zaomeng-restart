@@ -1,0 +1,139 @@
+[gd_scene format=3]
+
+[ext_resource type="FontFile" path="res://Assets/Font/华康海报体W12 &amp; 华康海报体W12(P).ttc" id="2"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Game_2/Ldl/215.png" id="3"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/BackPack/Box_1.tscn" id="4"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Game_2/Ldl/202.png" id="5"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Game_2/Ldl/212.png" id="6"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Game_2/Ldl/191.png" id="7"]
+[ext_resource type="FontFile" path="res://Assets/Font/Aa文徵明琴赋小楷_mianfeiziti.com.ttf" id="8"]
+[ext_resource type="FontFile" path="res://Assets/Font/8_FZCuYuan-M03S.ttf" id="9"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Game_2/Ldl/193.png" id="10"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Game_2/Ldl/195.png" id="11"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Game_2/Ldl/198.png" id="12"]
+
+[node name="Synthesis" type="Node2D"]
+
+[node name="Title" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -29.0
+offset_top = -13.0
+offset_right = 99.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.976471, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource( "2" )
+theme_override_font_sizes/font_size = 32
+text = "物品合成"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="cl_1" type="Sprite2D" parent="."]
+position = Vector2(50, 140)
+texture = ExtResource( "3" )
+metadata/_edit_lock_ = true
+
+[node name="item_1" parent="cl_1" instance=ExtResource( "4" )]
+offset_left = -26.0
+offset_top = -26.0
+offset_right = 24.0
+offset_bottom = 24.0
+metadata/_edit_lock_ = true
+
+[node name="cl_2" type="Sprite2D" parent="."]
+position = Vector2(150, 50)
+texture = ExtResource( "3" )
+metadata/_edit_lock_ = true
+
+[node name="item_2" parent="cl_2" instance=ExtResource( "4" )]
+offset_left = -25.0
+offset_top = -26.0
+offset_right = 25.0
+offset_bottom = 24.0
+metadata/_edit_lock_ = true
+
+[node name="cl_3" type="Sprite2D" parent="."]
+position = Vector2(250, 140)
+texture = ExtResource( "3" )
+metadata/_edit_lock_ = true
+
+[node name="item_3" parent="cl_3" instance=ExtResource( "4" )]
+offset_left = -26.0
+offset_top = -26.0
+offset_right = 24.0
+offset_bottom = 24.0
+metadata/_edit_lock_ = true
+
+[node name="jt_" type="Sprite2D" parent="."]
+position = Vector2(150, 136)
+texture = ExtResource( "5" )
+metadata/_edit_lock_ = true
+
+[node name="scw" type="Sprite2D" parent="."]
+position = Vector2(150, 225)
+texture = ExtResource( "6" )
+metadata/_edit_lock_ = true
+
+[node name="item_4" parent="scw" instance=ExtResource( "4" )]
+offset_left = -26.0
+offset_top = -25.0
+offset_right = 24.0
+offset_bottom = 25.0
+metadata/_edit_lock_ = true
+
+[node name="infor" type="Sprite2D" parent="."]
+position = Vector2(48, 307)
+texture = ExtResource( "7" )
+metadata/_edit_lock_ = true
+
+[node name="name_" type="Label" parent="infor"]
+offset_left = 23.0
+offset_top = -30.0
+offset_right = 237.0
+offset_bottom = -3.0
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource( "8" )
+theme_override_font_sizes/font_size = 18
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="need_lh" type="Label" parent="infor"]
+offset_left = 48.0
+offset_top = 5.0
+offset_right = 186.0
+offset_bottom = 31.0
+theme_override_fonts/font = ExtResource( "9" )
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Syn" type="TextureButton" parent="."]
+offset_left = 70.0
+offset_top = 335.0
+offset_right = 240.0
+offset_bottom = 386.0
+texture_normal = ExtResource( "10" )
+texture_pressed = ExtResource( "10" )
+texture_hover = ExtResource( "11" )
+texture_disabled = ExtResource( "10" )
+metadata/_edit_lock_ = true
+
+[node name="Help" type="TextureButton" parent="."]
+offset_left = 189.0
+offset_top = 280.0
+offset_right = 317.0
+offset_bottom = 324.0
+texture_normal = ExtResource( "12" )
+texture_pressed = ExtResource( "12" )
+texture_hover = ExtResource( "12" )
+texture_disabled = ExtResource( "12" )
+metadata/_edit_lock_ = true
+

@@ -3,7 +3,10 @@
 [ext_resource type="PackedScene" path="res://Content/Skills/Tangseng/IceDragonProjectile.tscn" id="projectile"]
 
 
+[ext_resource type="AudioStream" path="res://Assets/Audio/Hero/59_Role2_hit2.mp3" id="release_sound"]
+
 [node name="IceDragon" type="Node"]
 script = ExtResource("behavior")
-Delay = 0.5
+ReleaseSound = ExtResource("release_sound")
+ReleaseTimes = PackedFloat32Array(0.5)
 ProjectileScene = ExtResource("projectile")

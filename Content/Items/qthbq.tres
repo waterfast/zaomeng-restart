@@ -3,9 +3,12 @@
 [ext_resource type="Script" path="res://Scripts/Equipment/EquipmentDefinition.cs" id="1"]
 [ext_resource type="Texture2D" path="res://Assets/Art/BackPack/AllItems/qthbq.png" id="2"]
 
+[ext_resource type="Texture2D" path="res://Assets/Art/ItemIcon/qthbq.png" id="ground_icon"]
+
 [resource]
 script = ExtResource("1")
 Id = "qthbq"
+GroundIcon = ExtResource("ground_icon")
 DisplayName = "擎天华宝枪"
 DescriptionKey = "ITEM_QTHBQ_DESCRIPTION"
 Quality = "精良"

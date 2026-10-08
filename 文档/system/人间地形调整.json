@@ -1,0 +1,329 @@
+[
+  {
+    "map": 2,
+    "adjustment": "水帘洞按227.png草皮轮廓拆分矩形及四顶点凸坡块；两段水面可站立，世界高度560；石柱保留真实台阶，取消自动生成的虚假坡面。",
+    "coordinate_space": "world",
+    "wall_offset": [
+      0,
+      112
+    ],
+    "bottom": 644,
+    "segments": [
+      {
+        "node": "StartGround",
+        "shape": "RectangleShape2D",
+        "top": [
+          [
+            0,
+            497
+          ],
+          [
+            354,
+            497
+          ]
+        ]
+      },
+      {
+        "node": "FirstSlopeUp",
+        "shape": "CollisionPolygon2D",
+        "top": [
+          [
+            354,
+            497
+          ],
+          [
+            428,
+            427
+          ]
+        ]
+      },
+      {
+        "node": "FirstSlopeTop",
+        "shape": "RectangleShape2D",
+        "top": [
+          [
+            428,
+            427
+          ],
+          [
+            632,
+            427
+          ]
+        ]
+      },
+      {
+        "node": "FirstSlopeDown",
+        "shape": "CollisionPolygon2D",
+        "top": [
+          [
+            632,
+            427
+          ],
+          [
+            712,
+            497
+          ]
+        ]
+      },
+      {
+        "node": "GroundBeforePillar",
+        "shape": "RectangleShape2D",
+        "top": [
+          [
+            712,
+            497
+          ],
+          [
+            1730,
+            497
+          ]
+        ]
+      },
+      {
+        "node": "StonePillar",
+        "shape": "RectangleShape2D",
+        "top": [
+          [
+            1730,
+            384
+          ],
+          [
+            1898,
+            384
+          ]
+        ]
+      },
+      {
+        "node": "FirstWaterSurface",
+        "shape": "RectangleShape2D",
+        "top": [
+          [
+            1898,
+            560
+          ],
+          [
+            2438,
+            560
+          ]
+        ]
+      },
+      {
+        "node": "MiddleGround",
+        "shape": "RectangleShape2D",
+        "top": [
+          [
+            2438,
+            497
+          ],
+          [
+            3136,
+            497
+          ]
+        ]
+      },
+      {
+        "node": "SecondWaterSurface",
+        "shape": "RectangleShape2D",
+        "top": [
+          [
+            3136,
+            560
+          ],
+          [
+            3458,
+            560
+          ]
+        ]
+      },
+      {
+        "node": "GroundBeforeLastSlope",
+        "shape": "RectangleShape2D",
+        "top": [
+          [
+            3458,
+            497
+          ],
+          [
+            4076,
+            497
+          ]
+        ]
+      },
+      {
+        "node": "LastSlopeUp",
+        "shape": "CollisionPolygon2D",
+        "top": [
+          [
+            4076,
+            497
+          ],
+          [
+            4154,
+            425
+          ]
+        ]
+      },
+      {
+        "node": "LastSlopeTop",
+        "shape": "RectangleShape2D",
+        "top": [
+          [
+            4154,
+            425
+          ],
+          [
+            4356,
+            425
+          ]
+        ]
+      },
+      {
+        "node": "LastSlopeDown",
+        "shape": "CollisionPolygon2D",
+        "top": [
+          [
+            4356,
+            425
+          ],
+          [
+            4436,
+            497
+          ]
+        ]
+      },
+      {
+        "node": "EndGround",
+        "shape": "RectangleShape2D",
+        "top": [
+          [
+            4436,
+            497
+          ],
+          [
+            5400,
+            497
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "map": 3,
+    "adjustment": "撤销人工长坡/阶梯，按旧Level_3实际矩形位置、宽高恢复平地和五块高台；原单向悬空平台保留。",
+    "source": "造梦八荒-(4.1)/Scene/Level/Level_3.tscn",
+    "coordinate_space": "world",
+    "wall_offset": [
+      0,
+      112
+    ],
+    "rectangles": [
+      {
+        "node": "floor",
+        "left": -15,
+        "right": 5506,
+        "top": 515
+      },
+      {
+        "node": "w_wall",
+        "left": 1198,
+        "right": 1615,
+        "top": 367
+      },
+      {
+        "node": "w_wall2",
+        "left": 2303.5,
+        "right": 2749,
+        "top": 366.5
+      },
+      {
+        "node": "w_wall3",
+        "left": 2528,
+        "right": 2750,
+        "top": 223
+      },
+      {
+        "node": "w_wall4",
+        "left": 3568,
+        "right": 3711,
+        "top": 133
+      },
+      {
+        "node": "w_wall5",
+        "left": 3713,
+        "right": 3857,
+        "top": 322.25
+      }
+    ],
+    "route": "最后高柱通过X=3158、顶面Y=238的原悬空平台二段跳通行，不能从柱脚直接登顶。"
+  },
+  {
+    "map": 5,
+    "adjustment": "旧高台顶面保留，垂直接缝改为连续坡面",
+    "points": [
+      [
+        0,
+        402.5
+      ],
+      [
+        2864,
+        402.5
+      ],
+      [
+        2872,
+        400.3999999999997
+      ],
+      [
+        3088,
+        206.0
+      ],
+      [
+        3392,
+        206.0
+      ],
+      [
+        3400,
+        199.5999999999999
+      ],
+      [
+        3464,
+        142.0
+      ],
+      [
+        3664,
+        142.0
+      ],
+      [
+        3728,
+        199.5999999999999
+      ],
+      [
+        3736,
+        206.0
+      ],
+      [
+        3872,
+        206.0
+      ],
+      [
+        4088,
+        400.3999999999997
+      ],
+      [
+        4096,
+        402.5
+      ],
+      [
+        5400,
+        402.5
+      ],
+      [
+        5400,
+        900
+      ],
+      [
+        0,
+        900
+      ]
+    ]
+  }
+]

@@ -3,9 +3,12 @@
 [ext_resource type="Script" path="res://Scripts/Equipment/EquipmentDefinition.cs" id="1"]
 [ext_resource type="Texture2D" path="res://Assets/Art/BackPack/AllItems/jcsz.png" id="2"]
 
+[ext_resource type="Texture2D" path="res://Assets/Art/ItemIcon/jcsz.png" id="ground_icon"]
+
 [resource]
 script = ExtResource("1")
 Id = "jcsz"
+GroundIcon = ExtResource("ground_icon")
 DisplayName = "家传手镯"
 DescriptionKey = "ITEM_JCSZ_DESCRIPTION"
 Quality = "优秀"

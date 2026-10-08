@@ -1,0 +1,69 @@
+[gd_resource type="SpriteFrames" format=3]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster12/BulletFire/1.png" id="34"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster12/BulletFire/2.png" id="35"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster12/BulletFire/3.png" id="36"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster12/BulletFire/4.png" id="37"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster12/BulletFire/5.png" id="38"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster12/BulletFire/6.png" id="39"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster12/BulletFire/7.png" id="40"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster12/BulletFire/8.png" id="41"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster12/BulletFire/9.png" id="42"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster12/BulletFire/10.png" id="43"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster12/BulletFire/11.png" id="44"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster12/BulletFire/12.png" id="45"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster12/BulletFire/13.png" id="46"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster12/BulletFire/14.png" id="47"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Monster/Monster12/BulletFire/15.png" id="48"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource( "34" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "35" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "36" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "37" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "38" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "39" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "40" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "41" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "42" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "43" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "44" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "45" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "46" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "47" )
+}, {
+"duration": 1.0,
+"texture": ExtResource( "48" )
+}],
+"loop": false,
+"name": &"Monster12Bullet",
+"speed": 25.0
+}]

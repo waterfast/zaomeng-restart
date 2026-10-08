@@ -1,7 +1,7 @@
 using Godot;
 using Zaomeng.Character;
 using Zaomeng.Items;
-using Zaomeng.Equipment.Skills;
+using Zaomeng.Combat.Effects;
 using SaveCharacter = Zaomeng.Character.Character;
 
 namespace Zaomeng.Equipment;
@@ -34,8 +34,9 @@ public partial class EquipmentDefinition : ItemDefinition
 	[Export] public float MagicPenetrationBonus { get; set; }
 	[Export] public float HasteBonus { get; set; }
 	[Export] public float SkillLevelBonus { get; set; }
-	[Export] public Godot.Collections.Array<EquipmentSkillDefinition> GrantedSkills { get; set; } = new();
+	[Export] public Godot.Collections.Array<PassiveSkillDefinition> GrantedSkills { get; set; } = new();
 	[Export] public MagicWeaponPresentation? MagicWeaponPresentation { get; set; }
+	[Export] public MagicWeaponAbility? MagicWeaponAbility { get; set; }
 
 	public virtual bool CanEquip(SaveCharacter character) => character.Level >= RequiredLevel &&
 		(RequiredCharacterId.Length == 0 || RequiredCharacterId == character.Id);

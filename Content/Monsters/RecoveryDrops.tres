@@ -1,0 +1,20 @@
+[gd_resource type="Resource" format=3]
+[ext_resource type="Script" path="res://Scripts/Monsters/MonsterDropTable.cs" id="table"]
+[ext_resource type="Script" path="res://Scripts/Monsters/MonsterDropEntry.cs" id="entry"]
+[sub_resource type="Resource" id="radish"]
+script = ExtResource("entry")
+ItemId = "radish"
+Probability = 0.4
+[sub_resource type="Resource" id="blue"]
+script = ExtResource("entry")
+ItemId = "Bble"
+Probability = 0.4
+[sub_resource type="Resource" id="peach"]
+script = ExtResource("entry")
+ItemId = "peach"
+Probability = 0.2
+[resource]
+script = ExtResource("table")
+RollProbability = 0.15
+ChooseOne = true
+Entries = Array[Resource]([SubResource("radish"), SubResource("blue"), SubResource("peach")])

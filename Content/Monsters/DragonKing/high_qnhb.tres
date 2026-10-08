@@ -1,0 +1,11 @@
+[gd_resource type="Resource" format=3]
+[ext_resource type="Script" path="res://Scripts/Combat/SkillDefinition.cs" id="skill"]
+[ext_resource type="PackedScene" path="res://Scenes/Skills/DragonKing/high_qnhb.tscn" id="behavior"]
+[resource]
+script = ExtResource("skill")
+Id = "dragon_high_qnhb"
+DisplayName = "千年寒冰"
+Animation = &"qnhb"
+FramesPerSecond = 60
+CooldownSeconds = 16
+BehaviorScene = ExtResource("behavior")

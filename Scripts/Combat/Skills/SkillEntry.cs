@@ -27,11 +27,10 @@ public partial class SkillEntry : Resource
 			throw new InvalidOperationException($"技能 {Id} 必须配置主动动作或被动加成，不能混用。");
 		if (Action is { } action && (action.Id != Id || action.Animation.IsEmpty || action.FramesPerSecond <= 0 ||
 			!float.IsFinite(action.CooldownSeconds) || action.CooldownSeconds < 0 || action.Growth is null ||
-			(action.StartCooldownOnImpact && action.BehaviorScene is null) ||
-			!float.IsFinite(action.LinkedCooldownSeconds) || action.LinkedCooldownSeconds < 0 ||
-			(action.LinkedCooldownSkill is null && action.LinkedCooldownSeconds != 0) || action.LinkedCooldownSkill == action))
+			(action.StartCooldownOnImpact && action.BehaviorScene is null)))
 			throw new InvalidOperationException($"技能 {Id} 的动作配置无效或ID不一致。");
 		(Action?.Growth ?? Growth).Validate(MaximumLevel);
+		Action?.WushuangGain?.Validate();
 		foreach (PassiveSkillBonus bonus in PassiveBonuses)
 		{
 			if (bonus is null) throw new InvalidOperationException($"技能 {Id} 缺少被动加成。");

@@ -1,11 +1,15 @@
 [gd_resource type="Resource" script_class="SkillDefinition" format=3]
 
+[ext_resource type="AudioStream" path="res://Assets/Audio/Hero/26_Role1_hit13_1.mp3" id="sound"]
+
 [ext_resource type="Script" path="res://Scripts/Combat/SkillDefinition.cs" id="skill"]
 [ext_resource type="Script" path="res://Scripts/Combat/HitEvent.cs" id="event"]
 [ext_resource type="Script" path="res://Scripts/Combat/HitDefinition.cs" id="hit"]
 [ext_resource type="Script" path="res://Scripts/Combat/ActionMotion.cs" id="motion"]
 
 [ext_resource type="Resource" path="res://Content/Skills/Growth/Wukong/qsez.tres" id="growth"]
+
+[ext_resource type="Resource" path="res://Content/Combat/WushuangGains/8_10.tres" id="wushuang_gain"]
 
 [sub_resource type="Resource" id="movement"]
 script = ExtResource("motion")
@@ -27,9 +31,11 @@ Hit = SubResource("hit_data")
 
 [resource]
 script = ExtResource("skill")
+WushuangGain = ExtResource("wushuang_gain")
+Sound = ExtResource("sound")
 Growth = ExtResource("growth")
 Id = "qsez"
 Animation = &"qsez"
-CooldownSeconds = 0.8
+CooldownSeconds = 4.8
 Motion = SubResource("movement")
 Hits = Array[ExtResource("event")]([SubResource("hit_window")])

@@ -1,0 +1,64 @@
+[gd_resource type="Resource" format=3]
+[ext_resource type="Script" path="res://Scripts/Monsters/MonsterDefinition.cs" id="def"]
+[ext_resource type="Script" path="res://Scripts/Monsters/MonsterSkillChoice.cs" id="choice"]
+[ext_resource type="Script" path="res://Scripts/Monsters/MonsterDropTable.cs" id="table"]
+[ext_resource type="Script" path="res://Scripts/Monsters/MonsterDropEntry.cs" id="entry"]
+[ext_resource type="PackedScene" path="res://Scenes/Actors/DragonKing.tscn" id="actor"]
+[ext_resource type="Resource" path="res://Content/Monsters/DragonKing/low_htsl.tres" id="s0"]
+[ext_resource type="Resource" path="res://Content/Monsters/DragonKing/low_qnbx.tres" id="s1"]
+[ext_resource type="Resource" path="res://Content/Monsters/DragonKing/low_qnhb.tres" id="s2"]
+[ext_resource type="Resource" path="res://Content/Monsters/DragonKing/low_hit1.tres" id="s3"]
+[sub_resource type="Resource" id="choice0"]
+script = ExtResource("choice")
+Skill = ExtResource("s0")
+MaximumRange = 600.0
+MaximumHeightDifference = 200.0
+[sub_resource type="Resource" id="choice1"]
+script = ExtResource("choice")
+Skill = ExtResource("s1")
+MaximumRange = 600.0
+MaximumHeightDifference = 200.0
+[sub_resource type="Resource" id="choice2"]
+script = ExtResource("choice")
+Skill = ExtResource("s2")
+MaximumRange = 600.0
+MaximumHeightDifference = 200.0
+[sub_resource type="Resource" id="choice3"]
+script = ExtResource("choice")
+Skill = ExtResource("s3")
+MaximumRange = 160.0
+MaximumHeightDifference = 200.0
+[sub_resource type="Resource" id="drop0"]
+script = ExtResource("entry")
+ItemId = "qld"
+
+[sub_resource type="Resource" id="drop2"]
+script = ExtResource("entry")
+ItemId = "bhz"
+
+
+[sub_resource type="Resource" id="drops"]
+script = ExtResource("table")
+ChooseOne = true
+RollProbability = 0.4
+Entries = Array[Resource]([SubResource("drop0"), SubResource("drop2")])
+[resource]
+script = ExtResource("def")
+Id = "dragon_king_low"
+DisplayName = "龙王·低"
+ActorScene = ExtResource("actor")
+IsBoss = true
+Health = 6000
+Attack = 15
+Level = 18
+PhysicalDefense = 90
+MagicDefense = 90
+CriticalRating = 0
+Luck = 0
+Accuracy = 0
+Experience = 20
+Souls = 100
+MoveSpeed = 110.0
+DetectionRange = 600.0
+Skills = Array[Resource]([SubResource("choice0"), SubResource("choice1"), SubResource("choice2"), SubResource("choice3")])
+Drops = SubResource("drops")

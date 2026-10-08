@@ -5,10 +5,13 @@
 
 [ext_resource type="Resource" path="res://Content/GameData/EquipmentSkills/earth_fury.tres" id="skill"]
 
+[ext_resource type="Texture2D" path="res://Assets/Art/ItemIcon/dsyj.png" id="ground_icon"]
+
 [resource]
 script = ExtResource("1")
 GrantedSkills = Array[Resource]([ExtResource("skill")])
 Id = "dsyj"
+GroundIcon = ExtResource("ground_icon")
 DisplayName = "地煞猿甲"
 DescriptionKey = "ITEM_DSYJ_DESCRIPTION"
 Quality = "优秀"

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Godot;
 using Zaomeng.Equipment;
-using Zaomeng.Equipment.Skills;
+using Zaomeng.Combat.Effects;
 using Zaomeng.Items;
 
 namespace Zaomeng.UI.Inventory;
@@ -16,7 +16,7 @@ public static class ItemDescriptionBuilder
 		if (item is EquipmentDefinition equipment && equipment.GrantedSkills.Count > 0)
 		{
 			sections.Add(TranslationServer.Translate("EQUIPMENT_SKILLS_HEADING").ToString());
-			foreach (EquipmentSkillDefinition skill in equipment.GrantedSkills)
+			foreach (PassiveSkillDefinition skill in equipment.GrantedSkills)
 				sections.Add($"{skill.DisplayName}\n{skill.Description}");
 		}
 		return string.Join("\n\n", sections);

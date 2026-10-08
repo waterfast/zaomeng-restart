@@ -3,9 +3,12 @@
 [ext_resource type="Script" path="res://Scripts/Equipment/EquipmentDefinition.cs" id="1"]
 [ext_resource type="Texture2D" path="res://Assets/Art/BackPack/AllItems/zhp.png" id="2"]
 
+[ext_resource type="Texture2D" path="res://Assets/Art/ItemIcon/zhp.png" id="ground_icon"]
+
 [resource]
 script = ExtResource("1")
 Id = "zhp"
+GroundIcon = ExtResource("ground_icon")
 DisplayName = "诸怀耙"
 DescriptionKey = "ITEM_ZHP_DESCRIPTION"
 Quality = "优秀"

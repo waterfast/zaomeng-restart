@@ -11,6 +11,27 @@
 [ext_resource type="Resource" path="res://Content/Skills/Common/yh.tres" id="passive_yh"]
 [ext_resource type="Resource" path="res://Content/Skills/Common/hh.tres" id="passive_hh"]
 
+[ext_resource type="Resource" path="res://Content/Skills/Tangseng/xbz.tres" id="action_xbz"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Skill/SkillIcon/xbz.png" id="icon_xbz"]
+
+[ext_resource type="Resource" path="res://Content/Skills/Tangseng/jhsj.tres" id="action_jhsj"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Skill/SkillIcon/jhsj.png" id="icon_jhsj"]
+
+[ext_resource type="Resource" path="res://Content/Skills/Tangseng/shy.tres" id="action_shy"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Skill/SkillIcon/shy.png" id="icon_shy"]
+
+[ext_resource type="Resource" path="res://Content/Skills/Tangseng/smb.tres" id="action_smb"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Skill/SkillIcon/smb.png" id="icon_smb"]
+
+[ext_resource type="Resource" path="res://Content/Skills/Tangseng/sgq.tres" id="action_sgq"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Skill/SkillIcon/sgq.png" id="icon_sgq"]
+
+[ext_resource type="Resource" path="res://Content/Skills/Tangseng/myhc.tres" id="action_myhc"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Skill/SkillIcon/myhc.png" id="icon_myhc"]
+
+[ext_resource type="Resource" path="res://Content/Skills/Tangseng/jgz.tres" id="action_jgz"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Skill/SkillIcon/jgz.png" id="icon_jgz"]
+
 [sub_resource type="Resource" id="entry_blb"]
 script = ExtResource("entry")
 Id = "blb"
@@ -28,13 +49,76 @@ Icon = ExtResource("icon_tjgl")
 MaximumLevel = 10
 Action = ExtResource("action_tjgl")
 
+[sub_resource type="Resource" id="entry_xbz"]
+script = ExtResource("entry")
+Id = "xbz"
+DisplayName = "玄冰阵"
+Description = "向前方依次释放三个逐渐扩大的冰阵，造成魔法伤害。分身联动与水精通尚未接入。"
+Icon = ExtResource("icon_xbz")
+MaximumLevel = 10
+Action = ExtResource("action_xbz")
+
+[sub_resource type="Resource" id="entry_jhsj"]
+script = ExtResource("entry")
+Id = "jhsj"
+DisplayName = "九环圣经"
+Description = "释放近身圣经，对周围敌人造成多段魔法伤害。分身联动与水精通尚未接入。"
+Icon = ExtResource("icon_jhsj")
+MaximumLevel = 10
+Action = ExtResource("action_jhsj")
+
+[sub_resource type="Resource" id="entry_shy"]
+script = ExtResource("entry")
+Id = "shy"
+DisplayName = "水幻影"
+Description = "放出向前移动的水幻影。当前仅还原表现，分身技能联动尚未接入。"
+Icon = ExtResource("icon_shy")
+MaximumLevel = 10
+Action = ExtResource("action_shy")
+
+[sub_resource type="Resource" id="entry_smb"]
+script = ExtResource("entry")
+Id = "smb"
+DisplayName = "水魔爆"
+Description = "释放水流预备特效与水爆。当前自动接续爆发，二次按键控制尚未接入。"
+Icon = ExtResource("icon_smb")
+MaximumLevel = 10
+Action = ExtResource("action_smb")
+
+[sub_resource type="Resource" id="entry_sgq"]
+script = ExtResource("entry")
+Id = "sgq"
+DisplayName = "圣光球"
+Description = "释放前进的圣光球及环绕光刃，造成多段魔法伤害。"
+Icon = ExtResource("icon_sgq")
+MaximumLevel = 10
+Action = ExtResource("action_sgq")
+
+[sub_resource type="Resource" id="entry_myhc"]
+script = ExtResource("entry")
+Id = "myhc"
+DisplayName = "沐浴回春"
+Description = "生成随身回春光环，持续恢复生命。"
+Icon = ExtResource("icon_myhc")
+MaximumLevel = 10
+Action = ExtResource("action_myhc")
+
+[sub_resource type="Resource" id="entry_jgz"]
+script = ExtResource("entry")
+Id = "jgz"
+DisplayName = "紧箍咒"
+Description = "在前方生成原版金色紧箍光效。吸附控制尚未接入。"
+Icon = ExtResource("icon_jgz")
+MaximumLevel = 10
+Action = ExtResource("action_jgz")
+
 [resource]
 script = ExtResource("catalog")
 CharacterId = "role_2"
 DisplayName = "唐僧"
-Description = "试玩：冰龙波、天降甘露和三个通用被动，其余技能尚未迁入。"
+Description = "九个主动技能表现与三个通用被动；部分控制及分身玩法尚未接入。"
 Portrait = ExtResource("portrait")
 SelectionAnimation = &"Role_2"
 ActorScene = ExtResource("actor")
 ReservedKeys = PackedInt64Array()
-Skills = Array[ExtResource("entry")]([SubResource("entry_blb"), SubResource("entry_tjgl"), ExtResource("passive_kb"), ExtResource("passive_yh"), ExtResource("passive_hh")])
+Skills = Array[ExtResource("entry")]([SubResource("entry_blb"), SubResource("entry_xbz"), SubResource("entry_tjgl"), SubResource("entry_jhsj"), SubResource("entry_shy"), SubResource("entry_smb"), SubResource("entry_sgq"), SubResource("entry_myhc"), SubResource("entry_jgz"), ExtResource("passive_kb"), ExtResource("passive_yh"), ExtResource("passive_hh")])

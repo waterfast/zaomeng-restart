@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="BurstAttackDefinition" format=3]
+[ext_resource type="Script" path="res://Scripts/Combat/Skills/BurstAttackDefinition.cs" id="burst"]
+[ext_resource type="Script" path="res://Scripts/Combat/HitDefinition.cs" id="hit"]
+[ext_resource type="Script" path="res://Scripts/Combat/HitEvent.cs" id="window"]
+[ext_resource type="SpriteFrames" path="res://Content/MagicWeapons/tsgj_frames.tres" id="frames"]
+[sub_resource type="Resource" id="hit"]
+script = ExtResource("hit")
+AttackMultiplier = 0.15
+AttackMultiplierMax = 0.2
+MultiplierPerLevel = 0
+FlatDamage = 200
+DamageType = 1
+Knockback = Vector2(30, -30)
+[sub_resource type="Resource" id="w0"]
+script = ExtResource("window")
+StartFrame = 2
+EndFrame = 5
+Hit = SubResource("hit")
+[sub_resource type="Resource" id="w1"]
+script = ExtResource("window")
+StartFrame = 6
+EndFrame = 9
+Hit = SubResource("hit")
+
+[resource]
+script = ExtResource("burst")
+Frames = ExtResource("frames")
+Animation = &"SwordBullet"
+Radius = 42
+Positions = PackedVector2Array(0, 0, -90, 0, 90, 0, -180, 0, 180, 0, -270, 0, 270, 0)
+ReleaseTimes = PackedFloat32Array(0.2, 0.2, 0.2, 0.3, 0.3, 0.4, 0.4)
+Scales = PackedFloat32Array(1, 1, 1, 1, 1, 1, 1)
+Hits = Array[ExtResource("window")]([SubResource("w0"), SubResource("w1")])

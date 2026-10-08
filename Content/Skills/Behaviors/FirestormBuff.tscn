@@ -1,0 +1,9 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://Scripts/Combat/Skills/BuffSkillBehavior.cs" id="behavior"]
+[ext_resource type="Resource" path="res://Content/Buffs/firestorm.tres" id="buff"]
+
+[node name="FirestormBuff" type="Node"]
+script = ExtResource("behavior")
+Buff = ExtResource("buff")
+Delay = 0.0333333
+EndsWithCast = true

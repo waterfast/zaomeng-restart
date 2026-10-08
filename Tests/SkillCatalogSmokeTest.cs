@@ -63,7 +63,7 @@ public partial class SkillCatalogTestRunner : Node
 				await Delay(0.05);
 				Check(player.Gravity == 600 && !player.GetChildren().OfType<SkillBehavior>().Any(), $"interrupted {id} restores gravity and frees behavior");
 			}
-			await Delay(0.85);
+			await Delay(_learning.Catalog.Find("hmz")!.Action!.CooldownSeconds + 0.05);
 			player.ResetForSpawn(new(550, 502)); player.RestoreMana(1000);
 			var fireSlash = _learning.Catalog.Find("hmz")!.Action!;
 			Check(player.TryUseSkill(fireSlash) && player.GetSkillCooldown(fireSlash) == 0, "fire slash starts with pending cooldown in actual level");
@@ -73,7 +73,7 @@ public partial class SkillCatalogTestRunner : Node
 				await Delay(0.05);
 				landedCooldown = player.GetSkillCooldown(fireSlash) > 0;
 			}
-			Check(landedCooldown && player.IsOnFloor() && player.GetSkillCooldown(fireSlash) <= 0.8f,
+			Check(landedCooldown && player.IsOnFloor() && player.GetSkillCooldown(fireSlash) <= fireSlash.CooldownSeconds,
 				"landing starts real fire slash countdown");
 			GetTree().ChangeSceneToFile("res://Scenes/UI/MainMenu/ChoosePlayer.tscn");
 			await ToSignal(GetTree(), SceneTree.SignalName.SceneChanged);
@@ -135,6 +135,7 @@ public partial class SkillCatalogTestRunner : Node
 			await Delay(0.05);
 			Check(player.GetNode<AnimatedSprite2D>("Facing/Visual/Death") is { Visible: true } death && death.IsPlaying(), "Tangseng plays migrated death effect");
 			await Capture("tangseng-death");
+			await Delay(GD.Load<AudioStream>("res://Assets/Audio/Hero/75_Role2_dead.mp3").GetLength() + .1);
 			GD.Print("SKILL CATALOG SMOKE TEST PASSED");
 			GetTree().CurrentScene.QueueFree();
 			await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
@@ -145,7 +146,7 @@ public partial class SkillCatalogTestRunner : Node
 	private static void CheckInvalidRegistrations()
 	{
 		SkillCatalogRegistry registry = SkillCatalogRegistry.Default;
-		Check(registry.Catalogs.Count == 2 && registry.Get("role_1").Skills.Count == 13 && registry.Get("role_2").Skills.Count == 5, "explicit registry contains both character catalogs");
+		Check(registry.Catalogs.Count == 2 && registry.Get("role_1").Skills.Count == 13 && registry.Get("role_2").Skills.Count == 12, "explicit registry contains both character catalogs");
 		var duplicate = new SkillCatalogRegistry { Catalogs = new() { registry.Get("role_1"), registry.Get("role_1") } };
 		Reject(duplicate.Validate, "duplicate character rejected");
 		SkillCatalog copied = (SkillCatalog)registry.Get("role_2").Duplicate();
@@ -209,7 +210,7 @@ public partial class SkillCatalogTestRunner : Node
 		GetTree().ChangeSceneToFile(GameSession.FirstLevel);
 		await ToSignal(GetTree(), SceneTree.SignalName.SceneChanged);
 		var level = (GameplayLevel)GetTree().CurrentScene;
-		level.GetChildren().OfType<ForestEncounter>().Single().SetPhysicsProcess(false);
+		level.GetChildren().OfType<WaveEncounter>().Single().SetPhysicsProcess(false);
 		level.GetNode<Player>("Player").InputEnabled = false;
 		await Delay(0.1);
 		return level;

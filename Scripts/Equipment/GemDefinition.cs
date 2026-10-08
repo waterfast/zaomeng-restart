@@ -14,6 +14,7 @@ public enum GemAttribute
 
 /// <summary>宝石是可堆叠物品；镶嵌后定义 ID 留在装备实例中，效果仍由资源提供。</summary>
 [GlobalClass]
+[Tool]
 public partial class GemDefinition : ItemDefinition
 {
 	[Export] public GemAttribute Attribute { get; set; } = GemAttribute.Attack;

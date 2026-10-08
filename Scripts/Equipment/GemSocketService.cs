@@ -55,8 +55,8 @@ public sealed class GemSocketService(SaveCharacter character, ItemCatalog catalo
 			if (oldGem.Length == 0) return GemResult.Fail(EquipmentError.EmptySocket, "此孔位没有宝石。");
 			if (oldGem != request.ExpectedGemId)
 				return GemResult.Fail(EquipmentError.GemChanged, "孔位中的宝石已发生变化。");
-			if (!inventory.TryAddStackable(next, oldGem))
-				return GemResult.Fail(EquipmentError.InventoryFull, "背包没有空间容纳拆下的宝石。");
+			if (!inventory.TryAddStackable(ref next, oldGem))
+				return GemResult.Fail(EquipmentError.InvalidSocket, "宝石数量超出可处理范围。");
 			newGem = "";
 		}
 		else return GemResult.Fail(EquipmentError.InvalidSocket, "无效的宝石操作。");

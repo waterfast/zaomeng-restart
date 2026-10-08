@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="EquipmentDefinition" format=3]
+[ext_resource type="Script" path="res://Scripts/Equipment/EquipmentDefinition.cs" id="script"]
+[ext_resource type="Texture2D" path="res://Assets/Art/BackPack/AllItems/zjhl.png" id="icon"]
+[ext_resource type="Texture2D" path="res://Assets/Art/BackPack/AllItems/zjhl.png" id="ground"]
+[ext_resource type="Resource" path="res://Content/Items/Presentation/zjhl.tres" id="presentation"]
+[ext_resource type="Resource" path="res://Content/MagicWeapons/zjhl.tres" id="ability"]
+
+[resource]
+script = ExtResource("script")
+Id = "zjhl"
+DisplayName = "紫金葫芦"
+DescriptionKey = "ITEM_ZJHL_DESCRIPTION"
+Icon = ExtResource("icon")
+GroundIcon = ExtResource("ground")
+Slot = 6
+Rarity = 4
+Quality = "邪灵"
+QualityColor = Color(0.4, 0.4, 0.4, 1)
+OwnerCaption = "通用"
+SellPrice = 320
+MagicWeaponPresentation = ExtResource("presentation")
+MagicWeaponAbility = ExtResource("ability")
+CriticalRating = 5
+ManaRegenerationBonus = 3

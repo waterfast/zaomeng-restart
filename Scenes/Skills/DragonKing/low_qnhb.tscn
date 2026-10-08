@@ -1,0 +1,29 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://Scripts/Combat/Skills/GroundAttackSequenceBehavior.cs" id="script"]
+[ext_resource type="Script" path="res://Scripts/Combat/HitEvent.cs" id="window"]
+[ext_resource type="SpriteFrames" path="res://Content/Monsters/DragonKing_qnhb_2_frames.tres" id="frames"]
+[ext_resource type="Script" path="res://Scripts/Combat/HitDefinition.cs" id="hit"]
+[sub_resource type="Resource" id="hit"]
+script = ExtResource("hit")
+FlatDamage = 95.0
+AttackMultiplier = 0.0
+DamageType = 1
+Knockback = Vector2(40.0, -150.0)
+Hitstun = 0.13
+[sub_resource type="Resource" id="window"]
+script = ExtResource("window")
+StartFrame = 4
+EndFrame = 8
+Hit = SubResource("hit")
+[node name="GroundSequence" type="Node"]
+script = ExtResource("script")
+StartTime = 1.85
+ReleaseTimes = PackedFloat32Array(0,0.2,0.2,0.4,0.4,0.6,0.6,0.8,0.8)
+Offsets = PackedVector2Array(0,0,-110,0,110,0,-290,0,290,0,-400,0,400,0,-510,0,510,0)
+Radius = 60.0
+Frames = ExtResource("frames")
+Animation = &"qnhb_2"
+VisualOffset = Vector2(0,0)
+VisualScale = Vector2(1.2,1.2)
+Hits = Array[Resource]([SubResource("window")])
+AlignVisualToGround = true

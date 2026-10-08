@@ -1,0 +1,8 @@
+[gd_resource type="Resource" format=3]
+[ext_resource type="Script" path="res://Scripts/Level/Traps/TrapDefinition.cs" id="def"]
+[resource]
+script = ExtResource("def")
+Damage = 50.0
+RestSeconds = 1.4
+WarningSeconds = 0.4
+ActiveSeconds = 0.6

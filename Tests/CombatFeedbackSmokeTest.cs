@@ -44,7 +44,8 @@ public partial class CombatFeedbackSmokeTest : Node2D
 			int[] soulsPerOrb = [1, 2, 2];
 			for (int kind = 1; kind <= 3; kind++)
 			{
-				Monster monster = pool.Spawn(kind, player.GlobalPosition + new Vector2(60, 0));
+				var template = GD.Load<Zaomeng.Monsters.MonsterDefinition>($"res://Content/Monsters/Templates/{new[] { "monkey", "demon_monkey", "gorilla" }[kind - 1]}.tres");
+				Monster monster = pool.Spawn(template, player.GlobalPosition + new Vector2(60, 0));
 				monster.AiEnabled = false;
 				monster.SetPhysicsProcess(false);
 				Check(!monster.HasNode("HealthBar"), $"monster {kind} overhead health bar removed");
@@ -73,9 +74,9 @@ public partial class CombatFeedbackSmokeTest : Node2D
 				else
 					Check(body.Frame == body.SpriteFrames.GetFrameCount("death") - 1 && !monster.AttackBox.Active,
 						"original death pose reaches its final frame with attack disabled");
-				pool.Release(kind, monster);
+				pool.Release(template, monster);
 				Check(!monster.Visible && monster.ProcessMode == ProcessModeEnum.Disabled, "pool release hides every death presentation");
-				Monster reused = pool.Spawn(kind, player.GlobalPosition + new Vector2(150, 0));
+				Monster reused = pool.Spawn(template, player.GlobalPosition + new Vector2(150, 0));
 				reused.AiEnabled = false;
 				reused.SetPhysicsProcess(false);
 				Check(ReferenceEquals(monster, reused) && body.SelfModulate.A == 1,
@@ -84,7 +85,7 @@ public partial class CombatFeedbackSmokeTest : Node2D
 				Check(wallet.Souls == soulsBefore + 3 * soulsPerOrb[kind - 1] && collections == collectionsBefore + 3,
 					$"monster {kind} soul orbs collect once after homing");
 				Check(!GetChildren().OfType<SoulPickup>().Any(), "collected soul orbs are freed");
-				pool.Release(kind, reused);
+				pool.Release(template, reused);
 			}
 			GD.Print("COMBAT FEEDBACK SMOKE TEST PASSED");
 			GetTree().Quit();
@@ -100,7 +101,7 @@ public partial class CombatFeedbackSmokeTest : Node2D
 	{
 		var level = GD.Load<PackedScene>("res://Scenes/Level/Level_1.tscn").Instantiate<GameplayLevel>();
 		AddChild(level);
-		level.SpawnInterval = 100;
+		level.GetChildren().OfType<WaveEncounter>().Single().SetPhysicsProcess(false);
 		var player = level.GetNode<Player>("Player");
 		player.InputEnabled = false;
 		await ToSignal(GetTree().CreateTimer(0.2), SceneTreeTimer.SignalName.Timeout);

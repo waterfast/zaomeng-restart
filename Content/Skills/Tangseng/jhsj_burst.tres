@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="BurstAttackDefinition" format=3]
+[ext_resource type="Script" path="res://Scripts/Combat/Skills/BurstAttackDefinition.cs" id="burst"]
+[ext_resource type="Script" path="res://Scripts/Combat/HitDefinition.cs" id="hit"]
+[ext_resource type="Script" path="res://Scripts/Combat/HitEvent.cs" id="window"]
+[ext_resource type="SpriteFrames" path="res://Content/Skills/Tangseng/jhsj_frames.tres" id="frames"]
+[sub_resource type="Resource" id="hit"]
+script = ExtResource("hit")
+AttackMultiplier = 1
+AttackMultiplierMax = 0
+MultiplierPerLevel = 0.1
+FlatDamage = 0
+DamageType = 1
+Knockback = Vector2(30, -30)
+[sub_resource type="Resource" id="w0"]
+script = ExtResource("window")
+StartFrame = 1
+EndFrame = 4
+Hit = SubResource("hit")
+[sub_resource type="Resource" id="w1"]
+script = ExtResource("window")
+StartFrame = 5
+EndFrame = 8
+Hit = SubResource("hit")
+[sub_resource type="Resource" id="w2"]
+script = ExtResource("window")
+StartFrame = 9
+EndFrame = 12
+Hit = SubResource("hit")
+
+[resource]
+script = ExtResource("burst")
+Frames = ExtResource("frames")
+Animation = &"Role2Bullet6"
+Radius = 180
+AlignToGround = false
+Positions = PackedVector2Array(0, -45)
+ReleaseTimes = PackedFloat32Array(0.6)
+Scales = PackedFloat32Array(1)
+Hits = Array[ExtResource("window")]([SubResource("w0"), SubResource("w1"), SubResource("w2")])

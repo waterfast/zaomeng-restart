@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SkillDefinition" format=3]
+[ext_resource type="Script" path="res://Scripts/Combat/SkillDefinition.cs" id="runtime"]
+[ext_resource type="Resource" path="res://Content/Skills/Growth/Tangseng/smb.tres" id="growth"]
+[ext_resource type="PackedScene" path="res://Content/Skills/Behaviors/smb.tscn" id="behavior"]
+[resource]
+script = ExtResource("runtime")
+Id = "smb"
+DisplayName = "水魔爆"
+Animation = &"smb_1"
+FramesPerSecond = 10
+CooldownSeconds = 1.2
+Growth = ExtResource("growth")
+BehaviorScene = ExtResource("behavior")

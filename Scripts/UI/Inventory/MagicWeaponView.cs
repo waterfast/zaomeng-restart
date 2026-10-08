@@ -2,6 +2,7 @@ using System;
 using Godot;
 using Zaomeng.Equipment;
 using Zaomeng.Items;
+using Zaomeng.Events;
 using SaveCharacter = Zaomeng.Character.Character;
 
 namespace Zaomeng.UI.Inventory;
@@ -11,17 +12,21 @@ public sealed class MagicWeaponView : IDisposable
 {
 	private readonly Node2D _root;
 	private readonly Node2D _help;
-	private readonly Node2D _parent;
+	private readonly Node _parent;
 	private readonly SaveCharacter _character;
 	private readonly ItemCatalog _catalog;
 	private readonly Sprite2D _fallback;
-	public MagicWeaponView(Node2D parent, ItemCatalog catalog, SaveCharacter character)
+	private readonly IDisposable? _equipmentConnection;
+	public Node2D Root => _root;
+	public event Action? CloseRequested;
+	public MagicWeaponView(Node parent, ItemCatalog catalog, SaveCharacter character, GameplayEvents? events = null)
 	{
 		_parent = parent; _catalog = catalog; _character = character;
 		_root = GD.Load<PackedScene>("res://Scenes/UI/BackPack/Magic_weapon_infor.tscn").Instantiate<Node2D>();
 		_root.Name = "MagicWeaponPanel"; _root.ZIndex = 105;
 		parent.AddChild(_root); _root.Hide();
-		_root.GetNode<BaseButton>("BG/Close").Pressed += Hide;
+		_root.GetNode<BaseButton>("BG/Close").Pressed += () => CloseRequested?.Invoke();
+		_root.VisibilityChanged += OnVisibilityChanged;
 		foreach (string path in new[] { "BG/bg_2/up_level", "BG/szfb", "BG/wxxl", "BG/gjwx", "BG/czlxl" })
 			_root.GetNode<BaseButton>(path).Disabled = true;
 		_fallback = new Sprite2D { Position = _root.GetNode<Node2D>("BG/Icon").Position };
@@ -31,10 +36,20 @@ public sealed class MagicWeaponView : IDisposable
 		parent.AddChild(_help); _help.Hide();
 		_help.GetNode<BaseButton>("BG/Close").Pressed += _help.Hide;
 		_root.GetNode<BaseButton>("BG/tips").Pressed += () => { Center(_help); _help.Show(); };
+		_equipmentConnection = events?.EquipmentChanged.Subscribe(change => { if (change.CharacterId == character.Id) Refresh(); });
 	}
-	private void Center(Node2D panel) => panel.Position = _parent.GetGlobalTransformWithCanvas().AffineInverse() * (_parent.GetViewportRect().Size / 2);
+	private void Center(Node2D panel)
+	{
+		Transform2D transform = _parent is CanvasItem canvas ? canvas.GetGlobalTransformWithCanvas() : panel.GetCanvasTransform();
+		panel.Position = transform.AffineInverse() * (panel.GetViewportRect().Size / 2);
+	}
 	public void Show() { Center(_root); Refresh(); _root.Show(); }
 	public void Hide() { _root.Hide(); _help.Hide(); }
+	private void OnVisibilityChanged()
+	{
+		if (_root.Visible) { Center(_root); Refresh(); }
+		else _help.Hide();
+	}
 	public void Refresh()
 	{
 		EquipmentDefinition? item = null;
@@ -49,7 +64,11 @@ public sealed class MagicWeaponView : IDisposable
 		_root.GetNode<TextureProgressBar>("BG/bg_2/lh_bar").Value = 0;
 		_root.GetNode<Label>("BG/bg_2/lh_bar/lh_value").Text = "—";
 		_root.GetNode<Label>("BG/MagicWeaponSkillTitle").Text = presentation?.SkillName ?? "";
-		_root.GetNode<Label>("BG/ScrollContainer/VBoxContainer/MagicWeaponSkill").Text = presentation?.SkillDescription ?? "";
+		string skillDescription = presentation?.SkillDescription ?? "";
+		if (item?.MagicWeaponAbility is { } ability)
+			skillDescription += $"\n按 H 施放 · 魔耗 {ability.Action.GetManaCost(1)} · 冷却 {ability.Action.CooldownSeconds:0.#} 秒\n当前为基础版，五行与成长尚未接入。";
+		else if (item is not null) skillDescription += "\n主动效果尚未接入。";
+		_root.GetNode<Label>("BG/ScrollContainer/VBoxContainer/MagicWeaponSkill").Text = skillDescription;
 		_root.GetNode<Label>("BG/ScrollContainer/VBoxContainer/PsTitle").Text = string.IsNullOrEmpty(presentation?.PassiveDescription) ? "" : "被动技能";
 		_root.GetNode<Label>("BG/ScrollContainer/VBoxContainer/MagicWeaponSkill2").Text = presentation?.PassiveDescription ?? "";
 		var skillIcon = _root.GetNode<Sprite2D>("BG/Icon_");
@@ -67,5 +86,10 @@ public sealed class MagicWeaponView : IDisposable
 	}
 	private void SetStat(string name, string value) => _root.GetNode<Label>($"BG/bg_2/{name}").Text = value;
 	private static string Format(float? value) => value?.ToString("0.##") ?? "—";
-	public void Dispose() { _root.QueueFree(); _help.QueueFree(); }
+	public void Dispose()
+	{
+		_equipmentConnection?.Dispose();
+		if (GodotObject.IsInstanceValid(_root)) _root.QueueFree();
+		if (GodotObject.IsInstanceValid(_help)) _help.QueueFree();
+	}
 }

@@ -1,0 +1,4 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://Tests/DragonPalaceSmokeTest.cs" id="test"]
+[node name="DragonPalaceSmokeTest" type="Node"]
+script = ExtResource("test")

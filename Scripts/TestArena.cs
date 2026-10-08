@@ -23,6 +23,7 @@ public partial class TestArena : Node2D
 	private MenuManager _menuManager = null!;
 	private InventoryViewAdapter _inventoryAdapter = null!;
 	private LegacyBackpackView _backpackView = null!;
+	private MagicWeaponView _magicWeaponView = null!;
 	private InventoryService _inventory = null!;
 	private SaveCharacter _character = null!;
 	private GameplayEquipmentBinding _equipmentBinding = null!;
@@ -46,8 +47,12 @@ public partial class TestArena : Node2D
 		_menuManager = GetNode<MenuManager>("MenuManager");
 		_menuManager.MenuStateChanged += isOpen => GetNode<ColorRect>("HUD/Panel").Visible = !isOpen;
 		_inventoryAdapter = new InventoryViewAdapter(_inventory, ItemCatalog);
+		_magicWeaponView = new MagicWeaponView(GetNode("HUD"), ItemCatalog, _character, Events);
+		_menuManager.RegisterMenu("artifacts_menu", _magicWeaponView.Root);
+		_magicWeaponView.CloseRequested += _menuManager.CloseMenu;
 		_backpackView = new LegacyBackpackView(_backpack, _inventoryAdapter, ItemCatalog,
-			_character, GameSession.Data!.Wallet, _player, () => GameSession.Save(_inventory), Events);
+			_character, GameSession.Data!.Wallet, _player, () => GameSession.Save(_inventory), Events,
+			() => _menuManager.ToggleMenu("artifacts_menu"));
 		_menuManager.RegisterMenu("bag", _backpack);
 		_backpackView.CloseRequested += _menuManager.CloseMenu;
 		var hud = GD.Load<PackedScene>("res://Scenes/UI/Level/Role_information.tscn").Instantiate<Node2D>();
@@ -58,7 +63,8 @@ public partial class TestArena : Node2D
 		hud.AddChild(playerHud);
 		hud.GetNode<AnimatedSprite2D>("roleLayer/Gogo").Hide();
 		hud.GetNode<BaseButton>("roleLayer/role_menu/backpack").Pressed += () => _menuManager.ToggleMenu("bag");
-		foreach (string name in new[] { "set", "skill", "magic_weapon", "pet" })
+		hud.GetNode<BaseButton>("roleLayer/role_menu/magic_weapon").Pressed += () => _menuManager.ToggleMenu("artifacts_menu");
+		foreach (string name in new[] { "set", "skill", "pet" })
 			hud.GetNode<BaseButton>($"roleLayer/role_menu/{name}").Disabled = true;
 		_menuManager.MenuStateChanged += isOpen => hud.GetNode<CanvasLayer>("roleLayer").Visible = !isOpen;
 		if (Array.Exists(OS.GetCmdlineUserArgs(), value => value == "--smoke-test"))
@@ -74,6 +80,7 @@ public partial class TestArena : Node2D
 		if (_player is not null) _player.ProgressionChanged -= SaveProgression;
 		if (_player is not null) _player.SoulsCollected -= CollectSouls;
 		_backpackView?.Dispose();
+		_magicWeaponView?.Dispose();
 		_inventoryAdapter?.Dispose();
 		_equipmentBinding?.Dispose();
 	}

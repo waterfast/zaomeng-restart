@@ -1,0 +1,11 @@
+[gd_resource type="Resource" format=3]
+[ext_resource type="Script" path="res://Scripts/Combat/Buffs/BuffDefinition.cs" id="buff"]
+[resource]
+script = ExtResource("buff")
+Id = "peng_egg"
+DisplayName = "涅槃之卵"
+Description = "七秒后复生，击破可阻止复生。"
+Duration = 7.0
+PreventsActions = true
+MoveSpeedMultiplier = 0.0
+ForcedAnimation = &"Eggs"

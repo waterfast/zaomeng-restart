@@ -1,12 +1,15 @@
-[gd_resource type="Resource" script_class="EquipmentDefinition" load_steps=4 format=3]
+[gd_resource type="Resource" script_class="EquipmentDefinition" format=3]
 
 [ext_resource type="Script" path="res://Scripts/Equipment/EquipmentDefinition.cs" id="1"]
 [ext_resource type="Texture2D" path="res://Assets/Art/BackPack/AllItems/ryjgb.png" id="2"]
 [ext_resource type="Resource" path="res://Content/GameData/EquipmentSkills/critical_resource_recovery.tres" id="3"]
 
+[ext_resource type="Texture2D" path="res://Assets/Art/ItemIcon/ryjgb.png" id="ground_icon"]
+
 [resource]
 script = ExtResource("1")
 Id = "ryjgb"
+GroundIcon = ExtResource("ground_icon")
 DisplayName = "如意金箍棒"
 MaxStack = 1
 Icon = ExtResource("2")

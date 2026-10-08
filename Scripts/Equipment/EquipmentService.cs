@@ -77,7 +77,7 @@ public sealed class EquipmentService
 		EquipmentInstance? previous = Character.Equipment.Get(slot);
 		if (!_inventory.TryExchangeEquipment(sourceSlot, previous,
 			() => Character.Equipment.Set(slot, incoming)))
-			return EquipmentResult.Fail(EquipmentError.InventoryFull, "背包没有空间容纳卸下的装备。");
+			return EquipmentResult.Fail(EquipmentError.ItemChanged, "选中的装备已发生变化，请重新选择。");
 		return new(EquipmentError.None, "", new(Character.Id, slot, previous, incoming));
 	}
 }

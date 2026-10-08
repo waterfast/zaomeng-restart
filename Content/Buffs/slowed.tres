@@ -1,0 +1,9 @@
+[gd_resource type="Resource" format=3]
+[ext_resource type="Script" path="res://Scripts/Combat/Buffs/BuffDefinition.cs" id="buff"]
+[resource]
+script = ExtResource("buff")
+Id = "slowed"
+DisplayName = "减速"
+Description = "减速"
+Duration = 3.0
+MoveSpeedMultiplier = 0.6

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Zaomeng.Inventory;
 using Zaomeng.Equipment;
 
@@ -22,7 +23,6 @@ Check(inventory.AddItem("sword", 1) && inventory.Slots[2]?.Count == 1,
 	"nonstackable item uses one slot");
 
 var beforeFailure = inventory.Slots;
-Check(!inventory.AddItem("gem", 6), "insufficient capacity rejects whole addition");
 Check(!inventory.AddItem("missing", 1), "unknown item rejected");
 Check(SameSlots(beforeFailure, inventory.Slots), "failed additions leave slots untouched");
 
@@ -80,6 +80,17 @@ Check(gearSnapshot[0]!.Equipment!.InstanceId == firstWeapon.InstanceId && gearSn
 	"equipment snapshots remain unchanged after move and removal");
 ExpectException<ArgumentException>(() => gearBag.RestoreSlots([gearBag.Slots[2], gearBag.Slots[2], null]));
 Check(gearBag.Slots[2]!.Equipment!.InstanceId == firstWeapon.InstanceId, "duplicate restore preserves original equipment");
+var growingBag = new InventoryService(1, catalog);
+int growingChanges = 0;
+growingBag.Changed += () => growingChanges++;
+Check(growingBag.AddItem("sword", 1000) && growingBag.GetItemCount("sword") == 1000 && growingBag.Capacity >= 1000,
+	"equipment grows well beyond the former 70-slot limit");
+Check(growingChanges == 1 && growingBag.Slots.Where(s => s is not null)
+	.Select(s => s!.Equipment!.InstanceId).Distinct().Count() == 1000,
+	"growth commits once and preserves unique equipment identities");
+var tinyStackBag = new InventoryService(1, catalog);
+Check(tinyStackBag.AddItem("gem", 1000) && tinyStackBag.GetItemCount("gem") == 1000
+	&& tinyStackBag.Slots.All(s => s is null || s.Count <= 5), "stackable items grow while respecting stack limits");
 Console.WriteLine("Inventory logic tests passed.");
 
 static bool SameSlots(IReadOnlyList<ItemStack?> first, IReadOnlyList<ItemStack?> second)

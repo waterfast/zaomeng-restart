@@ -1,0 +1,62 @@
+[gd_scene format=4]
+
+[ext_resource type="FontFile" path="res://Assets/Font/HYZhuZiMeiXinTiW.ttf" id="1_jidjg"]
+[ext_resource type="TileSet" path="res://Content/Terrain/GrassStoneTileSet.tres" id="2_1ht1a"]
+
+[node name="GrassStoneTilePreview" type="Node2D" unique_id=1024390116]
+
+[node name="Background" type="Polygon2D" parent="." unique_id=1240401128]
+color = Color(0.15294118, 0.2, 0.2509804, 1)
+polygon = PackedVector2Array(0, 0, 1600, 0, 1600, 900, 0, 900)
+
+[node name="@Label@2" type="Label" parent="." unique_id=1996772241]
+offset_left = 48.0
+offset_top = 32.0
+offset_right = 48.0
+offset_bottom = 32.0
+theme_override_fonts/font = ExtResource("1_jidjg")
+theme_override_font_sizes/font_size = 28
+text = "草地石块瓦片 · 64 × 64"
+
+[node name="@Label@3" type="Label" parent="." unique_id=528091290]
+offset_left = 64.0
+offset_top = 100.0
+offset_right = 64.0
+offset_bottom = 100.0
+theme_override_fonts/font = ExtResource("1_jidjg")
+theme_override_font_sizes/font_size = 22
+text = "单块放大预览"
+
+[node name="@Label@4" type="Label" parent="." unique_id=1570098357]
+offset_left = 370.0
+offset_top = 100.0
+offset_right = 370.0
+offset_bottom = 100.0
+theme_override_fonts/font = ExtResource("1_jidjg")
+theme_override_font_sizes/font_size = 22
+text = "连续拼接（每格自带碰撞）"
+
+[node name="@Label@5" type="Label" parent="." unique_id=756536829]
+offset_left = 48.0
+offset_top = 490.0
+offset_right = 48.0
+offset_bottom = 490.0
+theme_override_fonts/font = ExtResource("1_jidjg")
+theme_override_font_sizes/font_size = 20
+text = "原素材切片；碰撞随瓦片摆放，空格不产生地形。"
+
+[node name="SingleTile" type="TileMapLayer" parent="." unique_id=84881097]
+position = Vector2(64, 150)
+scale = Vector2(3, 3)
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAA=")
+tile_set = ExtResource("2_1ht1a")
+
+[node name="GroundStrip" type="TileMapLayer" parent="." unique_id=2136019145]
+position = Vector2(370, 180)
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAA=")
+tile_set = ExtResource("2_1ht1a")
+
+[node name="SeparateBlocks" type="TileMapLayer" parent="." unique_id=531702744]
+position = Vector2(370, 330)
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAA=")
+tile_set = ExtResource("2_1ht1a")

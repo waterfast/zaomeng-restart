@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="MusicTrack" format=3]
+[ext_resource type="Script" path="res://Scripts/Audio/MusicTrack.cs" id="script"]
+[ext_resource type="AudioStream" path="res://Assets/Audio/level/2_bg4.mp3" id="stream"]
+
+[resource]
+script = ExtResource("script")
+Id = "2_bg4"
+DisplayName = "转轮殿等"
+Stream = ExtResource("stream")

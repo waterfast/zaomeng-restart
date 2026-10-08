@@ -1,0 +1,17 @@
+[gd_resource type="Resource" format=3]
+[ext_resource type="Script" path="res://Scripts/Combat/Effects/PassiveSkillDefinition.cs" id="skill"]
+[ext_resource type="Script" path="res://Scripts/Combat/Effects/BuffGrantEffect.cs" id="effect"]
+[ext_resource type="Resource" path="res://Content/Buffs/earth_spirit.tres" id="buff"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Buffs/earth_spirit.png" id="icon"]
+
+[sub_resource type="Resource" id="effect"]
+script = ExtResource("effect")
+Buff = ExtResource("buff")
+
+[resource]
+script = ExtResource("skill")
+Id = "earth_spirit"
+NameKey = "SKILL_EARTH_SPIRIT_NAME"
+DescriptionKey = "SKILL_EARTH_SPIRIT_DESCRIPTION"
+Icon = ExtResource("icon")
+Effect = SubResource("effect")

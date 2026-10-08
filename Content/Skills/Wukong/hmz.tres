@@ -5,13 +5,19 @@
 
 [ext_resource type="Resource" path="res://Content/Skills/Growth/Wukong/hmz.tres" id="growth"]
 
+[ext_resource type="AudioStream" path="res://Assets/Audio/Hero/35_Role1_hit10_1.mp3" id="sound"]
+
+[ext_resource type="Resource" path="res://Content/Combat/WushuangGains/6_8.tres" id="wushuang_gain"]
+
 [resource]
 script = ExtResource("skill")
+WushuangGain = ExtResource("wushuang_gain")
+Sound = ExtResource("sound")
 Growth = ExtResource("growth")
 Id = "hmz"
 Invulnerable = true
 Animation = &"hmz__"
 FramesPerSecond = 20
-CooldownSeconds = 0.8
+CooldownSeconds = 4.8
 StartCooldownOnImpact = true
 BehaviorScene = ExtResource("behavior")

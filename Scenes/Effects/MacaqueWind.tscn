@@ -1,0 +1,17 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://Scripts/Combat/Skills/SkillProjectile.cs" id="script"]
+[ext_resource type="SpriteFrames" path="res://Content/Monsters/MacaqueWindFrames.tres" id="frames"]
+[ext_resource type="Script" path="res://Scripts/Combat/HitDefinition.cs" id="hit"]
+[sub_resource type="Resource" id="hit"]
+script = ExtResource("hit")
+AttackMultiplier = 1.63636
+DamageType = 1
+Knockback = Vector2(200, -80)
+[node name="Wind" type="Node2D"]
+script = ExtResource("script")
+Speed = 1000.0
+Lifetime = 0.9
+HitRadius = 55.0
+Hit = SubResource("hit")
+Frames = ExtResource("frames")
+Animation = &"Monster4Bullet"

@@ -1,0 +1,26 @@
+[gd_resource type="Resource" format=3]
+[ext_resource type="Script" path="res://Scripts/Combat/SkillDefinition.cs" id="skill"]
+[ext_resource type="Script" path="res://Scripts/Combat/HitDefinition.cs" id="hit"]
+[ext_resource type="Script" path="res://Scripts/Combat/HitEvent.cs" id="window"]
+
+[ext_resource type="PackedScene" path="res://Content/Monsters/Human/Effects/behavior_10_dmfd.tscn" id="behavior"]
+[sub_resource type="Resource" id="hit"]
+script = ExtResource("hit")
+FlatDamage = 0.0
+AttackMultiplier = 2.6666666666666665
+DamageType = 1
+Knockback = Vector2(100, -100)
+
+[sub_resource type="Resource" id="window"]
+script = ExtResource("window")
+StartFrame = 12
+EndFrame = 24
+Hit = SubResource("hit")
+
+[resource]
+script = ExtResource("skill")
+Id = "human_10_dmfd"
+Animation = &"dmfd"
+FramesPerSecond = 60
+CooldownSeconds = 7.0
+BehaviorScene = ExtResource("behavior")

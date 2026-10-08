@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="BuffDefinition" format=3]
+
+[ext_resource type="Script" path="res://Scripts/Combat/Buffs/BuffDefinition.cs" id="buff"]
+[ext_resource type="Texture2D" path="res://Assets/Art/HeroPicture/WSGrey.png" id="icon"]
+
+[resource]
+script = ExtResource("buff")
+Id = "wushuang"
+DisplayName = "无双"
+Icon = ExtResource("icon")
+Description = "伤害与移动速度提升50%，免疫受击打断和击退；仍会受到伤害。"
+FinalDamageMultiplier = 1.5
+MoveSpeedMultiplier = 1.5
+SuperArmor = true

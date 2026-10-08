@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ActorSoundProfile" format=3]
+[ext_resource type="Script" path="res://Scripts/Audio/ActorSoundProfile.cs" id="script"]
+[ext_resource type="AudioStream" path="res://Assets/Audio/Hero/9_BeattackByRole2.mp3" id="Impact"]
+[ext_resource type="AudioStream" path="res://Assets/Audio/Hero/62_Role2_beAttack.mp3" id="Hurt"]
+[ext_resource type="AudioStream" path="res://Assets/Audio/Hero/75_Role2_dead.mp3" id="Death"]
+
+[resource]
+script = ExtResource("script")
+Impact = ExtResource("Impact")
+Hurt = ExtResource("Hurt")
+Death = ExtResource("Death")

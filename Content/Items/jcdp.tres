@@ -3,9 +3,12 @@
 [ext_resource type="Script" path="res://Scripts/Equipment/EquipmentDefinition.cs" id="1"]
 [ext_resource type="Texture2D" path="res://Assets/Art/BackPack/AllItems/jcdp.png" id="2"]
 
+[ext_resource type="Texture2D" path="res://Assets/Art/ItemIcon/jcdp.png" id="ground_icon"]
+
 [resource]
 script = ExtResource("1")
 Id = "jcdp"
+GroundIcon = ExtResource("ground_icon")
 DisplayName = "九齿钉耙"
 DescriptionKey = "ITEM_JCDP_DESCRIPTION"
 Quality = "精良"

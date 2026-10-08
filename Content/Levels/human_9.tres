@@ -1,0 +1,76 @@
+[gd_resource type="Resource" format=3]
+[ext_resource type="Resource" path="res://Content/Audio/21_bg3.tres" id="music"]
+
+[ext_resource type="Script" path="res://Scripts/Level/LevelDefinition.cs" id="def"]
+[ext_resource type="PackedScene" path="res://Scenes/Maps/Human/Map_9.tscn" id="map"]
+[ext_resource type="Resource" path="res://Content/Levels/Difficulties/normal.tres" id="normal"]
+[ext_resource type="Resource" path="res://Content/Levels/Difficulties/hard.tres" id="hard"]
+
+[ext_resource type="Script" path="res://Scripts/Level/WaveEncounterDefinition.cs" id="encounter"]
+[ext_resource type="Script" path="res://Scripts/Level/WaveDefinition.cs" id="wave"]
+[ext_resource type="Resource" path="res://Content/Monsters/Human/monster_14.tres" id="m14"]
+[ext_resource type="Resource" path="res://Content/Monsters/Human/monster_15.tres" id="m15"]
+[ext_resource type="Resource" path="res://Content/Monsters/Human/monster_16.tres" id="m16"]
+[ext_resource type="Resource" path="res://Content/Monsters/Human/monster_17.tres" id="m17"]
+[ext_resource type="Resource" path="res://Content/Monsters/Human/monster_20.tres" id="m20"]
+
+[sub_resource type="Resource" id="wave0"]
+script = ExtResource("wave")
+Monsters = Array[Resource]([ExtResource("m16"), ExtResource("m16"), ExtResource("m14"), ExtResource("m15"), ExtResource("m14"), ExtResource("m15"), ExtResource("m14"), ExtResource("m15"), ExtResource("m14"), ExtResource("m15"), ExtResource("m14"), ExtResource("m15")])
+EntranceX = 0
+SpawnRange = Vector2(450, 950)
+GateX = 1100.0
+CameraRight = 1133
+SpawnRayTop = -200.0
+SpawnRayBottom = 900.0
+
+[sub_resource type="Resource" id="wave1"]
+script = ExtResource("wave")
+Monsters = Array[Resource]([ExtResource("m14"), ExtResource("m15"), ExtResource("m14"), ExtResource("m15"), ExtResource("m14"), ExtResource("m15"), ExtResource("m14"), ExtResource("m15"), ExtResource("m14"), ExtResource("m15"), ExtResource("m17"), ExtResource("m16"), ExtResource("m17"), ExtResource("m16"), ExtResource("m17"), ExtResource("m16"), ExtResource("m17"), ExtResource("m16"), ExtResource("m17"), ExtResource("m16")])
+EntranceX = 1110
+SpawnRange = Vector2(1400, 2000)
+GateX = 2250.0
+CameraRight = 2283
+SpawnRayTop = -200.0
+SpawnRayBottom = 900.0
+
+[sub_resource type="Resource" id="wave2"]
+script = ExtResource("wave")
+Monsters = Array[Resource]([ExtResource("m14"), ExtResource("m15"), ExtResource("m14"), ExtResource("m15"), ExtResource("m14"), ExtResource("m15"), ExtResource("m14"), ExtResource("m15"), ExtResource("m14"), ExtResource("m15"), ExtResource("m17"), ExtResource("m16"), ExtResource("m17"), ExtResource("m16"), ExtResource("m17"), ExtResource("m16"), ExtResource("m17"), ExtResource("m16"), ExtResource("m17"), ExtResource("m16")])
+EntranceX = 2260
+SpawnRange = Vector2(2600, 3300)
+GateX = 3600.0
+CameraRight = 3633
+SpawnRayTop = -200.0
+SpawnRayBottom = 900.0
+
+[sub_resource type="Resource" id="wave3"]
+script = ExtResource("wave")
+Monsters = Array[Resource]([ExtResource("m20")])
+EntranceX = 3610
+SpawnRange = Vector2(4200, 4500)
+GateX = 4950.0
+CameraRight = 4983
+SpawnRayTop = -200.0
+SpawnRayBottom = 900.0
+ReleaseGateOnClear = false
+
+[sub_resource type="Resource" id="encounter"]
+script = ExtResource("encounter")
+Waves = Array[Resource]([SubResource("wave0"), SubResource("wave1"), SubResource("wave2"), SubResource("wave3")])
+
+[resource]
+script = ExtResource("def")
+Music = ExtResource("music")
+Id = "human_9"
+DisplayName = "鲨之涡流"
+Description = "原版四波遭遇与掉落已接入；部分Boss特殊机制正在还原"
+ProgressLevel = 9
+LevelScenePath = "res://Scenes/Level/Level_9.tscn"
+MapScene = ExtResource("map")
+Difficulties = Array[Resource]([ExtResource("normal"), ExtResource("hard")])
+PlayerSpawn = Vector2(380, 507.0)
+CameraRight = 5000
+CameraBottom = 650
+ExitPosition = Vector2(4371.0, 434.0)
+WaveEncounter = SubResource("encounter")

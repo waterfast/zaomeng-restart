@@ -1,0 +1,44 @@
+[gd_scene format=3]
+[ext_resource type="Texture2D" path="res://Assets/Art/Level/Level_Sjg/248.png" id="3"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Level/Level_Sjg/131.png" id="4"]
+[ext_resource type="Texture2D" path="res://Assets/Art/Level/Level_Sjg/232.png" id="5"]
+
+[sub_resource type="RectangleShape2D" id="floor"]
+size = Vector2(1666,1025)
+[node name="CrystalPalace" type="Node2D"]
+[node name="wall" type="StaticBody2D" parent="."]
+collision_mask = 0
+[node name="floor" type="CollisionShape2D" parent="wall"]
+position = Vector2(793,990.5)
+shape = SubResource("floor")
+[node name="LeftBoundary" type="CollisionPolygon2D" parent="wall"]
+polygon = PackedVector2Array(-100,-1000,0,-1000,0,1000,-100,1000)
+[node name="RightBoundary" type="CollisionPolygon2D" parent="wall"]
+polygon = PackedVector2Array(1000,-1000,1100,-1000,1100,1000,1000,1000)
+[node name="BackGround" type="ParallaxBackground" parent="."]
+[node name="End" type="ParallaxLayer" parent="BackGround"]
+position = Vector2(4, 0)
+
+motion_scale = Vector2(0,0)
+[node name="248" type="Sprite2D" parent="BackGround/End"]
+position = Vector2(722, 159.0)
+texture = ExtResource( "3" )
+metadata/_edit_lock_ = true
+
+[node name="front" type="ParallaxLayer" parent="BackGround"]
+position = Vector2(17, -48)
+metadata/_edit_lock_ = true
+
+[node name="131" type="Sprite2D" parent="BackGround/front"]
+position = Vector2(454, 282.0)
+texture = ExtResource( "4" )
+metadata/_edit_lock_ = true
+
+[node name="floor_2" type="ParallaxLayer" parent="BackGround"]
+metadata/_edit_lock_ = true
+
+[node name="232" type="Sprite2D" parent="BackGround/floor_2"]
+position = Vector2(636, 511.0)
+texture = ExtResource( "5" )
+metadata/_edit_lock_ = true
+

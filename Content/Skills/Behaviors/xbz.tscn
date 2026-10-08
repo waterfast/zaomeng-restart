@@ -1,0 +1,36 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://Scripts/Combat/Skills/SkillEffectSequenceBehavior.cs" id="runtime"]
+[ext_resource type="Script" path="res://Scripts/Combat/Skills/SkillEffectCue.cs" id="cue"]
+[ext_resource type="PackedScene" path="res://Content/Skills/Tangseng/Effects/IceFormation.tscn" id="scene0"]
+[ext_resource type="PackedScene" path="res://Content/Skills/Tangseng/Effects/IceFormation.tscn" id="scene1"]
+[ext_resource type="PackedScene" path="res://Content/Skills/Tangseng/Effects/IceFormation.tscn" id="scene2"]
+[sub_resource type="Resource" id="cue0"]
+script = ExtResource("cue")
+Time = 0.5
+Scene = ExtResource("scene0")
+Offset = Vector2(80, -15)
+Scale = Vector2(1, 1)
+FollowActor = false
+Mirror = true
+EndsWithCast = false
+[sub_resource type="Resource" id="cue1"]
+script = ExtResource("cue")
+Time = 0.7
+Scene = ExtResource("scene1")
+Offset = Vector2(175, -20)
+Scale = Vector2(1.3, 1.3)
+FollowActor = false
+Mirror = true
+EndsWithCast = false
+[sub_resource type="Resource" id="cue2"]
+script = ExtResource("cue")
+Time = 0.9
+Scene = ExtResource("scene2")
+Offset = Vector2(275, -25)
+Scale = Vector2(1.5, 1.5)
+FollowActor = false
+Mirror = true
+EndsWithCast = false
+[node name="xbz" type="Node"]
+script = ExtResource("runtime")
+Cues = Array[ExtResource("cue")]([SubResource("cue0"), SubResource("cue1"), SubResource("cue2")])

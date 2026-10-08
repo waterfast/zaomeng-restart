@@ -1,0 +1,11 @@
+[gd_resource type="Resource" format=3]
+[ext_resource type="Script" path="res://Scripts/Items/RecoveryPickupDefinition.cs" id="def"]
+[ext_resource type="Texture2D" path="res://Assets/Art/ItemIcon/Bble.png" id="icon"]
+[resource]
+script = ExtResource("def")
+Id = "Bble"
+DisplayName = "蓝瓶"
+Icon = ExtResource("icon")
+GroundIcon = ExtResource("icon")
+HealthRatio = 0
+ManaRatio = 0.2

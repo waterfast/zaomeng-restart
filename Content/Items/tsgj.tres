@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="EquipmentDefinition" format=3]
+[ext_resource type="Script" path="res://Scripts/Equipment/EquipmentDefinition.cs" id="script"]
+[ext_resource type="Texture2D" path="res://Assets/Art/BackPack/AllItems/tsgj.png" id="icon"]
+[ext_resource type="Texture2D" path="res://Assets/Art/BackPack/AllItems/tsgj.png" id="ground"]
+[ext_resource type="Resource" path="res://Content/Items/Presentation/tsgj.tres" id="presentation"]
+[ext_resource type="Resource" path="res://Content/MagicWeapons/tsgj.tres" id="ability"]
+
+[resource]
+script = ExtResource("script")
+Id = "tsgj"
+DisplayName = "天煞古剑"
+DescriptionKey = "ITEM_TSGJ_DESCRIPTION"
+Icon = ExtResource("icon")
+GroundIcon = ExtResource("ground")
+Slot = 6
+Rarity = 2
+Quality = "精良"
+QualityColor = Color(0, 0.54, 1, 1)
+OwnerCaption = "通用"
+SellPrice = 80
+MagicWeaponPresentation = ExtResource("presentation")
+MagicWeaponAbility = ExtResource("ability")

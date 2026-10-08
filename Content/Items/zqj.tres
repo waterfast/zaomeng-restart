@@ -3,9 +3,12 @@
 [ext_resource type="Script" path="res://Scripts/Equipment/EquipmentDefinition.cs" id="1"]
 [ext_resource type="Texture2D" path="res://Assets/Art/BackPack/AllItems/zqj.png" id="2"]
 
+[ext_resource type="Texture2D" path="res://Assets/Art/ItemIcon/zqj.png" id="ground_icon"]
+
 [resource]
 script = ExtResource("1")
 Id = "zqj"
+GroundIcon = ExtResource("ground_icon")
 DisplayName = "朱雀戒"
 DescriptionKey = "ITEM_ZQJ_DESCRIPTION"
 Quality = "优秀"
